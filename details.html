@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/lib/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- <link rel="stylesheet" href="/lib/font-awesome.bundle-3d8a58a48f.css" /> -->
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <link rel="stylesheet" href="/styles/workshop-details.css" />
+    <link rel="stylesheet" href="/styles/mobile-nav.css" />
+    <link rel="stylesheet" href="/styles/desktop-nav.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link
+      href="https://fonts.cdnfonts.com/css/joanna-sans-nova"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+      integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+      integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-3.0.0.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  </head>
+  <body>
+    <div id="wrapper">
+      <!--START DESKTOP NAVIGATIONS -->
+      <div id="top-navigation-desktop">
+        <ul class="top-nav-menus">
+          <li>Visit</li>
+          <li>Login</li>
+          <li>Shop</li>
+          <li><i class="fas fa-search"></i></li>
+          <li><i class="far fa-heart"></i></li>
+          <li><i class="fa fa-shopping-bag"></i></li>
+        </ul>
+      </div>
+      <nav
+        role="navigation"
+        id="access-desktop"
+        class="desktop-navigation-only"
+      >
+        <a
+          id="desktop_menu_wrapper"
+          class="skip-link icon-reorder"
+          title="Menu"
+          href="/"
+        >
+          <div class="logo">
+            <img
+              class="logo-desktop"
+              src="/assets/logo.png"
+              width="200px"
+              height="30px"
+            />
+          </div>
+        </a>
+        <ul id="menu-nav-ul">
+          <li class="active">
+            <a class="a_menu" href="#">
+              <span>Learn With Us</span>
+            </a>
+          </li>
+          <li>
+            <a class="a_menu" href="#">
+              <span>Residencies</span>
+            </a>
+          </li>
+          <li>
+            <a class="a_menu" href="#">
+              <span>Gallery</span>
+            </a>
+          </li>
+          <li>
+            <a class="a_menu" href="#">
+              <span>Community</span>
+            </a>
+          </li>
+          <li>
+            <a class="a_menu" href="#">
+              <span>Support</span>
+            </a>
+          </li>
+          <li>
+            <a class="a_menu last_anchor" href="#">
+              <span>About</span>
+            </a>
+          </li>
+          <li class="power-menu-find-work-shop find_workshop_nav_desktop">
+            <a class="a_menu " href="#">
+              <span>Find A workshop</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!--END DESKTOP NAVIGATIONS -->
+
+      <!--START MOBILE NAVIGATIONS -->
+      <div id="top-navigation-mobile">
+        <ul class="top-nav-menus">
+          <li>Visit</li>
+          <li>Login</li>
+          <li>Shop</li>
+          <li><i class="fas fa-search"></i></li>
+          <li><i class="far fa-heart"></i></li>
+          <li><i class="fa fa-shopping-bag"></i></li>
+        </ul>
+      </div>
+      <nav role="navigation" id="access" class="mobile-navigation-only">
+        <a id="mobile_menu_wrapper" class="skip-link icon-reorder" title="Menu">
+          <div class="logo">
+            <img src="/assets/logo.png" width="200px" height="30px" />
+          </div>
+          <div class="f-a-w">
+            <button class="f-a-w-btn">
+              Find a workshops
+            </button>
+          </div>
+          <div class="mobile-nav" role="button" onclick="onMobileTap();">
+            <input type="checkbox" id="drop-down-cbox" checked="true" />
+            <label for="drop-down-cbox">
+              <span></span>
+              <span></span>
+              <span class="last-bar-item"></span>
+            </label>
+          </div>
+        </a>
+        <ul id="menu" class="show-mobile-nav">
+          <li class="active">
+            <a class="a_menu" href="#">
+              <span>Learn With Us</span>
+              <i class="fas fa-angle-right"></i>
+            </a>
+          </li>
+          <li>
+            <a class="a_menu" href="#">
+              <span>Residencies</span>
+              <i class="fas fa-angle-right"></i>
+            </a>
+          </li>
+          <li>
+            <a class="a_menu" href="#">
+              <span>Gallery</span>
+              <i class="fas fa-angle-right"></i>
+            </a>
+          </li>
+          <li>
+            <a class="a_menu" href="#">
+              <span>Community</span>
+              <i class="fas fa-angle-right"></i>
+            </a>
+          </li>
+          <li>
+            <a class="a_menu" href="#">
+              <span>Support</span>
+              <i class="fas fa-angle-right"></i>
+            </a>
+          </li>
+          <li>
+            <a class="a_menu last_anchor" href="#">
+              <span>About</span>
+              <i class="fas fa-angle-right"></i>
+            </a>
+          </li>
+          <li class="power-menu-find-work-shop">
+            <a class="a_menu find_workshop_nav" href="#">
+              <span>Find A workshop</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!--END MOBILE NAVIGATIONS -->
+    </div>
+
+    <div class="container-fluid workshop-detail-page">
+      <!-- START BODY PAGE -->
+      <div class="row workshop-header-details">
+        <div class="top-header-page-section">
+          <div class="nav-breadcrumbs">
+            <a>Home</a> / <a>View All Workshops</a>
+          </div>
+          <div class="workshop-details">
+            <div class="workshop-title" data-aos="fade-right">
+              <h1>Handmade Paper: Surface and object. With Heathers</h1>
+            </div>
+            <div class="with-workshop-title" data-aos="fade-up">
+              with<span class="instructor">Heather Peters</span>
+            </div>
+            <ul class="workshop-date-details">
+              <li class="with-workshop-date">
+                Summer Session : May 26-31, 2024
+              </li>
+              <li class="with-workshop-session">Studio : Book & Paper</li>
+              <li class="with-workshop-level">Level : Beginner</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="row workshops-context-section">
+        <div class="workshop-overview">
+          <div class="over-view-context">
+            <div class="par-context">
+              <h3>Workshop Overview</h3>
+              <p>
+                This workshop will begin by processing a variety of fibers to
+                make Western-style paper. Using a Hollander beater to break down
+                fibers, we will explore various ways to form sheets. This will
+                be followed by an in-depth, practical analysis of drying
+                techniques. Then we will dive into an exploration of pigments,
+                natural dyes, and other color techniques both wet and dry paper.
+                <br />
+                <br />
+                The outcome will be beautiful, individualized sheets and
+                standalone paper art pieces with an ethereal, elemental
+                presence. Looking at paper through a historical lens, we will
+                talk about the importance of creating unique substrates and
+                discuss ways of bringing papermaking into a variety of studio
+                practices and set-ups. This workshop is perfect for new
+                papermakers, and it will also be informative for those with
+                <br />
+                experience.
+              </p>
+              <br />
+              <div class="action-section-overview">
+                Join us for this engaging workshop and
+                <a class="penland-link">enroll by February 20th</a>. <br />
+                <a class="now-accepting"
+                  >Now Accepting Scholarships <i>&#8594;</i></a
+                >
+              </div>
+              <div class="registration-actions">
+                <a class="register-now" href="/cart.html">Register Now</a>
+              </div>
+            </div>
+          </div>
+          <div class="slider-image-workshop" data-aos="fade-left">
+            <div
+              id="owl-carousel"
+              class="owl-carousel owl-carousel-overview owl-theme"
+            >
+              <div class="item"><img src="./assets/over-view-1.png" /></div>
+              <div class="item"><img src="./assets/over-view-1.png" /></div>
+              <div class="item"><img src="./assets/over-view-1.png" /></div>
+              <div class="item"><img src="./assets/over-view-1.png" /></div>
+              <div class="item"><img src="./assets/over-view-1.png" /></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="inner-section-instructor">
+          <div class="instructor-context">
+            <div class="img-instructor">
+              <img
+                data-aos="flip-left"
+                data-aos-offset="200"
+                data-aos-delay="10"
+                data-aos-duration="800"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="true"
+                src="./assets/heather.png"
+              />
+            </div>
+            <div class="instructor-details-art">
+              <h3
+                data-aos="fade-left"
+                data-aos-offset="200"
+                data-aos-delay="10"
+                data-aos-duration="800"
+              >
+                Teaching Artist
+              </h3>
+              <span
+                class="instructor-name"
+                data-aos="fade-left"
+                data-aos-offset="200"
+                data-aos-delay="10"
+                data-aos-duration="900"
+                >Heather Peters</span
+              >
+              <p
+                data-aos="fade-left"
+                data-aos-offset="200"
+                data-aos-delay="10"
+                data-aos-duration="950"
+              >
+                Heather Peters is an artist and writer whose work explores the
+                ideas of time and materiality through an investigation into the
+                historical, physical and scientific nature of art materials,
+                working with time-based materials such a hand-bound books,
+                handmade paper, chromatography, video and cyanotype, she creates
+                uniquely immersive pieces that bleed out from a center point and
+                catch the viewer in a web of interactive understanding.
+              </p>
+              <a href="#" class="explore-artist-work"
+                >Explore Artist Work <i>&#8594;</i></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row workshop-studio-section">
+        <div class="studion-wrapper-context">
+          <div class="studio-context">
+            <div class="studio-wrapper">
+              <h3
+                class="studio-name"
+                data-aos="fade-up"
+                data-aos-offset="200"
+                data-aos-delay="20"
+                data-aos-duration="1000"
+                data-aos-easing="ease-in-out"
+                data-aos-mirror="true"
+                data-aos-once="true"
+              >
+                The Book & Paper Studio
+              </h3>
+              <p>
+                The book studio is very flexible, but is particularly well
+                equipped for book construction techniques (including Eastern and
+                Western traditions and adhesive and non-adhesive binding), pop
+                up and kinetic books, boxmaking, leatherwork, dying and
+                decoration techniques, and book design. Materials and techniques
+                are combined in a myriad of ways, and instructors often ground
+                technical exploration with conversations about historic and/org
+                current context, design, or idea generation.
+              </p>
+              <a href="#" class="explore-studio"
+                >Explore the Studio <i>&#8594;</i></a
+              >
+            </div>
+          </div>
+          <div class="studio-image-showcase" data-aos="fade-up">
+            <img src="./assets/over-view-studio.png" />
+          </div>
+        </div>
+      </div>
+
+      <div class="row reg-scholarship-section">
+        <div class="reg-context-wrapper">
+          <div class="reg-information">
+            <h3 class="reg-header">Registration & Scholarship Information</h3>
+            <p>
+              Penland welcomes serious students of all levels of
+              experience-absolute beginners to professionals. We seek a diverse
+              student population representing varied experiences, backgrounds,
+              races, professions, and age groups (minimum age 18).
+              <br />
+              <br />
+              Penland is an intentionally inclusive community that values the
+              creative <br />energy that arises from diverse artistic visions
+              and approaches. Our scholarship program exists to make our
+              workshops accessible to those who are not able to participate
+              without financial assistance and to create educational
+              opportunities for people who have been underrepresented at Penland
+              and in the craft world.
+            </p>
+            <a class="penland-link">Tuition and Fees <i>&#8594;</i></a>
+            <a class="penland-link">Scholarship Information <i>&#8594;</i></a>
+          </div>
+          <div class="reg-scholarship-date-info">
+            <div class="date-details">
+              <div class="date-schedule-list">
+                <div class="s-dates">
+                  <h3 class="title-date-header">Scholarship Dates</h3>
+                  <ul class="date-list">
+                    <li>
+                      <span class="reg-date">October 15, 2024</span>
+                      <span>Scholarships Applications Open</span>
+                    </li>
+                    <li>
+                      <span class="reg-date">November 15, 2024</span>
+                      <span>Scholarships Application Dates</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="r-dates">
+                  <h3 class="title-date-header">Registration Dates</h3>
+                  <ul class="date-list">
+                    <li>
+                      <span class="reg-date">January 5-10, 2024</span>
+                      <span
+                        >Scholarships Enrollment Perios for Scholarship
+                        Students</span
+                      >
+                    </li>
+                    <li>
+                      <span class="reg-date">January 15-20, 2024</span>
+                      <span>Regular Enroll Perios. Open to all students</span>
+                    </li>
+                    <li>
+                      <span class="reg-date">April 30, 2024</span>
+                      <span>Last day enroll in workshops</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="acion-footer ">
+                <a href="#">More Registration Information</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row explore-more-workshopt-section">
+        <div class="explore-wrapper">
+          <div class="explore-header">
+            <h3>
+              Explore More Workshops
+            </h3>
+            <a href="#" class="view-all-workshops">
+              View All Workshops <i>&#8594;</i>
+            </a>
+          </div>
+          <div class="slider-image-explore-workshop">
+            <div
+              id="owl-demo"
+              class="owl-carousel owl-carousel-explore-more owl-theme"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="have-any-question-section">
+        <div class="have-any-wrapper">
+          <div class="with-context-image-question">
+            <div class="imag-question-up">
+              <img src="./assets/question-mark-up.png" />
+            </div>
+            <div class="help-details">
+              <h3>Have Any Questions?</h3>
+              <p>
+                Send us an email at <a>info@penland.org</a> or call us at <br />
+                <a>832-765-2359</a> and we will be happy to assist you!
+              </p>
+              <a class="penland-link">Contact Details <i>&#8594;</i></a>
+            </div>
+          </div>
+
+          <div class="imag-question-down">
+            <img src="./assets/question-mark.png" />
+          </div>
+        </div>
+      </div>
+
+      <!-- END BODY PAGE -->
+    </div>
+
+    <footer class="footer-penland">
+      <div class="footer-wrapper">
+        <div class="footer-right-sections">
+          <img class="footer-logo" src="./assets/footer-logo.png" />
+          <div class="social-media">
+            <a>
+              <img
+                title="Penalnd instagram"
+                alt="Penalnd instagram"
+                src="./assets/instagram.png"
+            /></a>
+            <a>
+              <img
+                title="Penalnd facebook"
+                alt="Penalnd facebook"
+                src="./assets/facebook.png"
+            /></a>
+            <a>
+              <img
+                title="Penalnd youtube"
+                alt="Penalnd youtube"
+                src="./assets/youtube.png"
+            /></a>
+            <a>
+              <img
+                title="Penalnd pinterest"
+                alt="Penalnd pinterest"
+                src="./assets/pinterest.png"
+            /></a>
+          </div>
+          <div class="footer-contact-us-section-wrapper">
+            <div class="footer-contact-us-section">
+              <h3>Contact Us</h3>
+              <a><span>(828) 765-2359</span></a>
+              <a><span>info@penland.org</span></a>
+              <a>
+                <span>2687 Conley Ridge Road </span>
+                <br />
+                <span>
+                  Bakersville, NC 28705
+                </span>
+              </a>
+            </div>
+            <div class="footer-gallery-visitor-schedule">
+              <h3>Gallery + Visitor Center Hours</h3>
+              <div class="schedule-table">
+                <div class="gallery-date">
+                  <span class="gallery-date-label">Wednesday - Saturday</span>
+                  <span class="gallery-date-label">Sunday - Tuesday</span>
+                </div>
+                <div class="gallery-date">
+                  <span class="gallery-date-label">11am-4pm EST</span>
+                  <span class="gallery-date-label">Close</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="links-programs">
+            <h3>Programs</h3>
+            <ul>
+              <li><a href="#">Workshops</a></li>
+              <li><a href="#">Youth & Family</a></li>
+              <li><a href="#">Teach at Penland</a></li>
+              <li><a href="#">Scholarships</a></li>
+              <li><a href="#">Cancellation & Refunds</a></li>
+            </ul>
+          </div>
+          <div class="links-programs">
+            <h3>Gallery</h3>
+            <ul>
+              <li><a href="#">Hours and Contact</a></li>
+              <li><a href="#">Visit</a></li>
+              <li><a href="#">Exhibitions</a></li>
+              <li><a href="#">Shop Online</a></li>
+            </ul>
+          </div>
+          <div class="links-programs">
+            <h3>Support</h3>
+            <ul>
+              <li><a href="#">Ways to Give</a></li>
+              <li><a href="#">Annual Benefit Auction</a></li>
+              <li><a href="#">Donate Now</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+<script src="./scripts/randomData.js"></script>
+<script src="./scripts/details.js"></script>
+
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+  integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+<script>
+  $(document).ready(function() {
+    $('.owl-carousel-overview').owlCarousel({
+      navigation: true, // Show next and prev buttons
+      slideSpeed: 300,
+      paginationSpeed: 400,
+      items: 1,
+      itemsDesktop: false,
+      itemsDesktopSmall: false,
+      itemsTablet: false,
+      itemsMobile: false,
+    });
+
+    $('.owl-carousel-explore-more').owlCarousel({
+      items: 4, //10 items above 1000px browser width
+      navigation: true, // Show next and prev buttons
+      itemsDesktop: [1000, 4], //5 items between 1000px and 901px
+      itemsDesktopSmall: [900, 3], // betweem 900px and 601px
+      itemsTablet: [600, 2], //2 items between 600 and 0;
+      itemsMobile: false, // itemsMobile disabled - inherit from itemsTablet
+      autoWidth: false,
+      nav: true,
+      navText: [
+        '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+        '<i class="fa fa-angle-right" aria-hidden="true"></i>',
+      ],
+    });
+    AOS.init({
+      once: true,
+      mirror: false,
+      delay: 0, // values from 0 to 3000, with step 50ms
+      duration: 900, // values from 0 to 3000, with step 50ms
+      easing: 'ease', // default easing for AOS animations
+    });
+  });
+</script>

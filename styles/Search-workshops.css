@@ -1,0 +1,422 @@
+.top-section-program {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0rem;
+  background: #222222;
+}
+.top-section-program h1 {
+  color: wheat;
+}
+.top-section-program label {
+  color: #7bec02;
+}
+
+.section_find-a-work-shops {
+  padding: 2.5rem 12rem;
+  display: grid;
+  grid-template-columns: auto auto;
+  flex-wrap: nowrap;
+  align-content: center;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+}
+.section_find-a-work-shops svg {
+  vertical-align: baseline !important;
+}
+.section_find-a-work-shops .filter-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 16px;
+  min-width: 200px;
+  position: relative;
+}
+.section_find-a-work-shops .filter-section .current-filter-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.section_find-a-work-shops .filter-section .current-filter-controls .current-header-filter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.section_find-a-work-shops .filter-section .current-filter-controls .current-header-filter .filter-control-label {
+  margin-bottom: 2px;
+  margin-left: 5px;
+  text-transform: uppercase;
+}
+.section_find-a-work-shops .filter-section .current-filter-controls .badge-searches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  max-width: 200px;
+}
+.section_find-a-work-shops .filter-section .current-filter-controls .badge-searches .badges {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  background: #eeeeee;
+  border-radius: 15px;
+  padding: 4px 7px;
+}
+.section_find-a-work-shops .filter-section .current-filter-controls .badge-searches .badges .remove-search {
+  padding: 4px 4px 3px 4px;
+  font-size: 9px;
+  margin-top: 2px;
+}
+.section_find-a-work-shops .filter-section .current-filter-controls .badge-searches .badges .remove-search:hover {
+  background: #dadada;
+  border-radius: 50%;
+}
+.section_find-a-work-shops .filter-section .current-filter-controls .reset-filter-container .remove-all-searches {
+  cursor: pointer;
+}
+.section_find-a-work-shops .filter-section .current-filter-controls .reset-filter-container .remove-all-searches.onRemoving {
+  animation: rotating 2s linear infinite;
+}
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.section_find-a-work-shops .filter-section .current-filter-controls .reset-filter-container-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.section_find-a-work-shops .filter-section .current-filter-controls .reset-filter-container-checkbox span {
+  color: #000;
+}
+.section_find-a-work-shops .filter-section .current-filter-controls .reset-filter-container-checkbox span:first-child {
+  text-decoration: underline;
+}
+.section_find-a-work-shops .filter-section .current-filter-controls .reset-filter-container-checkbox span:last-of-type {
+  font-size: 12px;
+}
+.section_find-a-work-shops .filter-section .filter-category .filter-type-label {
+  text-transform: uppercase;
+  border-bottom: 1.2px solid #808080;
+}
+.section_find-a-work-shops .filter-section .filter-category .filter-type-label span {
+  font-weight: 800;
+  color: #000;
+  padding-bottom: 3px;
+}
+.section_find-a-work-shops .filter-section .filter-category .filter-type-categories,
+.section_find-a-work-shops .filter-section .filter-category .filter-by-date-range {
+  margin-top: 2rem;
+}
+.section_find-a-work-shops .filter-section .filter-category .filter-by-date-range .label-date-range {
+  margin-top: 1rem;
+  font-size: 12px;
+}
+.section_find-a-work-shops .filter-section .filter-category .filter-by-date-range #daterange {
+  padding: 8px 20px;
+  width: -webkit-fill-available;
+}
+.section_find-a-work-shops .filter-section .filter-category .filter-collpaseable {
+  position: relative;
+  margin: 1.5rem 0;
+  cursor: pointer;
+}
+.section_find-a-work-shops .filter-section .filter-category .filter-collpaseable .filter-type-sub-label {
+  background: #eeeeee;
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 4px;
+}
+.section_find-a-work-shops .filter-section .filter-category .filter-collpaseable .filter-type-sub-label span {
+  color: black;
+  font-weight: 700;
+}
+.section_find-a-work-shops .filter-section .filter-category .filter-collpaseable .collapsible_filter.active .penland_pm {
+  color: #eeeeee;
+}
+.section_find-a-work-shops .filter-section .filter-category .filter-collpaseable .collapsible_filter.active .penland_pm::after {
+  content: "-";
+  color: black;
+  font-size: 12px;
+}
+.section_find-a-work-shops .filter-section .filter-category .filter-collpaseable .content_collapsible {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+.section_find-a-work-shops .list-of-studios {
+  position: relative;
+}
+.section_find-a-work-shops .filter-list-of-fall-session {
+  position: relative;
+}
+.section_find-a-work-shops .mcui-checkbox,
+.section_find-a-work-shops .mcui-radio {
+  display: flex;
+  align-items: center;
+  cursor: pointer !important;
+  padding: 0.6em 0;
+  box-sizing: border-box;
+}
+.section_find-a-work-shops .mcui-checkbox input[type=checkbox],
+.section_find-a-work-shops .mcui-checkbox input[type=radio],
+.section_find-a-work-shops .mcui-radio input[type=checkbox],
+.section_find-a-work-shops .mcui-radio input[type=radio] {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+.section_find-a-work-shops .mcui-checkbox input[type=checkbox] + div,
+.section_find-a-work-shops .mcui-checkbox input[type=radio] + div,
+.section_find-a-work-shops .mcui-radio input[type=checkbox] + div,
+.section_find-a-work-shops .mcui-radio input[type=radio] + div {
+  border: 1px solid #8d9aa9 !important;
+  height: 1.5em !important;
+  width: 1.5em !important;
+  box-sizing: border-box;
+  border-radius: 2px;
+  position: relative;
+}
+.section_find-a-work-shops .mcui-checkbox input[type=checkbox] ~ div:last-child,
+.section_find-a-work-shops .mcui-checkbox input[type=radio] ~ div:last-child,
+.section_find-a-work-shops .mcui-radio input[type=checkbox] ~ div:last-child,
+.section_find-a-work-shops .mcui-radio input[type=radio] ~ div:last-child {
+  padding-left: 0.5em;
+}
+.section_find-a-work-shops .mcui-checkbox input[type=radio] + div,
+.section_find-a-work-shops .mcui-radio input[type=radio] + div {
+  border-radius: 50%;
+}
+.section_find-a-work-shops .mcui-checkbox input[type=radio] + div::after,
+.section_find-a-work-shops .mcui-radio input[type=radio] + div::after {
+  content: "";
+  position: absolute;
+  left: 25%;
+  top: 25%;
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  transform: scale(0.5);
+  opacity: 0;
+  background: black;
+  transition: all 107ms cubic-bezier(0.65, 0.25, 0.56, 0.96);
+}
+.section_find-a-work-shops .mcui-checkbox input[type=checkbox]:checked + div,
+.section_find-a-work-shops .mcui-radio input[type=checkbox]:checked + div {
+  border-color: black;
+  transition: border-color 107ms cubic-bezier(0.65, 0.25, 0.56, 0.96);
+  background: #222222;
+}
+.section_find-a-work-shops .mcui-checkbox input[type=checkbox]:checked + div .mcui-check,
+.section_find-a-work-shops .mcui-radio input[type=checkbox]:checked + div .mcui-check {
+  opacity: 1;
+  transition: opacity 107ms cubic-bezier(0.65, 0.25, 0.56, 0.96);
+}
+.section_find-a-work-shops .mcui-checkbox input[type=checkbox]:checked + div .mcui-check polyline,
+.section_find-a-work-shops .mcui-radio input[type=checkbox]:checked + div .mcui-check polyline {
+  animation: dash-check 107ms cubic-bezier(0.65, 0.25, 0.56, 0.96) forwards;
+}
+.section_find-a-work-shops .mcui-checkbox input[type=radio]:checked + div,
+.section_find-a-work-shops .mcui-radio input[type=radio]:checked + div {
+  border-color: black !important;
+}
+.section_find-a-work-shops .mcui-checkbox input[type=radio]:checked + div::after,
+.section_find-a-work-shops .mcui-radio input[type=radio]:checked + div::after {
+  opacity: 1;
+  transform: scale(1);
+}
+.section_find-a-work-shops .mcui-checkbox input[type=checkbox]:disabled ~ div,
+.section_find-a-work-shops .mcui-checkbox input[type=radio]:disabled ~ div,
+.section_find-a-work-shops .mcui-radio input[type=checkbox]:disabled ~ div,
+.section_find-a-work-shops .mcui-radio input[type=radio]:disabled ~ div {
+  color: #8d9aa9;
+  cursor: not-allowed;
+}
+.section_find-a-work-shops .mcui-checkbox input[type=checkbox]:enabled ~ div,
+.section_find-a-work-shops .mcui-checkbox input[type=radio]:enabled ~ div,
+.section_find-a-work-shops .mcui-radio input[type=checkbox]:enabled ~ div,
+.section_find-a-work-shops .mcui-radio input[type=radio]:enabled ~ div {
+  cursor: pointer;
+}
+.section_find-a-work-shops .label-checkbox {
+  color: #000;
+  cursor: pointer;
+}
+.section_find-a-work-shops .checkbox-wrapped {
+  cursor: pointer;
+}
+.section_find-a-work-shops .mcui-check {
+  height: 100%;
+  width: 100%;
+  transform: scale(1.3);
+  color: white;
+  opacity: 0;
+}
+.section_find-a-work-shops .mcui-check polyline {
+  fill: none;
+  transform-origin: 50% 50%;
+  stroke-width: 2px;
+  stroke-dasharray: 22.7713679002;
+  stroke: currentcolor;
+}
+.section_find-a-work-shops .search-results-sections {
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.section_find-a-work-shops .search-results-sections .search-footer-view-more {
+  margin-top: 5rem;
+}
+.section_find-a-work-shops .search-results-sections .search-footer-view-more .counter-item-label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+}
+.section_find-a-work-shops .search-results-sections .search-footer-view-more .view-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+.section_find-a-work-shops .search-results-sections .search-footer-view-more .view-action .view-btn {
+  font-size: 11px;
+  color: white;
+  background: #222222;
+  outline: none;
+  border: none;
+  border-radius: 2px;
+  padding: 1rem 1.5rem;
+}
+.section_find-a-work-shops .search-results-sections .search-footer-view-more .view-action .view-btn:hover {
+  background: #101010;
+}
+.section_find-a-work-shops .search-results-sections .search-footer-view-more .progress-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.section_find-a-work-shops .search-results-sections .search-footer-view-more .progress-container .progress {
+  border-radius: 15px;
+  max-height: 10px;
+  min-width: 200px;
+}
+.section_find-a-work-shops .search-results-sections .search-footer-view-more .progress-container .progress .progress-bar {
+  background-color: #8fd6ab;
+  box-shadow: none;
+}
+.section_find-a-work-shops .search-results-sections .card-results-sections {
+  width: 100%;
+  padding: 0px 2rem;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 3.5rem;
+}
+.section_find-a-work-shops .search-results-sections .card-results-sections .card-loading {
+  background: #fff;
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.04);
+  border-radius: 3px;
+  min-width: 175px;
+}
+.section_find-a-work-shops .search-results-sections .card-results-sections .card-loading .content {
+  padding: 10px;
+}
+.section_find-a-work-shops .search-results-sections .card-results-sections .card-loading.is-loading .image,
+.section_find-a-work-shops .search-results-sections .card-results-sections .card-loading.is-loading h2,
+.section_find-a-work-shops .search-results-sections .card-results-sections .card-loading.is-loading p {
+  background: #eee;
+  background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+  border-radius: 5px;
+  background-size: 200% 100%;
+  animation: 1.5s shine linear infinite;
+}
+.section_find-a-work-shops .search-results-sections .card-results-sections .card-loading.is-loading .image {
+  height: 200px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.section_find-a-work-shops .search-results-sections .card-results-sections .card-loading.is-loading h2 {
+  height: 30px;
+}
+.section_find-a-work-shops .search-results-sections .card-results-sections .card-loading.is-loading p {
+  height: 70px;
+}
+@keyframes shine {
+  to {
+    background-position-x: -200%;
+  }
+}
+.section_find-a-work-shops .search-results-sections .card-results-sections .card-item {
+  cursor: pointer;
+  background: #f3f3f3;
+  padding: 1.5rem 1.5rem 2.5rem 1.5rem;
+  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.04);
+  border-radius: 3px;
+  transition: transform 0.2s;
+}
+.section_find-a-work-shops .search-results-sections .card-results-sections .card-item:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 15px 24px rgba(0, 0, 0, 0.11), 0 15px 24px rgba(10, 10, 10, 0.097);
+}
+.section_find-a-work-shops .search-results-sections .card-results-sections .card-item .card-img-container {
+  position: relative;
+  text-align: center;
+}
+.section_find-a-work-shops .search-results-sections .card-results-sections .card-item .card-img-container .card-fav {
+  cursor: pointer;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.3);
+  opacity: 0.9;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 11px;
+  left: 11px;
+  padding: 2px;
+}
+.section_find-a-work-shops .search-results-sections .card-results-sections .card-item .card-img-container .card-fav:hover {
+  transform: scale(1.1) !important;
+}
+.section_find-a-work-shops .search-results-sections .card-results-sections .card-item .card-img-container .card-fav span {
+  font-size: 11px;
+  margin-top: 2px;
+}
+.section_find-a-work-shops .search-results-sections .card-results-sections .card-item .card-item-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+  color: #000;
+  margin-top: 1rem;
+}
+.section_find-a-work-shops .search-results-sections .card-results-sections .card-item .card-item-details .type-item,
+.section_find-a-work-shops .search-results-sections .card-results-sections .card-item .card-item-details .type-item-details {
+  font-weight: 600;
+}
+.section_find-a-work-shops .search-results-sections .card-results-sections .card-item .card-item-details .type-item {
+  text-align: center;
+}
+.section_find-a-work-shops .search-results-sections .card-results-sections .card-item .card-item-details .type-item-author {
+  margin: 1rem 0;
+  font-weight: 200;
+  font-size: 12;
+  text-decoration: underline;
+}
+.section_find-a-work-shops .search-results-sections .card-results-sections .card-item .card-item-details .type-item-dates {
+  font-weight: 100;
+}/*# sourceMappingURL=Search-workshops.css.map */

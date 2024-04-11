@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  class="light-style layout-navbar-fixed layout-menu-fixed "
+  dir="ltr"
+  data-theme="theme-default"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="/lib/bootstrap.min.css" /> -->
+
+    <link
+      href="https://fonts.cdnfonts.com/css/joanna-sans-nova"
+      rel="stylesheet"
+    />
+
+    <!-- START UI THEME -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    /> -->
+
+    <!-- <link rel="stylesheet" href="/styles/lib/boxicons.css" /> -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <!-- <link rel="stylesheet" href="/styles/lib/fontawesome.css" /> -->
+    <link rel="stylesheet" href="/styles/lib/core.css" />
+    <link rel="stylesheet" href="/styles/lib/theme-default.css" />
+    <link rel="stylesheet" href="/styles/lib/demo.css" />
+
+    <script src="./scripts/lib/helpers.js"></script>
+    <script src="./scripts/lib/config.js"></script>
+
+    <!-- END UI THEME -->
+
+    <!-- <link rel="stylesheet" href="/lib/font-awesome.bundle-3d8a58a48f.css" /> -->
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <link rel="stylesheet" href="/styles/mobile-nav.css" />
+    <link rel="stylesheet" href="/styles/desktop-nav.css" />
+    <link rel="stylesheet" href="/styles/search-workshops.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
+    />
+
+    <!-- <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script> -->
+    <!-- <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-3.0.0.min.js"></script> -->
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  </head>
+  <body>
+    <div id="wrapper">
+      <!--START DESKTOP NAVIGATIONS -->
+      <div id="top-navigation-desktop">
+        <ul class="top-nav-menus">
+          <li>Visit</li>
+          <li>Login</li>
+          <li>Shop</li>
+          <li><i class="fas fa-search"></i></li>
+          <li><i class="far fa-heart"></i></li>
+          <li><i class="fa fa-shopping-bag"></i></li>
+        </ul>
+      </div>
+      <nav
+        role="navigation"
+        id="access-desktop"
+        class="desktop-navigation-only"
+      >
+        <a
+          id="desktop_menu_wrapper"
+          class="skip-link icon-reorder"
+          title="Menu"
+          href="/"
+        >
+          <div class="logo">
+            <img
+              class="logo-desktop"
+              src="/assets/logo.png"
+              width="200px"
+              height="30px"
+            />
+          </div>
+        </a>
+        <ul id="menu-nav-ul">
+          <li class="active">
+            <a class="a_menu" href="#">
+              <span>Learn With Us</span>
+            </a>
+          </li>
+          <li>
+            <a class="a_menu" href="#">
+              <span>Residencies</span>
+            </a>
+          </li>
+          <li>
+            <a class="a_menu" href="#">
+              <span>Gallery</span>
+            </a>
+          </li>
+          <li>
+            <a class="a_menu" href="#">
+              <span>Community</span>
+            </a>
+          </li>
+          <li>
+            <a class="a_menu" href="#">
+              <span>Support</span>
+            </a>
+          </li>
+          <li>
+            <a class="a_menu last_anchor" href="#">
+              <span>About</span>
+            </a>
+          </li>
+          <li class="power-menu-find-work-shop find_workshop_nav_desktop">
+            <a class="a_menu " href="#">
+              <span>Find A workshop</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!--END DESKTOP NAVIGATIONS -->
+
+      <!--START MOBILE NAVIGATIONS -->
+      <div id="top-navigation-mobile">
+        <ul class="top-nav-menus">
+          <li>Visit</li>
+          <li>Login</li>
+          <li>Shop</li>
+          <li><i class="fas fa-search"></i></li>
+          <li><i class="far fa-heart"></i></li>
+          <li><i class="fa fa-shopping-bag"></i></li>
+        </ul>
+      </div>
+      <nav role="navigation" id="access" class="mobile-navigation-only">
+        <a id="mobile_menu_wrapper" class="skip-link icon-reorder" title="Menu">
+          <div class="logo">
+            <img src="/assets/logo.png" width="200px" height="30px" />
+          </div>
+          <div class="f-a-w">
+            <button class="f-a-w-btn">
+              Find a workshops
+            </button>
+          </div>
+          <div class="mobile-nav" role="button" onclick="onMobileTap();">
+            <input type="checkbox" id="drop-down-cbox" checked="true" />
+            <label for="drop-down-cbox">
+              <span></span>
+              <span></span>
+              <span class="last-bar-item"></span>
+            </label>
+          </div>
+        </a>
+        <ul id="menu" class="show-mobile-nav">
+          <li class="active">
+            <a class="a_menu" href="#">
+              <span>Learn With Us</span>
+              <i class="fas fa-angle-right"></i>
+            </a>
+          </li>
+          <li>
+            <a class="a_menu" href="#">
+              <span>Residencies</span>
+              <i class="fas fa-angle-right"></i>
+            </a>
+          </li>
+          <li>
+            <a class="a_menu" href="#">
+              <span>Gallery</span>
+              <i class="fas fa-angle-right"></i>
+            </a>
+          </li>
+          <li>
+            <a class="a_menu" href="#">
+              <span>Community</span>
+              <i class="fas fa-angle-right"></i>
+            </a>
+          </li>
+          <li>
+            <a class="a_menu" href="#">
+              <span>Support</span>
+              <i class="fas fa-angle-right"></i>
+            </a>
+          </li>
+          <li>
+            <a class="a_menu last_anchor" href="#">
+              <span>About</span>
+              <i class="fas fa-angle-right"></i>
+            </a>
+          </li>
+          <li class="power-menu-find-work-shop">
+            <a class="a_menu find_workshop_nav" href="#">
+              <span>Find A workshop</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!--END MOBILE NAVIGATIONS -->
+    </div>
+
+    <div class="container-fluid search-container">
+      <div class="row top-section-program">
+        <h1>WORKSHOPS & PROGRAMS</h1>
+        <label>(TEST ENVIRONMENT 👩‍💻)</label>
+      </div>
+
+      <!-- START BODY PAGE -->
+      <div class="section_find-a-work-shops row">
+        <div class="filter-section">
+          <div id="current-filters">
+            <div class="current-filter-controls">
+              <div class="current-header-filter">
+                <div class="icon-filter">
+                  <svg
+                    fill="#242424"
+                    width="20px"
+                    height="25px"
+                    viewBox="0 0 32 32"
+                    version="1.1"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g id="SVGRepo_bgCarrier" stroke-width="0" />
+
+                    <g
+                      id="SVGRepo_tracerCarrier"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+
+                    <g id="SVGRepo_iconCarrier">
+                      <path
+                        d="M30 6.749h-28c-0.69 0-1.25 0.56-1.25 1.25s0.56 1.25 1.25 1.25v0h28c0.69 0 1.25-0.56 1.25-1.25s-0.56-1.25-1.25-1.25v0zM24 14.75h-16c-0.69 0-1.25 0.56-1.25 1.25s0.56 1.25 1.25 1.25v0h16c0.69 0 1.25-0.56 1.25-1.25s-0.56-1.25-1.25-1.25v0zM19 22.75h-6.053c-0.69 0-1.25 0.56-1.25 1.25s0.56 1.25 1.25 1.25v0h6.053c0.69 0 1.25-0.56 1.25-1.25s-0.56-1.25-1.25-1.25v0z"
+                      />
+                    </g>
+                  </svg>
+                </div>
+                <div class="filter-control-label">Filter Workshops</div>
+              </div>
+              <div class="reset-filter-container">
+                <span>Reset All</span>
+                <i
+                  id="onremove-items"
+                  class="fas fa-refresh remove-all-searches"
+                  onclick="removeAll()"
+                ></i>
+              </div>
+              <div class="badge-searches">
+                <div class="badges">
+                  <span>Book & Paper</span>
+                  <i class="fas fa-times remove-search"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FILTER CATEGORY -->
+          <div class="filter-category">
+            <div class="filter-type-categories">
+              <div class="filter-type-label">
+                <span>By Studio</span>
+              </div>
+              <div class="list-of-studios">
+                <!-- DATA WILL APPEND HERE -->
+              </div>
+            </div>
+
+            <!-- START DATE RANGE -->
+            <div class="filter-by-date-range">
+              <div class="filter-type-label">
+                <span> By Date Range</span>
+              </div>
+              <span class="label-date-range">
+                Looking for a specific date range?
+              </span>
+              <input
+                id="daterange"
+                type="text"
+                name="daterange"
+                value="01/01/2024 - 01/15/2042"
+              />
+            </div>
+            <!-- END DATE RANGE -->
+
+            <!--START COLLAPSEABLE FILTER -->
+            <div class="filter-type-categories">
+              <div class="filter-type-label">
+                <span>By Session type</span>
+              </div>
+
+              <div class="filter-collpaseable">
+                <div class="filter-fall">
+                  <div class="filter-type-sub-label collapsible_filter">
+                    <span>Fall Sessions </span>
+                    <span class="penland_pm">+</span>
+                  </div>
+                  <div class="filter-list-of-fall-session content_collapsible">
+                    <label class="mcui-checkbox">
+                      <input type="checkbox" />
+                      <div class="checkbox-wrapped">
+                        <svg
+                          class="mcui-check"
+                          viewBox="-2 -2 35 35"
+                          aria-hidden="true"
+                        >
+                          <title>checkmark-circle</title>
+                          <polyline
+                            points="7.57 15.87 12.62 21.07 23.43 9.93"
+                          />
+                        </svg>
+                      </div>
+                      <div class="label-checkbox">
+                        Weekend Session: 2 Studio Days
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="filter-collpaseable">
+                <div class="filter-fall">
+                  <div class="filter-type-sub-label collapsible_filter">
+                    <span>Spring Sessions </span>
+                    <span class="penland_pm">+</span>
+                  </div>
+                  <div class="filter-list-of-fall-session content_collapsible">
+                    <label class="mcui-checkbox">
+                      <input type="checkbox" />
+                      <div class="checkbox-wrapped">
+                        <svg
+                          class="mcui-check"
+                          viewBox="-2 -2 35 35"
+                          aria-hidden="true"
+                        >
+                          <title>checkmark-circle</title>
+                          <polyline
+                            points="7.57 15.87 12.62 21.07 23.43 9.93"
+                          />
+                        </svg>
+                      </div>
+                      <div class="label-checkbox">
+                        Concrete:8-Week
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="filter-collpaseable">
+                <div class="filter-fall">
+                  <div class="filter-type-sub-label collapsible_filter">
+                    <span>Summer Sessions </span>
+                    <span class="penland_pm">+</span>
+                  </div>
+                  <div class="filter-list-of-fall-session content_collapsible">
+                    <label class="mcui-checkbox">
+                      <input type="checkbox" />
+                      <div class="checkbox-wrapped">
+                        <svg
+                          class="mcui-check"
+                          viewBox="-2 -2 35 35"
+                          aria-hidden="true"
+                        >
+                          <title>checkmark-circle</title>
+                          <polyline
+                            points="7.57 15.87 12.62 21.07 23.43 9.93"
+                          />
+                        </svg>
+                      </div>
+                      <div class="label-checkbox">
+                        Weekend Session: 2 Studio Days
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--END COLLAPSEABLE FILTER -->
+          </div>
+        </div>
+        <div class="search-results-sections">
+          <div class="card-results-sections"></div>
+          <div class="search-footer-view-more">
+            <div class="progress-container">
+              <span class="counter-item-label">
+                You've viewed 24 of 29 items
+              </span>
+              <div class="progress">
+                <div
+                  class="progress-bar"
+                  role="progressbar"
+                  style="width: 25%"
+                  aria-valuenow="25"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+            </div>
+            <div class="view-action">
+              <button class="view-btn">View More</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- END BODY PAGE -->
+    </div>
+
+    <footer class="footer-penland">
+      <div class="footer-wrapper">
+        <div class="footer-right-sections">
+          <img class="footer-logo" src="./assets/footer-logo.png" />
+          <div class="social-media">
+            <a>
+              <img
+                title="Penalnd instagram"
+                alt="Penalnd instagram"
+                src="./assets/instagram.png"
+            /></a>
+            <a>
+              <img
+                title="Penalnd facebook"
+                alt="Penalnd facebook"
+                src="./assets/facebook.png"
+            /></a>
+            <a>
+              <img
+                title="Penalnd youtube"
+                alt="Penalnd youtube"
+                src="./assets/youtube.png"
+            /></a>
+            <a>
+              <img
+                title="Penalnd pinterest"
+                alt="Penalnd pinterest"
+                src="./assets/pinterest.png"
+            /></a>
+          </div>
+          <div class="footer-contact-us-section-wrapper">
+            <div class="footer-contact-us-section">
+              <h3>Contact Us</h3>
+              <a><span>(828) 765-2359</span></a>
+              <a><span>info@penland.org</span></a>
+              <a>
+                <span>2687 Conley Ridge Road </span>
+                <br />
+                <span>
+                  Bakersville, NC 28705
+                </span>
+              </a>
+            </div>
+            <div class="footer-gallery-visitor-schedule">
+              <h3>Gallery + Visitor Center Hours</h3>
+              <div class="schedule-table">
+                <div class="gallery-date">
+                  <span class="gallery-date-label">Wednesday - Saturday</span>
+                  <span class="gallery-date-label">Sunday - Tuesday</span>
+                </div>
+                <div class="gallery-date">
+                  <span class="gallery-date-label">11am-4pm EST</span>
+                  <span class="gallery-date-label">Close</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="links-programs">
+            <h3>Programs</h3>
+            <ul>
+              <li><a href="#">Workshops</a></li>
+              <li><a href="#">Youth & Family</a></li>
+              <li><a href="#">Teach at Penland</a></li>
+              <li><a href="#">Scholarships</a></li>
+              <li><a href="#">Cancellation & Refunds</a></li>
+            </ul>
+          </div>
+          <div class="links-programs">
+            <h3>Gallery</h3>
+            <ul>
+              <li><a href="#">Hours and Contact</a></li>
+              <li><a href="#">Visit</a></li>
+              <li><a href="#">Exhibitions</a></li>
+              <li><a href="#">Shop Online</a></li>
+            </ul>
+          </div>
+          <div class="links-programs">
+            <h3>Support</h3>
+            <ul>
+              <li><a href="#">Ways to Give</a></li>
+              <li><a href="#">Annual Benefit Auction</a></li>
+              <li><a href="#">Donate Now</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<!-- START UI THEM SCRIPT -->
+<!-- Core JS -->
+<!-- build:js assets/vendor/js/core.js -->
+<script src="./scripts/lib/jquery.js"></script>
+<script src="./scripts/lib/popper.js"></script>
+<script src="./scripts/lib/bootstrap.js"></script>
+<script src="./scripts/lib/perfect-scrollbar.js"></script>
+<script src="./scripts/lib/hammer.js"></script>
+<script src="./scripts/lib/i18n.js"></script>
+<script src="./scripts/lib/menu.js"></script>
+<!-- endbuild -->
+
+<!-- Main JS -->
+<script src="./scripts/lib/main.js"></script>
+
+<!-- END UI THEM SCRIPT -->
+
+<!-- <script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"
+></script> -->
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
+></script>
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"
+></script>
+<script type="text/javascript" src="./scripts/randomData.js"></script>
+<script type="text/javascript" src="./scripts/process.js"></script>

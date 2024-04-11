@@ -1,0 +1,10 @@
+.penland-login-form {
+  padding: 5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .penland-authentication-form {
+    max-width: 400px;
+  }
+}
