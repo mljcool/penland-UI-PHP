@@ -1,0 +1,131 @@
+{% comment %}
+<documentation>
+    <name>HigherEd/SideNavigation</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <product>Higher Education Student Portal</product>
+    <description>
+        A left navigation web template that works dynamically
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+<style>
+.content {
+  display: block;
+  overflow: hidden;
+}
+</style>
+{% include 'HigherEd/NavbarCSS' %}
+{% assign show_side_nav = settings["ProgramRegistration/ShowSideNavigation"] | boolean | default:true %}
+{% if show_side_nav %}
+{% assign primary_nav = weblinks["Primary Navigation"] %}
+{% if primary_nav %}
+    <ul class="list-unstyled components" >
+    
+    {% for link in primary_nav.weblinks %}
+        {% if link.display_page_child_links %}
+            {% if link.url != null %}
+                {% assign sublinks = sitemap[link.url].children %}
+            {% endif %}
+        {% else %}
+            {% assign sublinks = link.weblinks %}
+        {% endif %}
+        {% if link.adx_parentweblinkid == null and link.adx_displayorder < 4 %}
+            <li style="padding-left: 8px;display: flex;align-items: center;">
+                <a href="{{ link.url }}"><img  src="{{ link.image.url | escape }}" alt="{{ link.name | escape }}" {% if link.image.width %} width="{{ link.image.width | escape }}" {% else %} width="20px" {% endif %} {% if link.image.height %} height="{{ link.image.height | escape }}" {% else %} height="20px" {% endif %}></a>
+                <a  href="{{ link.url }}" style="padding-left: 8px; padding-bottom: 8px; padding-top: 8px;" aria-label="{{ link.name | escape }}" {% if link.open_in_new_window %} target="_blank" {% endif %} link.nofollow="" rel="nofollow" link.tooltip="" title="{{ link.tooltip | escape }}">
+                {% unless link.display_image_only %}
+                    {{ link.name | escape }}
+                {% endunless %}
+                </a>
+            </li>
+        {% else %}
+            <li class="sub-section {% if sublinks.size > 0 %} dropdown{% endif %}" style="">
+                <a  class="sub-title" aria-label="{{ link.name | escape }}" 
+                    {% if sublinks.size > 0 %}
+                    href="#{{ link.name }}" class="collapse" data-toggle="collapse"
+                    aria-expanded="true"
+                    {% else %}
+                    href="{{ link.url | escape }}"
+                    {% endif %}
+                    {% if link.Open_In_New_Window %} target="_blank" {% endif %}
+                    {% if link.nofollow %} rel="nofollow"{% endif %}
+                    {% if link.tooltip %} title="{{ link.tooltip | escape }}"{% endif %}>
+
+                    {% if link.image %}
+                        {% if link.image.url startswith '.' %}
+                            <span class="{{ link.image.url | split:'.' | join }}" aria-hidden="true"></span>
+                        {% else %}
+                            <img src="{{ link.image.url | escape }}" alt="{{ link.name | escape }}" {% if link.image.width %} width="{{ link.image.width | escape }}" {% else %} width="20px" {% endif%} {% if link.image.height %} height="{{ link.image.height | escape }}" {% else %} height="20px" {% endif%}>
+                        {% endif %}
+                    {% endif %}
+                    {% unless link.display_image_only %}
+                        {% if sublinks.size > 0 %}
+                            <b>{{ link.name | escape }}</b>
+                        {% else %}
+                            {{ link.name | escape }}
+                        {% endif %}                    
+                    {% endunless %}
+                    {% if sublinks.size > 0 %}
+                        <span class="glyphicon glyphicon-menu-up" tabindex="0" style="margin-right: 8px;"></span>
+                    {% endif %}
+                </a>
+                <div class="content" style="display: block;">
+                    {% if sublinks.size > 0 %}
+                    <ul class="list-unstyled" id="{{ link.name }}" >
+                        {% for sublink in sublinks %}
+                            <li style="padding-left: 8px;display: flex;align-items: center;">
+                                <a href="{{ sublink.url }}"><img  src="{{ sublink.image.url | escape }}" alt="{{ sublink.name | escape }}" {% if sublink.image.width %} width="{{ sublink.image.width | escape }}" {% else %} width="20px" {% endif %} {% if sublink.image.height %} height="{{ sublink.image.height | escape }}" {% else %} height="20px" {% endif %}></a>
+                                <a  href="{{ sublink.url }}" style="padding-left: 8px; padding-bottom: 8px; padding-top: 8px;" aria-label="{{ sublink.name | escape }}" {% if link.open_in_new_window %} target="_blank" {% endif %} link.nofollow="" rel="nofollow" link.tooltip="" title="{{ link.tooltip | escape }}">
+                                {% unless sublink.display_image_only %}
+                                    {{ sublink.name | escape }}
+                                {% endunless %}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+            </li>
+        {% endif %}
+        
+    {% endfor %}
+    </ul>
+{% endif %}
+{% endif %}
+<script>
+$(document).ready(function(){
+    var coll = document.getElementsByClassName("glyphicon glyphicon-menu-up");
+    var i;
+    for (i = 0; i < coll.length; i++) {    
+        coll[i].addEventListener("click", function() {    
+            this.classList.toggle("active");
+            var content = this.parentElement.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+                this.parentElement.classList.add("collapsed");
+            } 
+            else {
+                content.style.display = "block";
+                this.parentElement.classList.remove("collapsed");
+            }
+        });
+        coll[i].addEventListener("keypress", function() {    
+            this.classList.toggle("active");
+            var content = this.parentElement.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+                this.parentElement.classList.add("collapsed");
+            } 
+            else {
+                content.style.display = "block";
+                this.parentElement.classList.remove("collapsed");
+            }
+        });
+    }
+});
+</script>

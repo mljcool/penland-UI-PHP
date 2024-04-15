@@ -1,0 +1,20 @@
+{% comment %}
+<documentation>
+    <name>HigherEd/GridUpperRight</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <product>Highered Portal</product>
+    <description>
+        Shows Grid at top right i.e., my appointments.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+<div id="upcoming-appointments">
+<h4 aria-level="6">{{ snippets["HigherEd/GridUpperRight/UpcomingAppointmentsText"] }}</h4>
+{% include 'entity_list' key: 'Higher Ed - My Appointments Limit 5' %}</div>
+
+

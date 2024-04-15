@@ -1,0 +1,173 @@
+{% include 'HigherEd/GridPageCSS' %}
+{% include 'HigherEd/Marketing/EventsCSS' %}
+{% fetchxml eventslistfetch %}
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="msevtmgt_event">
+    <attribute name="msevtmgt_name" />
+    <attribute name="msevtmgt_eventtype" />
+    <attribute name="msevtmgt_eventstartdate" />
+    <attribute name="msevtmgt_eventenddate" />
+    <attribute name="msevtmgt_publishstatus" />
+    <attribute name="createdon" />
+    <attribute name="msevtmgt_room" />
+    <attribute name="msevtmgt_building" />
+    <attribute name="msevtmgt_streamingenabled" />
+    <attribute name="msevtmgt_attendeeurl" />
+    <attribute name="msevtmgt_registrationcount" />
+    <attribute name="msevtmgt_maximumeventcapacity" />
+    <attribute name="msevtmgt_description" />
+    <attribute name="msevtmgt_expectedoutcome" />
+    <attribute name="msevtmgt_eventid" />
+    <order attribute="msevtmgt_eventstartdate" descending="false" />
+    <filter type="and">
+      <filter type="and">
+        <condition attribute="statecode" operator="eq" value="0" />
+      </filter>
+      <filter type="and">
+        <condition attribute="msevtmgt_isrecurringevent" operator="ne" value="1" />
+      </filter>
+      <filter type="and">
+        <condition attribute="msevtmgt_istemplate" operator="ne" value="100000001" />
+      </filter>
+      <filter type="and">
+        <condition attribute="msevtmgt_recurrenteventstatus" operator="ne" value="2" />
+      </filter>
+    </filter>
+    <link-entity name="msevtmgt_building" from="msevtmgt_buildingid" to="msevtmgt_building" visible="false" link-type="outer" alias="building">
+      <attribute name="msevtmgt_stateprovince" />
+      <attribute name="msevtmgt_postalcode" />
+      <attribute name="msevtmgt_country" />
+      <attribute name="msevtmgt_city" />
+      <attribute name="msevtmgt_addressline3" />
+      <attribute name="msevtmgt_addressline2" />
+      <attribute name="msevtmgt_addressline1" />
+    </link-entity>
+  </entity>
+</fetch>
+{% endfetchxml %}
+{% assign eventlist = eventslistfetch.results.entities %}
+{%assign day_today = now %}
+{%assign day_1 = now |date_add_days: 1%}
+{%assign day_7 = now |date_add_days: 7%}
+{%assign day_30 = now |date_add_days: 30%}
+{%assign day_60 = now |date_add_days: 60%}
+{%assign day_90 = now |date_add_days: 90%}
+{%assign day_180 = now |date_add_days: 180 %}
+<div id="main-container" class="container">
+    <div id= "main-row"class="row">
+         <div id="side-nav" class="hidden-xs col-sm-3 col-md-2 left-column">
+            <!--Side Menu Content Snippet-->
+            {% include 'HigherEd/SideNavigation' %}
+         </div>
+         <div class="col-xs-12 col-sm-9 col-md-10 form-right-column" style="background: #FAF9F8;">
+            <div id="jplist-box" class="box jplist">
+                <div id="eventslisttext" class="eventslisttext">
+                   <!-- <img src="/icon-events.png" style="width: 25px;height: 25px;">&nbsp -->Events 
+                </div>
+                <div class="event-search form-group jplist-panel">
+                    <!--<div class="search-location">
+                        <input data-button=".event-search-button" data-path=".event-location" type="text" value="" placeholder="City/Location" data-control-type="textbox" data-control-name="event-filter" data-control-action="filter" class="location-box">
+                    </div>-->
+                    <div style="display: flex;">
+                    <div class="search-eventtype">
+                        <select class="event-search-button dropdown-display form-control" data-control-type="filter-select" data-control-name="category-filter" data-control-action="filter" data-group="group1" data-name="name1">
+                            <option class="dropdown-open" data-path="default">All Events</option>
+                            {% assign i = 1 %}
+                            {% for event in eventlist | compact %}
+                            {% assign eventType = event.msevtmgt_eventtype.label %}
+                            <option class="dropdown-open" value="{{i}}" data-path=".{{ eventType | replace: ' ', '-' | replace: '/', '' }}">{{ eventType }}</option>
+                            {% assign i = i | plus: 1 %}
+                            {% endfor %}
+                        </select>
+                        </div>
+                    <div class="search-dates">
+                        <select data-control-type="filter-select" data-control-name="date-filter" data-control-action="filter" data-name="name2" class="form-control jplist-select filterClass">
+                            <option value="0" data-path="default">All Dates</option>
+                            <option value="1" data-path=".d24hrs" data-name="name2" data-group="group1">Within next 24 hours</option>
+                            <option value="2" data-path=".d7days" data-name="name2" data-group="group1">Within next 7 days</option>
+                            <option value="3" data-path=".d30days" data-name="name2" data-group="group1">Within next 30 days</option>
+                            <option value="4" data-path=".d60days" data-name="name2" data-group="group1">Within next 60 days</option>
+                            <option value="5" data-path=".d90days" data-name="name2" data-group="group1">Within next 90 days</option>
+                            <option value="6" data-path=".d180days" data-name="name2" data-group="group1">Within next 180 days</option>
+                        </select>
+                    </div>
+                    </div>
+                    <div class="search-keywords">
+                        <input data-button=".title-search-button" data-path=".title" type="text" value="" placeholder="Search Event" data-control-type="textbox" data-control-name="title-filter" data-control-action="filter" class="search-box form-control">
+                    </div>
+                    <div class="search-button" >
+                        <button btype="button" class="regbutton event-search-button title-search-button form-control">Search</button>
+                    </div>
+                </div>
+                <div class="divgap">
+                </div>
+                <div id="eventlist" class="eventlist list" data-jplist-group="data-group-1">           
+                    <!--<div id="eventlistbox" class="eventlistbox">-->
+                    {% if eventlist.size > 0 %}
+                    {% for event in eventlist %}
+                        <div id="eventdetails" class="eventdetails eventlistbox list-item" data-jplist-item="">
+                        <div class="search-output">
+                            
+                            <div class="event-details">
+                            <div class="datetext">
+                                <!--<p>{{ event.msevtmgt_eventstartdate }}</p>-->
+                                {%if event.msevtmgt_eventstartdate &gt;= day_today and event.msevtmgt_eventstartdate &lt; day_1 %}
+                                <div data-date="{{event.msevtmgt_eventstartdate | date: 'MM/dd/yyyy' }}" class="card-time event-date dateClass d24hrs d7days d30days d60days d90days d180days">{{event.msevtmgt_eventstartdate | date: 'MMMM dd, yyyy h:mm tt ' }}</div>
+                                {%elseif event.msevtmgt_eventstartdate &gt;= day_1 and event.msevtmgt_eventstartdate &lt; day_7 %}
+                                <div data-date="{{event.msevtmgt_eventstartdate | date: 'MM/dd/yyyy' }}" class="card-time event-date dateClass d7days d30days d60days d90days d180days">{{event.msevtmgt_eventstartdate | date: 'MMMM dd, yyyy h:mm tt ' }}</div>
+                                {%elseif event.msevtmgt_eventstartdate &gt;= day_7 and event.msevtmgt_eventstartdate &lt; day_30 %}
+                                <div data-date="{{event.msevtmgt_eventstartdate | date: 'MM/dd/yyyy' }}" class="card-time event-date dateClass d30days d60days d90days d180days">{{event.msevtmgt_eventstartdate | date: 'MMMM dd, yyyy h:mm tt ' }}</div>
+                                {%elseif event.msevtmgt_eventstartdate &gt;= day_30 and event.msevtmgt_eventstartdate &lt; day_60 %}
+                                <div data-date="{{event.msevtmgt_eventstartdate | date: 'MM/dd/yyyy' }}" class="card-time event-date dateClass d60days d90days d180days">{{event.msevtmgt_eventstartdate | date: 'MMMM dd, yyyy h:mm tt ' }}</div>
+                                {%elseif event.msevtmgt_eventstartdate &gt;= day_60 and event.msevtmgt_eventstartdate &lt; day_90 %}
+                                <div data-date="{{event.msevtmgt_eventstartdate | date: 'MM/dd/yyyy' }}" class="card-time event-date dateClass d90days d180days">{{event.msevtmgt_eventstartdate | date: 'MMMM dd, yyyy h:mm tt ' }}</div>
+                                {%elseif event.msevtmgt_eventstartdate &gt;= day_90 and event.msevtmgt_eventstartdate &lt; day_180 %}
+                                <div data-date="{{event.msevtmgt_eventstartdate | date: 'MM/dd/yyyy' }}" class="card-time event-date dateClass d180days">{{event.msevtmgt_eventstartdate | date: 'MMMM dd, yyyy h:mm tt ' }}</div>
+                                {% else %}
+                                <div data-date="{{event.msevtmgt_eventstartdate | date: 'MM/dd/yyyy' }}" class="card-time event-date dateClass d{{event.msevtmgt_eventstartdate | date: 'MM/dd/yyyy'}}">{{event.msevtmgt_eventstartdate |  date: 'MMMM dd, yyyy h:mm tt ' }}</div>
+                                {% endif %}
+                                <!--<p>{{ event.msevtmgt_eventenddate }}</p>-->
+                            </div>                                                             
+                            <div class="eventnametext">
+                                <p class="title">{{ event.msevtmgt_name }}</p>
+                            </div>
+                            <div class="eventtypetext">
+                                <p class=".{{ eventType | replace: ' ', '-' | replace: '/', '' }}">{{ event.msevtmgt_eventtype.label }}</p>
+                            </div>
+                            <div class="eventtypetext" style="display: flex;">
+                                <img src="/icon-location-main.jpg" style="width:16px; height:16px;margin-right:10px"><p class="event-location">{{ event['building.msevtmgt_city'] }}</p>
+                            </div>  
+                            <div class="eventdescriptiontext">
+                                {{ event.msevtmgt_description }}
+                            </div>
+                            </div>
+                            <div class="viewdetailsdiv">
+                                <button btype="button" class="viewdetails form-control"><a href="/eventdetails?id={{ event.msevtmgt_eventid }}" style="color: white;">View details</a></button>
+                            </div> 
+                        </div>
+
+                        </div>
+                    {% endfor %}
+                    {% endif %}
+                    <!--</div>-->
+                    <p></p>
+                </div> 
+                <div class="box jplist-no-results text-shadow align-center jplist-hidden">
+                    <p>No results found</p>
+                </div>
+            </div>
+         </div>
+    </div>
+</div>
+<script>
+$(document).ready(function() {
+    var code = {};
+    $("select[data-group='group1'] > option").each(function () {
+        if (code[this.text]) {
+            $(this).remove();
+        } else {
+            code[this.text] = this.value;
+        }
+    });
+});
+</script>

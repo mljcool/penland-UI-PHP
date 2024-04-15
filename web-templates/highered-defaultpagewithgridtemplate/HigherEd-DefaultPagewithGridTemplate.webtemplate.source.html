@@ -1,0 +1,40 @@
+{% comment %}
+<documentation>
+    <name>HigherEd/DefaultPagewithGridTemplate</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <product>Highered Portal</product>
+    <description>
+        Web template to show grid given in corresponding page.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+<!--This template is the default template that includes the side bar-->
+
+<!--Content Snippet CSS-->
+{% include 'HigherEd/GridPageCSS' %}
+
+<div class="container">
+ <div id= "main-row"class="row">
+  <div id="side-nav" class="hidden-xs col-sm-3 col-md-2 left-column">
+    <!--Side Menu Content Snippet-->
+ {% include 'HigherEd/SideNavigation' %}
+  </div>
+  <div class="col-xs-12 col-sm-9 col-md-10 grid-right-column">
+    <div>
+      <h2>{{ page.title }}</h2>
+    </div>
+   {% block main %}
+    <div id="crmentitylistgrid">
+    {% if page.adx_entitylist %}
+           {% include 'entity_list' key:page.adx_entitylist.id %}
+        {% endif %}
+       </div>
+   {% endblock %}
+  </div>
+  </div>
+ </div>

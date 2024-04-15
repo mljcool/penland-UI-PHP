@@ -1,0 +1,276 @@
+{% comment %}
+<documentation>
+    <name>ProgramRegistration/CourseSectionsCSS</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <module>Program Registration</module>
+    <description>
+        Defines the CSS for Course Sections page.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+
+<style>
+    .coursesectiondiv {
+        background:#FAF9F8;
+        min-height:700px;
+        height:auto;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .filterlist {
+        width:95%;
+        margin-bottom: 24px;
+    }
+
+    .main-container {
+        background:#FAF9F8;
+    }
+
+    .coursesectionlist {
+        padding-left:0px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .coursesectiondetails {
+        margin-left:0px;
+        width:100%;
+    }
+    
+    .coursesectionlistbox {
+        margin-bottom:16px;
+        background-color:white;
+        width:95%;
+        box-shadow: 0px 0.3px 0.9px rgba(0, 0, 0, 0.1), 0px 1.6px 3.6px rgba(0, 0, 0, 0.13);
+    }
+    
+    .search-output {
+        display:flex;
+    }
+
+    .coursesection-details {
+        width:84%;
+        margin-left:16px;
+    }
+
+    .coursesectionnametext {
+        width: 100%;
+        font-family: Segoe UI;
+        font-size: 16px  !important;
+        line-height: 22px;
+        color: #323130;
+        /* padding-left: 10px; */
+        padding-top: 5px;
+    }
+
+    .coursesectionnametext p {
+        padding-left: 10px;
+        font-size: 16px;
+        margin-bottom:unset;
+    }
+    .title {
+        padding-top:12px;
+        font-weight : 600;
+        width: 95%
+    }
+
+    .middletext {
+        width: 100%;
+        font-family: Segoe UI;
+        font-size: 14px;
+        line-height: 20px;
+        color: #323130;
+        font-weight: 400;
+        padding-left: 10px;
+        padding-top: 4px;
+    }
+
+    .datetext {
+        width: 100%;
+        font-family: Segoe UI;
+        font-size: 12px;
+        line-height: 16px;
+        color: #323130;
+        font-weight: 400;
+        padding-top: 8px;
+    }
+
+    .registrationstatus {
+        font-family: 'Segoe UI';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 20px;
+        color: #323130;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    .enrollmentdescriptiontext {
+        width: 80%;
+        font-family: Segoe UI;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        color: #323130;
+        word-wrap: break-word;
+        padding-left: 10px;
+        padding-top: 20px;
+    }
+
+    .endtext {
+        padding-bottom: 20px;
+    }
+
+    .registrationsdiv {
+        padding-top:12px;
+    }
+
+    .registrationbutton {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 6px 20px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #FFFFFF;
+        width: 191px;
+        height: 32px;
+        background: #0078D4;
+        border-radius: 2px;
+        margin-right: 16px; 
+        border: 1px solid transparent;
+    }
+
+     .registrationbutton.focus {
+        color: #FFFFFF !important;
+        text-decoration: none !important;
+        cursor: pointer !important;
+    }
+
+    .divgap {
+        height: 10px;
+    }
+    .tab button {
+        background-color: #F3F2F1;
+        /* float: left; */
+        border: none;
+        /*outline: none;*/
+        cursor: pointer;
+        padding: 8px;
+        transition: 0.3s;
+        font-family: Segoe UI;
+        font-size: 14px;
+        line-height: 20px;
+        color: #323130;
+        border-radius: 5px;
+        font-weight:600;
+    }
+    .tab button.active {
+        background-color: #0078D4;
+        font-weight: bold;
+        color:white;
+        -ms-high-contrast-adjust: none;
+    }
+    .myregistrationsdiv {
+        padding-left:unset !important;
+    }
+    .filterbystatus {
+        padding-top:30px;
+        padding-bottom:10px;
+        font-weight:600;
+        font-size:14px;
+    }
+
+    .cstooltip {
+        position: relative;
+        display: inline-block;
+        border-bottom: 1px dotted black;
+    }
+
+    .cstooltip .cstooltiptext {
+        visibility: hidden;
+        width: 150px;
+        background-color: #0078D4;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -60px;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .cstooltip .cstooltiptext::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #0078D4 transparent transparent transparent;
+    }
+
+    .cstooltip:hover .cstooltiptext {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+        .search-output {
+            display: inherit;
+        }
+        .registrationbutton {
+            width: 90%;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+        .registrationstatus {
+            margin-left: 16px;
+        }
+        .datetext {
+            padding-bottom: 10px;
+            margin-left: 16px;
+        }
+        .coursesectiondiv {
+            padding-left:16px;
+            padding-right:8px;
+        }
+        .coursesection-details {
+            margin-left: 16px;
+        }
+        .middletext {
+            padding-left: 0px;
+        }
+        .enrollmentdescriptiontext {
+            padding-left: 0px;
+        }
+        .title {
+             margin-left: 0px !important;
+        }
+        .coursesectionnametext p {
+            padding-left: 0px !important;
+        }
+        .coursesectionlist {
+            width: 98%;
+        }
+    }
+</style>

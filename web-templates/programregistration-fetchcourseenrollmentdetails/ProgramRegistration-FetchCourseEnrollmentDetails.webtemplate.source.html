@@ -1,0 +1,43 @@
+{% comment %}
+<documentation>
+    <name>ProgramRegistration/FetchCourseEnrollmentDetails</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <module>Program Registration</module>
+    <description>
+        FetchXML to retrieve the course Enrollment details of a particular course section and student. Leveraged on Course Section Details page.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+
+{% fetchxml studentregistration %}
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="mshied_coursehistory">
+    <attribute name="mshied_coursehistoryid" />
+    <filter type="and">
+      <condition attribute="mshied_coursesectionid" operator="eq" value="{{ coursesectionid }}" />
+      <condition attribute="mshied_studentid" operator="eq" value="{{user.id}}"/>
+    </filter>
+    <link-entity name="mshied_registrationstatus" from="mshied_registrationstatusid" to="mshied_registrationstatusid" visible="false" link-type="inner" alias="status">
+      <attribute name="mshied_code" />
+       <filter type="or">
+        <condition attribute="mshied_code" operator="eq" value="AA" />
+        <condition attribute="mshied_code" operator="eq" value="SCH" />
+        <condition attribute="mshied_code" operator="eq" value="WAT" />
+      </filter>
+    </link-entity>
+  </entity>
+</fetch>
+{% endfetchxml %}
+
+
+{% if studentregistration.results.entities.size > 0 %}
+  {% assign registrationstatus = studentregistration.results.entities[0]['status.mshied_code'] %}
+  {% assign coursehistoryid = studentregistration.results.entities[0].mshied_coursehistoryid %}
+{% else %}
+  {% assign registrationstatus = "NOTREGISTERED" %}
+{% endif %}

@@ -1,0 +1,159 @@
+{% comment %}
+<documentation>
+    <name>HigherEd/Marketing/EventsWebTemplate</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <product>Highered Portal</product>
+    <description>
+        Web template to show Events list and include filter criteria to filter.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+{% include 'HigherEd/GridPageCSS' %}
+{% include 'HigherEd/Marketing/EventsCSS' %}
+{% assign currentTimeinUTC =   now | date: 'yyyy-MM-ddTHH:mm:ssZ' %}
+
+{% include 'HigherEd/Marketing/FetchAllEvents' %}
+{% include 'HigherEd/Marketing/FetchTimezones' %}
+
+{%assign day_today = now %}
+{%assign day_1 = now |date_add_days: 1%}
+{%assign day_7 = now |date_add_days: 7%}
+{%assign day_30 = now |date_add_days: 30%}
+{%assign day_60 = now |date_add_days: 60%}
+{%assign day_90 = now |date_add_days: 90%}
+{%assign day_180 = now |date_add_days: 180 %}
+<div id="main-container" class="container">
+    <div id= "main-row"class="row">
+         <div id="side-nav" class="hidden-xs col-sm-3 col-md-2 left-column">
+            <!--Side Menu Content Snippet-->
+            {% include 'HigherEd/SideNavigation' %}
+         </div>
+         <div class="col-xs-12 col-sm-9 col-md-10 form-right-column" style="background: #FAF9F8;">
+            <div id="jplist-box" class="box jplist">
+                <div id="eventslisttext" class="eventslisttext" role="heading" aria-level="1">
+                    {{ snippets["HigherEd/Marketing/EventsWebTemplate/EventsText"] }}
+                </div>
+                <div class="event-search form-group jplist-panel">
+                    <div style="display: flex; padding-right: 0px;">
+                        <div class="search-eventtype">
+                            <select class="event-search-button dropdown-display form-control" data-control-type="filter-select" aria-label="category" data-control-name="category-filter" data-control-action="filter" data-group="group1" data-name="name1">
+                                <option class="dropdown-open" data-path="default">All Types</option>
+                                {% assign i = 1 %}
+                                {% for event in eventlist | compact %}
+                                    {% if event.msevtmgt_eventtype != null %}
+                                        {% assign eventType = event.msevtmgt_eventtype.label %}
+                                        <option class="dropdown-open" value="{{i}}" data-path=".{{ eventType | replace: ' ', '-' | replace: '/', '' }}">{{ eventType }}</option>
+                                        {% assign i = i | plus: 1 %}
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="search-dates">
+                            <select data-control-type="filter-select" data-control-name="date-filter" aria-label="date" data-control-action="filter" data-name="name2" class="form-control jplist-select filterClass">
+                                <option value="0" data-path="default">All Dates</option>
+                                <option value="1" data-path=".d24hrs" data-name="name2" data-group="group1">Within next 24 hours</option>
+                                <option value="2" data-path=".d7days" data-name="name2" data-group="group1">Within next 7 days</option>
+                                <option value="3" data-path=".d30days" data-name="name2" data-group="group1">Within next 30 days</option>
+                                <option value="4" data-path=".d60days" data-name="name2" data-group="group1">Within next 60 days</option>
+                                <option value="5" data-path=".d90days" data-name="name2" data-group="group1">Within next 90 days</option>
+                                <option value="6" data-path=".d180days" data-name="name2" data-group="group1">Within next 180 days</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="search-keywords">
+                        <input data-button=".title-search-button" data-path=".title" type="text" value="" placeholder="Search for Keywords" data-control-type="textbox" data-control-name="title-filter" data-control-action="filter" class="search-box form-control">
+                    </div>
+                    <div class="search-button" >
+                        <button btype="button" class="regbutton event-search-button title-search-button form-control">Search</button>
+                    </div>
+                </div>
+                <div class="divgap">
+                </div>
+                <div id="eventlist" class="eventlist list" data-jplist-group="data-group-1">           
+                    {% if eventlist.size > 0 %}
+                    {% for event in eventlist %}
+                        <div id="eventdetails" class="eventdetails eventlistbox list-item" data-jplist-item="">
+                            <div class="search-output">
+                                <div class="event-details">
+                                    {% assign timezoneStandardName = "" %} 
+                                    {% assign eventTimezone = event.msevtmgt_eventtimezone %}                           
+                                    {% for tz in timezoneList | compact %}
+                                        {% if eventTimezone == tz.timezonecode %}
+                                            {% assign timezoneStandardName = tz.standardname %} 
+                                            {% break %} 
+                                        {% endif %}
+                                    {% endfor %}
+                                    <div class="datetext">
+                                        {{ timezoneStandardName }}
+                                    </div>
+                                    <div class="datetext">
+                                        
+                                        {%if event.msevtmgt_eventstartdate &gt;= day_today and event.msevtmgt_eventstartdate &lt; day_1 %}
+                                        <div data-date="{{event.msevtmgt_eventstartdate | date: 'MM/dd/yyyy' }}" class="card-time event-date dateClass d24hrs d7days d30days d60days d90days d180days">{{event.msevtmgt_eventstartdate | date: 'MMMM dd, yyyy h:mm tt ' }}</div>
+                                        {%elseif event.msevtmgt_eventstartdate &gt;= day_1 and event.msevtmgt_eventstartdate &lt; day_7 %}
+                                        <div data-date="{{event.msevtmgt_eventstartdate | date: 'MM/dd/yyyy' }}" class="card-time event-date dateClass d7days d30days d60days d90days d180days">{{event.msevtmgt_eventstartdate | date: 'MMMM dd, yyyy h:mm tt ' }}</div>
+                                        {%elseif event.msevtmgt_eventstartdate &gt;= day_7 and event.msevtmgt_eventstartdate &lt; day_30 %}
+                                        <div data-date="{{event.msevtmgt_eventstartdate | date: 'MM/dd/yyyy' }}" class="card-time event-date dateClass d30days d60days d90days d180days">{{event.msevtmgt_eventstartdate | date: 'MMMM dd, yyyy h:mm tt ' }}</div>
+                                        {%elseif event.msevtmgt_eventstartdate &gt;= day_30 and event.msevtmgt_eventstartdate &lt; day_60 %}
+                                        <div data-date="{{event.msevtmgt_eventstartdate | date: 'MM/dd/yyyy' }}" class="card-time event-date dateClass d60days d90days d180days">{{event.msevtmgt_eventstartdate | date: 'MMMM dd, yyyy h:mm tt ' }}</div>
+                                        {%elseif event.msevtmgt_eventstartdate &gt;= day_60 and event.msevtmgt_eventstartdate &lt; day_90 %}
+                                        <div data-date="{{event.msevtmgt_eventstartdate | date: 'MM/dd/yyyy' }}" class="card-time event-date dateClass d90days d180days">{{event.msevtmgt_eventstartdate | date: 'MMMM dd, yyyy h:mm tt ' }}</div>
+                                        {%elseif event.msevtmgt_eventstartdate &gt;= day_90 and event.msevtmgt_eventstartdate &lt; day_180 %}
+                                        <div data-date="{{event.msevtmgt_eventstartdate | date: 'MM/dd/yyyy' }}" class="card-time event-date dateClass d180days">{{event.msevtmgt_eventstartdate | date: 'MMMM dd, yyyy h:mm tt ' }}</div>
+                                        {% else %}
+                                        <div data-date="{{event.msevtmgt_eventstartdate | date: 'MM/dd/yyyy' }}" class="card-time event-date dateClass d{{event.msevtmgt_eventstartdate | date: 'MM/dd/yyyy'}}">{{event.msevtmgt_eventstartdate |  date: 'MMMM dd, yyyy h:mm tt ' }}</div>
+                                        {% endif %}
+                                    </div>
+                                    <div class="datetext">
+                                        {{event.msevtmgt_eventenddate | date: 'MMMM dd, yyyy h:mm tt ' }}
+                                    </div>                                                             
+                                    <div class="eventnametext">
+                                        <p class="title">{{ event.msevtmgt_name }}</p>
+                                    </div>
+                                    <div class="eventtypetext">
+                                        <p class="{{ event.msevtmgt_eventtype.label | replace: ' ', '-' | replace: '/', '' }}">{{ event.msevtmgt_eventtype.label }}</p>
+                                    </div>
+                                    <div class="eventtypetext" style="display: flex;">
+                                        {% if event.msevtmgt_streamingenabled == 'TRUE' %}
+                                        <img src="/icon-onlineevent.png" style="width:16px; height:16px;margin-right:10px;margin-top: 5px;"><p class="event-location">Virtual - Team Meeting</p>
+                                        {% else %}
+                                            {% if event.msevtmgt_room != null && event.msevtmgt_building != null %}
+                                                <img src="/icon-location-main.jpg" style="width:16px; height:16px;margin-right:10px;margin-top: 3px;"><p class="event-location">{{ event['room.msevtmgt_name'] }}, {{ event['building.msevtmgt_name'] }}</p>                                       
+                                            {% endif %}  
+                                        {% endif %}                                       
+                                    </div>  
+                                    <div class="eventdescriptiontext">
+                                        {{ event.msevtmgt_description }}
+                                    </div>
+                                </div>
+                                <div class="viewdetailsdiv">
+                                    <div btype="button" class="viewdetails form-control" tabindex="-1"><a href="/eventdetails?id={{ event.msevtmgt_eventid }}" style="color: white;" tabindex="0">View details</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {% endif %}
+                    <!--</div>-->
+                    <p></p>
+                </div> 
+                <div class="box jplist-no-results text-shadow align-center jplist-hidden">
+                    <p>No results found</p>
+                </div>
+                <!-- panel -->
+                <center>
+                  <div class="jplist-panel box panel-bottom" style="margin-bottom: 50px;">
+                    <!-- pagination -->
+                    <ul data-control-type="boot-pagination" data-control-name="paging" data-control-action="paging" data-items-per-page="10" data-range="4" data-mode="google-like" class="pagination jplist-pagination">
+                    </ul>
+                  </div>
+                </center>
+            </div>
+         </div>
+    </div>
+</div>
+{% include 'HigherEd/Marketing/EventsJS' %}

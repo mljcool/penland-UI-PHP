@@ -1,0 +1,219 @@
+{% comment %}
+<documentation>
+    <name>ProgramRegistration/ProgramCatalogCSS</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <module>Program Registration</module>
+    <description>
+        Defines the CSS for the Program Catalog page.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+
+<style>
+    .program-banner-text{
+        padding-bottom: 100px;
+        /* padding-left: 50px;*/
+    }
+    .banner-card{
+        background-image: url(/programRegistrationBanner.png);
+        background-color: #27518A;
+        background-repeat: no-repeat;
+        background-position-y: 24px;
+        background-position-x: 95%;
+        height: 300px !important;
+    }
+    .banner-details{
+        font-size: 32px;
+        display: flex;
+        align-items: baseline;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: flex-end;
+        padding-top: 8%;
+        padding-left: 3%;
+        padding-right: 65%;
+        color:white;
+    }
+    .container{
+        width: 1170px !important;
+    }
+    .container-main
+    {
+        margin-left:5px !important;
+        margin-right:5px !important;    
+    }
+    .programlist{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+       /* padding-left: 5%;   
+         padding-right: 5%; */
+         width:90%;
+         padding-top:12px;
+    }
+    .programlisthome{
+        padding-left: 10% !important;   
+    }
+    .program-card-main{
+        position: relative;
+        width: 184.5px;
+        height: 156px;
+        background: #0078D4;
+        border-radius: 4px;
+       /* margin-top: 40px;*/
+        /*margin-right: 30px;*/
+        font-family: Segoe UI;
+        font-size: 18px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 24px;
+        color: white;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        box-shadow: 0px 0.3px 0.9px rgb(0 0 0 / 10%), 0px 1.6px 3.6px rgb(0 0 0 / 13%);
+        text-align:center;
+        padding-left:16px;
+        padding-right:16px;
+    }
+    .program-card-image{
+        width:44px; 
+        height:53.33px;
+        padding-bottom: 20px;
+    }
+    .catalog{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .program-card-tile{
+        text-decoration: none !important;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 20px;
+        
+    }
+    .program-card-tile:focus{
+        border-style: double;
+        border-width: 3px;
+        border-color: white;
+        outline: none;
+        background: #106EBE;
+    }
+    .parent-program{
+        display:flex;
+        justify-content:center;
+        width:inherit;
+        align-items:center;
+        flex-direction:column;
+    }
+    .program-card-main:focus {
+        border-style: double;
+        border-width: 3px;
+        border-color: white;
+        outline: none;
+        background: #106EBE;
+    }
+    .program-card-main:hover {
+        background: #106EBE;
+    }
+    .program-card-main:active {
+        background: #005A9E;
+    }
+    @media (max-width: 767px){
+        .container{
+            width: 100% !important;
+        }
+        .programlist{
+            padding-left: 15%;
+            display: flex;
+            justify-content:center;
+        }
+        .programlisthome
+        {
+            padding-left: 15% !important;
+            display: flex;
+        }
+        .program-card-main{
+        /* width: 250px;*/
+
+        }
+        .form-right-column{
+            padding-right: 0px !important;
+            padding-left:0px !important;
+        }
+       div#container-main{
+        padding-right:0px !important;
+        }
+        .banner-card {
+            background-position-y:unset;
+            height:400px !important;
+        }
+        .banner-details{
+            flex-direction :column;
+            align-content:center;
+            padding-top:260px;
+            padding-right:5%;
+        }
+        .catalog
+        {
+            display:block;
+        }
+        .parent-program{
+            display:unset;
+            padding-left:unset;
+        }
+    }
+    @media (min-width: 200px) and (max-width: 500px){
+        .form-right-column{
+            padding-right: 0px !important;
+            padding-left:0px !important;
+        }
+    div#container-main{
+        padding-right:0px !important;
+        }
+    }
+    @media (min-width: 500px) and (max-width: 540px){
+        .banner-details { width:100%}
+    }
+    @media(min-width:768px) and (max-width: 1024px) {
+        .container{
+                width: 100% !important;
+            }
+        .banner-card {
+        width: 100% !important;
+        }
+        .banner-details{
+            flex-direction :column;
+            align-content:center;
+            padding-top:260px;
+            padding-right:5%;
+        }
+        .banner-card {
+            background-position-y:unset;
+            height:350px !important;
+        }
+  .programlist{
+   padding-left:5%;
+  }
+  
+    }
+    @media (max-width:300px){
+         .programlisthome
+        {
+            padding-left: 15% !important;
+            display: flex;
+        }
+         .programlist
+        {
+            padding-left: 15% !important;
+            display: flex;
+        }
+    }
+</style>

@@ -1,0 +1,24 @@
+- adx_adddescription: false
+  adx_attributelogicalname: actualstart
+  adx_descriptionposition: 100000000
+  adx_entityform: 92cd562d-192d-ed11-9db1-00224806d873
+  adx_entityformforcreate: 92cd562d-192d-ed11-9db1-00224806d873
+  adx_entityformmetadataid: 8219c915-142e-ed11-9db1-00224806d601
+  adx_fieldisrequired: false
+  adx_ignoredefaultvalue: false
+  adx_label: >-
+    [
+
+      {
+
+        "LCID": 1033,
+
+        "Value": "Date"
+
+      }
+
+    ]
+  adx_randomizeoptionsetvalues: false
+  adx_setvalueonsave: false
+  adx_type: 100000000
+  adx_useattributedescriptionproperty: true

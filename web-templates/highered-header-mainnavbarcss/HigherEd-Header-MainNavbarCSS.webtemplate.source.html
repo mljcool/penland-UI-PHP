@@ -1,0 +1,146 @@
+{% comment %}
+<documentation>
+    <name>HigherEd/Header/MainNavbarCSS</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <product>Highered Portal</product>
+    <description>
+        Defines all CSS styles for Header and desktop view
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+<style>
+.navbar-static-top {
+ box-shadow: 0px 1.6px 3.6px rgba(0, 0, 0, 0.132), 0px 0.3px 0.9px rgba(0, 0, 0, 0.108);
+}
+
+.navbar-brand {
+ padding-top: 0px;
+}
+
+.navbar-brand .xrm-attribute-value img {
+ margin: 0px;
+ padding-left: 0px;
+ padding-top: 8px;
+ padding-bottom: 0px
+}
+
+.navbar-inverse .navbar-nav>li>a:focus {
+ outline: none !important;
+ background-color: #F3F2F1 !important;
+ color: #000 !important;
+}
+
+.dropdown-toggle:focus {
+ border: none !important;
+ border-color: transparent !important;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover {
+ border-bottom: 0px;
+ padding-bottom: 15px;
+ background-color: #F3F2F1 !important;
+ color: #000 !important;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+ padding-bottom: 10px;
+}
+
+.navbar-static-top.navbar .navbar-collapse {
+ background-color: #FFFFFF !important;
+}
+
+.navbar-collapse .navbar-nav>li>a:hover {
+ padding-bottom: 10px;
+}
+
+.dropdown-toggle:active,
+.open .dropdown-toggle {
+ background: #FFF !important;
+ color: #000 !important;
+}
+
+a.navbar-brand {
+ padding-top: 4px;
+}
+
+.dropdown-toggle:active,
+.open .dropdown-toggle {
+ background: #FFF !important;
+ color: #000 !important;
+ margin-bottom: 0px;
+ padding-bottom: 6px !important;
+}
+
+.navbar-brand .xrm-attribute-value img {
+ margin: 0px;
+ padding-left: 0px;
+ padding-top: 8px;
+ padding-bottom: 0px;
+}
+
+.navbar-inverse .navbar-brand {
+ padding-top: 0px;
+ padding-bottom: 0px !important
+}
+
+.navbar-brand .xrm-attribute-value img {
+ padding-bottom: 0px;
+}
+
+.navbar-brand {
+ padding-top: 0px;
+}
+
+.universityicon {
+ width: 50px; 
+ height: 50px; 
+ margin-left: 24px; 
+ margin-top: 8px; 
+ margin-right: 8px;
+}
+
+/* Large desktops and laptops */
+
+@media (min-width: 1200px) {
+ .weblink a {
+  visibility: hidden;
+ }
+}
+
+
+/* Landscape tablets and medium desktops */
+
+@media (min-width: 992px) and (max-width: 1199px) {
+ .weblink a {
+  visibility: hidden;
+ }
+}
+
+
+/* Portrait tablets and small desktops @media (min-width: 768px) and (max-width: 991px) { .weblink a { visibility: visible; } }*/
+
+@media(max-width:990px) {
+ .weblink a {
+  visibility: visible;
+ }
+}
+/*
+@media (min-width: 1200px){
+    .container{
+    width:100% !important;
+    }
+   div#main-container {
+    width: 1300px !important;
+    }
+    div#container-main{
+         width: 1300px !important;
+    }
+}
+*/
+</style>

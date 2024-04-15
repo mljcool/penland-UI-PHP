@@ -1,0 +1,80 @@
+{% comment %}
+<documentation>
+    <name>ProgramRegistration/CourseSections</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <module>Program Registration</module>
+    <description>
+        Web template associated with Course Sections Page.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+
+{% include 'ProgramRegistration/CourseSectionsCSS' %}
+{% assign programid = request.params.id %}
+{% include 'ProgramRegistration/FetchCourseSections' %}
+{% include 'ProgramRegistration/FetchProgramDetails' %}
+{% assign show_side_nav = settings["ProgramRegistration/ShowSideNavigation"] | boolean | default:true %}
+
+<div id="container-main" class="container">
+ <div class="row" id="main-row">
+  {% if show_side_nav %}
+   {% include 'HigherEd/FormPageCSS' %}
+   <div id="side-nav" class="hidden-xs col-sm-3 col-md-2 left-column">
+    <!--Load the custom side navigation menu-->
+    {% include 'HigherEd/SideNavigation' %}
+   </div>
+   <div class="col-xs-12 col-sm-9 col-md-10 form-right-column">
+  {% else %}
+   <div class="coursesectiondiv">
+  {% endif %} 
+   <div id="coursesectionlist" class="coursesectionlist">
+    <div id="programTitle" class="title">
+     <h2>{{ programDetails[0].mshied_name }}</h2>
+    </div>
+    
+    <div class="divgap"></div>
+
+    {% if courseSectionsList.size > 0 %}
+     {% for courseSection in courseSectionsList %}
+      <div id="coursesectiondetails" class="coursesectiondetails coursesectionlistbox">
+       <div class="search-output">
+        <div class="coursesection-details">
+         <div class="coursesectionnametext">
+          <p class="title">{{ courseSection.mshied_name }}</p>
+         </div>
+         <div class="middletext">
+          {{courseSection.mshied_startdate | date: 'MMMM dd, yyyy' }} - {{courseSection.mshied_enddate | date: 'MMMM dd, yyyy' }}
+         </div>
+         <div class="middletext">
+           {{ courseSection.mshied_coursedaytime }}
+         </div>
+         <div class="enrollmentdescriptiontext">
+          <b> {{ snippets["ProgramRegistration/CourseSections/Eligibility"] }}</b> {{ courseSection.mshied_enrollmentrequirements }}
+         </div>
+         <div class="enrollmentdescriptiontext endtext">
+          <b> {{ snippets["ProgramRegistration/CourseSections/Location"] }}</b> {{ courseSection.mshied_location }}
+         </div>
+        </div>
+        <div class="registrationsdiv">
+         <input type="button" btype="button" aria-label="{{ courseSection.mshied_name }}" class="registrationbutton" onclick="window.location.href ='/coursesectiondetails/?sectionid={{ courseSection.mshied_coursesectionid }}'" value="{{ snippets["ProgramRegistration/CourseSections/RegistrationandDetails"] }}"  />
+         <div class="datetext">
+           {{ snippets["ProgramRegistration/CourseSections/Deadline"] }} {{courseSection.mshied_registrationenddate | date: 'MMMM dd, yyyy' }}
+         </div>
+        </div>
+       </div>
+      </div>
+     {% endfor %}
+    {% else %}
+     <div class="enrollmentdescriptiontext">
+       {{ snippets["ProgramRegistration/CourseSections/NoRecords"] }}
+     </div>
+    {% endif %}
+   </div>
+  </div>
+    </div>
+</div>

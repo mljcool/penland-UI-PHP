@@ -1,0 +1,27 @@
+{% comment %}
+<documentation>
+    <name>HigherEd/Marketing/EventsJS</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <product>Highered Portal</product>
+    <description>
+        Defines JS functionality related to events page.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+<script>
+$(document).ready(function() {
+    var code = {};
+    $("select[data-group='group1'] > option").each(function () {
+        if (code[this.text]) {
+            $(this).remove();
+        } else {
+            code[this.text] = this.value;
+        }
+    });
+});
+</script>

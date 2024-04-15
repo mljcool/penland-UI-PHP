@@ -1,0 +1,27 @@
+{% comment %}
+<documentation>
+    <name>HigherEd/GrantsCard</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <product>Highered Portal</product>
+    <description>
+        Shows Grants card on home page that redirects to grants grid.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+<div class="col-xs-12 col-sm-4 placeholder" id="currentcourses" onclick="location.href='/my-grant-applications';">
+<a href="/my-grant-applications"><img alt="View the current courses" class="img-responsive hero-card" src="/HigherEd-home_card_courses"> </a>
+<div class="row">
+<div class="col-xs-2 icon-row"><a href="/my-grant-applications"><img alt="Card Icon" class="img-responsive" src="/Highered_home_grants_icon"> </a></div>
+<div class="col-xs-10 link-column">
+              <h4 aria-level="3" class="adjustmargin" tabindex="0">{{ snippets["HigherEd/GrantCards/MyGrantApplicationsText"] }}</h4>
+              <a class="card-link" href="/my-grant-applications" aria-label="My Grant Applications"  tabindex="-1"></a>
+            </div>
+</div>
+</div>
+
+

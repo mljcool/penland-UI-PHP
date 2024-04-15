@@ -1,0 +1,16 @@
+{% comment %}
+<documentation>
+    <name>HigherEd/Homepage/WelcomeMessage</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <product>Highered Portal</product>
+    <description>
+        Web template to display Welcome text on home page
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+<h1 aria-level="1" class="page-header"><span>{{ snippets["HigherEd/Homepage/WelcomeMessage/WelcomeText"] }}&nbsp;</span>{{ user.fullname }}</h1>

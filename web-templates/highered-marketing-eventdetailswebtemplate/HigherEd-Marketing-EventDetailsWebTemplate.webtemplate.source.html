@@ -1,0 +1,197 @@
+{% comment %}
+<documentation>
+    <name>HigherEd/Marketing/EventDetailsWebTemplate</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <product>Highered Portal</product>
+    <description>
+        Web template to show event details of an event.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+{% assign bing_key = settings['MRP_Bing_Key'] | string %}
+{% include 'HigherEd/GridPageCSS' %}
+{% include 'HigherEd/Marketing/EventsDetailsCSS' %}
+{% assign eventId = request.params.id %}
+{% assign url = request.url | split: "/" %}
+{% assign eventurl = request.url %}
+{% if eventId %}
+
+{% include 'HigherEd/Marketing/FetchEventDetails' %}
+
+{% assign event = eventdetails[0] %}
+{% if eventdetails.size > 0 %}
+
+{% include 'HigherEd/Marketing/FetchEventRegistrations' %}
+
+<div id="container-main" class="container">
+    <div id="main-row" class="row">
+        <div id="side-nav" class="hidden-xs col-sm-3 col-md-2 left-column">
+            <!--Side Menu Content Snippet-->
+            {% include 'HigherEd/SideNavigation' %}
+        </div>
+        <div class="col-xs-12 col-sm-9 col-md-10 form-right-column" style="background: #FAF9F8;">
+            <div class="event-heading" role="heading" aria-level="1">
+               {{eventdetails[0].msevtmgt_name}}
+            </div>
+            <div class="event-type" role="heading" aria-level="2">
+                {{eventdetails[0].msevtmgt_eventtype.label}}
+            </div>
+            <div class="event-details">
+<!--                <div class="icons-class">
+                    <img src="/icon-calender-time.png" style="width: 24px;height: 24px;">
+                    <img src="/icon-calender-time.png" style="width: 24px;height: 24px;">
+                </div>
+-->
+                <div style="width:30%">
+                    <div class="event-date">
+                        <img src="/icon-calender-time.png" role="none" style="width: 16px;height: 16px;margin-right: 8px;">{{ eventdetails[0].msevtmgt_eventstartdate | date: 'MMMM dd, yyyy h:mm tt ' }}</br>
+                        <img src="/icon-calender-time.png" role="none" style="width: 16px;height: 16px;margin-right: 8px;">{{ eventdetails[0].msevtmgt_eventenddate | date: 'MMMM dd, yyyy h:mm tt ' }}
+                    </div>
+                </div>
+                <div class="venuedetails">
+                    <div class="icons-class" style="padding-top: 15px;">
+                        {% if eventdetails[0].msevtmgt_streamingenabled == 'TRUE' %}
+                        <img src="/icon-onlineevent.png" role="none" style="width: 24px;height: 24px;">
+                        {% else %}
+                        <img src="/icon-Eventlocation.png" role="none" style="width: 24px;height: 24px;">                   
+                        {% endif %}
+                    </div>
+                    <div>
+                        <div class="event-location">
+                            {% if eventdetails[0].msevtmgt_streamingenabled == 'TRUE' %}
+                            <p><b>{{ snippets["HigherEd/Marketing/EventDetailsWebTemplate/OnlineEventText"] }}</b></p>
+                                {% if registrations.size > 0 && eventdetails[0].msevtmgt_attendeeurl != null %}
+                                    <a href="{{ eventdetails[0].msevtmgt_attendeeurl }}" target="_blank" rel="noopener noreferrer">{{ snippets["HigherEd/Marketing/EventDetailsWebTemplate/JoinEventText"] }}</a>
+                                {% endif %}                           
+                            {% else %}
+                            <p>{{ eventdetails[0].msevtmgt_room.name }}</br>
+                               {{ eventdetails[0].msevtmgt_building.name }}</p>                           
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="countdiv">
+                    <div class="icons-class" style="padding-top: 15px;">
+                        <img src="/icon-Eventcount.png" role="none" style="width: 24px;height: 24px;">
+                    </div>
+                    <div style="width:25%">
+                        <div class="event-count">
+                            <p>Registered Count&nbsp{{ eventdetails[0].msevtmgt_registrationcount }}&nbspmembers</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p></p>
+            <div class="divgap">
+            </div>
+            {% if registrations.size > 0 %}
+            <div id="registereddivid" class="registereddiv">
+                <p>{{ snippets["HigherEd/Marketing/EventDetailsWebTemplate/RegisteredText"] }} {{ registrations[0].createdon  | date: 'MMMM dd yyyy' }}.</p>
+            </div>
+            {% else %}
+            <div class="regbuttondiv">
+                {% if eventdetails[0].msevtmgt_eventenddate < now %}
+                <a href="javascript:void(0)" class="regbutton disabled">{{ snippets["HigherEd/Marketing/EventDetailsWebTemplate/EventEndedText"] }}</a>
+                {% else %}
+                {% if user %}
+                <a href="javascript:void(0)" onclick="registerEvent('{{eventId}}','{{user.id}}')" class="regbutton" id="registerButton">{{ snippets["HigherEd/Marketing/EventDetailsWebTemplate/RegisterText"] }}</a>
+                {% else %}
+                <a href="/SignIn?returnUrl=/eventdetails/?id={{ eventId }}" class="regbutton" id="registerButton">{{ snippets["HigherEd/Marketing/EventDetailsWebTemplate/RegisterText"] }}</a>
+                {% endif %}
+                {% endif %}
+            </div>
+            {% endif %}
+            <p></p>
+            <div class="divgap">
+            </div>
+            <div class="headdetailseventsdiv">
+                <div class="eventdetailsdiv">
+                    <div class="event-outcome">
+                        <p>{{ eventdetails[0].msevtmgt_expectedoutcome }}</p>
+                    </div>
+                    <div class="divgap">
+                    </div>
+                    <div class="divgap">
+                    </div>
+                    <div class="event-description">
+                        <p>{{ eventdetails[0].msevtmgt_description }}</p>
+                    </div>
+                </div>
+                <div class="location-sm-div">
+                    <div class="events-social-media">
+                        <div data-href="{{request.url}}">
+                            {% assign fburl = "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F" | append: {{url[1]}} | append: "%2Feventdetails%2F%3Fid%3D" | append: {{eventId}} | append: "&amp;src=sdkpreparse" %}
+                            <a target="_blank" class="fb-xfbml-parse-ignore" href="{{fburl}}" aria-label="facebook"><img src="/icon-facebook.png"  role="none"></a>   
+                            
+                        </div>
+                        <div>
+                            {% assign twitterText = "Hi folks. I am joining this event. " %}
+                            <a target="_blank" href="https://twitter.com/intent/tweet?text={{twitterText}}&url={{request.url}}" style="padding-left: 25px;" aria-label="twitter"><img src="/icon-twitter.png"  role="none"></a>
+                        </div>
+                        <div>
+                            {% assign linkedinUrl = url[1] | append: "/eventdetails/?id%3D" | append: {{eventId}} %}
+                            <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url={{linkedinUrl}}&title={{eventdetails[0].msevtmgt_name}}" style="padding-left: 25px;" aria-label="linkedin"><img src="/icon-linkedin.png"  role="none"></a>
+                        </div>
+                        <div>
+                            {% assign subject = {{eventdetails[0].msevtmgt_name}} %}
+                            {% assign body = "Check this event by clicking the URL, " | append: {{request.url}} %}
+                            <a target="_blank" href="mailto:?subject={{subject}}&amp;body={{body}}" style="padding-left: 25px;" aria-label="mail"><img src="/icon-mail.png"  role="none"></a>
+                        </div>
+                    </div>
+                    <div class="divgap">
+                    </div>
+                    <div class="divgap">
+                    </div>
+                    <p><b>{{ snippets["HigherEd/Marketing/EventDetailsWebTemplate/LocationText"] }}</b></p>
+                    <div class="event-location-bing">
+                        {% if event.msevtmgt_building != null %}
+                        <a href="https://www.bing.com/maps?where1={{event['building.msevtmgt_addressline1']}} {{event['building.msevtmgt_city']}},{{event['building.msevtmgt_stateprovince']}},{{event['building.msevtmgt_postalcode']}}" target="_blank">
+                            {{event.msevtmgt_building.name}}<br>
+                            {% if event['building.msevtmgt_addressline1'] != null %}
+                            {{event['building.msevtmgt_addressline1']}}
+                            {% endif %}
+                            {% if event['building.msevtmgt_addressline2'] != null && event['building.msevtmgt_addressline3'] != null %}
+                            {{event['building.msevtmgt_addressline2']}}, {{event['building.msevtmgt_addressline3']}}<br>
+                            {% endif %}
+                            {% if event['building.msevtmgt_city'] != null %}
+                            {{event['building.msevtmgt_city']}},
+                            {% endif %}
+                            {% if event['building.msevtmgt_stateprovince'] != null %}
+                            {{event['building.msevtmgt_stateprovince']}}
+                            {% endif %}
+                            {% if event['building.msevtmgt_postalcode'] != null %}
+                            {{event['building.msevtmgt_postalcode']}}<br>
+                            {% endif %}
+                        </a>
+                        {% endif %}
+                    </div>
+                    <div class="divgap">
+                    </div>
+                    <div class="locationIdDiv" id="locationId">
+                        <!--<iframe width="427" height="421" id="gmap_canvas" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" src="https://bing.com/maps?where1=1 Microsoft Way, Redmond, WA&lvl=12&mm_embed=map" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>-->
+                    </div>
+                    <span id="lat" class="locationspanhide">{{eventdetails[0].msmedia_latitude}}</span>
+                    <span id="long" class="locationspanhide">{{eventdetails[0].msmedia_longitude}}</span>
+                    <span id="bing_key" class="locationspanhide">{{bing_key}}</span>
+                </div>
+            </div>
+            <p></p>
+            <div class="divgap">
+            </div>
+            <div class="divgap">
+            </div>            
+            <p></p>
+            <div class="divgap">
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endif %}
+{% include 'HigherEd/Marketing/WebAPIAJAX' %}
+{% include 'HigherEd/Marketing/EventsDetailsJS' %}

@@ -1,0 +1,98 @@
+{% comment %}
+<documentation>
+    <name>HigherEd/FormPageCSS</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <product>Highered Portal</product>
+    <description>
+        Web template contains CSS for Form page.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+<style>
+
+td {
+ word-break: normal !important;
+}
+
+.view-empty {
+ text-align: center;
+ background-color: #FFFFFF;
+ padding-bottom: 8px;
+}
+
+#main-row {
+ background-color: #FFFFFF;
+}
+
+.form-right-column h2 {
+ font-style: normal;
+ font-weight: 480;
+ font-size: 28px;
+ line-height: 37px;
+ align-items: center;
+ margin-top: 0px;
+ padding-top: 24px;
+}
+
+.left-column {
+ background-color: #FFFFFF;
+}
+
+.form-right-column {
+ background-color: #FAF9F8;
+ padding-bottom: 40px;
+ height: auto;
+}
+.crmEntityFormView .cell {
+    padding-left: 16px !important;
+}
+.section-title{
+    padding-left: 16px !important;
+}
+
+@media (min-width: 800px) {
+ .form-right-column h2 {
+  font-style: normal;
+  font-weight: 480;
+  font-size: 28px;
+  line-height: 37px;
+  align-items: center;
+  margin-top: 0px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  margin-bottom: 0;
+ }
+ .form-right-column div.page-copy {
+  margin-bottom: 0px;
+  height: 0;
+  display: none;
+ }
+}
+
+@media (max-width: 768px) {
+ body>.container {
+  margin: 0px;
+ }
+ .entity-form {
+  padding-left: 0px;
+  padding-right: 0px;
+ }
+ .form-right-column h2 {
+  text-transform: lowercase;
+  margin-bottom: 24px;
+ }
+ .form-right-column h2::first-letter {
+  text-transform: uppercase;
+ }
+ .form-right-column h2 {
+  margin-top: 0px;
+  padding-top: 16px;
+ }
+}
+
+</style>

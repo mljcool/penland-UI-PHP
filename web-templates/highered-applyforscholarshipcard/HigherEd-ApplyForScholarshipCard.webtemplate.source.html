@@ -1,0 +1,25 @@
+{% comment %}
+<documentation>
+    <name>HigherEd/ApplyForScholarshipCard</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <product>Highered Portal</product>
+    <description>
+        Shows Apply for scholarship card on home page that redirects to scholarships grid.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+<div class="col-xs-12 col-sm-4 placeholder" id="applyscholarship" onclick="location.href='/my-courses';">
+<a href="/my-courses"><img alt="View the current courses" class="img-responsive hero-card" src="/HigherEd-home_card_scholarship"> </a>
+<div class="row">
+<div class="col-xs-2 icon-row"><a href="/my-courses"><img alt="Card Icon" class="img-responsive" src="/HigherEd-courses_icon"> </a></div>
+<div class="col-xs-10 link-column">
+              <h4 aria-level="4" class="adjustmargin" tabindex="0">{{ snippets["HigherEd/ApplyForScholarshipCard/MyCoursesText"] }}</h4>
+              <a class="card-link" href="/my-courses" aria-label="My Courses" tabindex="-1"></a>
+            </div>
+</div>
+</div>

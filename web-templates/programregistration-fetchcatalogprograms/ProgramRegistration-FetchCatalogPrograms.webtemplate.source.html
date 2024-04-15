@@ -1,0 +1,32 @@
+{% comment %}
+<documentation>
+    <name>ProgramRegistration/FetchCatalogPrograms</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <module>Program Registration</module>
+    <description>
+        FetchXML to retrieve the published program details and marked to include in Catalog. Leveraged on Program Catalog page.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+
+{% fetchxml programsFetch %}
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="mshied_program">
+    <attribute name="mshied_programid" />
+    <attribute name="mshied_name" />
+    <attribute name="mshied_code" />
+    <attribute name="mshied_programicon" />
+    <order attribute="mshied_displayorder" descending="false" />
+    <filter type="and">
+      <condition attribute="mshied_includeincatalog" operator="eq" value="494280000" />
+      <condition attribute="mshied_programstatus" operator="eq" value="494280001" />
+    </filter>
+  </entity>
+</fetch>
+{% endfetchxml %}
+{% assign programs = programsFetch.results.entities %}

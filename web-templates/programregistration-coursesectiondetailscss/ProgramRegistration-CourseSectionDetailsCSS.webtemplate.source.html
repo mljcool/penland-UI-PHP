@@ -1,0 +1,467 @@
+{% comment %}
+<documentation>
+    <name>ProgramRegistration/CourseSectionDetailsCSS</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <module>Program Registration</module>
+    <description>
+        Defines the CSS for course sections details page.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+
+<style>
+
+    .csbody {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 980px; 
+        background: #FAF9F8;
+        flex: none;
+        order: 2;
+        flex-grow: 0;
+        width: 100% !important;
+    }
+
+    .greenClass {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0px;
+        width: 100%;
+        background: #DFF6DD;
+        flex: none;
+        order: 0;
+        margin-bottom: 20px !important;
+    }
+
+    .orangeClass {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0px;
+        width: 100%;
+        background: #FFF4CE;
+        flex: none;
+        order: 0;
+        margin-bottom: 20px !important;
+    }
+
+    .checkmark {
+        width: 16px;
+        height: 16px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        background-color: #107C10;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        margin-left: 12px;
+        mask: url(/coursesectiondetails/programregistration_checkmark_icon.svg);
+    -webkit-mask: url(/coursesectiondetails/programregistration_checkmark_icon.svg);
+    -webkit-mask-repeat: no-repeat;
+    }
+
+    .info {
+        width: 16px;
+        height: 16px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        background-color: #797775;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        margin-left: 12px;
+        mask: url(/coursesectiondetails/programregistration_info_icon.svg);
+        -webkit-mask: url(/coursesectiondetails/programregistration_info_icon.svg);
+        -webkit-mask-repeat: no-repeat;
+    }
+
+    #registrationmessage {
+        font-family: 'Segoe UI';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 16px;
+        color: #323130;
+        margin-left: 8px;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        margin-right:12px;
+    }
+
+    .banner {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-top: 60px;
+        padding-bottom: 60px;
+        padding-left: 6.5%;
+        background: linear-gradient(320.57deg, #1A508B 0%, #0078D4 100%);
+        height: 160px !important;
+        width: 100% !important;
+    }
+
+    .banner-title {
+        height: 40px;
+        font-family: 'Segoe UI';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 40px;
+        color: #FFFFFF;
+        margin-left: 14px !important; 
+    }
+
+    .data {
+        width: 85% !important;
+        background: #FFFFFF;
+    }
+
+    .toprow {
+        margin-left: 24px !important; 
+    }
+
+    .toplabel {
+        margin-bottom: 2px !important;
+        font-family: 'Segoe UI';
+        font-style: normal;
+        font-weight: 600 !important;
+        font-size: 14px;
+        line-height: 20px;
+        color: #323130;
+        order: 0;
+        flex-grow: 0;
+    }
+
+    .topdata {
+        margin-bottom: 2px !important;
+        font-family: 'Segoe UI';
+        font-style: normal;
+        font-weight: 400 !important;
+        font-size: 14px;
+        line-height: 20px;
+        color: #323130;
+        flex: none;
+        order: 1;
+        align-self: stretch;
+        flex-grow: 0;
+        word-wrap: break-word;
+        text-align: justify;
+        margin-right: 15px !important;
+    }
+
+    .topdatadivider {
+        margin-bottom: 24px !important;
+    }
+
+
+    .bottomrow {
+        display: flex;
+    }
+
+    .bottomlabel {
+        width: 30%;
+        font-family: 'Segoe UI';
+        font-style: normal;
+        font-weight: 600 !important;
+        font-size: 14px;
+        line-height: 20px;
+        color: #323130;
+        order: 0;
+        flex-grow: 0;
+        margin-left: 24px !important; 
+        margin-top: 10px !important;
+        margin-bottom: 10px !important; 
+    }
+
+    .bottomdata {
+        width: 65%;
+        padding-left: 16px;
+        font-family: 'Segoe UI';
+        font-style: normal;
+        font-weight: 400 !important;
+        font-size: 14px;
+        line-height: 20px;
+        color: #323130;
+        order: 1;
+        flex-grow: 1;
+        margin-left: 16px !important;
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;        
+        margin-right: 15px !important; 
+    }
+
+    .divider {
+        width: 100%px;
+        height: 1px;
+        background: #E1DFDD;
+        flex: none;
+        order: 1;
+        align-self: stretch;
+        flex-grow: 0;
+        margin: 0px !important;
+        border-top: 0px !important;
+    }
+
+    .csprimary:hover,
+    .csprimary:focus,
+    .csprimary.focus {
+        color: #FFFFFF !important;
+        text-decoration: none !important;
+        cursor: pointer !important;
+    }
+
+    .cssecondary:hover,
+    .cssecondary:focus,
+    .cssecondary.focus {
+        color: #323130 !important;
+        text-decoration: none !important;
+        cursor: pointer !important;
+    }
+
+    .csprimary:disabled {
+        pointer-events: none !important;
+    }
+
+    .cssecondary:disabled {        
+        pointer-events: none !important;
+    }
+
+    .disabled{
+        opacity: 0.7;
+        cursor: not-allowed !important;
+    }
+
+    .csbuttons {
+        align-items: center; 
+        width: 85% !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .csprimary {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 6px 20px;   
+        width: 388px;
+        height: 32px;
+        background: #0078D4  !important;  
+        border-radius: 2px;
+        font-family: 'Segoe UI';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 20px;
+        text-align: center;
+        color: #FFFFFF;    
+        margin-top: 20px !important;  
+    }
+
+    .cssecondary {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 6px 20px;
+        width: 388px;
+        height: 32px;
+        background: #FFFFFF !important;
+        border: 1px solid #8A8886;
+        border-radius: 2px;
+        font-family: 'Segoe UI';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 20px;
+        align-items: flex-end;
+        text-align: center;
+        color: #323130;    
+        margin-top: 20px !important;
+    }
+
+    .show {
+        display: flex;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .transFlexContainer {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        top: 0px;
+        left: 0px;
+        z-index:1;
+        background-color: rgba(0, 0, 0, 0.4);
+        position: fixed;
+        width: 100%;
+    }
+
+    .transFlexContainer>div {
+        margin:10px auto;
+        background: #FFFFFF;
+    }
+
+    .backhomebutton {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 6px 20px;
+        position: static;
+        height: 32px;
+        left: calc(50% - 159px/2);
+        top: 0px;
+        color: #323130 !important;
+        background: #FFFFFF;
+        border: 1px solid #8A8886;
+        box-sizing: border-box;
+        border-radius: 2px;
+        font-family: Segoe UI;
+        font-size: 14px;
+    }
+    .cancelButton {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        position: static;
+        padding: 6px 20px;
+        height: 32px;
+        background: #0078D4;
+        border-radius: 2px;
+        margin: 0px 8px;
+        font-family: Segoe UI;
+        font-size: 14px;
+        line-height: 20px;
+        text-align: center;
+        color: #FFFFFF !important;
+    }
+
+    .dialogButtons {
+        display: flex;
+        justify-content: flex-end;
+        background: #FFFFFF;
+        height:72px;
+        padding-top:16px;
+        padding-right:24px;
+    }
+
+    .dialogText {
+        height: 28px;
+        font-family: 'Segoe UI';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 28px;
+        color: #323130;
+        padding-top: 25px;
+        padding-bottom: 16px;
+        padding-left: 10px;
+        padding-right: 22px;
+    }
+    .form-right-column {
+        float: left;
+    }
+
+    .form-right-column {
+        width: 100% !important
+    }
+    .cancellationDetails{
+        font-weight:normal;
+        font-size: 14px;
+        padding-bottom:11px;
+    }
+
+
+    @media (min-width: 768px){
+        .left-column + .form-right-column {
+            width: 75% !important;
+        }
+    }
+
+    @media (min-width: 992px){
+        .left-column + .form-right-column {
+            width: 83.3333% !important;
+        }
+    }
+
+    @media (max-width: 767px){
+        
+        .container{
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+        
+        .topdata{
+            font-size: 16px;
+            line-height: 22px;
+        }
+
+        .toplabel{
+            font-size: 16px;
+            line-height: 22px;
+        }
+
+        .csprimary{
+            border-radius: 2px;
+            width: 382px;     
+        }
+
+        .cssecondary{
+            border-radius: 2px;
+            width: 382px;     
+        }
+
+        .data{
+            width: 100% !important;
+        }
+
+        .form-right-column
+        {
+            padding-left: 0px !important;
+            padding-right: 0px !important;
+        }
+
+        .csbuttons{
+            width: 85% !important;
+        }
+        .dialogheightmobile{
+            height:200px !important;
+        }
+    }
+
+    @media (max-width: 382px){
+        .banner{
+            padding-top:0px !important;
+            padding-left:0px !important;
+        }
+
+        .csprimary{
+            border-radius: 2px;
+            width: 200px;     
+        }
+
+        .cssecondary{
+            border-radius: 2px;
+            width: 200px;     
+        }
+         .dialogheightmobile{
+            height:250px !important;
+        }
+    }
+
+</style> 

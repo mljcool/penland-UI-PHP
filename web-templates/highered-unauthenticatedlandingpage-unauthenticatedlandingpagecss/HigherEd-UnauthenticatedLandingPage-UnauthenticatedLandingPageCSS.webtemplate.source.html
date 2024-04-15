@@ -1,0 +1,276 @@
+{% comment %}
+<documentation>
+    <name>HigherEd/UnauthenticatedLandingPage/UnauthenticatedLandingPageCSS</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <product>Highered Portal</product>
+    <description>
+        Web template contains all relavent CSS styles that are used in Unauthenticated Landing Page
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+<style>
+    /* Hides all weblinks if the user in unauthenticated*/
+    button.navbar-toggle.collapsed {
+        display: none;
+    }
+
+    #main-sign-in .main-card {
+        /* Change the color of card header*/
+        border-top: 8px solid #00A1F1;
+        background-color: #FFFFFF;
+    }
+
+    /*Mobile Designs*/
+    @media (max-width: 417px) {
+
+        body {
+            /*Updated the below image for the mobile layout*/
+            background-image: url("/HigherEd-mobile_sign-in");
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100%;
+        }
+
+        .col-xs-3.col-sm-2.card-heading {
+            width: 60px;
+        }
+
+        div#card-heading {
+            margin-top: 0px;
+        }
+
+        div#container-main {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        .col-xs-12 {
+            width: 100%;
+            padding-left: 12px;
+            height: 74px !important;
+        }
+
+        .col-xs-12 {
+            width: 100%;
+            padding-left: 12px;
+        }
+
+        .col-xs-3.col-sm-2.card-heading {
+            padding-right: 0px;
+        }
+
+        #main-sign-in .main-card {
+            padding-top: 8px;
+            padding-bottom: 16px;
+            height: 100px;
+            width: 99% !important;
+            margin-top: 90%
+        }
+
+        #card-link-bottom {
+            display: none;
+        }
+
+        .card-heading {
+            padding-left: 8px !important;
+            margin-left: 0px !important;
+        }
+
+        b {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 20px !important;
+            line-height: 24px;
+            color: #000000;
+            padding-left: 0px 1important;
+        }
+
+       
+    }
+
+    @media(min-width:416px)and (max-width: 767px) {
+
+        body {
+            /*Update the below image for mid seize devices*/
+            background-image: url("/HigherEd-main_sign-in");
+            background-repeat: no-repeat;
+            background-size: contain;
+            max-height: 100%;
+        }
+
+        #main-sign-in .main-card {
+            padding-top: 8px;
+            padding-bottom: 16px;
+            height: 80px;
+            width: 99% !important;
+            margin-top: 90%
+        }
+
+        #card-link-bottom {
+            display: none;
+        }
+
+        .card-heading {
+            padding-left: 8px !important;
+            margin-left: 0px !important;
+        }
+
+        b {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 24px;
+            color: #000000;
+            padding-left: 16px;
+        }
+    }
+
+    @media(min-width:768px) {
+        /*Update the below image for small devices*/
+        #main-sign-in {
+            background-image: url("HigherEd-main_sign-in");
+            height: 770px;
+            padding-top: 20%;
+            max-width: 100%;
+            background-size: contain;
+        }
+
+        #card-heading {
+            padding-left: 0px;
+        }
+
+        #card-link-bottom {
+            display: block !important;
+        }
+
+        .card-link-section {
+            padding-top: 16px;
+        }
+
+            .card-link-section p {
+                padding-left: 16px;
+            }
+
+        h5 b:hover {
+            color: #0078D4 !important;
+        }
+
+        b {
+            color: #000000;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 24px;
+        }
+
+        #main-sign-in .main-card {
+            width: 98% !important;
+            padding-top: 8px;
+            padding-left: 8px;
+        }
+
+        .card-link-section a {
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 14px;
+            color: #0078D4;
+        }
+
+            .card-link-section a:hover {
+                text-decoration: none;
+                color: #0078D4;
+            }
+
+        .card-heading {
+            padding-left: 16px;
+            margin-top: 10px;
+        }
+
+        .bottom {
+            padding-left: 16px;
+        }
+
+        .main-card {
+            padding-top: 24px;
+            padding-bottom: 8px;
+            height: 110px;
+            width: 30.9% !important;
+            margin-left: 8px;
+            margin-right: 8px;
+        }
+
+            .main-card img {
+                height: 24px;
+                margin-right: 8px;
+            }
+
+            .main-card .glyphicon-triangle-right {
+                color: #0078D4;
+                margin-left: 4px;
+            }
+
+            .main-card h5 {
+                font-size: 16px;
+            }
+
+        #main-card-row {
+            margin-left: 8px;
+            margin-right: 8px;
+        }
+
+        h5 > a:hover {
+            text-decoration: none;
+            color: #0078D4 !important;
+        }
+    }
+
+
+    @media (max-width: 767px) {
+
+        b {
+            font-size: 20px;
+        }
+
+
+        #card-heading {
+            margin-top: 8px;
+            padding-left: 0px;
+        }
+
+        .card-heading {
+            padding-left: 8px !important;
+            margin-left: 0px !important;
+            margin-top: 8px;
+        }
+
+        .card-header > .col-xs-10 {
+            padding-left: 0;
+        }
+
+            .card-header > .col-xs-10 h5 b {
+                padding-left: 0;
+            }
+
+        .card-link {
+            display: block;
+        }
+
+        #container-main {
+            margin-right: 10px;
+            margin-left: 10px;
+        }
+
+        #main-sign-in .main-card {
+            padding-top: 8px;
+            padding-bottom: 8px;
+            height: 72px;
+            width: 99% !important;
+            margin-top: 20%;
+        }
+    }
+</style>

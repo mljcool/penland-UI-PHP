@@ -1,0 +1,60 @@
+{% comment %}
+<documentation>
+    <name>HigherEd/Marketing/FetchEventDetails</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <product>Highered Portal</product>
+    <description>
+        FetchXML logic to retrieve Event Details.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+{% fetchxml eventdetailsfetch %}
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+    <entity name="msevtmgt_event" >
+        <attribute name="msevtmgt_name" />
+        <attribute name="msevtmgt_eventtype" />
+        <attribute name="msevtmgt_eventstartdate" />
+        <attribute name="msevtmgt_eventenddate" />
+        <attribute name="msevtmgt_publishstatus" />
+        <attribute name="createdon" />
+        <attribute name="msevtmgt_room" />
+        <attribute name="msevtmgt_building" />
+        <attribute name="msevtmgt_streamingenabled" />
+        <attribute name="msevtmgt_attendeeurl" />
+        <attribute name="msevtmgt_registrationcount" />
+        <attribute name="msevtmgt_maximumeventcapacity" />
+        <attribute name="msevtmgt_description" />
+        <attribute name="msevtmgt_expectedoutcome" />
+        <attribute name="msevtmgt_eventid" />
+        <order attribute="msevtmgt_eventstartdate" descending="false" />
+        <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+            <condition attribute="msevtmgt_isrecurringevent" operator="ne" value="1" />
+            <condition attribute="msevtmgt_istemplate" operator="ne" value="100000001" />
+            <condition attribute="msevtmgt_recurrenteventstatus" operator="ne" value="2" />
+            <condition attribute="msevtmgt_eventid" operator="eq" value="{{eventId}}" />
+        </filter>
+        <link-entity name="msevtmgt_building" from="msevtmgt_buildingid" to="msevtmgt_building" visible="false" link-type="outer" alias="building">
+            <attribute name="msevtmgt_name" />
+            <attribute name="msevtmgt_stateprovince" />
+            <attribute name="msevtmgt_postalcode" />
+            <attribute name="msevtmgt_country" />
+            <attribute name="msevtmgt_city" />
+            <attribute name="msevtmgt_addressline3" />
+            <attribute name="msevtmgt_addressline2" />
+            <attribute name="msevtmgt_addressline1" />
+        </link-entity>
+        <link-entity name="msevtmgt_room" from="msevtmgt_roomid" to="msevtmgt_room" visible="false" link-type="outer" alias="room">
+          <attribute name="msevtmgt_name" />
+          <attribute name="msevtmgt_capacity" />
+          <attribute name="msevtmgt_building" />
+        </link-entity>
+    </entity>
+</fetch>
+{% endfetchxml %}
+{% assign eventdetails = eventdetailsfetch.results.entities %}

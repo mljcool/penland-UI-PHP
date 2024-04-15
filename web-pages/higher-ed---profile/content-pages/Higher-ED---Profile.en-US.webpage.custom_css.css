@@ -1,0 +1,33 @@
+
+.breadcrumb {
+    display: none
+}
+
+.page-heading .container {
+    display: none;
+}
+.col-md-8 {
+    background-color: #F9F9F9;
+}
+
+.col-md-8 > fieldset legend {
+    border-bottom: 0px;
+}
+
+.actions {
+    padding-bottom: 20px;
+}
+
+h3 {
+    margin-top: 0px
+}
+
+#ContentContainer_MainContent_MainContent_ContentBottom_MarketingOptionsPanel fieldset {
+    padding-left: 32px;
+    padding-bottom: 16px;
+}
+.crmEntityFormView{
+    background-color: #f9f9f9; 
+    color: #000000;
+    border: none;
+}

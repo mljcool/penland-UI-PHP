@@ -1,0 +1,48 @@
+{% comment %}
+<documentation>
+    <name>ProgramRegistration/FetchCourseSections</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <module>Program Registration</module>
+    <description>
+        FetchXML to retrieve the published course sections in a particular program. Leveraged on Course sections page.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+
+{% fetchxml courseSectionsFetch %}
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
+  <entity name="mshied_coursesection">
+    <attribute name="mshied_name" />
+    <attribute name="mshied_coursedaytime" />
+    <attribute name="mshied_courseid" />
+    <attribute name="mshied_campusid" />
+    <attribute name="mshied_academicperiodid" />
+    <attribute name="mshied_coursesectionid" />
+    <attribute name="mshied_localcoursecode" />
+    <attribute name="mshied_instructorid" />
+    <attribute name="mshied_startdate" />
+    <attribute name="mshied_registrationstartdate" />
+    <attribute name="mshied_registrationenddate" />
+    <attribute name="mshied_location" />
+    <attribute name="mshied_enrollmentrequirements" />
+    <attribute name="mshied_enddate" />
+    <order attribute="mshied_startdate" descending="false" />
+    <filter type="and">
+      <condition attribute="mshied_coursesectionstatus" operator="eq" value="494280001" />
+    </filter>
+    <link-entity name="mshied_coursesection_mshied_program" from="mshied_coursesectionid" to="mshied_coursesectionid" visible="false" intersect="true">
+      <link-entity name="mshied_program" from="mshied_programid" to="mshied_programid" alias="ac">
+        <filter type="and">
+          <condition attribute="mshied_programid" operator="eq" value="{{ programid }}" />
+        </filter>
+      </link-entity>
+    </link-entity>
+  </entity>
+</fetch>
+{% endfetchxml %}
+{% assign courseSectionsList = courseSectionsFetch.results.entities %}

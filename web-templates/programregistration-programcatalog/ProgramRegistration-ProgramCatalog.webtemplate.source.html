@@ -1,0 +1,28 @@
+{% comment %}
+<documentation>
+    <name>ProgramRegistration/ProgramCatalog</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <module>Program Registration</module>
+    <description>
+        Holding Web template to render the Program Catalog Page.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+
+
+<div id="container" class="container">
+   <div class="row" id="main-row">
+      <div id="side-nav" class="hidden-xs col-sm-3 col-md-2 left-column">
+         <!--Load the custom side navigation menu-->
+         {% include 'HigherEd/SideNavigation' %}
+      </div>
+    <div class="col-xs-12 col-sm-9 col-md-10 form-right-column">
+        {% include 'ProgramRegistration/ProgramCatalogHome' %}
+   </div>
+   </div>
+</div>

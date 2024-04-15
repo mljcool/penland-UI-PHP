@@ -1,0 +1,199 @@
+- adx_description: Site setting that controls the depth of the webpage hierarchy that’s cloned in a newly-added supported language. Web link sets and content snippets are cloned in the newly-added language when webpages are cloned.
+  adx_name: MultiLanguage/MaximumDepthToClone
+  adx_sitesettingid: 0853a2df-d40d-48fe-8386-a10cb4f59d86
+  adx_value: 3
+- adx_name: Authentication/OpenAuth/Microsoft/ClientId
+  adx_sitesettingid: 0b02057d-7c5e-4984-be6a-50f0320c0052
+  importsequencenumber: 5
+- adx_name: Profile/ShowMarketingOptionsPanel
+  adx_sitesettingid: 0be8e426-cb0e-4588-9523-348013635756
+  adx_value: True
+- adx_description: Webapi/msevtmgt_eventregistration/fields
+  adx_name: Webapi/msevtmgt_eventregistration/fields
+  adx_sitesettingid: 0d69f3ca-fd0d-4852-b036-3e1db8b828da
+  adx_value: msevtmgt_ContactId,msevtmgt_EventId
+- adx_description: Enables or disables Azure AD as an external identity provider. By default, it is set to true.
+  adx_name: Authentication/Registration/AzureADLoginEnabled
+  adx_sitesettingid: 1d999ba3-d0e3-4336-a81a-2c6e948e708c
+  adx_value: false
+  importsequencenumber: 3
+- adx_description: Setting controls whether attachments will be displayed on Knowledge articles
+  adx_name: KnowledgeManagement/DisplayNotes
+  adx_sitesettingid: 1e28a59c-b87b-4770-88b5-ed73d6aed7a6
+  adx_value: false
+- adx_name: ThemeFeature
+  adx_sitesettingid: 21f764f2-8251-47b7-8984-2f11dbb38f6d
+  adx_value: '{"status":"disable","selectedThemeId":"df88c9ca-e24f-4eca-af9a-880e7b8559a0","siteSettingId":"21f764f2-8251-47b7-8984-2f11dbb38f6d"}'
+- adx_description: A true or false value. If set to true, the Last Successful Login field on the portal user’s contact will be updated with the date and time when they successfully signed in.
+  adx_name: Authentication/LoginTrackingEnabled
+  adx_sitesettingid: 2544b862-1c19-4eb3-8913-ee168e9ad53d
+  adx_value: False
+- adx_name: Authentication/Registration/OpenRegistrationEnabled
+  adx_sitesettingid: 2ce9b4d5-c0d5-4280-b412-c96a5583eb5b
+  adx_value: true
+  importsequencenumber: 3
+- adx_name: Profile/ForceSignUp
+  adx_sitesettingid: 2ebba576-1093-44e8-a6eb-ae2802960d89
+  adx_value: False
+- adx_name: Search/IndexQueryName
+  adx_sitesettingid: 33c80f6a-2563-4e87-be08-8f67b962702d
+  adx_value: Portal Search
+- adx_description: MRP_Bing_Key
+  adx_name: MRP_Bing_Key
+  adx_sitesettingid: 39847414-08fd-4c4b-9e40-ab993158dad9
+- adx_name: Authentication/OpenAuth/Twitter/ConsumerSecret
+  adx_sitesettingid: 3ac92968-db48-4def-b597-e73736eddb38
+  importsequencenumber: 5
+- adx_description: 'The amount of time the Authentication/LoginThrottling/MaxInvaildAttemptsFromIPAddress are to be within before the IP address has to wait Authentication/LoginThrottling/IpAddressTimeoutTimeSpan. Default: 00:03:00 (3 mins)'
+  adx_name: Authentication/LoginThrottling/MaxAttemptsTimeLimitTimeSpan
+  adx_sitesettingid: 3c565a9e-7481-4d2a-992f-e7068fd1ed60
+  adx_value: 00:03:00
+- adx_name: OnlineDomains
+  adx_sitesettingid: 40282715-70b8-4437-99c5-f7a5da5ecb25
+  adx_value: sharepoint.com;microsoftonline.com
+- adx_description: Enabling this setting will show all customer activity on the portal timeline.
+  adx_name: CustomerSupport/DisplayAllUserActivitiesOnTimeline
+  adx_sitesettingid: 42ec5662-949d-4bed-a0b9-8467b3b08cfe
+  adx_value: false
+- adx_name: Authentication/OpenAuth/LinkedIn/ConsumerSecret
+  adx_sitesettingid: 4dda64d7-879c-411d-ab79-948ab7bab880
+- adx_name: Authentication/Registration/LoginButtonAuthenticationType
+  adx_sitesettingid: 4e56f6ab-d6b8-4a93-b3fc-d3cf3635c46a
+  importsequencenumber: 3
+- adx_name: Authentication/Registration/Enabled
+  adx_sitesettingid: 5004de85-b453-4243-8fe6-24ddced5fc6a
+  adx_value: true
+  importsequencenumber: 5
+- adx_name: Authentication/OpenAuth/LinkedIn/ConsumerKey
+  adx_sitesettingid: 5678e3e7-c03b-43d0-8395-2bd014d721ac
+- adx_name: Authentication/OpenAuth/Microsoft/ClientSecret
+  adx_sitesettingid: 59c9963d-c3d1-4824-82af-a18db6946af5
+  importsequencenumber: 5
+- adx_name: Webapi/error/innererror
+  adx_sitesettingid: 5b3f52f6-f91e-ed11-b83e-0022480846a7
+  adx_value: true
+- adx_name: Authentication/Registration/LocalLoginEnabled
+  adx_sitesettingid: 5c7ff2d9-a86c-4266-86d6-785a3a2ef405
+  adx_value: true
+- adx_description: Denies use of the portal to minors without parental consent. By default, it is set to false.
+  adx_name: Authentication/Registration/DenyMinorsWithoutParentalConsent
+  adx_sitesettingid: 643af14f-3fdf-4376-80cd-e06270376ffe
+  adx_value: false
+- adx_description: Site setting that determines if the language code is included in the portal URL.
+  adx_name: MultiLanguage/DisplayLanguageCodeInURL
+  adx_sitesettingid: 65ee0773-8f73-4e93-abfb-5a89f83bf483
+  adx_value: False
+- adx_description: Set whether the footer web template is output cached.
+  adx_name: Footer/OutputCache/Enabled
+  adx_sitesettingid: 6d87c688-f27c-4f15-a6cf-6f84dd07b238
+  adx_value: True
+- adx_name: HTTP/X-Frame-Options
+  adx_sitesettingid: 7010c283-ba39-45f4-a97e-bc04e2eb4058
+  adx_value: SAMEORIGIN
+- adx_name: Webapi/mshied_programenrollment/fields
+  adx_sitesettingid: 75bab6f7-091f-ed11-b83e-0022480846a7
+  adx_value: mshied_name,mshied_begindate,mshied_enddate,mshied_StudentId,mshied_ProgramId,mshied_EducationOrganizationId,mshied_programenrollmentid
+- adx_description: Webapi/msevtmgt_eventregistration/enabled
+  adx_name: Webapi/msevtmgt_eventregistration/enabled
+  adx_sitesettingid: 7c26d0d5-c157-4181-871b-f055b53a85a0
+  adx_value: true
+- adx_name: Webapi/mshied_coursesection/enabled
+  adx_sitesettingid: 83ffaed7-411e-ed11-b83e-0022480846a7
+  adx_value: true
+- adx_name: Webapi/mshied_programenrollment/enabled
+  adx_sitesettingid: 88273af1-081f-ed11-b83e-0022480846a7
+  adx_value: true
+- adx_name: Authentication/OpenAuth/Twitter/ConsumerKey
+  adx_sitesettingid: 8c616a79-ec7b-441d-abc9-641c9a3ad90c
+  importsequencenumber: 5
+- adx_description: Set whether the header web template is output cached.
+  adx_name: Header/OutputCache/Enabled
+  adx_sitesettingid: 92a5ad61-5139-4fb8-9d9c-1c912deda28d
+  adx_value: True
+- adx_name: ProgramRegistration/ShowSideNavigation
+  adx_sitesettingid: 95cb20d6-cc17-ed11-b83e-000d3a370065
+  adx_value: true
+- adx_description: 'Override query for site search, to apply additional weights and filters. @Query is the query text entered by a user. Lucene query syntax reference: http://lucene.apache.org/core/old_versioned_docs/versions/2_9_1/queryparsersyntax.html'
+  adx_name: search/query
+  adx_sitesettingid: 976eda7f-d24a-4675-a1e1-9323b5629d3c
+  adx_value: +(@Query) _title:(@Query) _logicalname:knowledgearticle~0.9^0.3 _logicalname:annotation~0.9^0.25 _logicalname:adx_webpage~0.9^0.2 -_logicalname:adx_webfile~0.9 adx_partialurl:(@Query) _logicalname:adx_blogpost~0.9^0.1 -_logicalname:adx_communityforumthread~0.9
+- adx_description: 'The Prefix entered here will be used to filter Notes Text, allowing you to control notes exposed on the Portal ex: *WEB*'
+  adx_name: KnowledgeManagement/NotesFilter
+  adx_sitesettingid: 99554c26-b53d-401b-96d8-224715552d0a
+  adx_value: '*WEB*'
+- adx_name: Webapi/mshied_coursesection/fields
+  adx_sitesettingid: 9fdc9ff0-411e-ed11-b83e-0022480846a7
+  adx_value: mshied_totalenrolled, mshied_name
+- adx_name: Authentication/OpenAuth/Facebook/AppId
+  adx_sitesettingid: a0a92a4f-9f97-4ee8-8a12-88119a242f53
+  importsequencenumber: 5
+- adx_description: A true or false value. If set to true, the portal will display the terms and conditions of the site. Users must agree to the terms and conditions before they are considered authenticated and can use the site.
+  adx_name: Authentication/Registration/TermsAgreementEnabled
+  adx_sitesettingid: a10b431a-9277-4c1f-8505-3519d78e1272
+  adx_value: false
+- adx_description: >-
+    A collection of search logical name filter options. Defining a value here will add dropdown filter options to site-wide search.
+
+
+    This value should be in the form of name/value pairs, with name and value separated by a colon, and pairs separated by a semicolon. For example: "Forums:adx_communityforum,adx_communityforumthread,adx_communityforumpost;Blogs:adx_blog,adx_blogpost,adx_blogpostcomment".
+  adx_name: search/filters
+  adx_sitesettingid: aad26b63-ff2d-4856-9934-cae5703060da
+- adx_name: Search/IndexNotesAttachments
+  adx_sitesettingid: bd1c7f33-2d0d-4752-9205-2d32a819fd62
+  adx_value: false
+- adx_description: Used to group a set of entities under an entry in the record type facet view.
+  adx_name: Search/RecordTypeFacetsEntities
+  adx_sitesettingid: c2e1e602-9e7d-449d-ab57-34ac15fbdc70
+  adx_value: Downloads:annotation,adx_webfile
+- adx_name: Webapi/mshied_coursehistory/enabled
+  adx_sitesettingid: c33e4a6b-771e-ed11-b83e-0022480846a7
+  adx_value: true
+- adx_name: Search/Enabled
+  adx_sitesettingid: c4bcba22-2ad9-4091-8528-71deedfae2c0
+  adx_value: true
+- adx_description: A date/time value in GMT format to represent the effective date of the current published terms and conditions. If the terms agreement is enabled, portal users that have not accepted the terms after this date will be asked to accept them the next time they sign in. If the date is not provided, and the terms agreement is enabled, the terms will be presented every time portal users sign in.
+  adx_name: Authentication/Registration/TermsPublicationDate
+  adx_sitesettingid: c8f097e0-4e73-4cc6-9c65-94c40e2458c2
+- adx_description: 'The amount of time the IP address will have to wait if Authentication/LoginThrottling/MaxInvaildAttemptsFromIPAddress occur within Authentication/LoginThrottling/MaxAttemptsTimeLimitTimeSpan amount of time. Default: 00:10:00 (10 mins)'
+  adx_name: Authentication/LoginThrottling/IpAddressTimeoutTimeSpan
+  adx_sitesettingid: d31f8b81-325e-4aeb-87d8-10be3626639a
+  adx_value: 00:10:00
+- adx_description: Determines if faceted search is used for this portal.
+  adx_name: Search/FacetedView
+  adx_sitesettingid: d7400a66-12aa-4f46-999d-ea855bfa27c0
+  adx_value: True
+- adx_name: Authentication/Registration/EmailConfirmationEnabled
+  adx_sitesettingid: d7b8c6e5-1e7a-4ff1-88d1-87584fa10439
+  adx_value: true
+  importsequencenumber: 3
+- adx_description: Sets whether or not the portal can redirect the user to the profile page after successful sign-in. By default, it is set to true.
+  adx_name: Authentication/Registration/ProfileRedirectEnabled
+  adx_sitesettingid: db166b89-d7b4-4a5c-b793-59dd497d22c6
+  adx_value: false
+  importsequencenumber: 3
+- adx_name: Authentication/OpenAuth/Facebook/AppSecret
+  adx_sitesettingid: e117eac4-0a4a-4728-b30c-da27b0d33612
+  importsequencenumber: 5
+- adx_name: Webapi/mshied_coursehistory/fields
+  adx_sitesettingid: e1466d86-781e-ed11-b83e-0022480846a7
+  adx_value: mshied_CourseSectionId,mshied_name,mshied_iscompleted,mshied_isrequired,mshied_begindate,mshied_enddate,mshied_RegistrationStatusId,mshied_StudentId,mshied_CourseId,mshied_AcademicPeriodid
+- adx_description: A true or false value. If set to true, the local account will be marked as deprecated. The portal user will be required to migrate to a non-deprecated account.
+  adx_name: Authentication/Registration/LocalLoginDeprecated
+  adx_sitesettingid: efd1b6e4-3c9d-4eb2-88e0-554ad2dd0f1a
+  adx_value: False
+- adx_description: Denies use of the portal to minors. By default, it is set to false.
+  adx_name: Authentication/Registration/DenyMinors
+  adx_sitesettingid: f09a6ee3-a444-4455-bd4e-16e55b1ed48d
+  adx_value: false
+- adx_name: Authentication/Registration/InvitationEnabled
+  adx_sitesettingid: f4a6df86-09a1-4198-8da8-5a7cf614c06f
+  adx_value: true
+  importsequencenumber: 3
+- adx_description: 'The default number of unauthenticated login attempts from an IP address before the IP address is blocked for Authentication/LoginThrottling/IpAddressTimeoutTimeSpan if the attempts occur within Authentication/LoginThrottling/MaxAttemptsTimeLimitTimeSpan amount of time. Default: 1000'
+  adx_name: Authentication/LoginThrottling/MaxInvaildAttemptsFromIPAddress
+  adx_sitesettingid: fac78fa2-adb7-46f3-8dc8-339bd61552a4
+  adx_value: 1000
+- adx_name: Authentication/Registration/ExternalLoginEnabled
+  adx_sitesettingid: ff4ca32a-a9de-43a8-91b2-0e58f4d3e86f
+  adx_value: true
+  importsequencenumber: 3

@@ -1,0 +1,12 @@
+<script>
+$(document).ready(function() {
+    var code = {};
+    $("select[data-group='group1'] > option").each(function () {
+        if (code[this.text]) {
+            $(this).remove();
+        } else {
+            code[this.text] = this.value;
+        }
+    });
+});
+</script>

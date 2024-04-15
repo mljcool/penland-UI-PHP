@@ -1,0 +1,155 @@
+<style>
+   .DashBoard-user-profile {
+  min-height: 85% !important;
+  /*  BACKGROUND  */
+  /*  CONTENT  */
+}
+.DashBoard-user-profile .user-profile-header-banner img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 170px;
+}
+.DashBoard-user-profile .user-profile-header {
+  margin-top: -2rem;
+}
+.DashBoard-user-profile .user-profile-header .user-profile-img {
+  border: 5px solid;
+  width: 120px;
+}
+.DashBoard-user-profile .user-profile-header .user-profile-img {
+  border-color: #fff;
+}
+.DashBoard-user-profile .dark-style .user-profile-header .user-profile-img {
+  border-color: #2b2c40;
+}
+.DashBoard-user-profile .dataTables_wrapper .card-header .dataTables_filter label {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+@media (max-width: 767.98px) {
+  .DashBoard-user-profile .user-profile-header-banner img {
+    height: 150px;
+  }
+  .DashBoard-user-profile .user-profile-header .user-profile-img {
+    width: 100px;
+  }
+}
+.DashBoard-user-profile .container-weather {
+  overflow: hidden;
+  z-index: 10;
+  position: relative;
+  margin: 20px 0;
+  height: 90px;
+  width: 300px;
+  background-color: #f17022;
+  border-radius: 10px;
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+.DashBoard-user-profile .container-weather .bx-sun,
+.DashBoard-user-profile .container-weather .Temp,
+.DashBoard-user-profile .container-weather .Time,
+.DashBoard-user-profile .container-weather .bx-map,
+.DashBoard-user-profile .container-weather .Location,
+.DashBoard-user-profile .container-weather .Condition {
+  color: #fff !important;
+}
+.DashBoard-user-profile .Circle1 {
+  z-index: 100;
+  position: absolute;
+  height: 80px;
+  width: 80px;
+  right: -20px;
+  top: -30px;
+  border-radius: 50%;
+  background-color: rgb(253, 184, 19);
+  animation: enlarge;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+.DashBoard-user-profile .Circle2 {
+  z-index: 80;
+  position: absolute;
+  height: 150px;
+  width: 150px;
+  right: -50px;
+  top: -70px;
+  border-radius: 50%;
+  background-color: rgba(246, 140, 31, 0.7);
+  animation: enlarge;
+  animation-duration: 7s;
+  animation-iteration-count: infinite;
+}
+.DashBoard-user-profile .Circle3 {
+  z-index: 50;
+  position: absolute;
+  height: 200px;
+  width: 200px;
+  right: -50px;
+  top: -100px;
+  border-radius: 50%;
+  background-color: rgba(241, 125, 45, 0.7);
+  animation: enlarge;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+}
+.DashBoard-user-profile .sun {
+  z-index: 1000;
+  font-size: 15px !important;
+}
+.DashBoard-user-profile .Condition {
+  z-index: 1000;
+  position: absolute;
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-size: 20px;
+  left: 20px;
+  top: 10px;
+}
+.DashBoard-user-profile .Temp {
+  z-index: 1000;
+  position: absolute;
+  font-family: "Roboto", sans-serif;
+  font-size: 35px;
+  font-weight: 400;
+  left: 20px;
+  bottom: 5px;
+}
+.DashBoard-user-profile #F {
+  z-index: 1000;
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  font-size: 30px;
+}
+.DashBoard-user-profile .Time {
+  z-index: 1000;
+  position: absolute;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 200;
+  right: 20px;
+  top: 10px;
+}
+.DashBoard-user-profile .locationIcon {
+  z-index: 1000;
+  font-size: 10px !important;
+}
+.DashBoard-user-profile .Location {
+  z-index: 1000;
+  position: absolute;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 200;
+  right: 20px;
+  bottom: 15px;
+}
+@keyframes enlarge {
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.dashboard-logo {
+  width: 150px;
+}/*# sourceMappingURL=DashBoard.css.map */
+</style>

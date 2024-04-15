@@ -1,0 +1,51 @@
+{% comment %}
+<documentation>
+    <name>ProgramRegistration/FetchCurrentRegistrations</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <module>Program Registration</module>
+    <description>
+        FetchXML to retrieve the course enrollments where course section end date is on or after today. Leveraged on my registrations page.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+
+{% fetchxml courseEnrollmentsFetch %}
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="true">
+  <entity name="mshied_coursehistory">
+    <filter type="and">
+      <condition attribute="mshied_studentid" operator="eq" value = "{{user.id}}" />
+    </filter>
+    <link-entity name="mshied_coursesection" from="mshied_coursesectionid" to="mshied_coursesectionid" link-type="inner" alias="coursesection">
+           <attribute name="mshied_name" />
+            <attribute name="mshied_coursedaytime" />
+            <attribute name="mshied_courseid" />
+            <attribute name="mshied_campusid" />
+            <attribute name="mshied_academicperiodid" />
+            <attribute name="mshied_coursesectionid" />
+            <attribute name="mshied_localcoursecode" />
+            <attribute name="mshied_instructorid" />
+            <attribute name="mshied_startdate" />
+            <attribute name="mshied_registrationstartdate" />
+            <attribute name="mshied_registrationenddate" />
+            <attribute name="mshied_location" />
+            <attribute name="mshied_enrollmentrequirements" />
+            <attribute name="mshied_enddate" />
+            <order attribute="mshied_startdate" descending="false" />
+            <filter type="and">
+              <condition attribute="mshied_enddate" operator="on-or-after" value="{{ now | date: 'yyyy-MM-dd'}}" />
+            </filter>
+        </link-entity>
+    <link-entity name="mshied_registrationstatus" from="mshied_registrationstatusid" to="mshied_registrationstatusid" link-type="inner" alias="registration">
+      <attribute name="mshied_name" />
+      <attribute name="mshied_code" />      
+      <attribute name="mshied_description" />
+    </link-entity>
+  </entity>
+</fetch>
+{% endfetchxml %}
+{% assign coursehistories = coursehistoriesFetch.results.entities %}

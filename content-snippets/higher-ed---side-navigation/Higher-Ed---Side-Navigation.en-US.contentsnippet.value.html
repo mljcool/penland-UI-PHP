@@ -1,0 +1,72 @@
+{% include 'snippet' snippet_name:'Higher Ed - Navbar CSS' %}
+{% assign primary_nav = weblinks["Primary Navigation"] %}
+{% if primary_nav %}
+    <ul class="list-unstyled components">
+    {% for link in primary_nav.weblinks %}
+        {% if link.display_page_child_links %}
+            {% if link.url != null %}
+                {% assign sublinks = sitemap[link.url].children %}
+            {% endif %}
+        {% else %}
+            {% assign sublinks = link.weblinks %}
+        {% endif %}
+        <li class="sub-section {% if sublinks.size > 0 %} dropdown{% endif %}" style="padding-bottom: 4px; padding-top: 4px;">
+            <a role="menuitem" class="sub-title"
+                aria-label="{{ link.name | escape }}"
+                {% if sublinks.size > 0 %}
+                href="#" class="dropdown-toggle" data-toggle="dropdown"
+                aria-expanded="true"
+                {% else %}
+                href="{{ link.url | escape }}"
+                {% endif %}
+                {% if link.Open_In_New_Window %} target="_blank" {% endif %}
+                {% if link.nofollow %} rel="nofollow"{% endif %}
+                {% if link.tooltip %} title="{{ link.tooltip | escape }}"{% endif %}>
+
+                {% if link.image %}
+                    {% if link.image.url startswith '.' %}
+                        <span class="{{ link.image.url | split:'.' | join }}" aria-hidden="true"></span>
+                    {% else %}
+                        <img src="{{ link.image.url | escape }}"
+                             alt="{{ link.image.alternate_text | default:link.tooltip | escape }}"
+                             {% if link.image.width %}width="{{ link.image.width | escape }}" {% else %} width="16px" {% endif %} 
+                             {% if link.image.height %}height="{{ link.image.height | escape }}" {% else %} height="14px" {% endif %} />
+                    {% endif %}
+                {% endif %}
+                {% unless link.display_image_only %}
+                    {% if sublinks.size > 0 %}
+                        <b>{{ link.name | escape }}</b>
+                    {% else %}
+                        {{ link.name | escape }}
+                    {% endif %}                    
+                {% endunless %}
+                {% if sublinks.size > 0 %}
+                    <span class="glyphicon glyphicon-menu-up" style="margin-right: 8px;"></span>
+                {% endif %}
+            </a>
+
+            {% if sublinks.size > 0 %}
+            <ul class="list-unstyled">
+                {% for sublink in sublinks %}
+                    <li role="none" style="padding-left: 8px; padding-bottom: 8px; padding-top: 8px;">
+                        <img src="{{ sublink.image.url | escape }}"
+                             alt="{{ sublink.image.alternate_text | default:sublink.tooltip | escape }}" 
+                             {% if sublink.image.width %}width="{{ sublink.image.width | escape }}" {% else %} width="16px" {% endif %} 
+                             {% if sublink.image.height %}height="{{ sublink.image.height | escape }}" {% else %} height="14px" {% endif %} />
+                        <a href="{{ sublink.url }}" style="padding-left: 8px; padding-bottom: 8px; padding-top: 8px;"
+                           aria-label="{{ sublink.name | escape }}"
+                           {% if link.Open_In_New_Window %} target="_blank" {% endif %}
+                           {% if link.nofollow %} rel="nofollow"{% endif %}
+                           {% if link.tooltip %} title="{{ link.tooltip | escape }}"{% endif %} >
+                        {% unless sublink.display_image_only %}
+                            {{ sublink.name | escape }}
+                        {% endunless %}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}

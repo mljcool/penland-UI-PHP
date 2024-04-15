@@ -1,0 +1,6 @@
+@media (min-width: 992px) {
+  .workshop-detail-page {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+}

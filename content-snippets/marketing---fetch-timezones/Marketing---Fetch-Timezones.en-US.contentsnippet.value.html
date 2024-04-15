@@ -1,0 +1,9 @@
+{% fetchxml timezoneFetch %}
+<fetch>
+  <entity name="timezonedefinition">
+    <attribute name="standardname" />
+    <attribute name="timezonecode" />
+  </entity>
+</fetch>
+{% endfetchxml %}
+{% assign timezoneList = timezoneFetch.results.entities %}

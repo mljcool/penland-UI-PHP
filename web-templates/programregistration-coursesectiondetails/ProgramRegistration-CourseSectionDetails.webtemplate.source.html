@@ -1,0 +1,204 @@
+{% comment %}
+<documentation>
+  <name>ProgramRegistration/CourseSectionDetails</name>
+  <version>1.0.0</version>
+  <author>Microsoft Business Application Solutions</author>
+  <module>Program Registration</module>
+  <description>
+    Shows the Course Section details on the page. Supports registration and cancellation scenarios for a course section.
+  </description>
+  <comments>
+    If this web template is modified, it may be overridden by the future upgrades.
+    This web template should be included in whichever web page needed.
+  </comments>
+</documentation>
+{% endcomment %}
+
+{% include 'ProgramRegistration/CourseSectionDetailsCSS' %}
+{% assign coursesectionid = request.params.sectionid  %}
+{% include 'ProgramRegistration/FetchCourseSectionDetails' %}
+{% include 'ProgramRegistration/FetchCourseEnrollmentDetails' %}
+{% include 'HigherEd/Marketing/FetchTimezones' %}
+{% include 'ProgramRegistration/RegistrationStatusesFetch' %}
+{% assign show_side_nav = settings["ProgramRegistration/ShowSideNavigation"] | boolean | default:true %}
+{% if coursesection.mshied_adminapproval %}
+  {% assign scheduledOrAdminApprovalRegistrationStatus = registrationStatuses | where: 'mshied_code', "AA" | first %}
+{% else %}
+  {% assign scheduledOrAdminApprovalRegistrationStatus = registrationStatuses | where: 'mshied_code', "SCH" | first %}
+{% endif %}
+
+{% assign waitlistedRegistrationStatus = registrationStatuses | where: 'mshied_code', "WAT" | first %}
+{% assign dropRegistrationStatus = registrationStatuses | where: 'mshied_code', "DRP" | first %}
+
+<div id="container-main" class="container">
+  <div id="transContainer" class="transFlexContainer">
+    <div id="cancelRegDailog" style="height:143px;" tabindex="0">
+      <img src="/close.png" onclick="ShowHideCanceldailog(false)" onkeypress="ShowHideCanceldailog(false)" style="float:right;margin-top: 5px;margin-right: 5px;"  tabindex="0"/>
+      <div class="dialogText" style="height:60px;margin-bottom:11px;padding-left:24px;padding-right:24px">
+        {% if registrationstatus == 'WAT'  %}
+        {{ snippets["ProgramRegistration/CourseSectionDetails/CancelWaitlistRegistrationDialog"] }}
+        {% else %}
+        {{ snippets["ProgramRegistration/CourseSectionDetails/CancelRegistrationDialog"] }}
+        {% endif %}
+      </div>
+      <div class="dialogButtons">
+        <a href="#" id="cancelButton" class="cancelButton" onclick="onCancelRegistrationClick('{{coursehistoryid}}','{{dropRegistrationStatus.mshied_registrationstatusid}}','{{registrationstatus}}')">
+          {% if registrationstatus == 'WAT'  %}
+          {{ snippets["ProgramRegistration/CourseSectionDetails/CancelWaitlist"] }}
+          {% else %}
+          {{ snippets["ProgramRegistration/CourseSectionDetails/CancelRegistration"] }}
+          {% endif %}
+        </a>
+        <a href="#" id="backButton" class="backhomebutton" class="backButton" onclick="ShowHideCanceldailog(false)">Go back</a>
+      </div>
+    </div>
+  </div>
+  {% if show_side_nav %}
+
+  <!-- Left Navigation. Will show only when site setting is enabled-->
+  <div id="side-nav" class="col-sm-3 col-md-2 hidden-xs sidebar left-column">
+
+    <!--Load the custom side navigation menu-->
+    {% include 'HigherEd/SideNavigation' %}
+  </div>
+  <div class="col-md-10 col-sm-9">
+    {% else %}
+    <div class="form-right-column">
+      {% endif %}
+
+      <!-- Banner  -->
+      <div class="banner">
+        <div class="banner-title" id="mshied_name">
+          {{ coursesection.mshied_name }}
+        </div>
+      </div>
+      <div class="csbody">
+        <div class="data">
+
+          <!-- Message Bar -->
+          <div id="messagebar">
+            <div id="messageicon"></div>
+            <div id="registrationmessage">
+              <span id="registerforwaitlist" class="hide">{{ snippets["ProgramRegistration/CourseSectionDetails/RegisterForWaitlist"] }}</span>
+              <span id="registrationclosed" class="hide">{{ snippets["ProgramRegistration/CourseSectionDetails/RegistrationClosed"] }}</span>
+              <span id="registered" class="hide">{{ snippets["ProgramRegistration/CourseSectionDetails/Registered"] }}</span>
+              <span id="registeredforwaitlist" class="hide">{{ snippets["ProgramRegistration/CourseSectionDetails/RegisteredForWaitlist"] }}</span>
+              <span id="nospotsorwaitlist" class="hide">{{ snippets["ProgramRegistration/CourseSectionDetails/NoSpotsorWaitlist"] }}</span>
+              <span id="awaitingadminapproval" class="hide">{{ snippets["ProgramRegistration/CourseSectionDetails/AwaitingAdminApproval"] }}</span>
+              <span id="admindrop" class="hide">{{ snippets["ProgramRegistration/CourseSectionDetails/admindrop"] }}</span>
+              <span id="registrationfull" class="hide">{{ snippets["ProgramRegistration/CourseSectionDetails/registrationfull"] }}</span>          
+           <span id="aarequireforregistration" class="hide">{{ snippets["ProgramRegistration/CourseSectionDetails/AdminApprovalRequiredForRegistration"] }}</span>                                                 
+            </div>
+          </div>
+
+          <!-- About Program and Supplies and Materials fields -->
+          <div>
+            <div class="row toprow">
+              <label class="toplabel">{{ snippets["ProgramRegistration/CourseSectionDetails/About"] }}</label>
+            </div>
+            <div class="row toprow topdata" id="mshied_description">
+              {{ coursesection['course.mshied_description'] }}
+            </div>
+            <div class="topdatadivider"></div>
+            <div class="row toprow">
+              <label class="toplabel">{{ snippets["ProgramRegistration/CourseSectionDetails/SuppliesAndMaterials"] }}</label>
+            </div>
+            <div class="row toprow topdata" id="mshied_suppliesandmaterials">
+              {{ coursesection.mshied_suppliesandmaterials }}
+            </div>
+            <div class="topdatadivider"></div>
+          </div>
+
+          <!-- Other fields  -->
+          <div>
+            <div class="bottomrow">
+              <div class="bottomlabel col">{{ snippets["ProgramRegistration/CourseSectionDetails/StartDate"] }}</div>
+              <div class="bottomdata col-6" id="mshied_startdate">{{ coursesection.mshied_startdate | date: 'MMMM dd, yyyy'}}</div>
+            </div>
+            <hr class="divider">
+            <div class="bottomrow">
+              <div class="bottomlabel col">{{ snippets["ProgramRegistration/CourseSectionDetails/EndDate"] }}</div>
+              <div class="bottomdata col-6" id="mshied_enddate">{{ coursesection.mshied_enddate | date: 'MMMM dd, yyyy' }}</div>
+            </div>
+            <hr class="divider">
+            <div class=" bottomrow">
+              <div class="bottomlabel col">{{ snippets["ProgramRegistration/CourseSectionDetails/Days"] }}</div>
+              <div class="bottomdata col-6" id="mshied_coursedaytime">{{ coursesection.mshied_coursedaytime }}</div>
+            </div>
+            <hr class="divider">
+            <div class=" bottomrow">
+              <div class="bottomlabel col">{{ snippets["ProgramRegistration/CourseSectionDetails/Eligibility"] }}</div>
+              <div class="bottomdata col-6" id="mshied_enrollmentrequirements">{{ coursesection.mshied_enrollmentrequirements }}</div>
+            </div>
+            <hr class="divider">
+            <div class="bottomrow">
+              <div class="bottomlabel col">{{ snippets["ProgramRegistration/CourseSectionDetails/Instructor"] }}</div>
+              <div class="bottomdata col-6" id="instructor.fullname">{{ coursesection['instructor.fullname'] }}</div>
+            </div>
+            <hr class="divider">
+            <div class="bottomrow">
+              <div class="bottomlabel col">{{ snippets["ProgramRegistration/CourseSectionDetails/Location"] }}</div>
+              <div class="bottomdata col-6" id="mshied_location">{{ coursesection.mshied_location }}</div>
+            </div>
+            <hr class="divider">
+            <div class="bottomrow">
+              <div class="bottomlabel col">{{ snippets["ProgramRegistration/CourseSectionDetails/Status"] }}</div>
+              <span id="mshied_coursesectionstatusid" class="hide">{{ coursesection.mshied_coursesectionstatus.value }}</span>
+              <div class="bottomdata col-6" id="mshied_coursesectionstatus">{{ coursesection.mshied_coursesectionstatus.label }}</div>
+            </div>
+            <hr class="divider">
+            <div class="bottomrow">
+              <div class="bottomlabel col">{{ snippets["ProgramRegistration/CourseSectionDetails/SpotsRemaining"] }}</div>
+              <div class="bottomdata col-6">
+                <span id="mshied_totalenrolled" class="hide">{{ coursesection.mshied_totalenrolled }}</span>
+                <span id="mshied_allowwaitlist" class="hide">{{ coursesection.mshied_allowwaitlist }}</span>
+                {% if coursesection.mshied_enrollmentlimit == nil %}
+                    <span id="spotsremaining">No limit</span>
+                {% else %}
+                  <span id="spotsremaining">0</span>
+                  <span>/</span>
+                  <span id="mshied_enrollmentlimit">{{coursesection.mshied_enrollmentlimit}}</span>                     
+                {% endif %}                  
+              </div>
+            </div>
+            <hr class="divider">
+            {% assign timezoneStandardName = "" %}
+            {% assign schoolTimezone =  coursesection['campus.mshied_timezone'] %}
+            {% for tz in timezoneList | compact %}
+            {% if schoolTimezone == tz.timezonecode %}
+            {% assign timezoneStandardName = tz.standardname %}
+            {% break %}
+            {% endif %}
+            {% endfor %}
+            <div class="bottomrow">
+              <span id="mshied_registrationenddateschooltimezone" class="hide">{{ coursesection.mshied_registrationenddateschooltimezone }}</span>
+              <span id="mshied_registrationstartdateschooltimezone" class="hide">{{ coursesection.mshied_registrationstartdateschooltimezone }}</span>
+              <div class="bottomlabel col">{{ snippets["ProgramRegistration/CourseSectionDetails/RegistrationDeadline"] }}</div>
+              <div class="bottomdata col-6" id="mshied_registrationenddate">{{ coursesection.mshied_registrationenddate | date: 'MMMM dd, yyyy, h:mm tt' }} {{ timezoneStandardName }}</div>
+            </div>
+            <hr class="divider">
+            <div class="bottomrow">
+              <div class="bottomlabel col">{{ snippets["ProgramRegistration/CourseSectionDetails/AdminApprovalNeeded"] }}</div>
+              <div class="bottomdata col-6" id="mshied_adminapproval">{% if coursesection.mshied_adminapproval %} Yes {% else %} No {% endif %}</div>
+            </div>
+            <hr class="divider">
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="csbuttons">
+          <div id="csbuttons"> 
+            <div class="hide" id="registrationstatus">{{ registrationstatus }}</div>
+            <input type="button" class="btn csprimary hide" id="btnregister" value="{{ snippets["ProgramRegistration/CourseSectionDetails/RegisterNow"] }}" onclick="onRegistrationButtonClick('{{user.fullname}}','{{ coursesection.mshied_name }}', '{{coursesection.mshied_academicperiodid.id}}', '{{coursesection.mshied_courseid.id}}', '{{ coursesectionid }}', '{{user.id}}','{{coursesection.mshied_startdate}}', '{{coursesection.mshied_enddate}}','{{scheduledOrAdminApprovalRegistrationStatus.mshied_registrationstatusid}}','{{ coursesection['program.mshied_name'] }}', '{{ coursesection['program.mshied_programid'] }}', '{{ coursesection.mshied_organization.id }}' );" />
+            <input type="button" class="btn cssecondary hide" id="btncancelregistration" value="{{ snippets["ProgramRegistration/CourseSectionDetails/CancelRegistration"] }}" onclick="ShowHideCanceldailog(true)" />
+            <input type="button" class="btn csprimary hide" id="btnregisterwaitlist" value="{{ snippets["ProgramRegistration/CourseSectionDetails/Waitlist"] }}" onclick="onRegistrationWaitlistClick('{{user.fullname}}','{{ coursesection.mshied_name }}', '{{coursesection.mshied_academicperiodid.id}}', '{{coursesection.mshied_courseid.id}}', '{{ coursesectionid }}', '{{user.id}}','{{coursesection.mshied_startdate}}', '{{coursesection.mshied_enddate}}','{{waitlistedRegistrationStatus.mshied_registrationstatusid}}','{{ coursesection['program.mshied_name'] }}', '{{ coursesection['program.mshied_programid'] }}', '{{ coursesection.mshied_organization.id }}' );" />
+            <input type="button" class="btn cssecondary hide" id="btncancelwaitlist" value="{{ snippets["ProgramRegistration/CourseSectionDetails/CancelWaitlist"] }}" onclick="ShowHideCanceldailog(true)" />
+        
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% include 'HigherEd/Marketing/WebAPIAJAX' %}
+  {% include 'ProgramRegistration/CourseSectionDetailsPageJS' %}
+  

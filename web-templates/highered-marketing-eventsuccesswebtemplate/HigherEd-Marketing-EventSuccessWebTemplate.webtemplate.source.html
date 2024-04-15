@@ -1,0 +1,66 @@
+{% comment %}
+<documentation>
+    <name>HigherEd/Marketing/EventSuccessWebTemplate</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <product>Highered Portal</product>
+    <description>
+        Web template to show success page after successfull registration.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+{% include 'HigherEd/GridPageCSS' %}
+{% include 'HigherEd/Marketing/EventSuccessCSS' %}
+{% assign eventId = request.params.id %}
+ {% include 'HigherEd/Marketing/FetchEventDetails' %}
+{% if eventdetails.size > 0 %}
+{% assign event = eventdetails[0] %}
+<div class="container">
+    <div id= "main-row"class="row">
+        <div id="side-nav" class="hidden-xs col-sm-3 col-md-2 left-column">
+            <!--Side Menu Content Snippet-->
+            {% include 'HigherEd/SideNavigation' %}
+        </div>
+        <div class="col-xs-12 col-sm-9 col-md-10 form-right-column" style="background: #FAF9F8;height: 700px;">
+            <div class="success-card">
+                <div class="success-msg">
+                    {{ snippets["HigherEd/Marketing/EventSuccessWebTemplate/SuccessMessage"] }}
+                </div>
+                <div class="success-img">
+                    <img src="/icon-registration-success.png" style="height: 150px;width: 200px;margin-top: 16px;">
+                </div>
+                <div class="event-details">
+                    <div class="event-name">
+                        {{ eventdetails[0].msevtmgt_name }}
+                    </div>
+                    <div class="event-time">
+                        <img src="/icon-calender-time.png" style="width: 16px;height: 16px;margin-top: 5px;margin-right: 8px;">{{ eventdetails[0].msevtmgt_eventstartdate | date: 'MMMM dd, yyyy h:mm tt ' }}
+                    </div>
+                    <div class="event-time">
+                        <img src="/icon-calender-time.png" style="width: 16px;height: 16px;margin-top: 5px;margin-right: 8px;">{{ eventdetails[0].msevtmgt_eventenddate | date: 'MMMM dd yyyy h:mm tt ' }}
+                    </div>
+                    <div class="event-location">
+                        {% if eventdetails[0].msevtmgt_streamingenabled == 'TRUE' %}
+                            <img src="/icon-onlineevent.png" style="width:16px; height:16px;margin-top: 5px;margin-right: 8px;">Virtual - Team Meeting
+                        {% else %}
+                            {% if eventdetails[0].msevtmgt_room != null && eventdetails[0].msevtmgt_building != null %}
+                                <img src="/icon-location-main.jpg" style="width:16px; height:16px;margin-top: 5px;margin-right: 8px;">{{ event['room.msevtmgt_name'] }}, {{ event['building.msevtmgt_name'] }}                                  
+                            {% endif %}  
+                        {% endif %}   
+                    </div>
+                    <div class="eventdetailsbutton">
+                        <a href="#" class="regbutton" onclick="redirectEventDetails('{{eventId}}')">{{ snippets["HigherEd/Marketing/EventSuccessWebTemplate/BackToEventText"] }}</a>
+                    </div>
+                    <div class="divgap">
+                    </div>
+                </div>
+            </div>  
+        </div>
+    </div>
+</div>
+{% endif %}
+{% include 'HigherEd/Marketing/EventSuccessJS' %}

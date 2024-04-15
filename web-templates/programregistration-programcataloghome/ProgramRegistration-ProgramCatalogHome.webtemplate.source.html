@@ -1,0 +1,49 @@
+{% comment %}
+<documentation>
+    <name>ProgramRegistration/ProgramCatalog</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <module>Program Registration</module>
+    <description>
+        Web template to render the Program Catalog tiles.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+
+{% include 'ProgramRegistration/ProgramCatalogCSS' %}
+{% assign show_side_nav = settings["ProgramRegistration/ShowSideNavigation"] | boolean | default:true %}
+
+<div class="catalog">
+    <div class="col-xs-12 placeholder banner-details banner-card" id="programbanner">
+        <div class="program-banner-text" role="heading" aria-level="1">
+            {{ snippets["ProgramRegistration/ProgramCatalog/BannerText"] }}
+        </div>
+    </div>    
+    {% include 'ProgramRegistration/FetchCatalogPrograms' %}
+    {% if programs.size > 0 %}
+    <div id="parent" role="main">
+        <!--<div class="container-main">-->
+            <div class="parent-program">
+             {% if show_side_nav %}
+                <div class="programlist">
+            {% else %}
+                <div class="programlist programlisthome">
+            {% endif %}
+                    {% for program in programs %}
+                        {% assign currentImage = program.mshied_imagefield %}
+                        <a href="/coursesections/?id={{ program.mshied_programid }}" tabindex="0" class="program-card-tile">
+                            <div class="program-card-main {{program.mshied_name}}" tabindex="-1">                       
+                                <img src="{{program.mshied_programicon.url}}" class="program-card-image" role="none" altsrc="/Logo.png" onerror="this.src = $(this).attr('altSrc')" /><!--alt="{{program.mshied_name | append: " image"}}"-->
+                                {{program.mshied_name}}
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+    </div>
+    {% endif %}     
+</div>

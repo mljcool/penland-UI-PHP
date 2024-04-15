@@ -1,0 +1,38 @@
+{% comment %}
+<documentation>
+    <name>ProgramRegistration/FetchCourseEnrollment</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <module>Program Registration</module>
+    <description>
+        Web template to Fetch the course enrollment details based on the course enrollment id. 
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+
+{% fetchxml coursehistoryFetch %}
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="mshied_coursehistory">
+    <filter type="and">
+      <condition attribute="mshied_coursehistoryid" operator="eq" value="{{coursehistoryid}}" />
+    </filter>
+    <link-entity name="mshied_coursesection" from="mshied_coursesectionid" to="mshied_coursesectionid" link-type="inner" alias="coursesection">
+      <attribute name="mshied_name" />
+      <attribute name="mshied_startdate" />
+      <attribute name="mshied_enddate" />
+      <attribute name="mshied_coursedaytime" />
+    </link-entity>
+    <link-entity name="mshied_registrationstatus" from="mshied_registrationstatusid" to="mshied_registrationstatusid" link-type="inner" alias="registration">
+      <attribute name="mshied_code" />
+    </link-entity>
+  </entity>
+</fetch>
+{% endfetchxml %}
+
+{% if coursehistoryFetch.results.entities.size > 0 %}
+  {% assign coursehistory = coursehistoryFetch.results.entities[0] %}
+{% endif %}

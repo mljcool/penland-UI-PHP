@@ -1,0 +1,51 @@
+{% comment %}
+<documentation>
+    <name>HigherEd/StudentSuccessPath/StudentSuccessPathGrids</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <product>Highered Portal</product>
+    <description>
+        Web template to show grids on success path page.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+<div>
+<div class="row student-info-Padding" id="student-info-section">
+  <div>  
+      <div id="upcoming-assignments">
+        <h4>{{ snippets["HigherEd/StudentSuccessPath/StudentSuccessPathGrids/CoursesText"] }}</h4>{% include 'entity_list' key: 'Higher Ed - My Current Course History' %}
+      </div>    
+  </div>
+</div>
+<div class="row" id="student-info-section">
+   <div>
+      <!-- <div class="col-md-12 col-lg-6" id="left-grid"> -->
+        <div id="upcoming-assignments">
+          <h4>{{ snippets["HigherEd/StudentSuccessPath/StudentSuccessPathGrids/ExtraCurricularActivitiesText"] }}</h4>{% include 'entity_list' key: 'Higher Ed - Extra Curricular Activities' %}
+        </div>
+     <!--  </div> -->
+    </div>
+  </div>
+<div class="row" id="student-info-section">
+    <div>
+     <!-- <div class="col-md-12 col-lg-6" id="right-grid"> -->
+        <div id="upcoming-assignments">
+          <h4>{{ snippets["HigherEd/StudentSuccessPath/StudentSuccessPathGrids/RecommendedResources"] }}</h4>{% include 'entity_list' key: 'Higher Ed - Student Resources' %}
+        </div>
+     <!--  </div> -->
+   </div>
+</div>
+<!-- <div class="row" id="student-info-section">
+  <div>
+    <div>
+      <div id="upcoming-assignments">
+        <h4>{{ snippets["HigherEd/StudentSuccessPath/StudentSuccessPathGrids/MyAssignments"] }}</h4>{% include 'entity_list' key: 'Higher Ed - My Assignments' %}
+      </div>
+    </div>
+  </div>
+</div> -->
+</div>

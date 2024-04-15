@@ -1,0 +1,24 @@
+{% comment %}
+<documentation>
+    <name>HigherEd/TalkWithAdvisorCard</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <product>Highered Portal</product>
+    <description>
+        Shows Talk with Advisor card on home page that redirects to connect page on click.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+<div id="talkadvisor" onclick="location.href='/connect';" class="col-xs-12 col-sm-4 placeholder" style="position: relative; padding-left: 8px; padding-right: 8px; cursor: pointer;"><a href="/connect/" style="color: rgb(47, 95, 239); text-decoration-line: none; text-decoration-style: initial; text-decoration-color: initial;"><img alt="Talk with advisor" src="/HigherEd-home_card_advisor" class="img-responsive hero-card" style="height: 100%; width: 100%; box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px;"> </a>
+  <div class="row" style="">
+    <div class="col-xs-2 icon-row" style="padding-left: 0px; padding-right: 0px; padding-top: 12px;"><a href="/connect/" style="color: rgb(47, 95, 239); text-decoration-line: none; text-decoration-style: initial; text-decoration-color: initial;"><img alt="Card Icon" src="/HigherEd-talkwithadvisor_icon" class="img-responsive" style="box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px; width: 42px; height: 42px;"> </a></div>
+    <div class="col-xs-10 link-column">
+      <h4 aria-level="2" class="adjustmargin" tabindex="0">{{ snippets["HigherEd/TalkWithAdvisorCard/TalkWithAdvisorText"] }}</h4>
+      <a class="card-link" href="/connect" aria-label="Talk with an advisor"  tabindex="-1"></a> 
+    </div>
+  </div>
+</div>

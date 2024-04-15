@@ -1,0 +1,23 @@
+{% fetchxml registrationsfetch %}
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+    <entity name="msevtmgt_eventregistration">
+        <attribute name="msevtmgt_name" />
+        <attribute name="createdon" />
+        <attribute name="msevtmgt_industry" />
+        <attribute name="msevtmgt_eventid" />
+        <attribute name="msevtmgt_contactid" />
+        <attribute name="msevtmgt_primaryrole" />
+        <attribute name="msevtmgt_eventregistrationid" />
+        <order attribute="msevtmgt_name" descending="false" />
+        <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+            <condition attribute="msevtmgt_eventid" operator="eq" value="{{eventId}}" />
+            <condition attribute="msevtmgt_contactid" operator="eq" value="{{user.id}}" />
+        </filter>
+        <link-entity name="contact" from="contactid" to="msevtmgt_contactid" visible="false" link-type="outer" alias="contact">
+            <attribute name="parentcustomerid" />
+        </link-entity>
+    </entity>
+</fetch>
+{% endfetchxml %}
+{% assign registrations = registrationsfetch.results.entities %}

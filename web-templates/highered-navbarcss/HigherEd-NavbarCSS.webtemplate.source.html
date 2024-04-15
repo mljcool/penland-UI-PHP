@@ -1,0 +1,153 @@
+{% comment %}
+<documentation>
+    <name>HigherEd/NavbarCSS</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <product>Highered Portal</product>
+    <description>
+        Defines all CSS styles for side navigation.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+<style>
+
+a.sub-title.collapsed span.glyphicon.glyphicon-menu-up
+{  
+
+  margin-right: 8px;
+  content: "\e258";
+  transform: rotate(180deg);
+}
+
+#sidebar-navigation-top-section {
+    border-top: 4px solid #F3F2F1;
+}
+
+#side-nav .glyphicon glyphicon-menu-up {
+    padding-right: 8px;
+    margin-right: 8px;
+}
+
+.glyphicon-menu-up {
+    margin-right: 8px;
+}
+
+#currentsemester, #myrecords, #studentsupport {
+    padding-right: 16px;
+}
+
+#inbox-count {
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 3px;
+    margin-left: 8px;
+    text-align: center;
+}
+
+#sidebar-navigation-top-section {
+    padding-top: 20px;
+}
+
+#side-nav a {
+    text-decoration: none;
+}
+
+#sidebar-navigation-top-section {
+    padding-bottom: 20px;
+}
+
+#sidebar-navigation-top-section .sub-section {
+    padding-bottom: 4px;
+    padding-top: 4px;
+}
+.sub-section {
+    padding-bottom: 4px;
+    padding-top: 4px;
+}
+ .sub-section a, .sub-section li {
+     padding-left: 8px;
+    //padding-bottom: 8px;
+    //padding-top: 8px;
+}
+
+#side-nav {
+    background-color: #FFFFFF;
+    padding-right: 0px;
+    padding-left:unset !important;
+    
+}
+
+#side-nav li a, #side-nav a {
+    color: #000;
+}
+
+#currentsemester, #myrecords, #studentsupport  {
+    padding-bottom: 16px;
+    
+}
+
+.sub-section li:hover {
+background-color: #F3F2F1;
+border-style: none;
+border-left-color: #1F6CF9;
+border-bottom-color: #F3F2F1;
+border-top-color: #F3F2F1;
+border-right-color: #F3F2F1;
+/*margin-left: 3px; */
+}
+
+
+#side-nav .glyphicon-menu-up {
+  float: right;
+}
+
+
+
+#side-nav {
+    background-color: #FFFFFF;
+}
+
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+
+.weblink a {
+        visibility: hidden;
+    }
+    
+}
+
+/* Landscape tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+    .weblink a {
+        visibility: hidden;
+    }
+    
+
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+    .weblink a {
+        visibility: hidden;
+    }
+    
+}
+
+
+@media(max-width:480px){
+   
+    .weblink a {
+        visibility: visible;
+    }
+    
+}
+
+</style>

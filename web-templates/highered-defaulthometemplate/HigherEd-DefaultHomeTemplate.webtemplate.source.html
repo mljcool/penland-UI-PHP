@@ -1,0 +1,23 @@
+
+
+<!--Main homepage of application.  The page shows two different layouts depending on if you are signed in or signed out-->
+<!--Check if User-->
+{%if user%} 
+<!--Load Home Page CSS for signed in users-->
+{% include 'HigherEd/HomePageCSS' %} 
+{% include 'HigherEd/GridPageCSS' %}
+{% else %} 
+<!--Load landing page css if not signed in-->
+{% include 'HigherEd/UnauthenticatedLandingPage/UnauthenticatedLandingPageCSS' %} {% endif %}
+<div class="container-fluid search-container -test-class DashBoard-user-profile">
+{% assign show_side_nav = settings["ProgramRegistration/ShowSideNavigation"] | boolean | default:true %}
+   <!--check if user is logged in-->
+   {%if user%}
+   <!--start loading the personalized home page HTML-->
+
+   {% editable snippets 'DashBoardHome' type: 'html' %}
+   <!--If the user is logged out, show the unauthenticated splash screen-->
+   {% else %} 
+        {% include 'HigherEd/UnauthenticatedLandingPage/UnauthenticatedSigninHomePage' %} 
+   {% endif %}
+</div>

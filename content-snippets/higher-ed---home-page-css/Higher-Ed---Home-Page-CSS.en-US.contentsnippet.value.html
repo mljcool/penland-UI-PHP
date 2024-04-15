@@ -1,0 +1,895 @@
+<style>
+
+
+
+
+
+    .view-empty {
+        text-align: center;
+    }
+
+    .placeholder a {
+        text-decoration: none;
+    }
+
+        .placeholder a:hover,
+        .placeholder .glyphicon-triangle-right:hover {
+            color: #00A1F1;
+        }
+
+    #currentcourses .row:hover {
+    }
+
+    #right-grid {
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-bottom: 8px;
+    }
+
+    .has-pagination {
+        overflow: hidden
+    }
+
+    .main {
+        background-color: #FAF9F8;
+    }
+
+        .main h1 {
+            color: #0364C2;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 32px;
+            padding-left: 8px;
+            border-bottom: none;
+        }
+
+    .img-responsive {
+        height: 100%;
+        width: 100%;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .row .placeholders {
+        margin: 0px;
+        margin-bottom: 24px;
+    }
+
+    .placeholder {
+        position: relative;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+        .placeholder .row {
+            position: absolute;
+            bottom: 10%;
+            background: rgba(51, 51, 51, 0.65);
+            color: white;
+            margin-left: 0px;
+            padding-left: 16px;
+            width: 100%;
+            height: 64px;
+        }
+
+    .card-link {
+        color: #FFFFFF;
+        padding-left;
+    }
+
+    .icon-row img {
+        width: 42px;
+        height: 42px;
+    }
+
+    .icon-row {
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 12px;
+    }
+
+    .row .placeholders .row {
+        width: 100%;
+        max-width: 299px;
+    }
+
+    .placeholder h4 {
+        font-size: 17px;
+    }
+
+    .placeholder .glyphicon {
+        margin-left: 8px;
+    }
+
+    @media(min-width:992px) and (max-width: 1199px) {
+        .row .placeholders .row {
+            width: 94%;
+            max-width: 253px;
+        }
+
+        .placeholder h4 {
+            font-size: 13px;
+        }
+
+        .placeholder a {
+            font-size: 11px;
+        }
+
+        .left-column b {
+            font-size: 13px !important;
+        }
+
+        .left-column li {
+            padding-right: 0px !important;
+        }
+    }
+
+    @media(min-width:991px) and (max-width: 1199px) {
+        .row .placeholders .row {
+            width: 94%;
+            max-width: 253px;
+        }
+
+        .placeholder h4 {
+            font-size: 12px;
+        }
+    }
+
+    @media(min-width:768px) and (max-width: 992px) {
+        .row .placeholders .row {
+            width: 91%;
+            max-width: 253px;
+        }
+
+        .placeholder h4 {
+            font-size: 12px !important;
+        }
+
+        .card-link {
+            display: none;
+        }
+
+        .placeholder .glyphicon {
+            display: none
+        }
+
+        .placeholder .icon-row img {
+            height: 24px;
+        }
+
+        .placeholder .row {
+            height: 42px;
+        }
+    }
+
+    @media(min-width:540px) and (max-width: 768px) {
+
+        div#container-main {
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+
+        .row .placeholders .row {
+            width: 93%;
+            max-width: 253px;
+        }
+
+        .placeholder h4 {
+            font-size: 12px;
+        }
+
+        .placeholder {
+            width: 33%;
+        }
+
+        .card-link {
+            display: none;
+        }
+
+        .placeholder .glyphicon {
+            display: none
+        }
+
+        .placeholder .icon-row img {
+            height: 28px;
+        }
+
+        .placeholder .row {
+            height: 60px;
+        }
+    }
+
+    @media(min-width:500px) and (max-width:540px) {
+
+        div#container-main {
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+
+        .page-header {
+            display: none;
+        }
+
+        .hero-card {
+            visibility: hidden;
+        }
+
+        .placeholder {
+            height: 90px;
+        }
+
+        .card-link {
+            display: none;
+        }
+
+        .glyphicon {
+            display: none
+        }
+
+        .row .placeholders .row {
+            width: 96%;
+            max-width: 540px;
+        }
+
+        .placeholders {
+            background-image: url("/home_card_messages.jpg");
+            height: 470px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding-top: 40%;
+        }
+    }
+
+    @media(min-width:200px) and (max-width:500px) {
+
+        div#upcoming-assignments {
+            margin-top: 16px;
+        }
+
+        div#student-info-section {
+            padding-left: 8px;
+        }
+
+        div#upcoming-assignments, div#current-courses, div#upcoming-appointments {
+            margin-left: 8px;
+            margin-right: 8px;
+            width: 93% !important;
+        }
+
+        .row.placeholders {
+            padding-left: 16px;
+            padding-right: 8px;
+        }
+
+        div#container-main {
+            margin-left: 0px;
+            margin-right: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        .page-header {
+            display: none;
+        }
+
+        .hero-card {
+            visibility: hidden;
+        }
+
+        .placeholder {
+            height: 90px;
+        }
+
+        .card-link {
+            display: none;
+        }
+
+        .glyphicon {
+            display: none
+        }
+
+        .row .placeholders .row {
+            width: 94%;
+            max-width: 441px;
+        }
+
+        .placeholders {
+            background-image: url("HigherEd-home_card_scholarship");
+            height: 470px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding-top: 45%;
+        }
+    }
+
+
+    #upcoming-assignments td button {
+        display: none;
+    }
+
+
+    #upcoming-appointments td,
+    #upcoming-assignments td,
+    #current-courses td {
+        font-size: 13.5px !important;
+    }
+
+    #upcoming-assignments > h4,
+    #upcoming-appointments > h4,
+    #current-courses > h4 {
+        padding-top: 10px !important;
+        padding-bottom: 11px !important;
+        padding-left: 16px !important;
+        margin: 0;
+        font-weight: bold;
+        font-size: large;
+    }
+
+
+    .sectionBlockLayout {
+        min-height: 0px !important;
+        padding: 0px !important;
+    }
+
+    a {
+        color: #2F5FEF;
+    }
+
+    .btn {
+        font-size: 14px;
+        border-radius: 2px;
+    }
+
+    .btn-primary {
+        background-color: #0078D4;
+        border-color: #0078D4;
+    }
+
+    .panel-body {
+        background-color: #f5f5f5;
+    }
+
+    #currentcourses h4,
+    #applyscholarship h4,
+    #talkadvisor h4 {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        align-items: center;
+        color: #FFFFFF;
+        margin-bottom: 2px;
+    }
+
+    #upcoming-assignments td button {
+        display: none;
+    }
+
+    .placeholder a {
+        text-decoration: none;
+    }
+
+        .placeholder a:hover,
+        .placeholder .glyphicon-triangle-right:hover {
+            color: #00A1F1;
+        }
+
+    #right-grid {
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-bottom: 8px;
+    }
+
+    .has-pagination {
+        overflow: hidden
+    }
+
+    .main {
+        background-color: #FAF9F8;
+    }
+
+        .main h1 {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 32px;
+            display: flex;
+            align-items: center;
+            color: #0364C2;
+        }
+
+    .img-responsive {
+        height: 100%;
+        width: 100%;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .row .placeholders {
+        margin: 0px;
+        margin-bottom: 24px;
+    }
+
+    .placeholder {
+        position: relative;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+        .placeholder .row {
+            position: absolute;
+            bottom: 10%;
+            background: rgba(51, 51, 51, 0.65);
+            color: white !important;
+            margin-left: 0px;
+            padding-left: 16px;
+            width: 100%;
+            height: 64px;
+        }
+
+    .card-link {
+        color: #FFFFFF;
+    }
+
+    .icon-row img {
+        width: 42px;
+        height: 42px;
+    }
+
+    .icon-row {
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 12px;
+    }
+
+    .row .placeholders .row {
+        width: 100%;
+        max-width: 299px;
+    }
+
+    .placeholder h4 {
+        font-size: 17px;
+    }
+
+    .placeholder .glyphicon {
+        margin-left: 8px;
+        padding-top: 0px;
+    }
+
+    #student-info-section .view-grid th.sort-enabled span.fa.fa-arrow-up {
+        top: 0px;
+    }
+
+    #student-info-section .view-grid th.sort-enabled span.fa.fa-arrow-down {
+        top: 0px;
+    }
+
+    @media(min-width:992px) and (max-width: 1199px) {
+        .row .placeholders .row {
+            width: 94%;
+            max-width: 253px;
+        }
+
+        .placeholder h4 {
+            font-size: 13px;
+        }
+
+        .placeholder a {
+            font-size: 11px;
+        }
+
+        .left-column b {
+            font-size: 13px !important;
+        }
+
+        .left-column li {
+            padding-right: 0px !important;
+        }
+    }
+
+    @media(min-width:991px) and (max-width: 1199px) {
+        .row .placeholders .row {
+            width: 94%;
+            max-width: 253px;
+        }
+
+        .placeholder h4 {
+            font-size: 12px;
+        }
+    }
+
+    @media(min-width:768px) and (max-width: 992px) {
+        .row .placeholders .row {
+            width: 91%;
+            max-width: 253px;
+        }
+
+        .placeholder h4 {
+            font-size: 12px;
+        }
+
+        .card-link {
+            display: none;
+        }
+
+        .placeholder .glyphicon {
+            display: none
+        }
+
+        .placeholder .icon-row img {
+            height: 24px;
+        }
+
+        .placeholder .row {
+            height: 42px;
+        }
+
+        .main h1.page-header {
+            margin-top: 0px
+        }
+    }
+
+    @media(min-width:540px) and (max-width: 768px) {
+        .row .placeholders .row {
+            width: 93%;
+            max-width: 253px;
+        }
+
+        .placeholder h4 {
+            font-size: 12px;
+        }
+
+        .placeholder {
+            width: 33%;
+        }
+
+        .card-link {
+            display: none;
+        }
+
+        .placeholder .glyphicon {
+            display: none
+        }
+
+        .placeholder .icon-row img {
+            height: 28px;
+        }
+
+        .placeholder .row {
+            height: 60px;
+        }
+
+        .main h1.page-header {
+            margin-top: 0px
+        }
+
+        div.link-column {
+            display: inline-flex;
+            place-content: flex-start;
+            place-items: center;
+            height: 100%;
+            padding-left: 0;
+        }
+
+        #currentcourses h4,
+        #applyscholarship h4,
+        #talkadvisor h4 {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 16px;
+            align-items: center;
+            color: #FFFFFF;
+            margin: 0px;
+        }
+    }
+
+    @media(min-width:500px) and (max-width:540px) {
+
+        .page-header {
+            display: none;
+        }
+
+        .hero-card {
+            visibility: hidden;
+        }
+
+        .placeholder {
+            height: 90px;
+        }
+
+        .card-link {
+            display: none;
+        }
+
+        .glyphicon {
+            display: none
+        }
+
+        .row .placeholders .row {
+            width: 96%;
+            max-width: 540px;
+        }
+
+        .placeholders {
+            background-image: url("/home_card_messages.jpg");
+            height: 470px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding-top: 40%;
+        }
+
+        .main h1.page-header {
+            margin-top: 0px
+        }
+
+        div.link-column {
+            display: inline-flex;
+            place-content: flex-start;
+            place-items: center;
+            height: 100%;
+            padding-left: 0;
+        }
+
+        #currentcourses h4,
+        #applyscholarship h4,
+        #talkadvisor h4 {
+            /* font-family: Segoe UI;*/
+            font-style: normal;
+            font-weight: 600;
+            font-size: 16px;
+            align-items: center;
+            color: #FFFFFF;
+            margin: 0px;
+        }
+    }
+
+    @media(min-width:200px) and (max-width:500px) {
+
+        .page-header {
+            display: none;
+        }
+
+        .hero-card {
+            visibility: hidden;
+        }
+
+        .placeholder {
+            height: 90px;
+        }
+
+        .card-link {
+            display: none;
+        }
+
+        .glyphicon {
+            display: none
+        }
+
+        .row .placeholders .row {
+            width: 94%;
+            max-width: 441px;
+        }
+
+        .placeholders {
+            background-image: url("HigherEd-mobile_card");
+            height: 470px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding-top: 45%;
+        }
+
+        .col-sm-9.col-md-10.main {
+            position: relative;
+            padding: 0px;
+        }
+
+        .main h1.page-header {
+            margin-top: 0px;
+            margin-bottom: 0px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        div.link-column {
+            display: inline-flex;
+            place-content: flex-start;
+            place-items: center;
+            height: 100%;
+            padding-left: 0;             
+        }
+        div.margin{
+            margin-top: 20px;
+        }
+
+        #currentcourses h4,
+        #applyscholarship h4,
+        #talkadvisor h4 {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 16px;
+            align-items: center;
+            color: #FFFFFF;
+            margin: 0px;
+        }
+    }
+
+    #upcoming-appointments > h4,
+    #current-courses > h4 {
+        border-bottom: 2px solid #D2D0CE;
+        font-style: normal;
+        font-weight: bold;
+        font-size: large;
+        line-height: 19px;
+        color: #000000;
+    }
+
+    #upcoming-assignments > h4 {
+        border-bottom: 2px solid #D2D0CE;
+        font-style: normal;
+        font-weight: bold;
+        font-size: large;
+        line-height: 19px;
+        color: #000000;
+    }
+
+    #upcoming-assignments,
+    #upcoming-appointments,
+    #current-courses {
+        box-shadow: 0px 1.6px 3.6px rgba(0, 0, 0, 0.132), 0px 0.3px 0.9px rgba(0, 0, 0, 0.108);
+    }
+
+    #student-info-section {
+        margin-left: 0px;
+        margin-right: 0px;
+        padding-bottom: 16px;
+    }
+
+    #upcoming-assignments {
+        background-color: #FFFFFF;
+        margin-bottom: 16px;
+    }
+
+        #upcoming-assignments > h4 {
+            font-size: 16px;
+            padding-left: 16px;
+            padding-top: 16px;
+            font-weight: bold;
+            font-size: large;
+        }
+
+    #current-courses > h4 {
+        font-size: 16px;
+        padding-left: 8px;
+        padding-top: 8px;
+        font-weight: bold;
+        font-size: large;
+    }
+
+    .view-empty {
+        padding-left: 8px;
+    }
+
+    #upcoming-appointments > h4 {
+        font-size: 16px;
+        padding-left: 8px;
+        padding-top: 8px;
+        font-weight: bold;
+        font-size: large;
+    }
+
+    #current-courses {
+        background-color: #FFFFFF;
+    }
+
+    #right-grid {
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-bottom: 8px;
+    }
+
+    .has-pagination {
+        overflow: hidden;
+    }
+
+    #upcoming-appointments {
+        background-color: #FFFFFF;
+        margin-top: 0px;
+        margin-bottom: 16px;
+    }
+
+    .table th a {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 16px;
+        color: #605E5C;
+    }
+
+    .table tr {
+        background-color: #FFFFFF !important;
+    }
+
+    #left-grid {
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-bottom: 8px;
+    }
+
+    .entity-grid.entitylist {
+        padding-left: 8px;
+        padding-bottom: 16px;
+        padding-right: 8px;
+    }
+
+    .view-empty.message {
+        margin-bottom: 0;
+        margin-top: 16px;
+    }
+
+    .view-grid table.table.table-striped.table-fluid {
+        margin-bottom: 0;
+    }
+
+    div#currentcourses {
+        cursor: pointer;
+    }
+
+    div#applyscholarship {
+        cursor: pointer;
+    }
+
+    div#talkadvisor {
+        cursor: pointer;
+    }
+
+    @media(max-width:767px) {
+        td[aria-label="action menu"] {
+            display: none;
+        }
+
+        div#current-courses {
+            margin-bottom: 16px;
+        }
+
+        div#right-grid {
+            padding-left: 8px;
+            padding-right: 8px;
+            padding-bottom: 8px;
+        }
+
+        #upcoming-assignments .table-fluid > tbody > tr:first-child {
+            border-top: none !important;
+        }
+
+        #upcoming-appointments .table-fluid > tbody > tr:first-child {
+            border-top: none !important;
+        }
+
+        #current-courses .table-fluid > tbody > tr:first-child {
+            border-top: none !important;
+        }
+
+        #upcoming-assignments .table-fluid > tbody > tr:first-child > td:first-child {
+            border-top: none;
+        }
+
+        #upcoming-appointments .table-fluid > tbody > tr:first-child > td:first-child {
+            border-top: none;
+        }
+
+        #current-courses .table-fluid > tbody > tr:first-child > td:first-child {
+            border-top: none;
+        }
+    }
+
+    @media(min-width:768px) and (max-width:1199px) {
+        div#current-courses {
+            margin-bottom: 16px;
+        }
+
+        div#right-grid {
+            padding-left: 8px;
+            padding-right: 8px;
+            padding-bottom: 8px;
+        }
+    }
+</style>

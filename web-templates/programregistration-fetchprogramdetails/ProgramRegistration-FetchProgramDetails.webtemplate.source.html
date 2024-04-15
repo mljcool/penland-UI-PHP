@@ -1,0 +1,28 @@
+{% comment %}
+<documentation>
+    <name>ProgramRegistration/FetchProgramDetails</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <module>Program Registration</module>
+    <description>
+        FetchXML to retrieve the programs name. Leveraged on the Course Sections page.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+
+{% fetchxml programDetailsFetch %}
+<fetch version="1.0" output-format="xml-platform" mapping="logical" distinct="false">
+  <entity name="mshied_program">
+    <attribute name="mshied_programid" />
+    <attribute name="mshied_name" />
+    <filter type="and">
+      <condition attribute="mshied_programid" operator="eq" value="{{ programid }}" />
+    </filter>
+  </entity>
+</fetch>
+{% endfetchxml %}
+{% assign programDetails = programDetailsFetch.results.entities %}

@@ -1,0 +1,14 @@
+adx_append: false
+adx_appendto: true
+adx_contactrelationship: mshied_contact_coursehistory_StudentId
+adx_create: true
+adx_delete: false
+adx_entitylogicalname: mshied_coursehistory
+adx_entityname: Higher Ed - Course History Entity Permissions
+adx_entitypermission_webrole:
+- 2c279978-7750-4655-8d72-1d618edcebb9
+- c15e1cd6-fbd2-4a15-853c-904c6d5f4db7
+adx_entitypermissionid: b4081dc3-5b11-ec11-b6e6-000d3a5cda7c
+adx_read: true
+adx_scope: 756150001
+adx_write: true

@@ -1,0 +1,214 @@
+/* Defaut link style */
+
+/* BURGER MENU ICON */
+.mobile-nav {
+  display: none;
+}
+
+/* Hide checkbox that controls Mobile Nav Button*/
+#drop-down-cbox {
+  display: none;
+}
+
+/* Mobile Nav Button */
+#drop-down-cbox + label {
+  position: relative;
+  display: none;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  background-color: transparent;
+  transition: all 300ms ease-in-out;
+}
+
+/* Mobile Nav Button Bars */
+#drop-down-cbox + label span {
+  position: absolute;
+  display: block;
+  background-color: #131313;
+  width: 34px;
+  height: 4px;
+  border-radius: 1px;
+  left: 50%;
+  transform: translate(-50%, -50%); /* centering trick */
+  transition: all 300ms ease-in-out;
+}
+
+/* Mobile Nav Button Bars Invididually */
+#drop-down-cbox + label span:nth-child(1) {
+  top: 35%; /* evenly spaced */
+}
+#drop-down-cbox + label span:nth-child(2) {
+  top: 50%; /* evenly spaced */
+}
+#drop-down-cbox + label span:nth-child(3) {
+  top: 65%; /* evenly spaced */
+  width: 42%;
+  margin-left: 4px;
+}
+
+#drop-down-cbox:checked + label span {
+  color: #131313;
+}
+
+/* Transform the bars into an 'X' */
+#drop-down-cbox:checked + label span:nth-child(1) {
+  top: 50%;
+  width: 45%;
+  transform: translate(-50%, -50%) rotate(45deg); /* center, then rotate */
+}
+#drop-down-cbox:checked + label span:nth-child(2) {
+  left: 150%; /* move center bar out of the picture */
+}
+#drop-down-cbox:checked + label span:nth-child(3) {
+  top: 50%;
+  width: 45%;
+  margin-left: 0;
+  transform: translate(-50%, -50%) rotate(-45deg); /* center, then rotate */
+}
+
+#access,
+#top-navigation-mobile {
+  display: none;
+}
+
+/* Tablet and Mobile View */
+@media (max-width: 768px) {
+  #access,
+  #top-navigation-mobile {
+    display: block;
+  }
+
+  #access a,
+  #access #menu a,
+  #menu li a {
+    display: block;
+    color: #050505;
+  }
+
+  .a_menu {
+    text-decoration: none;
+    padding: 2rem 0;
+    border-bottom: solid 1.9px #d9d9d8;
+    margin: 20px 2rem;
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-between;
+    text-transform: uppercase;
+  }
+  #access a {
+    text-transform: uppercase;
+  }
+  #menu li .last_anchor {
+    border-bottom: 0;
+  }
+  #mobile_menu_wrapper {
+    padding: 5px;
+  }
+  .f-a-w-btn {
+    outline: none;
+    border: solid 1px #2c2c2c;
+    background: #fff;
+    font-size: 10px;
+    padding: 8px 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  #access a:hover,
+  #access #menu a:hover,
+  #access a.skip-link.focus,
+  #access #menu a.skip-link.focus,
+  #menu li a:hover {
+    background-color: #ffffff;
+    color: #272727;
+    text-decoration: none;
+  }
+
+  #menu {
+    border: 0 none;
+    margin: 0;
+    padding: 2px 0;
+  }
+  #menu li a {
+    white-space: nowrap;
+  }
+
+  .power-menu-find-work-shop {
+    margin: 3rem 0 !important;
+  }
+
+  .find_workshop_nav {
+    background: #f1c400 !important;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-radius: 2px;
+  }
+
+  #drop-down-cbox + label {
+    display: block;
+  }
+  #access {
+    overflow-y: hidden;
+  }
+
+  #menu {
+    background-color: #f3f2ed;
+    transform: translateY(-100%);
+    overflow: hidden;
+    transition: 500ms transform ease-in;
+    position: relative;
+  }
+
+  #menu.show-mobile-nav {
+    transform: translateY(0);
+  }
+
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    cursor: pointer;
+    touch-action: pan-x;
+  }
+  #mobile_menu_wrapper {
+    background: white;
+  }
+  #access a#mobile_menu_wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 9999;
+    position: relative;
+    border-bottom: #e7e7e7 1px solid;
+  }
+
+  /* TOP MENU NAVIGATIONS */
+
+  #top-navigation-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 8px 0;
+    background: #d6d2c4;
+  }
+  .top-nav-menus {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    list-style-type: none;
+    align-items: center;
+    gap: 1rem;
+    margin: 0;
+  }
+  .top-nav-menus li {
+    display: block;
+
+    text-decoration: none;
+    width: 100%;
+  }
+}

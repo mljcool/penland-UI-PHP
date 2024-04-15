@@ -1,0 +1,532 @@
+{% comment %}
+<documentation>
+    <name>ProgramRegistration/CourseSectionDetailsPageJS</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <module>Program Registration</module>
+    <description>
+        Web template contains JS functions that are called on Course Sections Details page.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+
+<script>
+
+var portalGenericErrorMessage = '{{snippets["Portal Generic Error"]}}';
+var cancelRegistrationHeader = '{{snippets["ProgramRegistration/CourseSectionDetails/CancelRegistrationHeader"]}}';
+var cancelWaitlistRegistrationHeader = '{{snippets["ProgramRegistration/CourseSectionDetails/CancelWaitlistRegistrationHeader"]}}';
+var cancelRegistrationMessage = '{{snippets["ProgramRegistration/CourseSectionDetails/CancelDialogMessage"]}}';
+
+
+$(document).ready(function(){
+
+    if($("#spotsremaining").text() !='No limit'){
+        var enrollmentLimit = $("#mshied_enrollmentlimit").text() ? $("#mshied_enrollmentlimit").text() : 0;
+        var totalEnrolled = $("#mshied_totalenrolled").text()? $("#mshied_totalenrolled").text() : 0;      
+        var spotsRemaining = enrollmentLimit - totalEnrolled;
+        $("#spotsremaining").text(spotsRemaining);
+    }
+
+    hideShowButtons()
+});
+
+function hideShowButtons(){
+ 
+     var registrationstatus = $("#registrationstatus").text() ? $("#registrationstatus").text().trim().toLowerCase() : "";
+
+    // show Register Now button only when there is not existing student registration
+    if(registrationstatus == "" || registrationstatus=="NOTREGISTERED" || (registrationstatus!= "aa" && registrationstatus!= "sch" && registrationstatus!= "wat"))
+    {
+        var courseSectionStatus = $("#mshied_coursesectionstatusid").text() ? $("#mshied_coursesectionstatusid").text().trim() : 0;
+        var allowWaitlist = $("#mshied_allowwaitlist").text() ? $("#mshied_allowwaitlist").text().trim() : null;
+        var spotsRemaining = $("#spotsremaining").text() ? $("#spotsremaining").text().trim() : 0;
+        var registrationStartDate = $("#mshied_registrationstartdateschooltimezone").text() ? $("#mshied_registrationstartdateschooltimezone").text().trim() : null;
+        var registrationEndDate = $("#mshied_registrationenddateschooltimezone").text() ? $("#mshied_registrationenddateschooltimezone").text().trim() : null;    
+  // To get Required Admin Approval value from course section
+        var aarequiredForRegistration=$("#mshied_adminapproval").text() ? $("#mshied_adminapproval").text().trim():null;                 
+                               
+
+        // Course Status is Open and Today's date/time is between registration start and end date/time
+        if(courseSectionStatus == 494280001 && registrationWindowActive(registrationStartDate, registrationEndDate))
+        {
+                                              
+                       
+      
+                
+                   
+
+               
+               
+
+                
+                
+       
+    
+            // There are spots remaining for the Course Section then show the register now button
+            if(spotsRemaining == 'No limit' || spotsRemaining > 0)
+            {
+                $("#btnregister").addClass("show");
+                $("#btnregister").removeClass("hide");
+     //If Required Admin Approval value is 'Yes' then display an Info message "Program requires admin approval. You can register and admin will contact you about eligibility."
+      if(aarequiredForRegistration != null && aarequiredForRegistration=="Yes")
+     {  
+      $("#aarequireforregistration").addClass("show");
+      $("#aarequireforregistration").removeClass("hide");
+
+      $("#messagebar").addClass("orangeClass");
+      $("#messageicon").addClass("info");
+     } 
+                return;
+            }
+   
+            // check if waitlist is allowed
+            else if(allowWaitlist != null && allowWaitlist == "true")
+            {
+                
+                $("#registerforwaitlist").addClass("show");
+                $("#registerforwaitlist").removeClass("hide");
+
+                $("#messagebar").addClass("orangeClass");
+                $("#messageicon").addClass("info");
+
+                $("#btnregisterwaitlist").addClass("show");
+                $("#btnregisterwaitlist").removeClass("hide");
+    //If Required Admin Approval value is 'Yes' then display an Info message "Program requires admin approval. You can register and admin will contact you about eligibility."
+      if(aarequiredForRegistration != null && aarequiredForRegistration=="Yes")
+     {  
+      $("#aarequireforregistration").addClass("show");
+      $("#aarequireforregistration").removeClass("hide");
+
+      $("#messagebar").addClass("orangeClass");
+      $("#messageicon").addClass("info");
+     } 
+                return;
+            } else {
+
+                // if there are no spots available and waitlist is not allowed
+                $("#registrationfull").addClass("show");
+                $("#registrationfull").removeClass("hide");
+                
+                $("#messagebar").addClass("orangeClass");
+                $("#messageicon").addClass("info");
+                
+                $("#btnregister").addClass("show");
+                $("#btnregister").removeClass("hide");
+                $("#csbuttons").addClass('disabled');
+                $("#btnregister").attr("disabled", true);
+                return;
+            }
+        }
+        // Disable Register Now button and show a message in the message bar.
+       
+        $("#registrationclosed").addClass("show");
+        $("#registrationclosed").removeClass("hide");
+        
+        $("#messagebar").addClass("orangeClass");
+        $("#messageicon").addClass("info");
+
+        $("#btnregister").addClass("show");
+        $("#btnregister").removeClass("hide");
+        $("#csbuttons").addClass('disabled');
+        $("#btnregister").attr("disabled", true);
+               
+    }
+    else{
+        switch(registrationstatus.toLowerCase()){
+            // if registration status is Admin Approval
+            case 'aa':
+                    $("#btncancelregistration").addClass("show");
+                    $("#btncancelregistration").removeClass("hide");
+
+                    $("#awaitingadminapproval").addClass("show");
+                    $("#awaitingadminapproval").removeClass("hide");
+                    break;
+            // if registration status is Scheduled
+            case 'sch':
+                    $("#btncancelregistration").addClass("show");
+                    $("#btncancelregistration").removeClass("hide");
+                    break;
+
+            // if registration status is waitlist
+            case 'wat':
+                    $("#btncancelwaitlist").removeClass("hide");
+                    $("#btncancelwaitlist").addClass("show");
+                    break;
+
+            default:
+                    $("#btnregister").addClass("show");
+                    $("#btnregister").removeClass("hide");
+                    $("#csbuttons").addClass('disabled');
+                    $("#btnregister").attr("disabled", true);                    
+                    break;
+        }
+
+        if(registrationstatus.toLowerCase()!="aa" && registrationstatus.toLowerCase()!="wat"){
+            $("#registered").addClass("show");
+            $("#registered").removeClass("hide");
+            $("#registeredforwaitlist").addClass("hide");
+            $("#registeredforwaitlist").removeClass("show");
+        }
+        else if(registrationstatus.toLowerCase() == "wat"){
+            $("#registered").addClass("hide");
+            $("#registered").removeClass("show");
+            $("#registeredforwaitlist").addClass("show");
+            $("#registeredforwaitlist").removeClass("hide");
+        }
+
+        $("#messagebar").addClass("greenClass");
+        $("#messageicon").addClass("checkmark");
+    }
+}
+
+function registrationWindowActive(startdate, enddate){
+
+    if(startdate != null && enddate != null) {
+        var utcString = new Date().toUTCString()
+        utcString = utcString.substr(0, utcString.length - 3).trim();
+        var currentDate = Date.parse(utcString);
+
+        var registrationStartDate = Date.parse(startdate);
+        var registrationEndDate = Date.parse(enddate);
+        
+        // check if today's date is between start and end date. 
+        if(currentDate.getTime() >= registrationStartDate.getTime() && currentDate.getTime() <= registrationEndDate.getTime())
+            return true;
+    }
+
+    return false;
+}
+
+function onRegistrationWaitlistClick(studentFullName, courseSectionName, academicPeriodId, courseId, courseSectionId,
+            studentId, startDate, endDate, registrationStatusId, programName, programId, organizationId){
+
+    try{
+     
+        disableButton("btnregisterwaitlist");
+
+        retrieveProgramEnrollment(programId, studentId,"btnregisterwaitlist").done(function (data) {
+            // create course enrollment only
+            if(data!=null && data.value!=null && data.value.length>0){
+                createCourseEnrollment(studentFullName, courseSectionName, academicPeriodId, courseId, courseSectionId, studentId, startDate, 
+                                   endDate, registrationStatusId,"btnregisterwaitlist"); 
+            }
+            // create both program enrollment and course enrollment
+            else{
+                createProgramEnrollment(studentFullName, programName, studentId, programId, startDate, 
+                    endDate, organizationId,"btnregisterwaitlist").done(function(){
+                        createCourseEnrollment(studentFullName, courseSectionName, academicPeriodId, courseId, courseSectionId, studentId, startDate, 
+                                   endDate, registrationStatusId,"btnregisterwaitlist");                
+                });
+            }
+        });
+    }
+    catch(error){
+        alert(portalGenericErrorMessage);  
+        console.log(error.message);
+        enableButton("btnregisterwaitlist");
+    } 
+}
+
+function onRegistrationButtonClick(studentFullName, courseSectionName, academicPeriodId, courseId, courseSectionId,
+            studentId, startDate, endDate, registrationStatusId, programName, programId, organizationId){
+    
+    try {
+        disableButton("btnregister");
+
+        // if there is no limit on registration 
+        if($("#spotsremaining").text() == 'No limit') {
+            retrieveProgramEnrollment(programId, studentId,"btnregister").done(function (data) {
+                // create course enrollment only
+                if(data!=null && data.value!=null && data.value.length>0){
+                    createCourseEnrollment(studentFullName, courseSectionName, academicPeriodId, courseId, courseSectionId, studentId, startDate, 
+                    endDate, registrationStatusId,"btnregister"); 
+                }
+                // create both program enrollment and course enrollment
+                else{
+                    createProgramEnrollment(studentFullName, programName, studentId, programId, startDate, endDate, 
+                        organizationId,"btnregister").done(function(){
+                            createCourseEnrollment(studentFullName, courseSectionName, academicPeriodId, courseId, courseSectionId, studentId, startDate, 
+                                    endDate, registrationStatusId,"btnregister");                
+                    });
+                }
+            });  
+        }
+        else{
+            retrieveTotalEnrolled(courseSectionId).done(function(data) {
+                if(data!=null && data.value!=null && data.value.length>0){
+                    var totalEnrolled = data.value[0].mshied_totalenrolled ? data.value[0].mshied_totalenrolled : 0;
+                    var enrollmentLimit = $("#mshied_enrollmentlimit").text() ? $("#mshied_enrollmentlimit").text() : 0;
+                    var spotsRemaining = enrollmentLimit - totalEnrolled;
+                    
+                    if(spotsRemaining > 0){
+                        retrieveProgramEnrollment(programId, studentId,"btnregister").done(function (data) {
+                            // create course enrollment only
+                            if(data!=null && data.value!=null && data.value.length>0){
+                                createCourseEnrollment(studentFullName, courseSectionName, academicPeriodId, courseId, courseSectionId, studentId, startDate, 
+                                endDate, registrationStatusId,"btnregister"); 
+                            }
+                            // create both program enrollment and course enrollment
+                            else{
+                                createProgramEnrollment(studentFullName, programName, studentId, programId, startDate, endDate, 
+                                    organizationId,"btnregister").done(function(){
+                                        createCourseEnrollment(studentFullName, courseSectionName, academicPeriodId, courseId, courseSectionId, studentId, startDate, 
+                                                endDate, registrationStatusId,"btnregister");                
+                                });
+                            }
+                        });                    
+                    }
+                }
+                else{
+                    enableButton("btnregister");
+                }
+            });
+        }        
+    }
+    catch(error){        
+        console.log(error.message);
+        enableButton("btnregister");
+        alert(portalGenericErrorMessage);
+    }  
+}
+
+function onCancelRegistrationClick(courseEnrollmentId, registrationStatusId,registrationStatus){
+
+    try{        
+        $("#cancelButton").css('pointer-events','none');
+        $("#backButton").css('pointer-events','none');  
+        var titleDiv = $('.dialogText')[0];
+        $(titleDiv).parent().addClass("dialogheightmobile");
+         if (registrationStatus == 'WAT') {
+             $(titleDiv).text(cancelWaitlistRegistrationHeader);
+        }
+         else{
+            $(titleDiv).text(cancelRegistrationHeader);
+         }
+       var detailsDiv = "<br /><span class='cancellationDetails'>"+ cancelRegistrationMessage +"</span>";
+       $(titleDiv).append(detailsDiv);
+        var buttonsDiv = $('.dialogButtons');
+        buttonsDiv.hide();
+        updateCourseEnrollmentRecord(courseEnrollmentId, registrationStatusId,"");
+    }   
+    catch(error){        
+        console.log(error.message);
+        $("#cancelButton").css('pointer-events','auto');
+        $("#backButton").css('pointer-events','auto');  
+        alert(portalGenericErrorMessage);
+    }  
+}
+
+function retrieveProgramEnrollment(programId, studentId, buttonId){
+  
+    try{
+        if (programId != "")
+        {
+            return webapi.safeAjax({
+                    type: "GET",
+                    url: "/_api/mshied_programenrollments?$select=mshied_programenrollmentid&$filter=_mshied_programid_value eq " + programId + " and _mshied_studentid_value eq "+ studentId + " and statecode ne 1 and mshied_enddate eq null",
+                    contentType: "application/json",           
+                })
+                .fail(function(response) {
+                if (response.responseJSON) {
+                    alert("Error: " + response.responseJSON.error.message)
+                } else {
+                    alert("Error: Web API is not available... ")
+                }
+            });
+        }
+    }
+    catch(error){
+        alert(portalGenericErrorMessage);
+        console.log(error.message);
+        enableButton(buttonId);
+    }
+}
+
+
+function retrieveTotalEnrolled(courseSectionId){
+  
+    try{
+        if (courseSectionId != "")
+        {
+            // change to include mshied_totalenrolled once pushed to this environment
+            return webapi.safeAjax({
+                type: "GET",
+                url: "/_api/mshied_coursesections?$select=mshied_name&$filter=mshied_coursesectionid eq " + courseSectionId,
+                contentType: "application/json",           
+            })
+            .fail(function(response) {
+            if (response.responseJSON) {
+                alert("Error: " + response.responseJSON.error.message)
+            } else {
+                alert("Error: Web API is not available... ")
+            }
+            enableButton("btnregister");
+            });
+        }
+    }
+    catch(error){
+        alert(portalGenericErrorMessage);
+        console.log(error.message);
+        enableButton("btnregister");
+    }
+}
+
+function updateCourseEnrollmentRecord(courseEnrollmentId, registrationStatusId, buttonId)
+{
+    try{
+        
+        if(courseEnrollmentId != "" && registrationStatusId != "")
+        {
+            var updateCourseEnrollmentObj = {
+                "mshied_RegistrationStatusId@odata.bind": "/mshied_registrationstatuses(" + registrationStatusId + ")"
+            };
+
+            return webapi.safeAjax({
+                type: "PATCH",
+                url: "/_api/mshied_coursehistories(" + courseEnrollmentId + ")",
+                contentType: "application/json",
+                data: JSON.stringify(updateCourseEnrollmentObj),
+                success: function(res) {
+                    console.log("updated course enrollment - " + courseEnrollmentId);
+                    location.reload();
+                },
+                error: function (request, status, error) {
+                    var errorMessage = JSON.parse(request.responseText).error.message;
+                    console.log(errorMessage);
+                    console.log(request.responseText);
+                    alert(portalGenericErrorMessage);  
+                    $("#cancelButton").css('pointer-events','auto');
+                    $("#backButton").css('pointer-events','auto');       
+                }
+            });
+        }
+    }
+    catch(error){
+        alert(portalGenericErrorMessage);
+        console.log(error.message);
+        $("#cancelButton").css('pointer-events','auto');
+        $("#backButton").css('pointer-events','auto');  
+    }   
+}
+
+function createProgramEnrollment(studentFullName, programName, studentId, programId, startDate, endDate, organizationId, buttonId){
+
+    try{
+        var programEnrollment = {
+        "mshied_name" : studentFullName + " - " + programName,
+        "mshied_begindate": startDate != "" ? Date.parse(startDate) : null
+        }
+
+        if(studentId != "")
+        programEnrollment["mshied_StudentId@odata.bind"] = "/contacts(" + studentId + ")";
+
+        if(programId != "")
+        programEnrollment["mshied_ProgramId@odata.bind"] = "/mshied_programs(" + programId + ")";   
+
+        if(organizationId != "")
+        programEnrollment["mshied_EducationOrganizationId@odata.bind"] = "/accounts(" + organizationId + ")";   
+
+        return webapi.safeAjax({
+            type: "POST",
+            url: "/_api/mshied_programenrollments",
+            contentType: "application/json",
+            data: JSON.stringify(programEnrollment),
+            success: function (res, status, xhr) {
+                var programEnrollmentid = xhr.getResponseHeader("entityid");
+                console.log("Program Enrollment id - " + programEnrollmentid);
+            },
+            error: function (request, status, error) {
+                var errorMessage = JSON.parse(request.responseText).error.message;
+                console.log(errorMessage);
+                console.log(request.responseText);
+                alert(portalGenericErrorMessage);  
+                enableButton(buttonId);         
+            }
+        });   
+    }
+    catch(error){
+        alert(portalGenericErrorMessage);
+        console.log(error.message);
+        enableButton(buttonId);
+    }    
+}
+
+function createCourseEnrollment(studentFullName, courseSectionName, academicPeriodId, courseId, courseSectionId, studentId, startDate, endDate, registrationStatusId, buttonId){
+
+    try{
+     
+        var courseEnrollment = {
+            "mshied_name": studentFullName + " - " + courseSectionName,
+            "mshied_begindate": startDate != "" ? Date.parse(startDate) : null,
+            "mshied_iscompleted": false,
+            "mshied_isrequired": false
+        }
+
+        if(academicPeriodId!="")
+            courseEnrollment["mshied_AcademicPeriodid@odata.bind"] = "/mshied_academicperiods(" + academicPeriodId + ")";
+
+        if(courseId != "")
+            courseEnrollment["mshied_CourseId@odata.bind"] = "/mshied_courses(" + courseId + ")" ;
+
+        if(courseSectionId != "")
+            courseEnrollment["mshied_CourseSectionId@odata.bind"] = "/mshied_coursesections(" + courseSectionId + ")" ;
+
+        if(studentId!="")
+            courseEnrollment["mshied_StudentId@odata.bind"] = "/contacts(" + studentId + ")";
+
+        if(registrationStatusId!="")
+            courseEnrollment["mshied_RegistrationStatusId@odata.bind"] = "/mshied_registrationstatuses(" + registrationStatusId + ")";
+
+        console.log(courseEnrollment);
+
+        webapi.safeAjax({
+            type: "POST",
+            url: "/_api/mshied_coursehistories",
+            contentType: "application/json",
+            data: JSON.stringify(courseEnrollment),
+            success: function (res, status, xhr) {
+                var courseEnrollmentid = xhr.getResponseHeader("entityid");
+                  window.location.href = "/registrationconfirmation?historyid="+ courseEnrollmentid;
+            },
+            error: function (request, status, error) {
+                var errorMessage = JSON.parse(request.responseText).error.message;
+                console.log(errorMessage);
+                console.log(request.responseText);
+                alert(portalGenericErrorMessage);                   
+            }
+        }).always(function(){
+            enableButton(buttonId);    
+        });
+    }
+    catch(error){
+        alert(portalGenericErrorMessage);
+        console.log(error.message);
+        enableButton("btnregister");
+    }
+}
+
+function enableButton(buttonId){
+    $("#" + buttonId).removeClass('disabled');
+    $("#" + buttonId).attr("disabled", false);
+}
+
+function disableButton(buttonId){
+    $("csbuttons").addClass('disabled');
+    $("#" + buttonId).attr("disabled", true);
+}
+
+ function ShowHideCanceldailog(show) {
+    var container = $("#transContainer");
+    if (show) {
+        container.css('display','flex');
+        $("#cancelRegDailog").focus();
+    } else {
+        container.css('display','none');
+    }
+}
+
+</script>

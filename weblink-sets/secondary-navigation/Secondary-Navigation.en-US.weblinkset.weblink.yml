@@ -1,0 +1,26 @@
+- adx_disablepagevalidation: false
+  adx_displayimageonly: false
+  adx_displayorder: 1
+  adx_displaypagechildlinks: false
+  adx_externalurl: /myregistrations?type=current
+  adx_name: Current registrations
+  adx_openinnewwindow: false
+  adx_pageid: 0fe71b62-1a91-450f-9ad0-8ea5b2344772
+  adx_publishingstateid: 3a82fe40-8b07-46c0-95c4-b131b894acbe
+  adx_robotsfollowlink: true
+  adx_weblinkid: f2e14d40-af23-ed11-b83b-000d3a34e4e1
+  adx_weblinksetid: 422b9ced-f179-4933-8c7b-2e51341e0a67
+  importsequencenumber: 5
+- adx_disablepagevalidation: false
+  adx_displayimageonly: false
+  adx_displayorder: 2
+  adx_displaypagechildlinks: false
+  adx_externalurl: /myregistrations?type=past
+  adx_name: Past registrations
+  adx_openinnewwindow: false
+  adx_pageid: 0fe71b62-1a91-450f-9ad0-8ea5b2344772
+  adx_publishingstateid: 3a82fe40-8b07-46c0-95c4-b131b894acbe
+  adx_robotsfollowlink: true
+  adx_weblinkid: f4e14d40-af23-ed11-b83b-000d3a34e4e1
+  adx_weblinksetid: 422b9ced-f179-4933-8c7b-2e51341e0a67
+  importsequencenumber: 5

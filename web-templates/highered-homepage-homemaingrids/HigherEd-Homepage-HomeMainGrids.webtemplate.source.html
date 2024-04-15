@@ -1,0 +1,30 @@
+{% comment %}
+<documentation>
+    <name>HigherEd/Homepage/HomeMainGrids</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <product>Highered Portal</product>
+    <description>
+        Web template to build and show Main grids in home page
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+<div>
+<div class="row" id="student-info-section">
+   <div>
+      <div class="col-md-12 col-lg-12" id="left-grid">
+        {% include 'HigherEd/GridTopLeft' %}
+      </div>
+      <div class="col-md-12 col-lg-12" id="right-grid">
+        {% include 'HigherEd/GridUpperRight' %}
+      </div>
+      <div class="col-md-12 col-lg-12" id="left-grid">
+        {% include 'HigherEd/GridBottomLeft' %}
+      </div>
+   </div>
+</div>
+</div>

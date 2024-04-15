@@ -1,0 +1,45 @@
+{% comment %}
+<documentation>
+    <name>HigherEd/Marketing/WebAPIAJAX</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <product>Highered Portal</product>
+    <description>
+        Defines base code that is mandatory for any WebAPI call.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+<script type="text/javascript">
+    (function(webapi, $){
+            function safeAjax(ajaxOptions) {
+                var deferredAjax = $.Deferred();
+        
+                shell.getTokenDeferred().done(function (token) {
+                    // add headers for AJAX
+                    if (!ajaxOptions.headers) {
+                        $.extend(ajaxOptions, {
+                            headers: {
+                                "__RequestVerificationToken": token
+                            }
+                        }); 
+                    } else {
+                        ajaxOptions.headers["__RequestVerificationToken"] = token;
+                    }
+                    $.ajax(ajaxOptions)
+                        .done(function(data, textStatus, jqXHR) {
+                            validateLoginSession(data, textStatus, jqXHR, deferredAjax.resolve);
+                        }).fail(deferredAjax.reject); //AJAX
+                }).fail(function () {
+                    deferredAjax.rejectWith(this, arguments); // on token failure pass the token AJAX and args
+                });
+        
+                return deferredAjax.promise(); 
+            }
+            webapi.safeAjax = safeAjax;
+    })
+    (window.webapi = window.webapi || {}, jQuery)
+</script>

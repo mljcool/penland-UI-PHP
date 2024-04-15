@@ -1,0 +1,86 @@
+{% comment %}
+<documentation>
+  <name>HigherEd/RegistrationConfirmationTemplate</name>
+  <version>1.0.0</version>
+  <author>Microsoft Business Application Solutions</author>
+  <module>Program Registration</module>
+  <description>
+    Web template to show the Registration/Waitlist/Admin Approval confirmation success page
+  </description>
+  <comments>
+    If this web template is modified, it may be overridden by the future upgrades.
+    This web template should be included in whichever web page needed.
+  </comments>
+</documentation>
+{% endcomment %}
+
+<!--Registration page of application.  The page shows two different layouts depending on if you are signed in or signed out-->
+
+<!--Load Registration Page CSS for signed in users-->
+{% include 'ProgramRegistration/RegistrationConfirmationCSS' %}
+{% assign coursehistoryid = request.params.historyid  %}
+{% include 'ProgramRegistration/FetchCourseEnrollment' %}
+{% assign show_side_nav = settings["ProgramRegistration/ShowSideNavigation"] | boolean | default:true %}
+<div id="container-main" class="container">
+{% if show_side_nav %}
+
+<!-- Left Navigation. Will show only when site setting is enabled-->
+<div id="side-nav" class="col-sm-3 col-md-2 hidden-xs sidebar left-column">
+
+  <!--Load the custom side navigation menu-->
+  {% include 'HigherEd/SideNavigation' %}
+</div>
+<div class="col-md-10 form-right-column">
+  <div class="banner">
+    <div class="registration registrationwithsideNav">
+      {% else %}
+      <div class="form-right-column">
+        <div class="banner">
+          <div class="registration">
+            {% endif %}
+
+            <!--Display label based on registration code-->
+            {% if coursehistory['registration.mshied_code'] == 'SCH' %}
+            <label class="registrationLabel">{{ snippets["ProgramRegistration/RegistrationConfirmation/Registered"] }}</label>
+            {% elsif coursehistory['registration.mshied_code'] == 'WAT' %}
+            <label class="registrationLabel">{{ snippets["ProgramRegistration/RegistrationConfirmation/Waitlisted"] }}</label>
+            {% elsif coursehistory['registration.mshied_code'] == 'AA' %}
+            <label class="registrationLabel">{{ snippets["ProgramRegistration/RegistrationConfirmation/AdminApproval"] }}</label>
+            {% endif %}
+            <div class="ecllipse">
+              {% if coursehistory['registration.mshied_code'] == 'WAT' %}
+              <img src="/Waitlist.png" alt="Waitlist Image" class="ecllipseImage">
+              {% else %}
+              <img src="/Success.png" alt="Success Image" class="ecllipseImage">
+              {% endif %}
+            </div>
+
+            <!--Load course history details-->
+            <div class="coursedetails">
+              <div class="subject" id="subjectname">
+                {{coursehistory['coursesection.mshied_name']}}
+              </div>
+              <div class="coursedate" id="coursedate">
+                {{coursehistory['coursesection.mshied_startdate'] | date:'MMMM dd, yyyy'}} - {{coursehistory['coursesection.mshied_enddate'] | date:'MMMM dd, yyyy'}}
+              </div>
+              <div class="coursedays" id="coursedays">
+                {{coursehistory['coursesection.mshied_coursedaytime']}}
+              </div>
+              {%if coursehistory['registration.mshied_code'] == 'WAT' %}
+              <label class="contactLabel">{{ snippets["ProgramRegistration/RegistrationConfirmation/ContactForSlot"] }}</label>
+              {% endif %}
+            </div>
+            <div class="backToHomeDiv">
+
+              <!--Navigate back to home page-->
+              {% if show_side_nav %}
+                <input type="button" class="backToHome" id="backToHomePage" value="Go to program catalog" onclick="productCatalogPage()">
+              {% else %}
+                <input type="button" class="backToHome" id="backToHomePage" value="Go to program catalog" onclick="homePage()">
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include 'ProgramRegistration/RegistrationConfirmationJS' %}

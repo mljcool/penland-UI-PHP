@@ -1,0 +1,237 @@
+{% comment %}
+<documentation>
+    <name>HigherEd/Marketing/EventsDetailsCSS</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <product>Highered Portal</product>
+    <description>
+        Web template contains CSS defined for Events Details page.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+<style>
+.main-container{
+    background:#FAF9F8;
+    width: 1200px;
+}
+.event-heading{
+    width: 100%;
+    font-family: Segoe UI;
+    font-size: 36px;
+    line-height: 42px;
+    color: #323130; 
+    top: 29px;
+    margin-top: 29px;
+    margin-bottom: 10.5px;
+    padding-left: 15px;
+}
+.event-type{
+    padding-left: 16px;
+    font-family: Segoe UI;
+    font-size: 20px;
+    line-height: 42px;
+    color: #323130;
+}
+.event-details{
+    display: flex;
+    width:900px;
+    height: 50px;
+}
+.venuedetails{
+    display: flex;
+}
+.countdiv{
+    display: flex;
+}
+.event-date{    
+    padding-left: 20px;
+    width: 193px;
+    height: 44px;
+    font-family: Segoe UI;
+    font-size: 16px;
+    line-height: 22px; 
+    white-space: nowrap;
+}
+.icons-class{
+    width:3%;
+    padding-left: 16px;
+    margin-right: 8px;
+}
+.event-location{
+    padding-left: 20px;    
+}
+.event-count{
+    padding-left: 20px;
+    font-size: 14px;     
+}
+.regbutton , .regbutton:hover,.regbutton:focus,.regbutton:active{
+  margin-right: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 20px;
+  font-size: 14px;
+  color: #FFFFFF;
+  line-height: 20px;
+  font-family: Segoe UI;
+  width: 140px;
+  height: 32px;
+  left: 657px;
+  top: 16px;
+  background: #0078D4;
+  border-radius: 2px;
+}
+.regbutton.disabled {
+  margin-right: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 20px;
+  font-size: 14px;
+  color: #FFFFFF;
+  line-height: 20px;
+  font-family: Segoe UI;
+  width: 140px;
+  height: 32px;
+  left: 657px;
+  top: 16px;
+  background: #d8d8d8; /*Grey*/
+  border-radius: 2px;
+  color:black; 
+  cursor:default !important; 
+}
+.regbuttondiv{
+    padding-left: 20px;
+}
+.eventdetailsdiv{
+    width:100%;
+    padding-left: 10px;
+    word-wrap: break-word;   
+}
+.event-outcome{
+    font-size: 14px;    
+    word-wrap: break-word;
+}
+.divgap{
+    height: 10px;
+}
+.event-description{
+    width: 100%;       
+    word-wrap: break-word;  
+}
+.location-description-div{
+    width: 900px;
+    display: flex;
+}
+.location-div{
+    width: 450px;
+}
+.locationIdDiv{
+    width: 427px;
+    height: 421px;
+}
+.locationspanhide{
+    display: none;
+}
+.registereddiv{
+    padding-left: 16px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.event-location-bing, .event-location-bing:a{  
+    font-family: Segoe UI;
+    font-size: 14px;
+    line-height: 22px;
+    color: #323130;
+}
+.event-location-bingHeader{
+    font-family: Segoe UI;
+    font-size: 18px;
+    line-height: 22px;       
+}
+.events-social-media{
+    display: flex;
+}
+.location-sm-div{
+    padding-left: 50px;
+}
+.headdetailseventsdiv {
+  display: flex; 
+  padding: 10px;
+  background-color: white;
+}
+#main-row .form-right-column > div > h2 {
+    padding-left: 16px;
+}
+h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 29px;
+    margin-bottom: 10.5px;
+}
+h4, .h4, h5, .h5, h6, .h6 {
+    margin-top: 0px;
+    margin-bottom: 10.5px;
+}
+@media (max-width: 769px) {
+.col-sm-9 {
+    /*width: 100%;   */
+}
+.event-heading{
+    width: 100%;
+    font-family: Segoe UI;
+    font-size: 24px;
+    line-height: 42px;
+    color: #323130; 
+    top: 29px;
+    margin-top: 29px;
+    margin-bottom: 10.5px;
+}
+.event-details {    
+    width:100%;
+    height: 50px;
+    display: inline-block;    
+}
+.headdetailseventsdiv {
+    display: inline-block;
+    padding: 10px;
+    background-color: white;
+}
+.event-outcome {
+    padding-right: 0px;
+}
+.event-description {
+    padding-right: 0px;
+}
+.venuedetails{
+    display: flex;
+    margin-top: 13px;
+}
+.regbutton , .regbutton:hover,.regbutton:focus,.regbutton:active{
+  width: 100%;
+}
+.regbuttondiv {
+    padding-left: 0px;
+}
+.location-sm-div{
+    padding-left: 0px;
+    margin-top: 20px;
+}
+.events-social-media{
+    display: flex;
+    padding-left: 50px;
+}
+.eventdetailsdiv{ 
+    padding-left: 0px;
+    word-wrap: break-word;
+}
+.locationIdDiv{
+    width: 100%;
+    height: 383px;
+}
+}
+</style>

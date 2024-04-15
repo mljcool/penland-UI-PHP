@@ -1,0 +1,259 @@
+{% comment %}
+<documentation>
+    <name>HigherEd/Marketing/EventsCSS</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <product>Highered Portal</product>
+    <description>
+        Defines all CSS styles for events page.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+<style>
+.main-container{
+background:#FAF9F8;
+}
+.eventslisttext{
+width: 200px;
+font-family: Segoe UI;
+font-size: 28px;
+line-height: 32px;
+color: #000000;
+/* padding-left: 16px; */
+padding-top: 24px;
+}
+.eventlistbox{
+//display:flex;
+background-color:white;
+width:90%;
+margin-left: 2%;
+box-shadow: 0px 0.3px 0.9px rgba(0, 0, 0, 0.1), 0px 1.6px 3.6px rgba(0, 0, 0, 0.13);
+}
+.datetext{
+width: 100%;
+font-family: Segoe UI;
+font-size: 16px;
+line-height: 20px;
+color: #003679;
+font-weight: bold;
+padding-left: 10px;
+padding-top: 8px;
+}
+.eventdetails{
+margin:10px;
+margin-left:0px;
+width:100%;
+}
+.eventnametext{
+width: 100%;
+font-family: Segoe UI;
+font-size: 24px  !important;
+line-height: 32px;
+color: #323130;
+padding-left: 10px;
+padding-top: 5px;
+}
+.eventnametext p
+{
+  padding-left: 0px;
+  font-size: 24px;
+}
+.eventtypetext{
+width: 100%;
+font-family: Segoe UI;
+font-size: 14px;
+line-height: 20px;
+color: #323130;
+padding-left: 10px;
+}
+.eventtypetext p
+{
+    font-size: 16px;
+    line-height : 20px;
+}
+.eventdescriptiontext{
+width: 80%;
+font-family: Segoe UI;
+font-size: 14px;
+line-height: 20px;
+color: #323130;
+word-wrap: break-word;
+padding-left: 10px;
+padding-bottom: 36px;
+}
+.divgap{
+    height: 10px;
+}
+.event-search{
+    display: flex;
+    /* padding-left: 16px; */
+    padding-top: 8px;
+    margin-top:16px;
+}
+.event-search div{
+    padding-right: 16px;
+    /*padding-left:0px !important;*/
+}
+.search-dates{
+    /* padding-left: 15px;     */
+}
+.search-keywords{
+    /* padding-left: 15px; */
+    width: 350px;
+}
+.search-button{
+    
+}
+.regbutton , .regbutton:hover,.regbutton:focus,.regbutton:active{
+  margin-right: 16px;
+  margin-left: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 20px;
+  font-size: 14px;
+  color: #FFFFFF;
+  line-height: 20px;
+  font-family: Segoe UI;
+  width: 120px;
+  /* height: 25px; */
+  left: 657px;
+  top: 16px;
+  background: #0078D4;
+  border-radius: 2px;
+}
+.search-box{
+    width: 350px;
+    background-image: url(/icon-search.png) !important;
+    background-repeat: no-repeat;
+    background-position: 6px 6px !important;
+    padding-left: 30px;
+    /* height: 24px;
+    border-radius: 2px;    
+    border: 1px solid #605E5C; */
+}
+.location-box{
+    height: 24px;
+    border-radius: 2px;
+    border: 1px solid #605E5C;    
+}
+.events-right-column{
+    position: absolute;
+    width: 1092px;
+    left: 244px;
+    top: 48px;
+    bottom: 0px;
+    background: #FAF9F8;
+}
+.viewdetails{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 20px;
+    font-size: 14px;
+    color: #FFFFFF;
+    /* position: absolute; */
+    width: 137px;
+    height: 32px;
+    background: #0078D4;
+    border-radius: 2px;
+    /* margin-left: 80%; */
+}
+.jplist-hidden{
+    display:none;
+}
+.search-output
+{
+    display:flex;
+}
+.viewdetailsdiv
+{
+    padding-top:10px;
+}
+.event-details
+{
+    width:84%;
+}
+.eventlist
+{
+padding-left:0px;
+}
+.search-results ul
+{
+
+}
+.search-eventtype{
+    width: 237px;
+}
+.search-dates
+{
+    width: 223px;
+}
+@media (max-width: 1025px){
+.event-search
+{
+    display:block;
+}
+.regbutton, .regbutton:hover, .regbutton:focus, .regbutton:active
+{
+    margin-left:40%;
+    width:100%;
+    padding-left:0%;
+    margin-right:0%;
+    margin-left:0%;
+}
+.search-eventtype
+{
+    width: 50%;
+    float:left;
+}
+.search-dates
+{
+    width: 50%;
+    float:right;
+    padding-left: 16px;
+}
+.search-keywords{
+     padding-top: 16px; 
+    /* width: 350px; */
+    width: 100%;
+}
+.search-button{
+    padding-left: 0px;
+    padding-top:16px;
+}
+.search-output
+{
+    display:block;
+}
+.event-details
+{
+    width:100%;
+}
+.viewdetailsdiv
+{
+padding-left:2%;
+padding-right:2%;
+padding-bottom:3%;
+}
+.viewdetails
+{
+    width:100%
+}
+.eventdescriptiontext{
+    width: 95%;
+}
+.event-search div{
+    padding-right: 0px;
+}
+.search-box{
+    width: 100%;
+}
+}
+</style>

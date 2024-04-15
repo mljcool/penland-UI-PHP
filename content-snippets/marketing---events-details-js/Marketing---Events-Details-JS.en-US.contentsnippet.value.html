@@ -1,0 +1,64 @@
+<script>
+  $(document).ready(function() {
+    GetMap();
+    //alert("");
+  });
+  function GetMap() {   
+    var addressLine1 = '{{event['building.msevtmgt_addressline1']}}';
+    var city = '{{event['building.msevtmgt_city']}}';
+    var state = '{{event['building.msevtmgt_stateprovince']}}';
+    var postalcode = '{{event['building.msevtmgt_postalcode']}}';
+    var bingkey = '{{bing_key}}';
+    addressLine1 = addressLine1.replaceAll(" ","%20");
+
+    var mapLink = "https://dev.virtualearth.net/REST/v1/Locations/";
+    mapLink = mapLink + addressLine1 + "%20" + city + "%20" + state + "%20" + postalcode + "?o=xml&key=" + bingkey;
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            latitude = this.responseXML.children[0].children[6].children[0].children[1].children[0].children[1].children[0].textContent;
+            longitude = this.responseXML.children[0].children[6].children[0].children[1].children[0].children[1].children[1].textContent;
+            var map = new Microsoft.Maps.Map('#locationId', {
+              credentials: bingkey
+            });
+            var loc = new Microsoft.Maps.Location(latitude, longitude);
+            var pin = new Microsoft.Maps.Pushpin(loc);
+            map.entities.push(pin);
+            map.setView({
+              center: loc,
+              zoom: 15
+            });
+        }
+    };
+    xhttp.open("GET", mapLink, true);
+    xhttp.send();
+
+  }
+  function registerEvent(eventId, userId){   
+    $("#registerButton").addClass("disabled");
+    var registration = {
+      "msevtmgt_ContactId@odata.bind": "/contacts(" + userId + ")",
+      "msevtmgt_EventId@odata.bind": "/msevtmgt_events(" + eventId + ")"
+    };
+    webapi.safeAjax({
+        type: "POST",
+        url: "/_api/msevtmgt_eventregistrations",
+        contentType: "application/json",
+        data: JSON.stringify(registration),
+        success: function (res, status, xhr) {
+        console.log("entityID: " + xhr.getResponseHeader("entityid"))
+
+        window.location.href = "/eventsuccess/?id="+eventId;
+      },
+      error: function (request, status, error) {
+          var errorMessage = JSON.parse(request.responseText).error.message;
+          console.log(errorMessage);
+          alert("An Error has occured.Please try again");
+      }
+    });
+  }
+</script>
+<script type="text/javascript" src="https://www.bing.com/api/maps/mapcontrol?callback=GetMap" async="" defer=""></script>
+<script async="" defer="" crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&amp;version=v10.0" nonce="IZwuwhUg"></script>
+<script type="text/javascript" src="https://api.linkedin.com/v2/ugcPosts" async="" defer=""></script>

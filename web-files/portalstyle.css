@@ -1,0 +1,243 @@
+.portalPage {
+    padding: 0px 0px 0px 36px;
+    width: 100%;
+}
+
+.portalDescText {
+    width: 75%;
+}
+
+.portalInfoArea {
+    background: #f2f2f2;
+    padding: 20px;
+}
+
+.portalInfoBox {
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    padding: 10px 10px;
+    background: rgba(250,250,250,0.90);
+    /* border-top: 2px solid #20518d; */
+    /* border-bottom: 1px solid #20518d; */
+    /* border-left: 1px solid #20518d; */
+    /* border-right: 1px solid #20518d; */
+    width: 100%;
+    /* height: 500px; */
+    color: #31323a;
+    text-align: right;
+}
+
+.portalButton {
+    padding-left: 30px;
+    padding-right: 30px;
+    /* position: absolute; */
+    margin-top: 5px;
+    bottom: 35px;
+    font-weight: 500;
+    background-color: transparent !important;
+    color: #0078D4;
+    transition: all 0.5s;
+    right: 35px;
+}
+
+    .portalButton:hover {
+        background-color: #0078D4 !important;
+        color: white;
+    }
+
+    .portalButton:actve {
+        background-color: #0078D4 !important;
+        color: white;
+    }
+
+    .portalButton:focus {
+        background-color: #0078D4 !important;
+        color: white;
+    }
+
+.portalInfoBox h4 {
+    color: #0078D4;
+    font-size: 24px;
+    margin: 15px;
+}
+
+a{
+    color: #0078D4;
+}
+
+.btn-primary {
+    color: white;
+    background-color: #0078D4 !important;
+    border-color: #0078D4;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary:active:hover,
+.btn-primary.active:hover,
+.btn-primary:active:focus,
+.btn-primary.active:focus,
+.btn-primary:active.focus,
+.btn-primary.active.focus,
+.btn-primary:focus {
+    color: white;
+    background-color: #0078D4 !important;
+    border-color: #0078D4;
+}
+
+.btn-default {
+    color: #0078D4;
+    background-color: #fff;
+    border-color: #0078D4;
+}
+
+.btn-default:hover,
+.btn-default:active,
+.btn-default.active,
+.btn-default:active:hover,
+.btn-default.active:hover,
+.btn-default:active:focus,
+.btn-default.active:focus,
+.btn-default:active.focus,
+.btn-default.active.focus,
+.btn-default:focus,
+.btn-default.focus {
+    color: #0078D4;
+    background-color: #e6e6e6 !important;
+    border-color: #0078D4;
+}
+
+.navbar-static-top {
+    background-color: #ffffff !important;
+}
+
+    .navbar-static-top a {
+        color: #000000 !important;
+    }
+
+.navbar-brand a {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: px; /* identical to box height */
+}
+
+.navbar-brand .xrm-attribute-value img {
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+.navbar {
+    background-color: #FFFFFF !important;
+}
+
+.weblinks > li > a:hover {
+    background-color: #F3F2F1 !important;
+}
+
+.navbar-inverse .navbar-toggle .icon-bar {
+    background-color: #000000;
+}
+
+.navbar-inverse .navbar-toggle:hover {
+    background-color: #F0F0F3;
+    border-color: #FFFFFF;
+}
+
+.navbar-inverse .navbar-toggle {
+    border-color: #FFFFFF !important;
+    background-color: #f2f3f1;
+}
+
+navbar-toggle .icon-bar {
+    width: 22px;
+    height: 3px !important;
+    border-radius: 12px;
+}
+
+.navbar-inverse .navbar-toggle:focus {
+    background-color: #FFFFFF;
+}
+
+.navbar-inverse .navbar-nav .open .dropdown-menu {
+    background-color: #F3F2F1 !important;
+}
+
+.crmEntityFormView {
+    border: none;
+}
+
+.crmEntityFormView .tab-title {
+    border-bottom: 1px solid #C4C4C4;
+    padding-bottom: 10px;
+}
+
+.crmEntityFormView .section-title.show-bar {
+    border-bottom: 1px solid #C4C4C4;
+    padding-bottom: 10px;
+}
+
+.crmEntityFormView .tab .tab-column:first-child {
+    padding-left: 28px;
+}
+
+#content-container .crmEntityFormView .tab .tab-column:first-child {
+    padding-left: 0px !important;
+}
+
+.crmEntityFormView .cell  {
+    padding-left: 0px;
+}
+
+#main-row .form-right-column > div > h2 {
+    padding-left: 28px;
+}
+
+.crmEntityFormView .actions {
+    padding-left: 28px;
+    padding-bottom: 20px;
+}
+
+.crmEntityFormView .cell label {
+    font-size: 14px;
+    color: #605E5C;
+    font-weight: 600;
+}
+
+.crmEntityFormView .cell input[type=text],
+.crmEntityFormView .cell select,
+.crmEntityFormView .cell textarea {
+    font-size: 14px;
+    color: #000000;
+    font-weight: 400;
+}
+
+.crmEntityFormView .tab-title {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.crmEntityFormView .section-title {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+/* New Styles*/
+@media (max-width: 768px) {
+    div.page-copy {
+        margin-bottom: 0px;
+        visibility: hidden;
+        height: 0;
+    }
+        
+    .navbar-brand > img {
+        margin-top: 4px;
+        margin-bottom: 3px;
+    }
+
+
+}

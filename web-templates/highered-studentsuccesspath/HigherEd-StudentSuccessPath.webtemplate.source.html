@@ -1,0 +1,39 @@
+{% comment %}
+<documentation>
+    <name>HigherEd/StudentSuccessPath</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <product>Highered Portal</product>
+    <description>
+        Web template associated with Student success path
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+{% include 'HigherEd/HomePageCSS' %} 
+{% include 'HigherEd/GridPageCSS' %}
+{% include 'HigherEd/FormPageCSS' %}
+{% include 'HigherEd/StudentSuccessPath/StudentSuccessPathCSS' %}
+
+<div id="container" class="container">
+   <div class="row" id="main-row">
+      <div id="side-nav" class="hidden-xs col-sm-3 col-md-2 left-column">
+         <!--Load the custom side navigation menu-->
+         {% include 'HigherEd/SideNavigation' %}
+      </div>
+   <div class="col-xs-12 col-sm-9 col-md-10 form-right-column">
+          <div>
+            <h2>{{ page.title }}</h2>
+         </div>
+    <div id="formdropshadow">
+        {% if page.adx_entityform %}
+            {% entityform id: page.adx_entityform.id %}
+        {% endif %}
+    </div>
+        {% include 'HigherEd/StudentSuccessPath/StudentSuccessPathGrids' %}
+   </div>
+   </div>
+</div>

@@ -1,0 +1,21 @@
+{% comment %}
+<documentation>
+    <name>HigherEd/Homepage/HomeMainCards</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <product>Highered Portal</product>
+    <description>
+        Web template to build and show Main cards in home page
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+<div class="row placeholders">
+    {% include 'HigherEd/TalkWithAdvisorCard' %}
+    {% include 'HigherEd/GrantsCard' %}
+    {% include 'HigherEd/ApplyForScholarshipCard' %}
+    
+</div>

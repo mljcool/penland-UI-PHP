@@ -1,0 +1,79 @@
+<style>
+  #top-navigation-desktop,
+  .top-nav-menus {
+    display: flex;
+  }
+
+  .desktop_menu_wrapper {
+    align-self: center;
+  }
+
+  @media (max-width: 1024px) {
+    .desktop_menu_wrapper {
+      align-self: center;
+    }
+    .logo-desktop {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  #top-navigation-desktop {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+    padding: 5px 4rem;
+    background: #d6d2c4;
+  }
+  .top-nav-menus {
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+    list-style-type: none;
+    align-items: center;
+    gap: 3rem;
+    margin: 0;
+  }
+
+  #access-desktop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: #e4e4e4 1px solid;
+    padding: 1.2rem 1rem;
+  }
+  #menu-nav-ul {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    gap: 1.9rem;
+  }
+  #menu-nav-ul li {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+  }
+  #menu-nav-ul li a {
+    text-transform: uppercase;
+    color: #242424;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
+  .find_workshop_nav_desktop {
+    cursor: pointer;
+    border: 1px solid #242424;
+    padding: 0.9rem 2rem;
+  }
+
+  @media (max-width: 768px) {
+    #top-navigation-desktop,
+    #access-desktop {
+      display: none;
+    }
+  }
+</style>

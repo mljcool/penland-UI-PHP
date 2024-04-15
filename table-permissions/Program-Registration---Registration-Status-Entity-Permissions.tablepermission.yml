@@ -1,0 +1,13 @@
+adx_append: true
+adx_appendto: false
+adx_create: false
+adx_delete: false
+adx_entitylogicalname: mshied_registrationstatus
+adx_entityname: Program Registration - Registration Status Entity Permissions
+adx_entitypermission_webrole:
+- 2c279978-7750-4655-8d72-1d618edcebb9
+- c15e1cd6-fbd2-4a15-853c-904c6d5f4db7
+adx_entitypermissionid: f8187482-aa1d-ed11-b83e-002248090196
+adx_read: true
+adx_scope: 756150000
+adx_write: false

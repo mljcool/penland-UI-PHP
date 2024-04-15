@@ -1,0 +1,18 @@
+{% comment %}
+<documentation>
+    <name>HigherEd/GridBottomLeft</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <product>Highered Portal</product>
+    <description>
+        Shows Grid at Bottom left i.e., Current courses list.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+<div id="current-courses" style="box-shadow: rgba(0, 0, 0, 0.133) 0px 1.6px 3.6px, rgba(0, 0, 0, 0.11) 0px 0.3px 0.9px; background-color: rgb(255, 255, 255);">
+  <h4 aria-level="7">{{ snippets["HigherEd/GridBottomLeft/CurrentCoursesText"] }}</h4>{% include 'entity_list' key: 'Higher Ed - My Current Course History' %}
+</div>

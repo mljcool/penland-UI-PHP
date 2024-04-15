@@ -1,0 +1,110 @@
+{% comment %}
+<documentation>
+    <name>ProgramRegistration/CourseEnrollments</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <module>Program Registration</module>
+    <description>
+        Web template associated with My registrations Page.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+
+{% include 'ProgramRegistration/CourseSectionsCSS' %}
+{% include 'ProgramRegistration/CourseEnrollmentsJS' %}
+{% include 'ProgramRegistration/CourseSectionDetailsCSS' %}
+
+{% assign type = request.params.type %}
+{% if type == "current" %}
+ {% include 'ProgramRegistration/FetchCurrentRegistrations' %}
+{% else %}
+ {% include 'ProgramRegistration/FetchPastRegistrations' %}
+{% endif %}
+
+{% assign show_side_nav = settings["ProgramRegistration/ShowSideNavigation"] | boolean | default:true %}
+
+<div id="container-main" class="container">
+ {% if show_side_nav %}
+  <!-- Left Navigation. Will show only when site setting is enabled-->
+  <div id="side-nav" class="col-sm-3 col-md-2 hidden-xs sidebar left-column">
+   <!--Load the custom side navigation menu-->
+   {% include 'HigherEd/SideNavigation' %}
+  </div>
+   <div class="col-md-10 form-right-column" >
+ {% else %}
+     <div class="coursesectiondiv myregistrationsdiv">
+ {% endif %}
+
+  <div class="banner">
+   <div class="banner-title" id="mshied_name">
+    {% if type == "current" %}
+      {{ snippets["ProgramRegistration/CourseEnrollments/CurrentRegistrations"] }}
+    {% else %}
+      {{ snippets["ProgramRegistration/CourseEnrollments/PastRegistrations"] }}
+    {% endif %}
+   </div>
+  </div>
+  <div id="coursesectionlist" class="coursesectiondiv" >
+   {% if courseEnrollmentsFetch.results.entities.size > 0 %}
+    <div class="tab jplist-panel box panel-top jplist-group filterlist" role="tablist"  >
+    <div class="filterbystatus">
+       {{ snippets["ProgramRegistration/CourseEnrollments/FilterByRegistrationStatus"] }}
+    </div>
+    
+    <button class="tablinks active"  data-path="default"  role="tab" aria-selected="true"  onclick="onClickAll()">All</button>
+    {% assign types_arr = "" %}
+    {% for status in courseEnrollmentsFetch.results.entities | compact %}
+    {% assign registrationStatus = status["registration.mshied_name"] %}
+    {% assign types_data = types_arr | split: '_'%}
+    {% unless types_data contains registrationStatus %}
+    <button class="tablinks" data-jplist-control="buttons-path-filter" role="tab"  aria-selected="false" data-path=".{{registrationStatus | replace: ' ', '-' | replace: '/', '' }}" data-group="data-group-1" data-mode="radio" data-selected="true" name="name1" onclick="onClickRegistrationStatus('{{registrationStatus | replace: ' ', '-' | replace: '/', '' }}')">{{registrationStatus}}</button>
+    {% assign types_arr = types_arr | append: "_"| append: registrationStatus %}
+    {% endunless %}
+    {% endfor %}
+   </div>
+    {% for courseHistory in courseEnrollmentsFetch.results.entities %}
+     <div id="coursesectiondetails" class="coursesectiondetails coursesectionlistbox {{courseHistory["registration.mshied_name"] | replace: ' ', '-' | replace: '/', '' }}">
+      <div class="search-output">
+       <div class="coursesection-details">
+        <div class="coursesectionnametext">
+         <p class="title">{{ courseHistory["coursesection.mshied_name"] }}</p>
+        </div>
+        <div class="middletext">
+         {{courseHistory["coursesection.mshied_startdate"] | date: 'MMMM dd, yyyy' }} - {{courseHistory["coursesection.mshied_enddate"] | date: 'MMMM dd, yyyy' }}
+        </div>
+        <div class="middletext">
+         {{ courseHistory["coursesection.mshied_coursedaytime"] }}
+        </div>
+        <div class="enrollmentdescriptiontext">
+         <b> {{ snippets["ProgramRegistration/CourseSections/Eligibility"] }}</b> {{ courseHistory["coursesection.mshied_enrollmentrequirements"] }}
+        </div>
+        <div class="enrollmentdescriptiontext endtext">
+         <b> {{ snippets["ProgramRegistration/CourseSections/Location"] }}</b> {{ courseHistory["coursesection.mshied_location"] }}
+        </div>
+       </div>
+       <div class="registrationsdiv">
+        <div class="registrationstatus cstooltip">         
+         <img src="/ProgramRegistration-{{courseHistory['registration.mshied_code']}}_icon" class="program-card-image" altsrc="/ProgramRegistration-defaultLogo_icon" onerror="this.src = $(this).attr('altSrc')" alt="{{ courseHistory["registration.mshied_name"] }}" />
+         {{courseHistory["registration.mshied_name"] }}
+         <span class="cstooltiptext"> {{ courseHistory["registration.mshied_description"] }} </span>                 
+        </div>
+        <input type="button" btype="button" class="registrationbutton" aria-label="{{ courseHistory["coursesection.mshied_name"] }}" onclick="window.location.href = '/coursesectiondetails/?sectionid={{ courseHistory["coursesection.mshied_coursesectionid"] }}'" value="{{ snippets["ProgramRegistration/CourseSections/RegistrationandDetails"] }}"  />
+        <div class="datetext">
+          {{ snippets["ProgramRegistration/CourseSections/Deadline"] }} {{courseHistory["coursesection.mshied_registrationenddate"] | date: 'MMMM dd, yyyy' }}
+        </div>
+       </div>
+      </div>
+     </div>
+    {% endfor %}
+   {% else %}
+    <div class="enrollmentdescriptiontext">
+      {{ snippets["ProgramRegistration/CourseEnrollments/NoRecords"] }}
+    </div>
+   {% endif %}
+  </div>
+    </div>
+</div>

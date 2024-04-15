@@ -1,0 +1,18 @@
+{% comment %}
+<documentation>
+    <name>HigherEd/GridTopLeft</name>
+    <version>1.0.0</version>
+    <author>Microsoft Business Application Solutions</author>
+    <product>Highered Portal</product>
+    <description>
+        Shows Grid at top left i.e., upcoming appointments.
+    </description>
+    <comments>
+        If this web template is modified, it may be overridden by the future upgrades.
+        This web template should be included in whichever web page needed.
+    </comments>
+</documentation>
+{% endcomment %}
+<div id="upcoming-assignments">
+  <h4 aria-level="5">{{ snippets["HigherEd/GridTopLeft/UpcomingAssignmentsText"] }}</h4>{% include 'entity_list' key: 'Higher Ed - Upcoming Assignments Limit 5' %}
+</div>
