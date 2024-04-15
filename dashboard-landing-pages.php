@@ -59,7 +59,7 @@
       <!--/ Header -->
 
       <!-- Navbar pills -->
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-md-12">
           <ul class="nav nav-pills flex-column flex-sm-row mb-4">
             <li class="nav-item">
@@ -70,7 +70,7 @@
             </li>
           </ul>
         </div>
-      </div>
+      </div> -->
       <!--/ Navbar pills -->
 
       <!-- User Profile Content -->
