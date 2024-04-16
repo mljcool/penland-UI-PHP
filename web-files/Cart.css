@@ -41,8 +41,8 @@
   display: grid;
   grid-template-columns: auto auto;
   justify-content: space-between;
-  padding: 2.5rem 2rem;
-  gap: 5rem;
+  padding: 1.5rem 1rem;
+  gap: 2rem;
 }
 .section-cart-items .cart-wrapper .cart-item-section {
   display: flex;
@@ -247,7 +247,7 @@
 .cart-total-section {
   background: #eeeeee;
   border-radius: 5px;
-  padding: 2rem 4rem;
+  padding: 1rem;
 }
 .cart-total-section h3 {
   text-align: center;
@@ -307,7 +307,7 @@
   background: #f1c400;
   outline: 0;
   border: 0;
-  padding: 1rem 1.9rem;
+  padding: .9rem;
   border-radius: 5px;
   font-size: 18px;
   font-weight: 600;

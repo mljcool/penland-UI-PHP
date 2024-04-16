@@ -140,7 +140,7 @@ window.addEventListener('load', () => {
     }
 
     if (randomWorkshops.length) {
-      randomWorkshops.forEach(function(item) {
+      randomWorkshops.forEach(function(item, index) {
         $(
           '.card-results-sections'
         ).append(` <div data-uid="${item.id}" class="card-item" data-aos="fade-up">
@@ -149,7 +149,7 @@ window.addEventListener('load', () => {
                 <div class="card-fav">
                   <i class="far fa-heart"></i>
                 </div>
-                <img src="https://placehold.co/200x300" />
+                <img src="https://picsum.photos/200/300?random=${index}" />
               </div>
               <div class="card-item-details">
                 <span class="type-item">${item.workshopName}</span>
