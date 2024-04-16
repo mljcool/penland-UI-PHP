@@ -43,7 +43,7 @@
     display: grid;
     grid-template-columns: auto auto;
     justify-content: space-between;
-    padding: 2.5rem 2rem;
+    padding: 1.5rem 1rem;
     gap: 5rem;
 
     .cart-item-section {
@@ -213,7 +213,7 @@
 .cart-total-section {
   background: #eeeeee;
   border-radius: 5px;
-  padding: 2rem 4rem;
+  padding: 1rem 2rem;
 
   h3 {
     text-align: center;

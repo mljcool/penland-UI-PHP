@@ -3,9 +3,6 @@
   /*  BACKGROUND  */
   /*  CONTENT  */
 }
-.DashBoard-user-profile .dashboard-logo {
-  width: 150px;
-}
 .DashBoard-user-profile .user-profile-header-banner img {
   width: 100%;
   -o-object-fit: cover;
@@ -149,4 +146,8 @@
   50% {
     transform: scale(1.2);
   }
+}
+
+.dashboard-logo {
+  width: 150px;
 }/*# sourceMappingURL=DashBoard.css.map */

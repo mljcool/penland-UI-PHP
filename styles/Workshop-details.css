@@ -16,6 +16,8 @@
   flex-direction: column;
   justify-self: center;
   min-width: 870px;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 .workshop-detail-page .nav-breadcrumbs {
   display: flex;

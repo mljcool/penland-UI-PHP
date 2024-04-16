@@ -1,8 +1,5 @@
 .DashBoard-user-profile {
   min-height: 85% !important;
-  .dashboard-logo {
-    width: 150px;
-  }
 
   .user-profile-header-banner img {
     width: 100%;
@@ -167,4 +164,8 @@
       transform: scale(1.2);
     }
   }
+}
+
+.dashboard-logo {
+  width: 150px;
 }

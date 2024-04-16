@@ -11,10 +11,14 @@
       href="https://fonts.cdnfonts.com/css/joanna-sans-nova"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles/styles.css" />
-    <link rel="stylesheet" href="./styles/mobile-nav.css" />
-    <link rel="stylesheet" href="./styles/desktop-nav.css" />
+    <link rel="stylesheet" href="./styles/Styles.css" />
+    <link rel="stylesheet" href="./styles/Mobile-nav.css" />
+    <link rel="stylesheet" href="./styles/Desktop-nav.css" />
     <link rel="stylesheet" href="./styles/DashBoard.css" />
+    <link rel="stylesheet" href="./styles/Workshop-details.css" />
+    <link rel="stylesheet" href="./styles/Search-workshops.css" />
+    <link rel="stylesheet" href="./styles/Cart.css" />
+    <link rel="stylesheet" href="./styles/New-student.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <!-- START THEME UI -->
@@ -26,31 +30,49 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-    <!-- <link rel="stylesheet" href="/styles/lib/fontawesome.css" /> -->
-    <!-- <link rel="stylesheet" href="/lib/bootstrap.min.css" /> -->
 
-    <link rel="stylesheet" href="./styles/lib/core.css" />
-    <link rel="stylesheet" href="./styles/lib/theme-default.css" />
-    <link rel="stylesheet" href="./styles/lib/demo.css" />
-    <link rel="stylesheet" href="./styles/lib/bs-stepper.css" />
-    <link rel="stylesheet" href="./styles/lib/bootstrap-select.css" />
-    <link rel="stylesheet" href="./styles/lib/select2.css" />
-    <link rel="stylesheet" href="./styles/lib/tagify.css" />
-    <link rel="stylesheet" href="./styles/lib/perfect-scrollbar.css" />
-    <link rel="stylesheet" href="./styles/lib/animate.css" />
-    <link rel="stylesheet" href="./styles/lib/docs.css" />
-    <link rel="stylesheet" href="./styles/lib/bootstrap-datepicker.css" />
-    <link rel="stylesheet" href="./styles/lib/bootstrap-maxlength.css" />
+    <link rel="stylesheet" href="./styles/lib/Core.css" />
+    <link rel="stylesheet" href="./styles/lib/Theme-default.css" />
+    <link rel="stylesheet" href="./styles/lib/Demo.css" />
+    <link rel="stylesheet" href="./styles/lib/Bs-stepper.css" />
+    <link rel="stylesheet" href="./styles/lib/Bootstrap-select.css" />
+    <link rel="stylesheet" href="./styles/lib/Select2.css" />
+    <link rel="stylesheet" href="./styles/lib/Tagify.css" />
+    <link rel="stylesheet" href="./styles/lib/Perfect-scrollbar.css" />
+    <link rel="stylesheet" href="./styles/lib/Animate.css" />
+    <link rel="stylesheet" href="./styles/lib/Docs.css" />
+    <link rel="stylesheet" href="./styles/lib/Bootstrap-datepicker.css" />
+    <link rel="stylesheet" href="./styles/lib/Bootstrap-maxlength.css" />
 
     <link rel="stylesheet" href="./styles/lib/Datatables.bootstrap5.css">
     <link rel="stylesheet" href="./styles/lib/Responsive.bootstrap5.css">
     <link rel="stylesheet" href="./styles/lib/Buttons.bootstrap5.css">
     <link rel="stylesheet" href="./styles/lib/Datatables.checkboxes.css">
 
-    <script src="./scripts/lib/helpers.js"></script>
-    <script src="./scripts/lib/config.js"></script>
+
 
     <!-- END THEME UI -->
 
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+      integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+      integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />

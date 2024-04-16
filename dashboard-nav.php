@@ -80,7 +80,7 @@
                 >
                   <i class="bx bx-food-menu fs-4"></i>
                 </span>
-                <a href="app-invoice-list.html" class="stretched-link"
+                <a  data-bs-toggle="modal" data-bs-target="#swinganimationModal" class="stretched-link"
                   >Finance</a
                 >
                 <small class="text-muted mb-0">Payment & Invoice </small>
