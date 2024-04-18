@@ -6,7 +6,7 @@
 <script src="./scripts/lib/Perfect-scrollbar.js"></script>
 <script src="./scripts/lib/Hammer.js"></script>
 <script src="./scripts/lib/Menu.js"></script>
-<script src="./scripts/lib/Form-wizard-numbered.js"></script>
+<!-- <script src="./scripts/lib/Form-wizard-numbered.js"></script> -->
 <script src="./scripts/lib/Bs-stepper.js"></script>
 <script src="./scripts/lib/Bootstrap-select.js"></script>
 <script src="./scripts/lib/Select2.js"></script>
@@ -23,6 +23,12 @@
 
 <script src="./scripts/lib/Main.js"></script>
 <script src="./scripts/lib/Tagify.js"></script>
+
+<script src="./scripts/lib/Popular.js"></script>
+<script src="./scripts/lib/Form-validation-bootstrap5.js"></script>
+<script src="./scripts/lib/Auto-focus.js"></script>
+
+<script src="./scripts/lib/Pages-auth-multisteps.js"></script>
 
 
 <script
@@ -48,4 +54,4 @@
 <script src="./scripts/RandomData.js"></script>
 <script src="./scripts/Process.js"></script>
 <script src="./scripts/Details.js"></script>
-<script src="https://js.stripe.com/v3/"></script>
+<script src="./scripts/stripes/utils.js"></script>

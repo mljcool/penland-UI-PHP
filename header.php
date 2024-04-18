@@ -50,6 +50,9 @@
     <link rel="stylesheet" href="./styles/lib/Datatables.checkboxes.css">
 
 
+    <link rel="stylesheet" href="./styles/lib/Form-validation.css">
+
+
 
     <!-- END THEME UI -->
 
@@ -76,3 +79,5 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
+    <script src="https://js.stripe.com/v3/"></script>
