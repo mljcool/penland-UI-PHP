@@ -20,7 +20,7 @@
       </div>
 
       <!-- START BODY PAGE -->
-      <div class="section_find-a-work-shops row">
+      <div id="browse-workshop-section" class="section_find-a-work-shops row">
         <div class="filter-section">
           <div id="current-filters">
             <div class="current-filter-controls">

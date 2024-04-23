@@ -14,10 +14,16 @@
         <label>(TEST ENVIRONMENT 👩‍💻)</label>
       </div>
 
+      <button class="btn btn-primary " onclick="testAPI();">
+        <span class="align-middle d-sm-inline-block d-none me-sm-1 me-0"
+          >TEST API</span
+        >
+        <i class="bx bx-chevron-right bx-sm me-sm-n2"></i>
+      </button>
       <!-- START BODY PAGE -->
       <div class="row new-student-form">
         <div
-          class="bs-stepper vertical wizard-modern wizard-modern-vertical wizard-numbered mt-2 card mb-4 "
+          class="bs-stepper vertical   mt-2 card mb-4 "
           id="multiStepsValidation"
           style="flex-direction: row"
         >

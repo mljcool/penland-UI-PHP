@@ -29,6 +29,7 @@
 <script src="./scripts/lib/Auto-focus.js"></script>
 
 <script src="./scripts/lib/Pages-auth-multisteps.js"></script>
+<script src="./scripts/lib/block-ui.js"></script>
 
 
 <script
@@ -55,3 +56,5 @@
 <script src="./scripts/Process.js"></script>
 <script src="./scripts/Details.js"></script>
 <script src="./scripts/stripes/utils.js"></script>
+<script src="./scripts/URLS.js"></script>
+<script src="./scripts/API.js"></script>

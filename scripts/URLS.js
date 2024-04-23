@@ -1,0 +1,1 @@
+const WORKSHOP_LIST = `https://prod-84.westus.logic.azure.com:443/workflows/ec7689b3bda84c1a85d31970900a8b74/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=JAK1lRIHTUKZRE42MxeWjFcgoXgm-OR3HeWTX0SCQUc`;

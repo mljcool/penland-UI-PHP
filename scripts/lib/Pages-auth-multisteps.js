@@ -159,15 +159,27 @@ $(function () {
               );
           });
         },
-      }).on('core.form.valid', function () {
-        console.log('Im here...');
-        t.next();
-      }).registerValidator('checkPassword', strongPassword);
+      })
+        .on('core.form.valid', function (e) {
+          console.log('core.form.valid', e);
+          const formProps = e.formValidation;
+          const username = formProps.elements.multiStepsUsername[0].value;
+          const email = formProps.elements.multiStepsEmail[0].value;
+          const password = formProps.elements.multiStepsConfirmPass[0].value;
+          console.log('username', username);
+          console.log('email', email);
+          console.log('password', password);
+
+          t.next();
+        })
+        .registerValidator('checkPassword', strongPassword);
       r.forEach((e) => {
         e.addEventListener('click', (e) => {
           switch (t._currentIndex) {
             case 0:
-              p.validate();
+              p.validate().then((res) => {
+                console.log('_isValid', res);
+              });
               break;
             case 1:
               g.validate();
@@ -179,6 +191,7 @@ $(function () {
       }),
         a.forEach((e) => {
           e.addEventListener('click', (e) => {
+            console.log('e>>> click 2', e);
             switch (t._currentIndex) {
               case 2:
               case 1:
@@ -188,3 +201,27 @@ $(function () {
         });
     }
   });
+
+function testAPI() {
+  const payload = {
+    contact: {
+      username: 'sample_1',
+      email: 'Sample_1@gmail.com',
+      password: 'Mlj_123cool',
+    },
+  };
+
+  const URL =
+    'https://prod-44.westus.logic.azure.com:443/workflows/7a121b6f6eab490ab8a51584106bd7ad/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=NeZyr9S2SId0HbBDd6FNDtDoTzLpvr8K-29TT3Ex16E';
+
+  $.ajax({
+    url: URL,
+    type: 'POST',
+    data: JSON.stringify(payload),
+    dataType: 'json',
+    contentType: 'application/json',
+    success: function (data) {
+      console.log(data);
+    },
+  });
+}
