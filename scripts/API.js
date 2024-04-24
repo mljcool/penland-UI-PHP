@@ -1,11 +1,12 @@
-function setDataUI(workshopData = []) {
-  const ifNoInstructor = (instructorName) => {
+let workShopData = [];
+const ifNoInstructor = (instructorName) => {
     const name = 'Instructor Not Assigned';
     if (instructorName) {
       return instructorName;
     }
     return name;
   };
+
   const ifNoStartDate = (dateStartParams) => {
     const dateStart = 'No confirmed starting date';
     if (dateStartParams) {
@@ -14,22 +15,27 @@ function setDataUI(workshopData = []) {
     return dateStart;
   };
 
-  const duration = 600; // ms
-  const delay = 300; // ms
-//   let delayOf = 0;
-//   let duration = 5;
-  workshopData.forEach(function (item, index) {
-//     delayOf += index + 5;
-//     duration += index + 6;
+  const ifNoLevel = (level) => {
+    const label = 'No redetermined level';
+    if (label) {
+      return label;
+    }
+    return label;
+  };
 
 
+function setDataUI(arrayWorkshops = [], msAnimate = '400ms') {
+
+
+
+  arrayWorkshops.forEach(function (item, index) {
     $(
       '.card-results-sections'
     ).append(` <div data-uid="${item.mshied_courseid}" style="min-height: 476.66px; 
     --animation-order: ${index};
     animation-name: fadeInCard; 
     animation-duration: 350ms;
-    animation-delay: calc(var(--animation-order) * 400ms);
+    animation-delay: calc(var(--animation-order) * ${msAnimate});
     animation-fill-mode: both;
     animation-timing-function: ease-in-out;
     " class="card-item "  
@@ -57,7 +63,6 @@ function setDataUI(workshopData = []) {
             </div>
           </div>`);
   });
-  AOS.init();
 }
 
 function getListOfWorkShops() {
@@ -72,8 +77,9 @@ function getListOfWorkShops() {
     data: jsonData,
     contentType: 'application/json',
     success: function (response) {
-      console.log('Response:', response);
+      workShopData = response;
       setDataUI(response);
+      localStorage.setItem("workshopItems", JSON.stringify(response));
     },
     error: function (xhr, status, error) {
       console.error('Error:', error);
@@ -81,19 +87,59 @@ function getListOfWorkShops() {
   });
 }
 
+function debounce(func, wait, immediate) {
+  var timeout;
+  return function () {
+    var context = this,
+      args = arguments;
+    var later = function () {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+}
+
+function addBlockUI() {
+  $('.search-results-sections').block({
+    message:
+      '<div class="d-flex justify-content-center"><p class="me-2 mb-0">Please wait...</p> <div class="sk-wave sk-primary m-0"><div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div></div> </div>',
+    timeout: 1500,
+    css: {
+      backgroundColor: 'transparent',
+      border: '0',
+    },
+    overlayCSS: {
+      backgroundColor: '#fff',
+      opacity: 0.8,
+    },
+  });
+}
+
+function elasticSearch(searchName) {
+  const newvalue = FuseUtils.filterArrayByString(workShopData, searchName);
+  console.log('newvalue', newvalue);
+  
+  $('.card-results-sections').empty();
+  setTimeout(() => {
+    setDataUI(newvalue, '150ms');
+  }, 500);
+}
+
+$('input[type=search]').on('search', function () {
+  elasticSearch('');
+});
+
+$('#elastic-search').keyup(
+  debounce(function () {
+    const searchText = $(this).val();
+    elasticSearch(searchText);
+  }, 500)
+);
+
 setTimeout(() => {
-  // $("#browse-workshop-section").block({
-  //     message:
-  //       '<div class="d-flex justify-content-center"><p class="me-2 mb-0">Please wait...</p> <div class="sk-wave sk-primary m-0"><div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div></div> </div>',
-  //     timeout: 1000,
-  //     css: {
-  //       backgroundColor: "transparent",
-  //       border: "0"
-  //     },
-  //     overlayCSS: {
-  //       backgroundColor: "#fff",
-  //       opacity: 0.8
-  //     }
-  //   })
   getListOfWorkShops();
 }, 20);

@@ -429,4 +429,7 @@
   100% {
     opacity: 1;
   }
+}
+.section_find-a-work-shops .search-footer-view-more {
+  display: none;
 }/*# sourceMappingURL=Search-workshops.css.map */

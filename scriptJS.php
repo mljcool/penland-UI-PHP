@@ -56,5 +56,7 @@
 <script src="./scripts/Process.js"></script>
 <script src="./scripts/Details.js"></script>
 <script src="./scripts/stripes/utils.js"></script>
+<script src="./scripts/UTILS.js"></script>
 <script src="./scripts/URLS.js"></script>
 <script src="./scripts/API.js"></script>
+<script src="./scripts/LocalStorage.js"></script>

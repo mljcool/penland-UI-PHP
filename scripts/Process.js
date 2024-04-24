@@ -181,7 +181,8 @@ $(document).ready(function() {
     })
     .on('click', '.card-item', function(e) {
       console.log('e', e.currentTarget.dataset.uid);
-      window.location.href = '/penland-web/details.php';
+      const  workshopID = e.currentTarget.dataset.uid;
+      window.location.href = '/penland-web/details.php?workshopID='+workshopID;
     });
 });
 

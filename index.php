@@ -193,6 +193,26 @@
           </div>
         </div>
         <div class="search-results-sections">
+
+
+        <div style="width: 95%" class="input-group input-group-merge mb-4">
+          <span class="input-group-text" id="basic-addon-search31"
+            ><i class="bx bx-search"></i
+          ></span>
+          <input
+            type="search"
+            class="form-control "
+            id="elastic-search"
+            placeholder="Discover courses by searching with criteria such as Name, Instructor, or Start Date (either by Year only or full Date)" 
+            aria-label="Search..."
+            aria-describedby="basic-addon-search31"
+          />
+        </div>
+
+
+    
+
+
           <div class="card-results-sections"></div>
           <div class="search-footer-view-more">
             <div class="progress-container">
