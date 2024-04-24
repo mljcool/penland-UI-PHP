@@ -1,3 +1,31 @@
+
+(function (webapi, $) {
+  function safeAjax(ajaxOptions) {
+      var deferredAjax = $.Deferred();
+      shell.getTokenDeferred().done(function (token) {
+          // add headers for AJAX
+          if (!ajaxOptions.headers) {
+              $.extend(ajaxOptions, {
+                  headers: {
+                      "__RequestVerificationToken": token
+                  }
+              });
+          } else {
+              ajaxOptions.headers["__RequestVerificationToken"] = token;
+          }
+          $.ajax(ajaxOptions)
+              .done(function (data, textStatus, jqXHR) {
+                  validateLoginSession(data, textStatus, jqXHR, deferredAjax.resolve);
+              }).fail(deferredAjax.reject); //AJAX
+      }).fail(function () {
+          deferredAjax.rejectWith(this, arguments); /*on token failure pass the token AJAX and args*/
+      });
+      return deferredAjax.promise();
+  }
+  webapi.safeAjax = safeAjax;
+})(window.webapi = window.webapi || {}, jQuery)
+
+
 // COLLAPSIBLE
 var coll = document.getElementsByClassName('collapsible_filter');
 var i;
@@ -140,25 +168,25 @@ window.addEventListener('load', () => {
     }
 
     if (randomWorkshops.length) {
-      randomWorkshops.forEach(function(item, index) {
-        $(
-          '.card-results-sections'
-        ).append(` <div data-uid="${item.id}" class="card-item" data-aos="fade-up">
-            <div class="card-content">
-              <div class="card-img-container">
-                <div class="card-fav">
-                  <i class="far fa-heart"></i>
-                </div>
-                <img src="https://picsum.photos/200/300?random=${index}" />
-              </div>
-              <div class="card-item-details">
-                <span class="type-item">${item.workshopName}</span>
-                <span class="type-item-author">${item.instructorName}</span>
-                <span class="type-item-dates">${item.date}</span>
-              </div>
-            </div>
-          </div>`);
-      });
+      // randomWorkshops.forEach(function(item, index) {
+      //   $(
+      //     '.card-results-sections'
+      //   ).append(` <div data-uid="${item.id}" class="card-item" data-aos="fade-up">
+      //       <div class="card-content">
+      //         <div class="card-img-container">
+      //           <div class="card-fav">
+      //             <i class="far fa-heart"></i>
+      //           </div>
+      //           <img src="https://picsum.photos/200/300?random=${index}" />
+      //         </div>
+      //         <div class="card-item-details">
+      //           <span class="type-item">${item.workshopName}</span>
+      //           <span class="type-item-author">${item.instructorName}</span>
+      //           <span class="type-item-dates">${item.date}</span>
+      //         </div>
+      //       </div>
+      //     </div>`);
+      // });
       AOS.init({
         offset: -70,
         once: true,
@@ -181,7 +209,8 @@ $(document).ready(function() {
     })
     .on('click', '.card-item', function(e) {
       console.log('e', e.currentTarget.dataset.uid);
-      window.location.href = '/workshop-details';
+      const workshopID = e.currentTarget.dataset.uid;
+      window.location.href = '/workshop-details?workshopID='+workshopID;
     });
 });
 

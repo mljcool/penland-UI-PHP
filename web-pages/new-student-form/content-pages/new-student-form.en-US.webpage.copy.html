@@ -6,10 +6,12 @@
 
   <!-- START BODY PAGE -->
   <div class="row new-student-form">
-    <div   class="bs-stepper vertical wizard-modern wizard-modern-vertical wizard-numbered mt-2 card mb-4"
+    <div
+    class="bs-stepper vertical wizard-modern wizard-modern-vertical wizard-numbered  mt-2 card mb-4 "
+    id="multiStepsValidation"
     style="flex-direction: row">
       <div class="bs-stepper-header">
-        <div class="step" data-target="#account-details">
+        <div class="step" data-target="#accountDetailsValidation">
           <button type="button" class="step-trigger">
             <span class="bs-stepper-circle">1</span>
             <span class="bs-stepper-label mt-1">
@@ -92,7 +94,7 @@
 
       </div>
       <div class="bs-stepper-content">
-        <form onSubmit="return false">
+        <form id="multiStepsForm"  onSubmit="return false">
           <!-- Account Details -->
           {% editable snippets 'Form-account-details' type: 'html' %}
 

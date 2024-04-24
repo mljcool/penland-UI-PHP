@@ -270,7 +270,8 @@
   stroke: currentcolor;
 }
 .section_find-a-work-shops .search-results-sections {
-  min-height: 250px;
+  min-width: 920px;
+  min-height: 950px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -419,4 +420,18 @@
 }
 .section_find-a-work-shops .search-results-sections .card-results-sections .card-item .card-item-details .type-item-dates {
   font-weight: 100;
-}/*# sourceMappingURL=search-workshops.css.map */
+}
+@keyframes fadeInCard {
+  0% {
+    opacity: 0;
+    transform: scale(0.6) translateY(-8px);
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.section_find-a-work-shops .search-footer-view-more {
+  display: none;
+}
+
+/*# sourceMappingURL=search-workshops.css.map */
