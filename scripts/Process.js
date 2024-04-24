@@ -3,7 +3,7 @@ var coll = document.getElementsByClassName('collapsible_filter');
 var i;
 
 for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener('click', function() {
+  coll[i].addEventListener('click', function () {
     this.classList.toggle('active');
     var content = this.nextElementSibling;
     if (content.style.maxHeight) {
@@ -56,7 +56,7 @@ function AppendBadgeSearches() {
 
   if (badges.length) {
     container.html('');
-    badges.forEach(function(searchName) {
+    badges.forEach(function (searchName) {
       container.append(`<div class="badges">
                       <span>${searchName}</span>
                       <i onclick="removeItem('${searchName}')"  class="fas fa-times remove-search"></i>
@@ -124,7 +124,7 @@ window.addEventListener('load', () => {
     'Letterpress',
     'Printmaking',
   ];
-  filterByStudios.forEach(function(item, index, array) {
+  filterByStudios.forEach(function (item, index, array) {
     StudioFilterList(item);
   });
 
@@ -174,24 +174,25 @@ window.addEventListener('load', () => {
   }, 1500);
 });
 
-$(document).ready(function() {
+$(document).ready(function () {
   $('body')
-    .on('click', '.check-input-studios', function(e) {
+    .on('click', '.check-input-studios', function (e) {
       const valueCheckbox = e.currentTarget.value;
       if (e.currentTarget.checked) {
-          console.log('checkbox', e.currentTarget.value);
+        console.log('checkbox', e.currentTarget.value);
         badges.push(valueCheckbox);
         console.log('checkbox', badges);
       } else {
-        badges = badges.filter(_data => _data !== valueCheckbox)
+        badges = badges.filter((_data) => _data !== valueCheckbox);
         console.log('unchecked', e.currentTarget.value);
       }
       AppendBadgeSearches();
     })
-    .on('click', '.card-item', function(e) {
+    .on('click', '.card-item', function (e) {
       console.log('e', e.currentTarget.dataset.uid);
-      const  workshopID = e.currentTarget.dataset.uid;
-      window.location.href = '/penland-web/details.php?workshopID='+workshopID;
+      const workshopID = e.currentTarget.dataset.uid;
+      window.location.href =
+        '/penland-web/details.php?workshopID=' + workshopID;
     });
 });
 
@@ -210,24 +211,34 @@ function formatCurrentDate() {
   // Format the date as MM/DD/YYYY
   return month + '/' + day + '/' + year;
 }
-$(function() {
+
+$(function () {
   $('#daterange').val(formatCurrentDate() + '-' + formatCurrentDate());
 
-  $('input[name="daterange"]').daterangepicker(
-    {
-      opens: 'center',
-      drops: 'up',
-      showISOWeekNumbers: true,
-    },
-    function(start, end, label) {
-      console.log(
-        'A new date selection was made: ' +
-          start.format('YYYY-MM-DD') +
-          ' to ' +
-          end.format('YYYY-MM-DD')
-      );
-    }
-  );
+  $('input[name="daterange"]')
+    .daterangepicker(
+      {
+        opens: 'center',
+        drops: 'up',
+        showISOWeekNumbers: true,
+      },
+      function (start, end, label) {
+        const startDate = new Date(start);
+        const endDate = new Date(end);
+        const newvalue = filterByDateRange(workShopData, startDate, endDate);
+        $('.card-results-sections').empty();
+        setTimeout(() => {
+          setDataUI(newvalue);
+        }, 500);
+      }
+    )
+    .on('cancel.daterangepicker', function (ev, picker) {
+      const newvalue = filterByDateRange(workShopData, undefined, undefined);
+      $('.card-results-sections').empty();
+      setTimeout(() => {
+        setDataUI(newvalue);
+      }, 500);
+    });
 });
 
 // AOS.init();

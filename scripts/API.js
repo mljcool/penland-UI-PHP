@@ -24,6 +24,22 @@ const ifNoLevel = (level) => {
 };
 
 function setDataUI(arrayWorkshops = [], msAnimate = '400ms') {
+  if (!arrayWorkshops.length) {
+    $('.card-results-sections').append(`<div class="no-results "  
+     data-aos="fade-up" style="
+     text-align: center;
+     margin-top: 5rem;
+ ">
+        <div>
+        <i class="bx bx-file-find fa-10x"></i>
+        <h3>Sorry, that filter combination has no results.
+        Please try different criteria.</h3>
+        </div>
+        </div>`);   
+            AOS.init();
+    return;
+  }
+
   arrayWorkshops.forEach(function (item, index) {
     $(
       '.card-results-sections'
@@ -127,14 +143,14 @@ function addBlockUI() {
 }
 
 function elasticSearchByStudio(badges = []) {
-    const newvalue = searhObjectByArrayStudio(workShopData, badges);
-    console.log('searhObjectByArrayStudio', newvalue);
-  
-    $('.card-results-sections').empty();
-    setTimeout(() => {
-      setDataUI(newvalue, '150ms');
-    }, 500);
-  }
+  const newvalue = searhObjectByArrayStudio(workShopData, badges);
+  console.log('searhObjectByArrayStudio', newvalue);
+
+  $('.card-results-sections').empty();
+  setTimeout(() => {
+    setDataUI(newvalue, '150ms');
+  }, 500);
+}
 
 function elasticSearch(searchName) {
   const newvalue = FuseUtils.filterArrayByString(workShopData, searchName);

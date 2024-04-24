@@ -34,6 +34,9 @@
   font-size: 16px;
   min-width: 200px;
   position: relative;
+  width: -moz-min-content;
+  width: min-content;
+  padding: 0 2rem;
 }
 .section_find-a-work-shops .filter-section .current-filter-controls {
   display: flex;
@@ -270,6 +273,8 @@
   stroke: currentcolor;
 }
 .section_find-a-work-shops .search-results-sections {
+  width: -moz-min-content;
+  width: min-content;
   min-width: 920px;
   min-height: 950px;
   display: flex;
@@ -319,10 +324,12 @@
 }
 .section_find-a-work-shops .search-results-sections .card-results-sections {
   width: 100%;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
   padding: 0px 2rem;
   display: grid;
   grid-template-columns: auto auto auto;
-  gap: 3.5rem;
+  gap: 2rem;
 }
 .section_find-a-work-shops .search-results-sections .card-results-sections .card-loading {
   background: #fff;
@@ -365,6 +372,8 @@
   box-shadow: 0 14px 26px rgba(0, 0, 0, 0.04);
   border-radius: 3px;
   transition: transform 0.2s;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 .section_find-a-work-shops .search-results-sections .card-results-sections .card-item:hover {
   transform: scale(1.1) !important;
