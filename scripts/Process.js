@@ -62,10 +62,16 @@ function AppendBadgeSearches() {
                       <i onclick="removeItem('${searchName}')"  class="fas fa-times remove-search"></i>
                       </div>`);
     });
+    setTimeout(() => {
+      elasticSearchByStudio(badges);
+    }, 500);
     return;
   }
   if (badges.length === 0) {
     container.html('');
+    setTimeout(() => {
+      elasticSearchByStudio([]);
+    }, 500);
   }
 }
 
@@ -171,13 +177,16 @@ window.addEventListener('load', () => {
 $(document).ready(function() {
   $('body')
     .on('click', '.check-input-studios', function(e) {
+      const valueCheckbox = e.currentTarget.value;
       if (e.currentTarget.checked) {
-        //   console.log('checkbox', e.currentTarget.value);
-        const value = e.currentTarget.value;
-        badges.push(value);
+          console.log('checkbox', e.currentTarget.value);
+        badges.push(valueCheckbox);
         console.log('checkbox', badges);
-        AppendBadgeSearches();
+      } else {
+        badges = badges.filter(_data => _data !== valueCheckbox)
+        console.log('unchecked', e.currentTarget.value);
       }
+      AppendBadgeSearches();
     })
     .on('click', '.card-item', function(e) {
       console.log('e', e.currentTarget.dataset.uid);

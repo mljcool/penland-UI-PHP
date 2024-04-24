@@ -132,3 +132,10 @@
     }
   }
   
+  const searhObjectByArrayStudio = (mainArr = [], checkArray = []) => {
+    if (!checkArray.length) {
+        return mainArr
+      }
+    const filteredArray = mainArr.filter(item => item.studioType.some(type => checkArray.includes(type)));
+    return filteredArray;
+  }

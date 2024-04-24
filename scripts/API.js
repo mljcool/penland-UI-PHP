@@ -1,33 +1,29 @@
 let workShopData = [];
 const ifNoInstructor = (instructorName) => {
-    const name = 'Instructor Not Assigned';
-    if (instructorName) {
-      return instructorName;
-    }
-    return name;
-  };
+  const name = 'Instructor Not Assigned';
+  if (instructorName) {
+    return instructorName;
+  }
+  return name;
+};
 
-  const ifNoStartDate = (dateStartParams) => {
-    const dateStart = 'No confirmed starting date';
-    if (dateStartParams) {
-      return dateStartParams;
-    }
-    return dateStart;
-  };
+const ifNoStartDate = (dateStartParams) => {
+  const dateStart = 'No confirmed starting date';
+  if (dateStartParams) {
+    return dateStartParams;
+  }
+  return dateStart;
+};
 
-  const ifNoLevel = (level) => {
-    const label = 'No redetermined level';
-    if (label) {
-      return label;
-    }
+const ifNoLevel = (level) => {
+  const label = 'No predetermined level';
+  if (label) {
     return label;
-  };
-
+  }
+  return label;
+};
 
 function setDataUI(arrayWorkshops = [], msAnimate = '400ms') {
-
-
-
   arrayWorkshops.forEach(function (item, index) {
     $(
       '.card-results-sections'
@@ -76,10 +72,21 @@ function getListOfWorkShops() {
     url: WORKSHOP_LIST,
     data: jsonData,
     contentType: 'application/json',
-    success: function (response) {
-      workShopData = response;
-      setDataUI(response);
-      localStorage.setItem("workshopItems", JSON.stringify(response));
+    success: function (response = []) {
+      workShopData = response.map((_data) => {
+        const hasStudio =
+          _data[
+            'new_cr711_newtable_workshop_mshied_course.new_studiotypes@OData.Community.Display.V1.FormattedValue'
+          ];
+        if (hasStudio) {
+          _data.studioType = hasStudio.split('; ');
+        } else {
+          _data.studioType = [];
+        }
+        return _data;
+      });
+      setDataUI(workShopData);
+      localStorage.setItem('workshopItems', JSON.stringify(workShopData));
     },
     error: function (xhr, status, error) {
       console.error('Error:', error);
@@ -119,10 +126,20 @@ function addBlockUI() {
   });
 }
 
+function elasticSearchByStudio(badges = []) {
+    const newvalue = searhObjectByArrayStudio(workShopData, badges);
+    console.log('searhObjectByArrayStudio', newvalue);
+  
+    $('.card-results-sections').empty();
+    setTimeout(() => {
+      setDataUI(newvalue, '150ms');
+    }, 500);
+  }
+
 function elasticSearch(searchName) {
   const newvalue = FuseUtils.filterArrayByString(workShopData, searchName);
   console.log('newvalue', newvalue);
-  
+
   $('.card-results-sections').empty();
   setTimeout(() => {
     setDataUI(newvalue, '150ms');
