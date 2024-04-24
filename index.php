@@ -60,10 +60,7 @@
                 ></i>
               </div>
               <div class="badge-searches">
-                <div class="badges">
-                  <span>Book & Paper</span>
-                  <i class="fas fa-times remove-search"></i>
-                </div>
+              
               </div>
             </div>
           </div>

@@ -179,17 +179,13 @@ $(document).ready(function () {
     .on('click', '.check-input-studios', function (e) {
       const valueCheckbox = e.currentTarget.value;
       if (e.currentTarget.checked) {
-        console.log('checkbox', e.currentTarget.value);
         badges.push(valueCheckbox);
-        console.log('checkbox', badges);
       } else {
         badges = badges.filter((_data) => _data !== valueCheckbox);
-        console.log('unchecked', e.currentTarget.value);
       }
       AppendBadgeSearches();
     })
     .on('click', '.card-item', function (e) {
-      console.log('e', e.currentTarget.dataset.uid);
       const workshopID = e.currentTarget.dataset.uid;
       window.location.href =
         '/penland-web/details.php?workshopID=' + workshopID;
