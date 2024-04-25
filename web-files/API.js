@@ -1,19 +1,33 @@
 let workShopData = [];
-function setDataUI(arrayWorkshops = [], msAnimate = '400ms') {
-  const ifNoInstructor = (instructorName) => {
-    const name = 'Instructor Not Assigned';
-    if (instructorName) {
-      return instructorName;
-    }
-    return name;
-  };
-  const ifNoStartDate = (dateStartParams) => {
-    const dateStart = 'No confirmed starting date';
-    if (dateStartParams) {
-      return dateStartParams;
-    }
-    return dateStart;
-  };
+
+function setDataUI(arrayWorkshops = [], msAnimate = '400ms', apiError = false) {
+  if (!arrayWorkshops.length || apiError) {
+    const message = () => {
+      let stringMessage = `Sorry, that filter combination has no results.
+      Please try different criteria.`;
+      if (apiError) {
+        stringMessage = `Sorry, something went wrong with the data source`;
+      }
+      return stringMessage;
+    };
+    $('.card-results-sections').append(`<div class="no-results "  
+      style="
+     text-align: center;
+     margin-top: 5rem;
+     --animation-order: 1};
+     animation-name: fadeInCard; 
+     animation-duration: 350ms;
+     animation-delay: calc(var(--animation-order) * ${msAnimate});
+     animation-fill-mode: both;
+     animation-timing-function: ease-in-out;
+ ">
+        <div>
+        <i class="bx bx-file-find fa-10x"></i>
+        <h3>${message()}</h3>
+        </div>
+        </div>`);
+    return;
+  }
 
   arrayWorkshops.forEach(function (item, index) {
     $(
@@ -36,16 +50,8 @@ function setDataUI(arrayWorkshops = [], msAnimate = '400ms') {
               </div>
               <div class="card-item-details">
                 <span class="type-item">${item.mshied_name}</span>
-                <span class="type-item-author">${ifNoInstructor(
-                  item[
-                    '_hso_instructor_value@OData.Community.Display.V1.FormattedValue'
-                  ]
-                )}</span>
-                <span class="type-item-dates">${ifNoStartDate(
-                  item[
-                    'mshied_startdate@OData.Community.Display.V1.FormattedValue'
-                  ]
-                )}</span>
+                <span class="type-item-author">${item.instructor}</span>
+                <span class="type-item-dates">${item.startDate}</span>
               </div>
             </div>
           </div>`);
@@ -63,13 +69,21 @@ function getListOfWorkShops() {
     url: WORKSHOP_LIST,
     data: jsonData,
     contentType: 'application/json',
-    success: function (response) {
-      workShopData = response;
-      setDataUI(response);
-      console.log('Response:', response);
+    success: function (response = []) {
+      workShopData = IworkShopModel(response);
+      setDataUI(workShopData, '', false);
+      localStorage.setItem('workshopItems', JSON.stringify(workShopData));
+    },
+    complete: function (data) {
+      removeSekeletonLoader();
+      const isOKay = data.status;
+      if (isOKay !== 200) {
+        setDataUI(workShopData, '', true);
+      }
     },
     error: function (xhr, status, error) {
       console.error('Error:', error);
+      setDataUI([], '', true);
     },
   });
 }
@@ -106,10 +120,20 @@ function addBlockUI() {
   });
 }
 
+function elasticSearchByStudio(badges = []) {
+  const newvalue = searhObjectByArrayStudio(workShopData, badges);
+  console.log('searhObjectByArrayStudio', newvalue);
+
+  $('.card-results-sections').empty();
+  setTimeout(() => {
+    setDataUI(newvalue, '150ms');
+  }, 500);
+}
+
 function elasticSearch(searchName) {
   const newvalue = FuseUtils.filterArrayByString(workShopData, searchName);
   console.log('newvalue', newvalue);
-  
+
   $('.card-results-sections').empty();
   setTimeout(() => {
     setDataUI(newvalue, '150ms');
@@ -130,3 +154,7 @@ $('#elastic-search').keyup(
 setTimeout(() => {
   getListOfWorkShops();
 }, 20);
+
+
+// GETTING INSTRUCTOR DETAILS
+

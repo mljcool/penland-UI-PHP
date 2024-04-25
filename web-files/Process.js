@@ -1,37 +1,9 @@
-
-(function (webapi, $) {
-  function safeAjax(ajaxOptions) {
-      var deferredAjax = $.Deferred();
-      shell.getTokenDeferred().done(function (token) {
-          // add headers for AJAX
-          if (!ajaxOptions.headers) {
-              $.extend(ajaxOptions, {
-                  headers: {
-                      "__RequestVerificationToken": token
-                  }
-              });
-          } else {
-              ajaxOptions.headers["__RequestVerificationToken"] = token;
-          }
-          $.ajax(ajaxOptions)
-              .done(function (data, textStatus, jqXHR) {
-                  validateLoginSession(data, textStatus, jqXHR, deferredAjax.resolve);
-              }).fail(deferredAjax.reject); //AJAX
-      }).fail(function () {
-          deferredAjax.rejectWith(this, arguments); /*on token failure pass the token AJAX and args*/
-      });
-      return deferredAjax.promise();
-  }
-  webapi.safeAjax = safeAjax;
-})(window.webapi = window.webapi || {}, jQuery)
-
-
 // COLLAPSIBLE
 var coll = document.getElementsByClassName('collapsible_filter');
 var i;
 
 for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener('click', function() {
+  coll[i].addEventListener('click', function () {
     this.classList.toggle('active');
     var content = this.nextElementSibling;
     if (content.style.maxHeight) {
@@ -84,16 +56,22 @@ function AppendBadgeSearches() {
 
   if (badges.length) {
     container.html('');
-    badges.forEach(function(searchName) {
+    badges.forEach(function (searchName) {
       container.append(`<div class="badges">
                       <span>${searchName}</span>
                       <i onclick="removeItem('${searchName}')"  class="fas fa-times remove-search"></i>
                       </div>`);
     });
+    setTimeout(() => {
+      elasticSearchByStudio(badges);
+    }, 500);
     return;
   }
   if (badges.length === 0) {
     container.html('');
+    setTimeout(() => {
+      elasticSearchByStudio([]);
+    }, 500);
   }
 }
 
@@ -124,6 +102,16 @@ function removeAll() {
   }, 2500);
 }
 
+function removeSekeletonLoader (){
+  setTimeout(() => {
+    const elementLoadingRemove = $('.card-loading');
+    for (let index = 0; index < elementLoadingRemove.length; index++) {
+      console.log(elementLoadingRemove[index]);
+      elementLoadingRemove[index].remove();
+    }
+  }, 100);
+}
+
 function removeItem(itemName) {
   const classPlain = removeSpacesAndConvertToLowercase(itemName);
   const checkboxes = document.getElementsByClassName(classPlain);
@@ -146,7 +134,7 @@ window.addEventListener('load', () => {
     'Letterpress',
     'Printmaking',
   ];
-  filterByStudios.forEach(function(item, index, array) {
+  filterByStudios.forEach(function (item, index, array) {
     StudioFilterList(item);
   });
 
@@ -160,57 +148,25 @@ window.addEventListener('load', () => {
             </div>
             `);
   }
-  setTimeout(() => {
-    const elementLoadingRemove = $('.card-loading');
-    for (let index = 0; index < elementLoadingRemove.length; index++) {
-      console.log(elementLoadingRemove[index]);
-      elementLoadingRemove[index].remove();
-    }
-
-    if (randomWorkshops.length) {
-      // randomWorkshops.forEach(function(item, index) {
-      //   $(
-      //     '.card-results-sections'
-      //   ).append(` <div data-uid="${item.id}" class="card-item" data-aos="fade-up">
-      //       <div class="card-content">
-      //         <div class="card-img-container">
-      //           <div class="card-fav">
-      //             <i class="far fa-heart"></i>
-      //           </div>
-      //           <img src="https://picsum.photos/200/300?random=${index}" />
-      //         </div>
-      //         <div class="card-item-details">
-      //           <span class="type-item">${item.workshopName}</span>
-      //           <span class="type-item-author">${item.instructorName}</span>
-      //           <span class="type-item-dates">${item.date}</span>
-      //         </div>
-      //       </div>
-      //     </div>`);
-      // });
-      AOS.init({
-        offset: -70,
-        once: true,
-        mirror: false,
-      });
-    }
-  }, 1500);
 });
 
-$(document).ready(function() {
+$(document).ready(function () {
   $('body')
-    .on('click', '.check-input-studios', function(e) {
+    .on('click', '.check-input-studios', function (e) {
+      const valueCheckbox = e.currentTarget.value;
       if (e.currentTarget.checked) {
-        //   console.log('checkbox', e.currentTarget.value);
-        const value = e.currentTarget.value;
-        badges.push(value);
-        console.log('checkbox', badges);
-        AppendBadgeSearches();
+        badges.push(valueCheckbox);
+      } else {
+        badges = badges.filter((_data) => _data !== valueCheckbox);
       }
+      AppendBadgeSearches();
     })
-    .on('click', '.card-item', function(e) {
-      console.log('e', e.currentTarget.dataset.uid);
+    .on('click', '.card-item', function (e) {
       const workshopID = e.currentTarget.dataset.uid;
-      window.location.href = '/workshop-details?workshopID='+workshopID;
+      // window.location.href =
+      //   '/penland-web/details.php?workshopID=' + workshopID;
+
+        window.location.href = '/workshop-details?workshopID='+workshopID
     });
 });
 
@@ -229,34 +185,34 @@ function formatCurrentDate() {
   // Format the date as MM/DD/YYYY
   return month + '/' + day + '/' + year;
 }
-$(function() {
+
+$(function () {
   $('#daterange').val(formatCurrentDate() + '-' + formatCurrentDate());
 
-  $('input[name="daterange"]').daterangepicker(
-    {
-      opens: 'center',
-      drops: 'up',
-      showISOWeekNumbers: true,
-    },
-    function(start, end, label) {
-      console.log(
-        'A new date selection was made: ' +
-          start.format('YYYY-MM-DD') +
-          ' to ' +
-          end.format('YYYY-MM-DD')
-      );
-    }
-  );
+  $('input[name="daterange"]')
+    .daterangepicker(
+      {
+        opens: 'center',
+        drops: 'up',
+        showISOWeekNumbers: true,
+      },
+      function (start, end, label) {
+        const startDate = new Date(start);
+        const endDate = new Date(end);
+        const newvalue = filterByDateRange(workShopData, startDate, endDate);
+        $('.card-results-sections').empty();
+        setTimeout(() => {
+          setDataUI(newvalue);
+        }, 500);
+      }
+    )
+    .on('cancel.daterangepicker', function (ev, picker) {
+      const newvalue = filterByDateRange(workShopData, undefined, undefined);
+      $('.card-results-sections').empty();
+      setTimeout(() => {
+        setDataUI(newvalue);
+      }, 500);
+    });
 });
 
 // AOS.init();
-
-
-$(document).ready(function(){
-  var linksToRemove = document.querySelectorAll('link[href*="https://content.powerapps.com/resource/powerappsportal/dist/preform.bundle-"]');
-
-  // Step 2: Remove the link tags from the DOM
-  linksToRemove.forEach(function(link) {
-      link.parentNode.removeChild(link);
-  });
-})
