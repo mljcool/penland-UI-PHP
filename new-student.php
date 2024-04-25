@@ -20,10 +20,12 @@
         >
         <i class="bx bx-chevron-right bx-sm me-sm-n2"></i>
       </button>
-      <!-- START BODY PAGE -->
+      <!-- START BODY PAGE   -->
+      <!-- BYPASS bs-stepper vertical wizard-modern wizard-modern-vertical wizard-numbered  mt-2 card mb-4 -->
+      <!-- ORIGINAL CLASS bs-stepper vertical   mt-2 card mb-4 -->
       <div class="row new-student-form">
         <div
-          class="bs-stepper vertical   mt-2 card mb-4 "
+          class="bs-stepper vertical wizard-modern wizard-modern-vertical wizard-numbered  mt-2 card mb-4"
           id="multiStepsValidation"
           style="flex-direction: row"
         >
