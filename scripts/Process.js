@@ -102,6 +102,16 @@ function removeAll() {
   }, 2500);
 }
 
+function removeSekeletonLoader (){
+  setTimeout(() => {
+    const elementLoadingRemove = $('.card-loading');
+    for (let index = 0; index < elementLoadingRemove.length; index++) {
+      console.log(elementLoadingRemove[index]);
+      elementLoadingRemove[index].remove();
+    }
+  }, 100);
+}
+
 function removeItem(itemName) {
   const classPlain = removeSpacesAndConvertToLowercase(itemName);
   const checkboxes = document.getElementsByClassName(classPlain);
@@ -138,40 +148,6 @@ window.addEventListener('load', () => {
             </div>
             `);
   }
-  setTimeout(() => {
-    const elementLoadingRemove = $('.card-loading');
-    for (let index = 0; index < elementLoadingRemove.length; index++) {
-      console.log(elementLoadingRemove[index]);
-      elementLoadingRemove[index].remove();
-    }
-
-    if (randomWorkshops.length) {
-      // randomWorkshops.forEach(function(item,index) {
-      //   $(
-      //     '.card-results-sections'
-      //   ).append(` <div data-uid="${item.id}" class="card-item" data-aos="fade-up">
-      //       <div class="card-content">
-      //         <div class="card-img-container">
-      //           <div class="card-fav">
-      //             <i class="far fa-heart"></i>
-      //           </div>
-      //           <img src="https://picsum.photos/200/300?random=${index}" />
-      //         </div>
-      //         <div class="card-item-details">
-      //           <span class="type-item">${item.workshopName}</span>
-      //           <span class="type-item-author">${item.instructorName}</span>
-      //           <span class="type-item-dates">${item.date}</span>
-      //         </div>
-      //       </div>
-      //     </div>`);
-      // });
-      // AOS.init({
-      //   offset: -70,
-      //   once: true,
-      //   mirror: false,
-      // });
-    }
-  }, 1500);
 });
 
 $(document).ready(function () {

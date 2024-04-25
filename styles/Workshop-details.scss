@@ -464,6 +464,7 @@
       }
       .owl-stage {
         margin: 4rem 0;
+        display: flex;
         // max-width: 800px;
       }
       .owl-item {
@@ -475,7 +476,9 @@
         flex-direction: column;
         align-items: center;
         width: fit-content;
-        margin: 1rem 2rem;
+        flex: 1 0 auto;
+        height: 100%;
+        margin: 0 1rem;
       }
     }
     .card-item {
@@ -488,6 +491,12 @@
       transition: transform 0.2s;
       min-width: 200px;
       max-width: 300px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      height:100%;
 
       &:hover {
         transform: scale(1.08) !important;
@@ -544,6 +553,7 @@
         }
         .type-item-dates {
           font-weight: 100;
+          text-align: center;
         }
       }
     }

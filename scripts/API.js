@@ -1,42 +1,31 @@
 let workShopData = [];
-const ifNoInstructor = (instructorName) => {
-  const name = 'Instructor Not Assigned';
-  if (instructorName) {
-    return instructorName;
-  }
-  return name;
-};
 
-const ifNoStartDate = (dateStartParams) => {
-  const dateStart = 'No confirmed starting date';
-  if (dateStartParams) {
-    return dateStartParams;
-  }
-  return dateStart;
-};
-
-const ifNoLevel = (level) => {
-  const label = 'No predetermined level';
-  if (label) {
-    return label;
-  }
-  return label;
-};
-
-function setDataUI(arrayWorkshops = [], msAnimate = '400ms') {
-  if (!arrayWorkshops.length) {
+function setDataUI(arrayWorkshops = [], msAnimate = '400ms', apiError = false) {
+  if (!arrayWorkshops.length || apiError) {
+    const message = () => {
+      let stringMessage = `Sorry, that filter combination has no results.
+      Please try different criteria.`;
+      if (apiError) {
+        stringMessage = `Sorry, something went wrong with the data source`;
+      }
+      return stringMessage;
+    };
     $('.card-results-sections').append(`<div class="no-results "  
-     data-aos="fade-up" style="
+      style="
      text-align: center;
      margin-top: 5rem;
+     --animation-order: 1};
+     animation-name: fadeInCard; 
+     animation-duration: 350ms;
+     animation-delay: calc(var(--animation-order) * ${msAnimate});
+     animation-fill-mode: both;
+     animation-timing-function: ease-in-out;
  ">
         <div>
         <i class="bx bx-file-find fa-10x"></i>
-        <h3>Sorry, that filter combination has no results.
-        Please try different criteria.</h3>
+        <h3>${message()}</h3>
         </div>
-        </div>`);   
-            AOS.init();
+        </div>`);
     return;
   }
 
@@ -61,16 +50,8 @@ function setDataUI(arrayWorkshops = [], msAnimate = '400ms') {
               </div>
               <div class="card-item-details">
                 <span class="type-item">${item.mshied_name}</span>
-                <span class="type-item-author">${ifNoInstructor(
-                  item[
-                    '_hso_instructor_value@OData.Community.Display.V1.FormattedValue'
-                  ]
-                )}</span>
-                <span class="type-item-dates">${ifNoStartDate(
-                  item[
-                    'mshied_startdate@OData.Community.Display.V1.FormattedValue'
-                  ]
-                )}</span>
+                <span class="type-item-author">${item.instructor}</span>
+                <span class="type-item-dates">${item.startDate}</span>
               </div>
             </div>
           </div>`);
@@ -89,23 +70,20 @@ function getListOfWorkShops() {
     data: jsonData,
     contentType: 'application/json',
     success: function (response = []) {
-      workShopData = response.map((_data) => {
-        const hasStudio =
-          _data[
-            'new_cr711_newtable_workshop_mshied_course.new_studiotypes@OData.Community.Display.V1.FormattedValue'
-          ];
-        if (hasStudio) {
-          _data.studioType = hasStudio.split('; ');
-        } else {
-          _data.studioType = [];
-        }
-        return _data;
-      });
-      setDataUI(workShopData);
+      workShopData = IworkShopModel(response);
+      setDataUI(workShopData, '', false);
       localStorage.setItem('workshopItems', JSON.stringify(workShopData));
+    },
+    complete: function (data) {
+      removeSekeletonLoader();
+      const isOKay = data.status;
+      if (isOKay !== 200) {
+        setDataUI(workShopData, '', true);
+      }
     },
     error: function (xhr, status, error) {
       console.error('Error:', error);
+      setDataUI([], '', true);
     },
   });
 }

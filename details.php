@@ -145,7 +145,7 @@
           <div class="studio-context">
             <div class="studio-wrapper">
               <h3
-                class="studio-name"
+                class="studio-name details-studio-name"
                 data-aos="fade-up"
                 data-aos-offset="200"
                 data-aos-delay="20"

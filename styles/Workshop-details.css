@@ -406,6 +406,7 @@
 }
 .workshop-detail-page .explore-more-workshopt-section .slider-image-explore-workshop .owl-stage {
   margin: 4rem 0;
+  display: flex;
 }
 .workshop-detail-page .explore-more-workshopt-section .slider-image-explore-workshop .item {
   display: flex;
@@ -413,7 +414,9 @@
   align-items: center;
   width: -moz-fit-content;
   width: fit-content;
-  margin: 1rem 2rem;
+  flex: 1 0 auto;
+  height: 100%;
+  margin: 0 1rem;
 }
 .workshop-detail-page .explore-more-workshopt-section .card-item {
   cursor: pointer;
@@ -426,6 +429,12 @@
   transition: transform 0.2s;
   min-width: 200px;
   max-width: 300px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  height: 100%;
 }
 .workshop-detail-page .explore-more-workshopt-section .card-item:hover {
   transform: scale(1.08) !important;
@@ -480,6 +489,7 @@
 }
 .workshop-detail-page .explore-more-workshopt-section .card-item .card-item-details .type-item-dates {
   font-weight: 100;
+  text-align: center;
 }
 
 .have-any-question-section {

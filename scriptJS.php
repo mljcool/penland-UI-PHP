@@ -60,3 +60,4 @@
 <script src="./scripts/URLS.js"></script>
 <script src="./scripts/API.js"></script>
 <script src="./scripts/LocalStorage.js"></script>
+<script src="./scripts/MODEL.js"></script>
