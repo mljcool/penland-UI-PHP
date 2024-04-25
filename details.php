@@ -107,11 +107,12 @@
                 data-aos-offset="200"
                 data-aos-delay="10"
                 data-aos-duration="800"
+                class="details-instructor-title"
               >
                 Teaching Artist
               </h3>
               <span
-                class="instructor-name"
+                class="instructor-name details-instructor-name"
                 data-aos="fade-left"
                 data-aos-offset="200"
                 data-aos-delay="10"
@@ -123,6 +124,7 @@
                 data-aos-offset="200"
                 data-aos-delay="10"
                 data-aos-duration="950"
+                class="details-instructor-description"
               >
                 Heather Peters is an artist and writer whose work explores the
                 ideas of time and materiality through an investigation into the
@@ -156,7 +158,7 @@
               >
                 The Book & Paper Studio
               </h3>
-              <p>
+              <p class="details-studio-description">
                 The book studio is very flexible, but is particularly well
                 equipped for book construction techniques (including Eastern and
                 Western traditions and adhesive and non-adhesive binding), pop

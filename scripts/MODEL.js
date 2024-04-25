@@ -53,10 +53,14 @@ function IworkShopModel(workshopData = []) {
     _data.studioDescription =
     _data['new_cr711_newtable_workshop_mshied_course.new_description'];
 
+
+
     const hasStudio =
       _data[
         'new_cr711_newtable_workshop_mshied_course.new_studiotypes@OData.Community.Display.V1.FormattedValue'
       ];
+
+
     if (hasStudio) {
       _data.studioType = hasStudio.split('; ');
     } else {
@@ -66,3 +70,13 @@ function IworkShopModel(workshopData = []) {
     return _data;
   });
 }
+
+// function IinstructorData(data = []){
+//   if(!data.length){
+//     return data;
+//   }
+//   return data.map(_data => {
+//       _data.fullName = _
+//     return _data
+//   })
+// }

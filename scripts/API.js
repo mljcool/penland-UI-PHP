@@ -154,3 +154,7 @@ $('#elastic-search').keyup(
 setTimeout(() => {
   getListOfWorkShops();
 }, 20);
+
+
+// GETTING INSTRUCTOR DETAILS
+

@@ -5,18 +5,6 @@ $(document).ready(function() {
 
       const mshiedName = dataWorkshop.mshied_name;
 
-      const hsoinstructorValue = ifNoInstructor(
-        dataWorkshop[
-          '_hso_instructor_value@OData.Community.Display.V1.FormattedValue'
-        ]
-      );
-      const mshiedStartdate = ifNoStartDate(
-        dataWorkshop[
-          'mshied_startdate@OData.Community.Display.V1.FormattedValue'
-        ]
-      );
-
-
       $(
         '.owl-carousel-explore-more'
       ).append(`<div class="item"> <div data-uid="${dataWorkshop.mshied_courseid}" class="card-item">
@@ -29,8 +17,8 @@ $(document).ready(function() {
                 </div>
                 <div class="card-item-details">
                   <span class="type-item">${mshiedName}</span>
-                  <span class="type-item-author">${hsoinstructorValue}</span>
-                  <span  class="type-item-dates">${mshiedStartdate}</span>
+                  <span class="type-item-author">${dataWorkshop.instructor}</span>
+                  <span  class="type-item-dates">${dataWorkshop.startDate}</span>
                 </div>
               </div>
             </div></div>`);
