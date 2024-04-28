@@ -6,7 +6,7 @@
   tabindex="-1"
   aria-hidden="true"
 >
-  <div class="modal-dialog modal-lg" role="document">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
     <div class="modal-content text-center">
       <div class="modal-header border-0">
         <h5 class="modal-title" id="exampleModalLabel">Housing & Fees</h5>
@@ -18,9 +18,8 @@
         ></button>
       </div>
       <div
-        id="modalHorizontalCarouselControls"
-        class="carousel slide pb-4 mb-2"
-        data-bs-interval="false"
+        id="modal-prices-fees"
+        class="pb-4 mb-2"
       >
         <div class="row">
           <div class="col-md mb-4 mb-md-2">
@@ -44,13 +43,36 @@
                   class="accordion-collapse collapse"
                 >
                   <div class="accordion-body">
+                  <div class="table-container">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>SPRING TUITION</th>
+                      <th>Concentration (8-Weeks)</th>
+                      <th>Short Session (4-Days)</th>
+                    </tr>
+                  </thead>
+              
+                  <tbody>
+                    <tr>
+                      <td>Regular</td>
+                      <td>$5,817</td>
+                      <td>$1,049</td>
+                    </tr>
+                    <tr>
+                      <td>Hot glass</td>
+                      <td>7,578</td>
+                      <td>$1,428</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
                     <div class="table-container">
                       <table>
                         <thead>
                           <tr>
                             <th>
-                              SPRING PARTIAL-SCHOLARSHIP TUITION (INCLUDES ROOM
-                              &amp; BOARD)
+                              SPRING PARTIAL-SCHOLARSHIP TUITION (INCLUDES ROOM BOARD)
                             </th>
                             <th>Concentration (8-Weeks)</th>
                             <th>Short Session (4-Days)</th>

@@ -165,6 +165,9 @@ $(document).ready(function () {
       const workshopID = e.currentTarget.dataset.uid;
       window.location.href =
         '/penland-web/details.php?workshopID=' + workshopID;
+
+        // FOR PORTAL DYNAMICS
+        // window.location.href = '/workshop-details?workshopID='+workshopID
     });
 });
 

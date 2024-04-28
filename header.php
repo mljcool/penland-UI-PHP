@@ -40,7 +40,7 @@
     <link rel="stylesheet" href="./styles/lib/Tagify.css" />
     <link rel="stylesheet" href="./styles/lib/Perfect-scrollbar.css" />
     <link rel="stylesheet" href="./styles/lib/Animate.css" />
-    <link rel="stylesheet" href="./styles/lib/Docs.css" />
+    <!-- <link rel="stylesheet" href="./styles/lib/Docs.css" /> -->
     <link rel="stylesheet" href="./styles/lib/Bootstrap-datepicker.css" />
     <link rel="stylesheet" href="./styles/lib/Bootstrap-maxlength.css" />
 

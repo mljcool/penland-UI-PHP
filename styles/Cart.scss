@@ -467,3 +467,40 @@
     }
   }
 }
+
+#modal-prices-fees {
+  .table-container{
+    table{
+      width: 100%;
+    }
+    margin-bottom: 12px;
+    td{
+      padding: 4px 12px;
+    }
+  }
+  th{
+    padding: 8px 12px;
+    line-height: 19px;
+    font-size: 13px;
+    font-weight: 700;
+    font-style: normal;
+    color: rgb(255, 255, 255);
+    background-color: rgb(94, 159, 182);
+    border-color: rgb(94, 159, 182);
+
+  }
+  .accordion-body{
+    text-align: left;
+  }
+  tr {
+    td{
+      white-space: nowrap;
+      // &:not(:first-child){
+      //   text-align: center;
+      // }
+      &:first-child{
+        text-align: left;
+      }
+    }
+  }
+}

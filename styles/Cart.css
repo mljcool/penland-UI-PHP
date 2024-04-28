@@ -408,4 +408,33 @@
 .selected-item .icon-v img {
   width: 60px;
   height: 50px;
+}
+
+#modal-prices-fees .table-container {
+  margin-bottom: 12px;
+}
+#modal-prices-fees .table-container table {
+  width: 100%;
+}
+#modal-prices-fees .table-container td {
+  padding: 4px 12px;
+}
+#modal-prices-fees th {
+  padding: 8px 12px;
+  line-height: 19px;
+  font-size: 13px;
+  font-weight: 700;
+  font-style: normal;
+  color: rgb(255, 255, 255);
+  background-color: rgb(94, 159, 182);
+  border-color: rgb(94, 159, 182);
+}
+#modal-prices-fees .accordion-body {
+  text-align: left;
+}
+#modal-prices-fees tr td {
+  white-space: nowrap;
+}
+#modal-prices-fees tr td:first-child {
+  text-align: left;
 }/*# sourceMappingURL=Cart.css.map */

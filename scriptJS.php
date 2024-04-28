@@ -1,4 +1,5 @@
 <!-- START UI THEM SCRIPT -->
+<?php include_once('./modal-prices-fees.php'); ?>
 
 <script src="./scripts/lib/Bootstrap.js"></script>
 <script src="./scripts/lib/Jquery.js"></script>
