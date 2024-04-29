@@ -43,12 +43,8 @@ function removeItem(uid) {
 
 function addHTMLELementCartItems() {
   const myCart = getMyCartDetails();
-  console.log("myCartItems", myCart);
   const cart = myCart.items;
   if (cart.length) {
-
-  
-    $('.fee-is-'+myCart.payType).prop('checked', true);
 
     countCartItems(cart.length);
     $(".cart-item-list-wrapper").html("");
@@ -111,6 +107,11 @@ function addHTMLELementCartItems() {
   }
 }
 
+function setRadioTypePayment(){
+    const myCart = getMyCartDetails();
+    $(".fee-is-" + myCart.payType).prop("checked", true);
+}
+
 function MessateAlertIformation() {
   Swal.fire({
     title: "Payment option",
@@ -125,6 +126,8 @@ function MessateAlertIformation() {
 
 $(document).ready(function () {
   addHTMLELementCartItems();
+  setRadioTypePayment();
+
   $(".on-continue-registration").click(function () {
     const myCartDetails = getMyDetails().cartDetails;
     if (!myCartDetails.payType) {
@@ -137,9 +140,7 @@ $(document).ready(function () {
   $(".pay-types").change(function () {
     if (this.checked) {
       const payType = $(this).val();
-      console.log(payType);
       const myCartDetails = getMyDetails().cartDetails;
-      //dynamicDetails
       myCartDetails.payType = payType;
       updateMyDetails("cart", myCartDetails);
     }

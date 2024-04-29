@@ -140,18 +140,18 @@
                 <div class="row py-4 my-2">
                   <div class="col-md-6 mb-md-0 mb-2">
                     <div
-                      class="form-check custom-option custom-option-basic checked"
+                      class="form-check custom-option custom-option-basic "
                     >
                       <label
                         class="form-check-label custom-option-content form-check-input-payment d-flex gap-3 align-items-center"
-                        for="customRadioFull"
+                        for="customRadioVisa"
                       >
                         <input
                           name="customRadioTemp"
                           class="form-check-input pay-types fee-is-full"
                           type="radio"
                           value="full"
-                          id="customRadioFull"
+                          id="customRadioVisa"
                         />
                         <span class="custom-option-body">
                           <span style="white-space: nowrap" class="ms-3"
@@ -168,11 +168,11 @@
                         for="customRadioPaypal"
                       >
                         <input
-                          name="customRadioDeposit"
+                          name="customRadioTemp"
                           class="form-check-input pay-types fee-is-deposit"
                           type="radio"
                           value="deposit"
-                          id="customRadioDeposit"
+                          id="customRadioPaypal"
                         />
                         <span class="custom-option-body">
                           <span style="white-space: nowrap" class="ms-3"
