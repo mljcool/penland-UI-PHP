@@ -203,7 +203,7 @@
                 <button
                   type="button"
                   data-bs-toggle="modal"
-                  data-bs-target="#onboardingHorizontalSlideModal"
+                  data-bs-target="#priceRangeFeedModal"
                   class="btn btn-sm btn-label-primary mt-md-3 d-flex gap-2 align-items-center"
                 >
                   About Housing & Fees
