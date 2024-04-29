@@ -71,12 +71,32 @@ function IworkShopModel(workshopData = []) {
   });
 }
 
-// function IinstructorData(data = []){
-//   if(!data.length){
-//     return data;
-//   }
-//   return data.map(_data => {
-//       _data.fullName = _
-//     return _data
-//   })
-// }
+let datails = {
+  hasInitialize: false,
+  cartDetails: {
+    items: [],
+    subTotal: 0,
+    total: 0,
+    payType: "",
+  },
+  dynamicDetails: {
+    account: {},
+    personalInfo: {},
+    housing: {},
+    paymentStripe: {},
+    terms: false,
+  },
+};
+
+$(document).ready(function(){
+  // SHAPE CLIENT DETAILS INFORMATION
+
+  const ifInitialized = getMyDetails();
+  if(ifInitialized && ifInitialized.hasInitialize){
+    return;
+  }
+
+  setItemStore("myDetails", datails);
+
+})
+

@@ -159,11 +159,11 @@ function getURLParameters() {
   return workshopID;
 }
 
-function parseStore(data){
+function parseStore(data) {
   return JSON.parse(data);
 }
 
-function setItemStore(name= '', data = []){
+function setItemStore(name = "", data = []) {
   localStorage.setItem(name, JSON.stringify(data));
 }
 
@@ -183,7 +183,20 @@ function getCurrentSelectedWorkShop() {
   return workShopItems;
 }
 
-function getMyCartDetails() {
-  const myCart = parseStore(localStorage.getItem("myCart"));
-  return myCart;
+function getMyDetails() {
+  const myDetails = parseStore(localStorage.getItem("myDetails"));
+  return myDetails;
+}
+
+function updateMyDetails(datType = "cart", data) {
+
+  const myDetails = getMyDetails();
+  myDetails.hasInitialize = true;
+  if (datType === "cart") {
+    myDetails.cartDetails = data;
+  } else {
+    myDetails.dynamicDetails = data;
+  }
+
+  setItemStore("myDetails", myDetails);
 }

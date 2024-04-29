@@ -54,6 +54,7 @@
 
 
 
+<script src="./scripts/MODEL.js"></script>
 <script src="./scripts/UTILS.js"></script>
 <script src="./scripts/RandomData.js"></script>
 <script src="./scripts/Process.js"></script>
@@ -63,4 +64,3 @@
 <script src="./scripts/API.js"></script>
 <script src="./scripts/CART.js"></script>
 <script src="./scripts/LocalStorage.js"></script>
-<script src="./scripts/MODEL.js"></script>

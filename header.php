@@ -40,7 +40,6 @@
     <link rel="stylesheet" href="./styles/lib/Tagify.css" />
     <link rel="stylesheet" href="./styles/lib/Perfect-scrollbar.css" />
     <link rel="stylesheet" href="./styles/lib/Animate.css" />
-    <link rel="stylesheet" href="./styles/lib/Sweetalert2.css" />
     <!-- <link rel="stylesheet" href="./styles/lib/Docs.css" /> -->
     <link rel="stylesheet" href="./styles/lib/Bootstrap-datepicker.css" />
     <link rel="stylesheet" href="./styles/lib/Bootstrap-maxlength.css" />
@@ -54,6 +53,7 @@
     <link rel="stylesheet" href="./styles/lib/Form-validation.css">
     <link rel="stylesheet" href="./styles/lib/spinkit.css">
 
+    <link rel="stylesheet" href="./styles/lib/Sweetalert2.css" />
 
 
     <!-- END THEME UI -->

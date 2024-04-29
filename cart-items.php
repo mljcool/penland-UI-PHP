@@ -46,110 +46,10 @@
             </div>
 
             <!-- Shopping bag -->
-            <h5>My Cart (2 Items)</h5>
-            <ul class="list-group mb-3">
-              <li class="list-group-item p-4">
-                <div class="d-flex gap-3">
-                  <div class="flex-shrink-0 d-flex align-items-center">
-                    <img
-                      src="./assets/Over-view-1.png"
-                      alt="google home"
-                      class="w-px-100"
-                      style="border-radius: 8px"
-                    />
-                  </div>
-                  <div class="flex-grow-1">
-                    <div class="row">
-                      <div class="col-md-8">
-                        <p class="me-3">
-                          <a href="javascript:void(0)" class="text-body fs-5"
-                            >Case Binding Additional title here</a
-                          >
-                        </p>
-                        <div class="text-muted mb-2 d-flex flex-wrap">
-                          <span class="me-1">Code:</span>
-                          <span class="badge bg-label-info">R2403B</span>
-                        </div>
-                        <div class="text-muted mb-2 d-flex flex-wrap">
-                          <span class="me-1">Instructor:</span>
-                          <a href="javascript:void(0)" class="me-3"
-                            >Peter Heathens</a
-                          >
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="text-md-end">
-                          <button
-                            type="button"
-                            class="btn-close btn-pinned"
-                            aria-label="Close"
-                          ></button>
-                          <div class="my-2 my-md-4 mb-md-5">
-                            <span class="text-primary">$299</span>
-                          </div>
-                          <button
-                            type="button"
-                            class="btn btn-sm btn-label-primary mt-md-3"
-                          >
-                            Supply List
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="list-group-item p-4">
-                <div class="d-flex gap-3">
-                  <div class="flex-shrink-0 d-flex align-items-center">
-                    <img
-                      src="./assets/Over-view-1.png"
-                      alt="google home"
-                      class="w-px-100"
-                      style="border-radius: 8px"
-                    />
-                  </div>
-                  <div class="flex-grow-1">
-                    <div class="row">
-                      <div class="col-md-8">
-                        <p class="me-3">
-                          <a href="javascript:void(0)" class="text-body fs-5"
-                            >Case Binding Additional title here</a
-                          >
-                        </p>
-                        <div class="text-muted mb-2 d-flex flex-wrap">
-                          <span class="me-1">Code:</span>
-                          <span class="badge bg-label-info">R2403B</span>
-                        </div>
-                        <div class="text-muted mb-2 d-flex flex-wrap">
-                          <span class="me-1">Instructor:</span>
-                          <a href="javascript:void(0)" class="me-3"
-                            >Peter Heathens</a
-                          >
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="text-md-end">
-                          <button
-                            type="button"
-                            class="btn-close btn-pinned"
-                            aria-label="Close"
-                          ></button>
-                          <div class="my-2 my-md-4 mb-md-5">
-                            <span class="text-primary">$299</span>
-                          </div>
-                          <button
-                            type="button"
-                            class="btn btn-sm btn-label-primary mt-md-3"
-                          >
-                            Supply List
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
+            <h5>My Cart <span class="count-items">(0 Items)</span></h5>
+            <ul class="list-group mb-3 cart-item-list-wrapper">
+         
+         
             </ul>
 
             <!-- Wishlist -->
@@ -238,7 +138,7 @@
               </dl>
               <dl>
                 <div class="row py-4 my-2">
-                  <div class="col-md mb-md-0 mb-2">
+                  <div class="col-md-6 mb-md-0 mb-2">
                     <div
                       class="form-check custom-option custom-option-basic checked"
                     >
@@ -261,7 +161,7 @@
                       </label>
                     </div>
                   </div>
-                  <div class="col-md mb-md-0 mb-2">
+                  <div class="col-md-6 mb-md-0 mb-2">
                     <div class="form-check custom-option custom-option-basic">
                       <label
                         class="form-check-label custom-option-content form-check-input-payment d-flex gap-3 align-items-center"
