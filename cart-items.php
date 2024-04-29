@@ -155,7 +155,7 @@
             <!-- Wishlist -->
             <div class="list-group">
               <a
-                href="javascript:void(0)"
+                href="/penland-web/"
                 class="list-group-item d-flex justify-content-between"
               >
                 <span>Add more workshops</span>
@@ -248,11 +248,10 @@
                       >
                         <input
                           name="customRadioTemp"
-                          class="form-check-input"
+                          class="form-check-input pay-types"
                           type="radio"
-                          value="credit-card"
+                          value="full"
                           id="customRadioVisa"
-                          checked
                         />
                         <span class="custom-option-body">
                           <span style="white-space: nowrap" class="ms-3"
@@ -270,9 +269,9 @@
                       >
                         <input
                           name="customRadioTemp"
-                          class="form-check-input"
+                          class="form-check-input pay-types"
                           type="radio"
-                          value="paypal"
+                          value="deposit"
                           id="customRadioPaypal"
                         />
                         <span class="custom-option-body">
@@ -288,9 +287,8 @@
             </div>
             <div class="d-grid">
               <button
-                data-bs-toggle="modal"
-                data-bs-target="#modalContinueRegister"
-                class="btn btn-primary btn-next"
+             
+                class="btn btn-primary btn-next on-continue-registration"
               >
                 Continue Registration
               </button>

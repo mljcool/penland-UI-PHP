@@ -67,7 +67,8 @@
                 >
               </div>
               <div class="registration-actions">
-                <a class="register-now" href="/penland-web/cart-items.php">Register Now</a>
+                <a class="register-now" onclick="onRegisterNow()" href="#">Register Now</a>
+                <!-- <a class="register-now" onclick="onRegisterNow()" href="/penland-web/cart-items.php">Register Now</a> -->
               </div>
             </div>
           </div>

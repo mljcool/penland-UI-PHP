@@ -7,7 +7,7 @@ class FuseUtils {
    * @returns {any}
    */
   static filterArrayByString(mainArr, searchText) {
-    if (searchText === '') {
+    if (searchText === "") {
       return mainArr;
     }
 
@@ -33,7 +33,7 @@ class FuseUtils {
 
       const value = itemObj[prop];
 
-      if (typeof value === 'string') {
+      if (typeof value === "string") {
         if (this.searchInString(value, searchText)) {
           return true;
         }
@@ -43,7 +43,7 @@ class FuseUtils {
         }
       }
 
-      if (typeof value === 'object') {
+      if (typeof value === "object") {
         if (this.searchInObj(value, searchText)) {
           return true;
         }
@@ -60,13 +60,13 @@ class FuseUtils {
    */
   static searchInArray(arr, searchText) {
     for (const value of arr) {
-      if (typeof value === 'string') {
+      if (typeof value === "string") {
         if (this.searchInString(value, searchText)) {
           return true;
         }
       }
 
-      if (typeof value === 'object') {
+      if (typeof value === "object") {
         if (this.searchInObj(value, searchText)) {
           return true;
         }
@@ -124,11 +124,11 @@ class FuseUtils {
     return text
       .toString()
       .toLowerCase()
-      .replace(/\s+/g, '-') // Replace spaces with -
-      .replace(/[^\w\-]+/g, '') // Remove all non-word chars
-      .replace(/\-\-+/g, '-') // Replace multiple - with single -
-      .replace(/^-+/, '') // Trim - from start of text
-      .replace(/-+$/, ''); // Trim - from end of text
+      .replace(/\s+/g, "-") // Replace spaces with -
+      .replace(/[^\w\-]+/g, "") // Remove all non-word chars
+      .replace(/\-\-+/g, "-") // Replace multiple - with single -
+      .replace(/^-+/, "") // Trim - from start of text
+      .replace(/-+$/, ""); // Trim - from end of text
   }
 }
 
@@ -151,4 +151,39 @@ function filterByDateRange(array, startDate, endDate) {
     const objEndDate = new Date(obj.mshied_enddate);
     return objStartDate >= startDate && objEndDate <= endDate;
   });
+}
+
+function getURLParameters() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const workshopID = urlParams.get("workshopID");
+  return workshopID;
+}
+
+function parseStore(data){
+  return JSON.parse(data);
+}
+
+function setItemStore(name= '', data = []){
+  localStorage.setItem(name, JSON.stringify(data));
+}
+
+function hasLocalListOfWorkShops() {
+  const workShopItems = parseStore(localStorage.getItem("workshopItems"));
+  if (Array.isArray(workShopItems) && !!workShopItems.length) {
+    return workShopItems;
+  }
+  return false;
+}
+
+function getCurrentSelectedWorkShop() {
+  const workShopItems = parseStore(
+    localStorage.getItem("currentSelectedWorhShop")
+  );
+
+  return workShopItems;
+}
+
+function getMyCartDetails() {
+  const myCart = parseStore(localStorage.getItem("myCart"));
+  return myCart;
 }

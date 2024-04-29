@@ -30,7 +30,8 @@
 <script src="./scripts/lib/Auto-focus.js"></script>
 
 <script src="./scripts/lib/Pages-auth-multisteps.js"></script>
-<script src="./scripts/lib/block-ui.js"></script>
+<script src="./scripts/lib/Block-ui.js"></script>
+<script src="./scripts/lib/Sweetalert2.js"></script>
 
 
 <script
@@ -53,12 +54,13 @@
 
 
 
+<script src="./scripts/UTILS.js"></script>
 <script src="./scripts/RandomData.js"></script>
 <script src="./scripts/Process.js"></script>
 <script src="./scripts/Details.js"></script>
 <script src="./scripts/stripes/utils.js"></script>
-<script src="./scripts/UTILS.js"></script>
 <script src="./scripts/URLS.js"></script>
 <script src="./scripts/API.js"></script>
+<script src="./scripts/CART.js"></script>
 <script src="./scripts/LocalStorage.js"></script>
 <script src="./scripts/MODEL.js"></script>
