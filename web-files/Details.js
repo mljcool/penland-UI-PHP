@@ -13,7 +13,7 @@ $(document).ready(function() {
                   <div class="card-fav">
                     <i class="far fa-heart"></i>
                   </div>
-                  <img src="./assets/over-view-1.png" />
+                  <img src="/Over-view-1.png" />
                 </div>
                 <div class="card-item-details">
                   <span class="type-item">${mshiedName}</span>
