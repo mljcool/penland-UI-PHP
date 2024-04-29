@@ -188,6 +188,12 @@ function getMyDetails() {
   return myDetails;
 }
 
+function getMyCartDetails() {
+  const myDetails = parseStore(localStorage.getItem("myDetails"));
+  return myDetails.cartDetails;
+}
+
+
 function updateMyDetails(datType = "cart", data) {
 
   const myDetails = getMyDetails();

@@ -6,7 +6,7 @@ function redirecToCartDetails() {
 
 function onRegisterNow() {
   const workshopID = getURLParameters();
-  const myCart = getMyDetails().cartDetails;
+  const myCart = getMyCartDetails();
   const checkItemFirst = myCart.items.some(
     (_id) => _id.mshied_courseid === workshopID
   );
@@ -29,7 +29,7 @@ function countCartItems(countItems) {
 }
 
 function removeItem(uid) {
-  const myCartItems = getMyDetails().cartDetails;
+  const myCartItems = getMyCartDetails();
   const newItems = myCartItems.items.filter(
     (_data) => _data.mshied_courseid !== uid
   );
@@ -42,13 +42,17 @@ function removeItem(uid) {
 }
 
 function addHTMLELementCartItems() {
-  const myCartItems = getMyDetails().cartDetails.items;
-  console.log("myCartItems", myCartItems);
-  const countItems = myCartItems.length;
-  if (countItems) {
-    countCartItems(countItems);
+  const myCart = getMyCartDetails();
+  console.log("myCartItems", myCart);
+  const cart = myCart.items;
+  if (cart.length) {
+
+  
+    $('.fee-is-'+myCart.payType).prop('checked', true);
+
+    countCartItems(cart.length);
     $(".cart-item-list-wrapper").html("");
-    myCartItems.forEach(function (_item) {
+    cart.forEach(function (_item) {
       $(
         ".cart-item-list-wrapper"
       ).append(`<li class="list-group-item p-4 cart-item-${_item.mshied_courseid}">

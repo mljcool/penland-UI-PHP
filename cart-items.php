@@ -144,14 +144,14 @@
                     >
                       <label
                         class="form-check-label custom-option-content form-check-input-payment d-flex gap-3 align-items-center"
-                        for="customRadioVisa"
+                        for="customRadioFull"
                       >
                         <input
                           name="customRadioTemp"
-                          class="form-check-input pay-types"
+                          class="form-check-input pay-types fee-is-full"
                           type="radio"
                           value="full"
-                          id="customRadioVisa"
+                          id="customRadioFull"
                         />
                         <span class="custom-option-body">
                           <span style="white-space: nowrap" class="ms-3"
@@ -168,11 +168,11 @@
                         for="customRadioPaypal"
                       >
                         <input
-                          name="customRadioTemp"
-                          class="form-check-input pay-types"
+                          name="customRadioDeposit"
+                          class="form-check-input pay-types fee-is-deposit"
                           type="radio"
                           value="deposit"
-                          id="customRadioPaypal"
+                          id="customRadioDeposit"
                         />
                         <span class="custom-option-body">
                           <span style="white-space: nowrap" class="ms-3"
