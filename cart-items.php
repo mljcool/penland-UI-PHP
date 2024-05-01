@@ -113,17 +113,21 @@
               <hr class="mx-n4" />
 
               <!-- Price Details -->
-              <h6>Price Details</h6>
+              <h6>Payment  Details</h6>
               <dl class="row mb-0">
-                <dt class="col-6 fw-normal">Subtotal</dt>
-                <dd class="col-6 text-end">$1198.00</dd>
+              <dt class="col-6 fw-normal">Total Application Fee</dt>
+                <dd class="col-6 text-end total-application-fee">$00.00</dd>
+
+                <dt class="col-6 fw-normal">Total Tuition Fee</dt>
+                <dd class="col-6 text-end total-tuition-fee">$00.00</dd>
+
+                <dt class="col-6 fw-normal">Due Now</dt>
+                <dd class="col-6 text-end due-now">$00.00</dd>
 
                 <dt class="col-6 fw-normal">Tax</dt>
                 <dd class="col-6 text-end">$0.00</dd>
 
-                <dt class="col-6 fw-normal">Due Now</dt>
-                <dd class="col-6 text-end">$1198.00</dd>
-
+              
                 <dt class="col-6 fw-normal">Supply Charges</dt>
                 <dd class="col-6 text-end">
                   <s class="text-muted">$5.00</s>
@@ -134,7 +138,7 @@
               <hr class="mx-n4" />
               <dl class="row mb-0">
                 <dt class="col-6">Total</dt>
-                <dd class="col-6 fw-medium text-end mb-0">$1198.00</dd>
+                <dd class="col-6 fw-medium text-end mb-0 over-all-total">$1198.00</dd>
               </dl>
               <dl>
                 <div class="row py-4 my-2">

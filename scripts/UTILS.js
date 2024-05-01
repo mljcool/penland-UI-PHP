@@ -206,3 +206,20 @@ function updateMyDetails(datType = "cart", data) {
 
   setItemStore("myDetails", myDetails);
 }
+
+
+function computeValueOfCart(){
+  const myCart = getMyCartDetails();
+  const sum = myCart.items.reduce((total, obj) => {
+    total.tuitionFeeRawValue += obj.tuitionFeeRawValue;
+    total.applicationFeeRawValue += obj.applicationFeeRawValue;
+    return total;
+  }, { tuitionFeeRawValue: 0, applicationFeeRawValue: 0 });
+  console.log('sum', sum);
+  $('.total-application-fee').html('$'+sum.tuitionFeeRawValue);
+  $('.total-tuition-fee').html('$'+sum.applicationFeeRawValue);
+  $('.due-now').html('$'+parseFloat(sum.applicationFeeRawValue+sum.tuitionFeeRawValue));
+  $('.over-all-total').html('$'+parseFloat(sum.applicationFeeRawValue+sum.tuitionFeeRawValue));
+
+
+}

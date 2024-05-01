@@ -45,7 +45,7 @@ function addHTMLELementCartItems() {
   const myCart = getMyCartDetails();
   const cart = myCart.items;
   if (cart.length) {
-
+    computeValueOfCart();
     countCartItems(cart.length);
     $(".cart-item-list-wrapper").html("");
     cart.forEach(function (_item) {
@@ -79,6 +79,14 @@ function addHTMLELementCartItems() {
                         >${_item.instructor}</a
                       >
                     </div>
+                    <div class="text-muted mb-2 d-flex flex-wrap">
+                      <span class="me-1">Registration starts:</span>
+                      <a href="javascript:void(0)" class="me-3"><i class="bx bxs-calendar "></i> ${_item.startDateHumanReadable}</a>
+                    </div>
+                    <div class="text-muted mb-2 d-flex flex-wrap">
+                    <span class="me-1">Semester:</span>
+                    <a href="javascript:void(0)" class="me-3"><i class='bx bxs-calendar-event'></i> ${_item.semester}</a>
+                  </div>
                   </div>
                   <div class="col-md-4">
                     <div class="text-md-end">
@@ -88,8 +96,9 @@ function addHTMLELementCartItems() {
                         class="btn-close btn-pinned"
                         aria-label="Close"
                       ></button>
-                      <div class="my-2 my-md-4 mb-md-5">
-                        <span class="text-primary">$299</span>
+                      <div class="my-2 my-md-4 mb-md-5 d-flex flex-column ">
+                      <span class="badge rounded-pill bg-label-info mb-2">Application Fee   <span class="text-primary">${_item.applicationFee}</span> </span>
+                      <span class="badge rounded-pill bg-label-info "> Tuition Fee <span class="text-primary">${_item.tuitionFee}</span> </span>
                       </div>
                       <button
                         type="button"
@@ -116,7 +125,7 @@ function MessateAlertIformation() {
   Swal.fire({
     title: "Payment option",
     text: "Please select your payment option full or deposit!",
-    type: "info",
+    icon: "info",
     customClass: {
       confirmButton: "btn btn-primary",
     },
