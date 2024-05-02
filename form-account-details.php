@@ -1,4 +1,4 @@
-<div id="accountDetailsValidation" class="content fade">
+<div id="accountDetailsValidation" class="content">
   <div class="content-header mb-3">
     <h6 class="mb-0">Account Details</h6>
     <small>Enter Your Account Details.</small>

@@ -51,7 +51,7 @@
 
 
     <link rel="stylesheet" href="./styles/lib/Form-validation.css">
-    <link rel="stylesheet" href="./styles/lib/spinkit.css">
+    <link rel="stylesheet" href="./styles/lib/Spinkit.css">
 
     <link rel="stylesheet" href="./styles/lib/Sweetalert2.css" />
 

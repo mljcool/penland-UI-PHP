@@ -189,7 +189,7 @@
     if (wizardModernVerticalBtnNextList) {
       wizardModernVerticalBtnNextList.forEach((wizardModernVerticalBtnNext) => {
         wizardModernVerticalBtnNext.addEventListener('click', (event) => {
-          const.log('EVENTS >>>', event)
+          console.log('EVENTS >>>', event)
           modernVerticalStepper.next();
         });
       });

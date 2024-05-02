@@ -34,4 +34,5 @@ $(document).ready(function () {
     updateMyDetails("dynamics", dataToDynamics);
     console.log("plainObject", plainObject);
   });
+  
 });

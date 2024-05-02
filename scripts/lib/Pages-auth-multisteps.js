@@ -94,7 +94,7 @@ $(function () {
                   : "";
             },
           });
-      let t = new Stepper(n, { linear: !0, animation: true });
+      let t = new Stepper(n, { linear: !0 });
       const p = FormValidation.formValidation(c, {
         fields: {
           multiStepsUsername: {
@@ -162,25 +162,16 @@ $(function () {
       })
         .on("core.form.valid", function (e) {
           console.log("core.form.valid", e);
-          const formProps = e.formValidation;
-          const username = formProps.elements.multiStepsUsername[0].value;
-          const email = formProps.elements.multiStepsEmail[0].value;
-          const password = formProps.elements.multiStepsConfirmPass[0].value;
-          console.log("username", username);
-          console.log("email", email);
-          console.log("password", password);
-
-          t.next();
+          checkUserExist(t);
         })
         .registerValidator("checkPassword", strongPassword);
+
       r.forEach((e) => {
         e.addEventListener("click", (e) => {
           console.log("TTT>>>>", t);
           switch (t._currentIndex) {
             case 0:
-              p.validate().then((res) => {
-                console.log("_isValid", res);
-              });
+              p.validate();
               break;
             default:
               t.next();
@@ -207,7 +198,24 @@ $(function () {
     }
   });
 
-function checkUserExist() {
+// API PROCESSES
+
+function loadingBlockUI() {
+  $(".new-student-form").block({
+    message: longMessage.blockUIExistELement,
+    css: {
+      backgroundColor: "transparent",
+      border: "0",
+    },
+    overlayCSS: {
+      backgroundColor: "#fff",
+      opacity: 0.8,
+    },
+  });
+}
+
+function checkUserExist(passWizard) {
+  loadingBlockUI();
   const emaiAddress = $(".dd-emailaddress1").val();
   const username = $(".dd-adx_identity_username").val();
   const payload = {
@@ -229,10 +237,16 @@ function checkUserExist() {
         Swal.fire({
           icon: "error",
           title: "Oops! ",
-          text: "It seems like you already have an account with us. If you've forgotten your login details, you can reset your password or retrieve your username. If you need further assistance, feel free to reach out to our support team.",
+          text: longMessage.userExist,
           footer: '<a href="#">Login?</a>',
+        }).then((result) => {
+          passWizard.previous();
         });
       }
+    },
+    complete: function () {
+      $(".new-student-form").unblock();
+      passWizard.next();
     },
   });
 }

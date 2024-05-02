@@ -55,6 +55,7 @@
 
 
 <script src="./scripts/MODEL.js"></script>
+<script src="./scripts/CONSTANT.js"></script>
 <script src="./scripts/UTILS.js"></script>
 <script src="./scripts/RandomData.js"></script>
 <script src="./scripts/Process.js"></script>
