@@ -138,7 +138,7 @@ $(document).ready(function () {
   setRadioTypePayment();
 
   $(".on-continue-registration").click(function () {
-    const myCartDetails = getMyDetails().cartDetails;
+    const myCartDetails = getMyCartDetails();
     if (!myCartDetails.payType) {
       MessateAlertIformation();
       return;
@@ -149,7 +149,7 @@ $(document).ready(function () {
   $(".pay-types").change(function () {
     if (this.checked) {
       const payType = $(this).val();
-      const myCartDetails = getMyDetails().cartDetails;
+      const myCartDetails = getMyCartDetails();
       myCartDetails.payType = payType;
       updateMyDetails("cart", myCartDetails);
     }

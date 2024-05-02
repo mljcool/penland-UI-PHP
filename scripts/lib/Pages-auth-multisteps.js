@@ -1,22 +1,22 @@
-'use strict';
+"use strict";
 $(function () {
-  var e = $('.select2');
+  var e = $(".select2");
   e.length &&
     e.each(function () {
       var e = $(this);
       e.wrap('<div class="position-relative"></div>'),
         e.select2({
-          placeholder: 'Select an country',
+          placeholder: "Select an country",
           dropdownParent: e.parent(),
         });
     });
 }),
-  document.addEventListener('DOMContentLoaded', function (e) {
+  document.addEventListener("DOMContentLoaded", function (e) {
     const strongPassword = function () {
       return {
         validate: function (input) {
           const value = input.value;
-          if (value === '') {
+          if (value === "") {
             return {
               valid: true,
             };
@@ -26,7 +26,7 @@ $(function () {
           if (value.length < 8) {
             return {
               valid: false,
-              message: 'The password must be more than 8 characters long',
+              message: "The password must be more than 8 characters long",
             };
           }
 
@@ -35,7 +35,7 @@ $(function () {
             return {
               valid: false,
               message:
-                'The password must contain at least one upper case character',
+                "The password must contain at least one upper case character",
             };
           }
 
@@ -44,7 +44,7 @@ $(function () {
             return {
               valid: false,
               message:
-                'The password must contain at least one lower case character',
+                "The password must contain at least one lower case character",
             };
           }
 
@@ -52,7 +52,7 @@ $(function () {
           if (value.search(/[0-9]/) < 0) {
             return {
               valid: false,
-              message: 'The password must contain at least one digit',
+              message: "The password must contain at least one digit",
             };
           }
 
@@ -63,80 +63,80 @@ $(function () {
       };
     };
 
-    var n = document.querySelector('#multiStepsValidation');
+    var n = document.querySelector("#multiStepsValidation");
     if (null !== n) {
-      var a = n.querySelector('#multiStepsForm');
-      const c = a.querySelector('#accountDetailsValidation');
-      var i = a.querySelector('#personalInfoValidation'),
-        s = a.querySelector('#billingLinksValidation'),
-        r = [].slice.call(a.querySelectorAll('.btn-next')),
-        a = [].slice.call(a.querySelectorAll('.btn-prev')),
-        o = document.querySelector('.multi-steps-exp-date'),
-        l = document.querySelector('.multi-steps-cvv'),
-        m = document.querySelector('.multi-steps-mobile'),
-        u = document.querySelector('.multi-steps-pincode'),
-        d = document.querySelector('.multi-steps-card');
-      o && new Cleave(o, { date: !0, delimiter: '/', datePattern: ['m', 'y'] }),
+      var a = n.querySelector("#multiStepsForm");
+      const c = a.querySelector("#accountDetailsValidation");
+      var i = a.querySelector("#personalInfoValidation"),
+        s = a.querySelector("#billingLinksValidation"),
+        r = [].slice.call(a.querySelectorAll(".btn-next")),
+        a = [].slice.call(a.querySelectorAll(".btn-prev")),
+        o = document.querySelector(".multi-steps-exp-date"),
+        l = document.querySelector(".multi-steps-cvv"),
+        m = document.querySelector(".multi-steps-mobile"),
+        u = document.querySelector(".multi-steps-pincode"),
+        d = document.querySelector(".multi-steps-card");
+      o && new Cleave(o, { date: !0, delimiter: "/", datePattern: ["m", "y"] }),
         l && new Cleave(l, { numeral: !0, numeralPositiveOnly: !0 }),
-        m && new Cleave(m, { phone: !0, phoneRegionCode: 'US' }),
-        u && new Cleave(u, { delimiter: '', numeral: !0 }),
+        m && new Cleave(m, { phone: !0, phoneRegionCode: "US" }),
+        u && new Cleave(u, { delimiter: "", numeral: !0 }),
         d &&
           new Cleave(d, {
             creditCard: !0,
             onCreditCardTypeChanged: function (e) {
-              document.querySelector('.card-type').innerHTML =
-                '' != e && 'unknown' != e
+              document.querySelector(".card-type").innerHTML =
+                "" != e && "unknown" != e
                   ? '<img src="' +
                     assetsPath +
-                    'img/icons/payments/' +
+                    "img/icons/payments/" +
                     e +
                     '-cc.png" height="28"/>'
-                  : '';
+                  : "";
             },
           });
-      let t = new Stepper(n, { linear: !0 });
+      let t = new Stepper(n, { linear: !0, animation: true });
       const p = FormValidation.formValidation(c, {
         fields: {
           multiStepsUsername: {
             validators: {
-              notEmpty: { message: 'Please enter username' },
+              notEmpty: { message: "Please enter username" },
               stringLength: {
                 min: 6,
                 max: 30,
                 message:
-                  'The name must be more than 6 and less than 30 characters long',
+                  "The name must be more than 6 and less than 30 characters long",
               },
               regexp: {
                 regexp: /^[a-zA-Z0-9 ]+$/,
                 message:
-                  'The name can only consist of alphabetical, number and space',
+                  "The name can only consist of alphabetical, number and space",
               },
             },
           },
           multiStepsEmail: {
             validators: {
-              notEmpty: { message: 'Please enter email address' },
+              notEmpty: { message: "Please enter email address" },
               emailAddress: {
-                message: 'The value is not a valid email address',
+                message: "The value is not a valid email address",
               },
             },
           },
           multiStepsPass: {
             validators: {
-              notEmpty: { message: 'Please enter password' },
+              notEmpty: { message: "Please enter password" },
               checkPassword: {
-                message: 'The password is too weak',
+                message: "The password is too weak",
               },
             },
           },
           multiStepsConfirmPass: {
             validators: {
-              notEmpty: { message: 'Confirm Password is required' },
+              notEmpty: { message: "Confirm Password is required" },
               identical: {
                 compare: function () {
                   return c.querySelector('[name="multiStepsPass"]').value;
                 },
-                message: 'The password and its confirm are not the same',
+                message: "The password and its confirm are not the same",
               },
             },
           },
@@ -144,57 +144,62 @@ $(function () {
         plugins: {
           trigger: new FormValidation.plugins.Trigger(),
           bootstrap5: new FormValidation.plugins.Bootstrap5({
-            eleValidClass: '',
-            rowSelector: '.col-md-6',
+            eleValidClass: "",
+            rowSelector: ".col-md-6",
           }),
           autoFocus: new FormValidation.plugins.AutoFocus(),
           submitButton: new FormValidation.plugins.SubmitButton(),
         },
         init: (e) => {
-          e.on('plugins.message.placed', function (e) {
-            e.element.parentElement.classList.contains('input-group') &&
+          e.on("plugins.message.placed", function (e) {
+            e.element.parentElement.classList.contains("input-group") &&
               e.element.parentElement.insertAdjacentElement(
-                'afterend',
+                "afterend",
                 e.messageElement
               );
           });
         },
       })
-        .on('core.form.valid', function (e) {
-          console.log('core.form.valid', e);
+        .on("core.form.valid", function (e) {
+          console.log("core.form.valid", e);
           const formProps = e.formValidation;
           const username = formProps.elements.multiStepsUsername[0].value;
           const email = formProps.elements.multiStepsEmail[0].value;
           const password = formProps.elements.multiStepsConfirmPass[0].value;
-          console.log('username', username);
-          console.log('email', email);
-          console.log('password', password);
+          console.log("username", username);
+          console.log("email", email);
+          console.log("password", password);
 
           t.next();
         })
-        .registerValidator('checkPassword', strongPassword);
+        .registerValidator("checkPassword", strongPassword);
       r.forEach((e) => {
-        e.addEventListener('click', (e) => {
+        e.addEventListener("click", (e) => {
+          console.log("TTT>>>>", t);
           switch (t._currentIndex) {
             case 0:
               p.validate().then((res) => {
-                console.log('_isValid', res);
+                console.log("_isValid", res);
               });
               break;
-            case 1:
-              g.validate();
-              break;
-            case 2:
-              v.validate();
+            default:
+              t.next();
+            // case 1:
+            //   g.validate();
+            //   break;
+            // case 2:
+            //   v.validate();s
           }
         });
       }),
         a.forEach((e) => {
-          e.addEventListener('click', (e) => {
-            console.log('e>>> click 2', e);
+          e.addEventListener("click", (e) => {
+            console.log("e>>> click 2", e);
             switch (t._currentIndex) {
               case 2:
               case 1:
+                t.previous();
+              default:
                 t.previous();
             }
           });
@@ -202,24 +207,61 @@ $(function () {
     }
   });
 
-function testAPI() {
+function checkUserExist() {
+  const emaiAddress = $(".dd-emailaddress1").val();
+  const username = $(".dd-adx_identity_username").val();
   const payload = {
     contact: {
-      username: 'sample_1',
-      email: 'Sample_1@gmail.com',
-      password: 'Mlj_123cool',
+      emailaddress1: emaiAddress,
+      emailaddress2: emaiAddress,
+      username: username,
     },
   };
 
-  const URL =
-    'https://prod-44.westus.logic.azure.com:443/workflows/7a121b6f6eab490ab8a51584106bd7ad/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=NeZyr9S2SId0HbBDd6FNDtDoTzLpvr8K-29TT3Ex16E';
+  $.ajax({
+    url: CHECK_USER,
+    type: "POST",
+    data: JSON.stringify(payload),
+    dataType: "json",
+    contentType: "application/json",
+    success: function (data) {
+      if (data.length) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops! ",
+          text: "It seems like you already have an account with us. If you've forgotten your login details, you can reset your password or retrieve your username. If you need further assistance, feel free to reach out to our support team.",
+          footer: '<a href="#">Login?</a>',
+        });
+      }
+    },
+  });
+}
+
+function testAPI() {
+  const payload = {
+    contact: {
+      firstname: "Thurman",
+      middlename: "Catalina Schuppe",
+      lastname: "Mante",
+      birthdate: "07/13/1992",
+      emailaddress1: "bert.hair@contoso.edu",
+      gendercode: parseInt("2"),
+      mobilephone: "562 222 2222",
+      address1_postalcode: "91226-7549",
+      address1_city: "West Lafayette",
+      address1_stateorprovince: "OH",
+      address1_country: "MU",
+      adx_identity_passwordhash: "t0t9Gt82UOY6rwn",
+      adx_identity_username: "WayneKing",
+    },
+  };
 
   $.ajax({
-    url: URL,
-    type: 'POST',
+    url: REGISTER_ACCOUNT,
+    type: "POST",
     data: JSON.stringify(payload),
-    dataType: 'json',
-    contentType: 'application/json',
+    dataType: "json",
+    contentType: "application/json",
     success: function (data) {
       console.log(data);
     },

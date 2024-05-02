@@ -14,12 +14,14 @@
         <label>(TEST ENVIRONMENT 👩‍💻)</label>
       </div>
 
-      <button class="btn btn-primary " onclick="testAPI();">
-        <span class="align-middle d-sm-inline-block d-none me-sm-1 me-0"
-          >TEST API</span
-        >
-        <i class="bx bx-chevron-right bx-sm me-sm-n2"></i>
-      </button>
+      <!-- TEST BUTTON API CALL -->
+      <!-- <div class="row p-6">
+          <div class="col-md-3">
+          <button class="btn btn-primary" onclick="checkUserExist()">TEST API</button>
+          </div> 
+      </div>  -->
+
+  
       <!-- START BODY PAGE   -->
       <!-- BYPASS bs-stepper vertical wizard-modern wizard-modern-vertical wizard-numbered  mt-2 card mb-4 -->
       <!-- ORIGINAL CLASS bs-stepper vertical   mt-2 card mb-4 -->
@@ -27,9 +29,9 @@
         <div
           class="bs-stepper vertical wizard-modern wizard-modern-vertical wizard-numbered  mt-2 card mb-4"
           id="multiStepsValidation"
-          style="flex-direction: row"
+          style="flex-direction: row; background:white;"
         >
-          <div class="bs-stepper-header">
+          <div class="bs-stepper-header" >
             <div class="step" data-target="#accountDetailsValidation">
               <button type="button" class="step-trigger">
                 <span class="bs-stepper-circle">1</span>
@@ -160,40 +162,8 @@
     const tagifyBasicEl = document.querySelector('#TagifyBasic');
     const TagifyBasic = new Tagify(tagifyBasicEl);
 
-    const wizardNumbered = document.querySelector('.wizard-numbered');
+  
 
-    if (typeof wizardNumbered !== undefined && wizardNumbered !== null) {
-      const wizardNumberedBtnNextList = [].slice.call(
-          wizardNumbered.querySelectorAll('.btn-next')
-        ),
-        wizardNumberedBtnPrevList = [].slice.call(
-          wizardNumbered.querySelectorAll('.btn-prev')
-        ),
-        wizardNumberedBtnSubmit = wizardNumbered.querySelector('.btn-submit');
-
-      const numberedStepper = new Stepper(wizardNumbered, {
-        linear: false,
-      });
-      if (wizardNumberedBtnNextList) {
-        wizardNumberedBtnNextList.forEach((wizardNumberedBtnNext) => {
-          wizardNumberedBtnNext.addEventListener('click', (event) => {
-            numberedStepper.next();
-          });
-        });
-      }
-      if (wizardNumberedBtnPrevList) {
-        wizardNumberedBtnPrevList.forEach((wizardNumberedBtnPrev) => {
-          wizardNumberedBtnPrev.addEventListener('click', (event) => {
-            numberedStepper.previous();
-          });
-        });
-      }
-      if (wizardNumberedBtnSubmit) {
-        wizardNumberedBtnSubmit.addEventListener('click', (event) => {
-          alert('Submitted..!!');
-        });
-      }
-    }
   });
 
   const wizardModernVertical = document.querySelector(
@@ -219,6 +189,7 @@
     if (wizardModernVerticalBtnNextList) {
       wizardModernVerticalBtnNextList.forEach((wizardModernVerticalBtnNext) => {
         wizardModernVerticalBtnNext.addEventListener('click', (event) => {
+          const.log('EVENTS >>>', event)
           modernVerticalStepper.next();
         });
       });
@@ -232,7 +203,7 @@
     }
     if (wizardModernVerticalBtnSubmit) {
       wizardModernVerticalBtnSubmit.addEventListener('click', (event) => {
-        alert('Submitted..!!');
+        // alert('Submitted..!!');
       });
     }
   }

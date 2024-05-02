@@ -15,7 +15,7 @@
         <span class="align-middle d-sm-inline-block d-none">Previous</span>
       </button>
    
-      <button class="btn btn-success btn-submit">Submit</button>
+      <button class="btn btn-success btn-submit final-button-steps">Submit</button>
     </div>
   </div>
 </div>

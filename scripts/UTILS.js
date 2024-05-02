@@ -183,10 +183,17 @@ function getCurrentSelectedWorkShop() {
   return workShopItems;
 }
 
-function getMyDetails() {
+function getMyFullDetails() {
   const myDetails = parseStore(localStorage.getItem("myDetails"));
   return myDetails;
 }
+
+function getMyDynamicDetails() {
+  const myDetails = parseStore(localStorage.getItem("myDetails"));
+  return myDetails.dynamicDetails;
+}
+
+
 
 function getMyCartDetails() {
   const myDetails = parseStore(localStorage.getItem("myDetails"));
@@ -196,7 +203,7 @@ function getMyCartDetails() {
 
 function updateMyDetails(datType = "cart", data) {
 
-  const myDetails = getMyDetails();
+  const myDetails = getMyFullDetails();
   myDetails.hasInitialize = true;
   if (datType === "cart") {
     myDetails.cartDetails = data;

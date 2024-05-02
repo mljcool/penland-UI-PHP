@@ -63,4 +63,5 @@
 <script src="./scripts/URLS.js"></script>
 <script src="./scripts/API.js"></script>
 <script src="./scripts/CART.js"></script>
+<script src="./scripts/ACCOUNT.js"></script>
 <script src="./scripts/LocalStorage.js"></script>

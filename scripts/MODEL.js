@@ -32,7 +32,7 @@ const ifNosemester = (semester) => {
   return semester ? semester : label;
 };
 
-const ifNoFeesRawValues =  (fees) => {
+const ifNoFeesRawValues = (fees) => {
   const label = 0;
   return fees ? fees : label;
 };
@@ -54,10 +54,15 @@ function IworkShopModel(workshopData = []) {
       _data["mshied_startdate@OData.Community.Display.V1.FormattedValue"]
     );
 
-    _data.startDateHumanReadable = moment(_data.startDate).format('MMMM d, YYYY');
+    _data.startDateHumanReadable = moment(_data.startDate).format(
+      "MMMM d, YYYY"
+    );
 
-
-    _data.semester = ifNosemester(_data['_cr711_semesterandsession_value@OData.Community.Display.V1.FormattedValue']);
+    _data.semester = ifNosemester(
+      _data[
+        "_cr711_semesterandsession_value@OData.Community.Display.V1.FormattedValue"
+      ]
+    );
     //STUDIO
 
     _data.studioTitle =
@@ -77,16 +82,11 @@ function IworkShopModel(workshopData = []) {
       _data["cr711_tuitionfee_base@OData.Community.Display.V1.FormattedValue"]
     );
 
-
     // RAW VALUES
     _data.applicationFeeRawValue = ifNoFeesRawValues(
-      _data[
-        "cr711_applicationfee"
-      ]
+      _data["cr711_applicationfee"]
     );
-    _data.tuitionFeeRawValue = ifNoFeesRawValues(
-      _data["cr711_tuitionfee"]
-    );
+    _data.tuitionFeeRawValue = ifNoFeesRawValues(_data["cr711_tuitionfee"]);
 
     const hasStudio =
       _data[
@@ -112,8 +112,25 @@ let datails = {
     payType: "",
   },
   dynamicDetails: {
-    account: {},
-    personalInfo: {},
+    personalInfo: {
+      contact: {
+        firstname: "",
+        middlename: "",
+        lastname: "",
+        birthdate: "",
+        emailaddress1: "",
+        emailaddress2: "",
+        emailaddress3: "",
+        gendercode: 1,
+        mobilephone: "",
+        address1_postalcode: "",
+        address1_city: "",
+        address1_stateorprovince: "",
+        address1_country: "",
+        adx_identity_passwordhash: "",
+        adx_identity_username: "",
+      },
+    },
     housing: {},
     paymentStripe: {},
     terms: false,
@@ -123,7 +140,7 @@ let datails = {
 $(document).ready(function () {
   // SHAPE CLIENT DETAILS INFORMATION
 
-  const ifInitialized = getMyDetails();
+  const ifInitialized = getMyFullDetails();
   if (ifInitialized && ifInitialized.hasInitialize) {
     return;
   }
