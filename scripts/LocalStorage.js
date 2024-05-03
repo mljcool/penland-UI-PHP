@@ -21,8 +21,6 @@ $(document).ready(function () {
         $(".details-studio-name").html(dataWorkshop.studioTitle);
         $(".details-studio-description").html(dataWorkshop.studioDescription);
 
-        console.log("urlParams", workshopID);
-        console.log("dataWorkshop", dataWorkshop);
 
         const jsonData = {
           requestParams: {

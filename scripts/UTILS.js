@@ -228,7 +228,6 @@ function computeValueOfCart() {
     },
     { tuitionFeeRawValue: 0, applicationFeeRawValue: 0 }
   );
-  console.log("sum", sum);
 
   const tuition = parserToFixedto(sum.tuitionFeeRawValue);
   const application = parserToFixedto(sum.applicationFeeRawValue);

@@ -182,11 +182,6 @@ $(function () {
               break;
             default:
               t.next();
-            // case 1:
-            //   g.validate();
-            //   break;
-            // case 2:
-            //   v.validate();s
           }
         });
       }),

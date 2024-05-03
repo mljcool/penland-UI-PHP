@@ -1,10 +1,18 @@
 $(document).ready(function () {
-  console.log("HERE/...",$(".dd-birthdate").length);
   if ($(".dd-birthdate").length) {
     new Cleave(".dd-birthdate", {
       date: true,
       delimiter: "/",
       datePattern: ["m", "d", "Y"],
     });
+
+    $('#bs-datepicker-basic').datepicker();
+    new Cleave('.phone-number-mask', {
+      phone: true,
+      phoneRegionCode: 'US',
+    });
+
+    const tagifyBasicEl = document.querySelector('#TagifyBasic');
+    const TagifyBasic = new Tagify(tagifyBasicEl);
   }
 });

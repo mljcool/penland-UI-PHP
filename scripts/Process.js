@@ -106,7 +106,6 @@ function removeSekeletonLoader (){
   setTimeout(() => {
     const elementLoadingRemove = $('.card-loading');
     for (let index = 0; index < elementLoadingRemove.length; index++) {
-      console.log(elementLoadingRemove[index]);
       elementLoadingRemove[index].remove();
     }
   }, 100);
