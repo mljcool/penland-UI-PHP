@@ -6,7 +6,7 @@ $(function () {
       var e = $(this);
       e.wrap('<div class="position-relative"></div>'),
         e.select2({
-          placeholder: "Select an country",
+          placeholder: "Please select...",
           dropdownParent: e.parent(),
         });
     });
@@ -162,8 +162,6 @@ $(function () {
       })
         .on("core.form.valid", function (e) {
           console.log("core.form.valid", e);
-          
-          checkUserExist(t);
         })
         .registerValidator("checkPassword", strongPassword);
 
@@ -172,7 +170,15 @@ $(function () {
           console.log("TTT>>>>", t);
           switch (t._currentIndex) {
             case 0:
-              p.validate();
+              p.validate().then((_res) => {
+                if (_res === "Valid") {
+                  checkUserExist(t);
+                }
+              });
+              break;
+            case 1:
+              updateDynmicContactDetailsForm();
+              t.next();
               break;
             default:
               t.next();
@@ -186,14 +192,7 @@ $(function () {
       }),
         a.forEach((e) => {
           e.addEventListener("click", (e) => {
-            console.log("e>>> click 2", e);
-            switch (t._currentIndex) {
-              case 2:
-              case 1:
-                t.previous();
-              default:
-                t.previous();
-            }
+            t.previous();
           });
         });
     }

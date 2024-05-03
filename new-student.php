@@ -162,51 +162,9 @@
     const tagifyBasicEl = document.querySelector('#TagifyBasic');
     const TagifyBasic = new Tagify(tagifyBasicEl);
 
-  
-
   });
 
-  const wizardModernVertical = document.querySelector(
-    '.wizard-modern-vertical'
-  );
-
-  if (
-    typeof wizardModernVertical !== undefined &&
-    wizardModernVertical !== null
-  ) {
-    const wizardModernVerticalBtnNextList = [].slice.call(
-        wizardModernVertical.querySelectorAll('.btn-next')
-      ),
-      wizardModernVerticalBtnPrevList = [].slice.call(
-        wizardModernVertical.querySelectorAll('.btn-prev')
-      ),
-      wizardModernVerticalBtnSubmit =
-        wizardModernVertical.querySelector('.btn-submit');
-
-    const modernVerticalStepper = new Stepper(wizardModernVertical, {
-      linear: false,
-    });
-    if (wizardModernVerticalBtnNextList) {
-      wizardModernVerticalBtnNextList.forEach((wizardModernVerticalBtnNext) => {
-        wizardModernVerticalBtnNext.addEventListener('click', (event) => {
-          console.log('EVENTS >>>', event)
-          modernVerticalStepper.next();
-        });
-      });
-    }
-    if (wizardModernVerticalBtnPrevList) {
-      wizardModernVerticalBtnPrevList.forEach((wizardModernVerticalBtnPrev) => {
-        wizardModernVerticalBtnPrev.addEventListener('click', (event) => {
-          modernVerticalStepper.previous();
-        });
-      });
-    }
-    if (wizardModernVerticalBtnSubmit) {
-      wizardModernVerticalBtnSubmit.addEventListener('click', (event) => {
-        // alert('Submitted..!!');
-      });
-    }
-  }
+  
 </script>
 
 <!-- END UI THEM SCRIPT -->

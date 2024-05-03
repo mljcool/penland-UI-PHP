@@ -64,6 +64,7 @@ function checkUserExist(passWizard) {
     },
     error: function () {
       generiErrorMessage();
+      passWizard.to(1);
     },
   });
 }
@@ -116,9 +117,7 @@ function PopulateForm() {
   });
 }
 
-$(document).ready(function () {
-  PopulateForm();
-  $(".final-button-steps").click(function () {
+function updateDynmicContactDetailsForm(){
     const dataToDynamics = getMyDynamicDetails();
 
     const objectToArray = Object.keys(dataToDynamics.personalInfo.contact).map(
@@ -134,5 +133,11 @@ $(document).ready(function () {
     dataToDynamics.personalInfo.contact = plainObject;
     updateMyDetails("dynamics", dataToDynamics);
     console.log("plainObject", plainObject);
+}
+
+$(document).ready(function () {
+  PopulateForm();
+  $(".final-button-steps").click(function () {
+    
   });
 });
