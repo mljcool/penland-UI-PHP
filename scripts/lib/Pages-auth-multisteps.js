@@ -1,4 +1,3 @@
-"use strict";
 $(function () {
   var e = $(".select2");
   e.length &&
@@ -181,14 +180,19 @@ $(function () {
               t.next();
               break;
             default:
+            
               t.next();
           }
+          updateFormSteps(t._currentIndex+1)
         });
       }),
         a.forEach((e) => {
           e.addEventListener("click", (e) => {
             t.previous();
+            updateFormSteps(t._currentIndex+1)
           });
         });
+
+        t.to(getCurrenIndex())
     }
   });

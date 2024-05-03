@@ -97,7 +97,7 @@
 
             <div class="step" data-target="#review-details">
               <button type="button" class="step-trigger">
-                <span class="bs-stepper-circle">5</span>
+                <span class="bs-stepper-circle">6</span>
                 <span class="bs-stepper-label mt-1">
                   <span class="bs-stepper-title">Confirmation</span>
                   <span class="bs-stepper-subtitle">Submit & Review</span>

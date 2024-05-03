@@ -193,6 +193,18 @@ function getMyDynamicDetails() {
   return myDetails.dynamicDetails;
 }
 
+function updateFormSteps(current = 0){
+  const dataToDynamics = getMyDynamicDetails();
+   dataToDynamics.formWizardCurrentSteps = current;
+   updateMyDetails("dynamics", dataToDynamics);
+}
+
+function getCurrenIndex(){
+  const dataToDynamics = getMyDynamicDetails();
+   return dataToDynamics.formWizardCurrentSteps
+}
+
+
 function getMyCartDetails() {
   const myDetails = parseStore(localStorage.getItem("myDetails"));
   return myDetails.cartDetails;

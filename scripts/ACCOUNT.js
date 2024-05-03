@@ -53,9 +53,12 @@ function checkUserExist(passWizard) {
           .modal("show")
           .on("hidden.bs.modal", function (e) {
             passWizard.to(1);
+            updateFormSteps(1)
           });
       } else {
+        updateFormSteps(2)
         ifUserNotExistUpdateInfo(payload.contact);
+        
       }
     },
     complete: function () {

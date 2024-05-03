@@ -112,6 +112,7 @@ let datails = {
     payType: "",
   },
   dynamicDetails: {
+    formWizardCurrentSteps: 1,
     personalInfo: {
       contact: {
         firstname: "",

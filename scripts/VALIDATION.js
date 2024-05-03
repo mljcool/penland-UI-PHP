@@ -13,6 +13,6 @@ $(document).ready(function () {
     });
 
     const tagifyBasicEl = document.querySelector('#TagifyBasic');
-    const TagifyBasic = new Tagify(tagifyBasicEl);
+    new Tagify(tagifyBasicEl);
   }
 });
