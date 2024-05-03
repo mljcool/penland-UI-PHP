@@ -193,16 +193,12 @@ function getMyDynamicDetails() {
   return myDetails.dynamicDetails;
 }
 
-
-
 function getMyCartDetails() {
   const myDetails = parseStore(localStorage.getItem("myDetails"));
   return myDetails.cartDetails;
 }
 
-
 function updateMyDetails(datType = "cart", data) {
-
   const myDetails = getMyFullDetails();
   myDetails.hasInitialize = true;
   if (datType === "cart") {
@@ -214,19 +210,43 @@ function updateMyDetails(datType = "cart", data) {
   setItemStore("myDetails", myDetails);
 }
 
+function parserToFixedto(data) {
+  if (!data) {
+    return 0;
+  }
+  const amount = parseFloat(data.toFixed(2));
+  return amount;
+}
 
-function computeValueOfCart(){
+function computeValueOfCart() {
   const myCart = getMyCartDetails();
-  const sum = myCart.items.reduce((total, obj) => {
-    total.tuitionFeeRawValue += obj.tuitionFeeRawValue;
-    total.applicationFeeRawValue += obj.applicationFeeRawValue;
-    return total;
-  }, { tuitionFeeRawValue: 0, applicationFeeRawValue: 0 });
-  console.log('sum', sum);
-  $('.total-application-fee').html('$'+sum.tuitionFeeRawValue);
-  $('.total-tuition-fee').html('$'+sum.applicationFeeRawValue);
-  $('.due-now').html('$'+parseFloat(sum.applicationFeeRawValue+sum.tuitionFeeRawValue));
-  $('.over-all-total').html('$'+parseFloat(sum.applicationFeeRawValue+sum.tuitionFeeRawValue));
+  const sum = myCart.items.reduce(
+    (total, obj) => {
+      total.tuitionFeeRawValue += obj.tuitionFeeRawValue;
+      total.applicationFeeRawValue += obj.applicationFeeRawValue;
+      return total;
+    },
+    { tuitionFeeRawValue: 0, applicationFeeRawValue: 0 }
+  );
+  console.log("sum", sum);
 
+  const tuition = parserToFixedto(sum.tuitionFeeRawValue);
+  const application = parserToFixedto(sum.applicationFeeRawValue);
+  const dueNow = parserToFixedto(
+    sum.tuitionFeeRawValue + sum.applicationFeeRawValue
+  );
 
+  $(".total-application-fee").html("$" + tuition);
+  $(".total-tuition-fee").html("$" + application);
+  $(".due-now").html("$" + dueNow);
+  $(".over-all-total").html("$" + dueNow);
+}
+
+function generiErrorMessage(){
+  Swal.fire({
+    title: 'Error',
+    text: 'Sorry, but something went wrong. Please contact the support team.',
+    icon: 'error',
+    confirmButtonText: 'ok'
+  })
 }

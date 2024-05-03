@@ -162,6 +162,7 @@ $(function () {
       })
         .on("core.form.valid", function (e) {
           console.log("core.form.valid", e);
+          
           checkUserExist(t);
         })
         .registerValidator("checkPassword", strongPassword);
@@ -197,87 +198,3 @@ $(function () {
         });
     }
   });
-
-// API PROCESSES
-
-function loadingBlockUI() {
-  $(".new-student-form").block({
-    message: longMessage.blockUIExistELement,
-    css: {
-      backgroundColor: "transparent",
-      border: "0",
-    },
-    overlayCSS: {
-      backgroundColor: "#fff",
-      opacity: 0.8,
-    },
-  });
-}
-
-function checkUserExist(passWizard) {
-  loadingBlockUI();
-  const emaiAddress = $(".dd-emailaddress1").val();
-  const username = $(".dd-adx_identity_username").val();
-  const payload = {
-    contact: {
-      emailaddress1: emaiAddress,
-      emailaddress2: emaiAddress,
-      username: username,
-    },
-  };
-
-  $.ajax({
-    url: CHECK_USER,
-    type: "POST",
-    data: JSON.stringify(payload),
-    dataType: "json",
-    contentType: "application/json",
-    success: function (data) {
-      if (data.length) {
-        Swal.fire({
-          icon: "error",
-          title: "Oops! ",
-          text: longMessage.userExist,
-          footer: '<a href="#">Login?</a>',
-        }).then((result) => {
-          passWizard.previous();
-        });
-      }
-    },
-    complete: function () {
-      $(".new-student-form").unblock();
-      passWizard.next();
-    },
-  });
-}
-
-function testAPI() {
-  const payload = {
-    contact: {
-      firstname: "Thurman",
-      middlename: "Catalina Schuppe",
-      lastname: "Mante",
-      birthdate: "07/13/1992",
-      emailaddress1: "bert.hair@contoso.edu",
-      gendercode: parseInt("2"),
-      mobilephone: "562 222 2222",
-      address1_postalcode: "91226-7549",
-      address1_city: "West Lafayette",
-      address1_stateorprovince: "OH",
-      address1_country: "MU",
-      adx_identity_passwordhash: "t0t9Gt82UOY6rwn",
-      adx_identity_username: "WayneKing",
-    },
-  };
-
-  $.ajax({
-    url: REGISTER_ACCOUNT,
-    type: "POST",
-    data: JSON.stringify(payload),
-    dataType: "json",
-    contentType: "application/json",
-    success: function (data) {
-      console.log(data);
-    },
-  });
-}

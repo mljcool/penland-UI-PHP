@@ -8,8 +8,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Oops!</h5>
-        <button
+       <button
           type="button"
           class="btn-close"
           data-bs-dismiss="modal"
@@ -17,24 +16,26 @@
         ></button>
       </div>
       <div class="modal-body">
-        <div><i class="bx bx-info-circle bx-tada fa-lg"></i></div>
         <div class="alert alert-primary d-flex" role="alert">
           <span
-            class="badge badge-center rounded-pill bg-primary border-label-primary  me-2"
-            ><i class="bx bx-command fs-6"></i
+            class="badge badge-center rounded-pill bg-primary border-label-primary p-3 me-2"
+            ><i class="bx bx-info-circle bx-tada fa-2x"></i></i
           ></span>
           <div class="d-flex flex-column ps-1">
             <h6 class="alert-heading d-flex align-items-center fw-bold mb-1">
-              For a watch
+              Oops!!
             </h6>
-            <span>This is a primary solid alert — check it out!</span>
+            <span class="message-body-modal"></span>
           </div>
         </div>
-        <p class="message-body-modal"></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
-          Close
+        
+          <span class="align-middle d-sm-inline-block d-none me-sm-1 me-0"
+          >  Login to my account?</span
+        >
+        <i class="bx bx-log-in  bx-sm me-sm-n2"></i>
         </button>
       </div>
     </div>

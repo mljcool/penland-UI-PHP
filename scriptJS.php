@@ -1,5 +1,6 @@
 <!-- START UI THEM SCRIPT -->
 <?php include_once('./modal-prices-fees.php'); ?>
+<?php include_once('./GlobalModal.php'); ?>
 
 <script src="./scripts/lib/Bootstrap.js"></script>
 <script src="./scripts/lib/Jquery.js"></script>
@@ -54,6 +55,7 @@
 
 
 
+<script src="./scripts/VALIDATION.js"></script>
 <script src="./scripts/MODEL.js"></script>
 <script src="./scripts/CONSTANT.js"></script>
 <script src="./scripts/UTILS.js"></script>
