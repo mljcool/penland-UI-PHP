@@ -9,22 +9,15 @@
     <?php include_once('./home-navigition.php'); ?>
 
     <div class="container-fluid">
-      <div class="row top-section-program">
-        <h1>WORKSHOPS & New Student Form</h1>
-        <label>(TEST ENVIRONMENT 👩‍💻)</label>
+
+    <div class="container-xxl flex-grow-1 container-p-y">
+    <div class="row ">
+        <!-- <h1>WORKSHOPS & New Student Form</h1>
+        <label>(TEST ENVIRONMENT 👩‍💻)</label> -->
+        <?php include_once('./banner-test-env.php') ?>
+      
       </div>
 
-      <!-- TEST BUTTON API CALL -->
-      <!-- <div class="row p-6">
-          <div class="col-md-3">
-          <button class="btn btn-primary" onclick="checkUserExist()">TEST API</button>
-          </div> 
-      </div>  -->
-
-  
-      <!-- START BODY PAGE   -->
-      <!-- BYPASS bs-stepper vertical wizard-modern wizard-modern-vertical wizard-numbered  mt-2 card mb-4 -->
-      <!-- ORIGINAL CLASS bs-stepper vertical   mt-2 card mb-4 -->
       <div class="row new-student-form">
         <div
           class="bs-stepper vertical wizard-modern wizard-modern-vertical wizard-numbered  mt-2 card mb-4"
@@ -136,6 +129,7 @@
         </div>
       </div>
 
+    </div>
       <!-- END BODY PAGE -->
     </div>
 
@@ -151,19 +145,6 @@
 </html>
 <?php include_once('./scriptJS.php'); ?>
 
-<script>
-  $(document).ready(function () {
-    $('#bs-datepicker-basic').datepicker();
-    new Cleave('.phone-number-mask', {
-      phone: true,
-      phoneRegionCode: 'US',
-    });
 
-    const tagifyBasicEl = document.querySelector('#TagifyBasic');
-    const TagifyBasic = new Tagify(tagifyBasicEl);
-
-  });
-
-</script>
 
 <!-- END UI THEM SCRIPT -->

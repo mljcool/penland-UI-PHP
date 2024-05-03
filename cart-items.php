@@ -7,10 +7,15 @@
     <?php include_once('./home-navigition.php'); ?>
 
     <div class="container-fluid">
-  <div class="row top-section-program">
-    <h1>WORKSHOPS & Cart</h1>
-    <label>(TEST ENVIRONMENT 👩‍💻)</label>
-  </div>
+
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <div class="row ">
+            <!-- <h1>WORKSHOPS & New Student Form</h1>
+            <label>(TEST ENVIRONMENT 👩‍💻)</label> -->
+            <?php include_once('./banner-test-env.php') ?>
+          
+          </div>
+      </div>
 
   <!-- START BODY PAGE -->
   <div class="row section-cart-items">
