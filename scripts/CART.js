@@ -50,16 +50,14 @@ function addHTMLELementCartItems() {
     countCartItems(cart.length);
     $(".cart-item-list-wrapper").html("");
     cart.forEach(function (_item) {
-      $(
-        ".cart-item-list-wrapper"
-      ).append(longMessage.elementAppend(_item));
+      $(".cart-item-list-wrapper").append(HTMLelementProp.appendItemToCart(_item));
     });
   }
 }
 
-function setRadioTypePayment(){
-    const myCart = getMyCartDetails();
-    $(".fee-is-" + myCart.payType).prop("checked", true);
+function setRadioTypePayment() {
+  const myCart = getMyCartDetails();
+  $(".fee-is-" + myCart.payType).prop("checked", true);
 }
 
 function MessateAlertIformation() {

@@ -38,7 +38,7 @@
             <div class="line">
               <!-- <i class="bx bx-chevron-right"></i> -->
             </div>
-            <div class="step" data-target="#personal-info">
+            <div class="step" data-target="#personalInfoValidation">
               <button type="button" class="step-trigger">
                 <span class="bs-stepper-circle">2</span>
                 <span class="bs-stepper-label mt-1">

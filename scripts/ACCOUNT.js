@@ -2,7 +2,7 @@
 
 function loadingBlockUI() {
   $(".new-student-form").block({
-    message: longMessage.blockUIExistELement,
+    message: HTMLelementProp.blockUIExistELement,
     css: {
       backgroundColor: "transparent",
       border: "0",
@@ -23,6 +23,33 @@ function ifUserNotExistUpdateInfo(data) {
   contact.adx_identity_passwordhash = data.password;
   dataToDynamics.personalInfo.contact = contact;
   updateMyDetails("dynamics", dataToDynamics);
+}
+
+function savePersonalInformation(passWizard) {
+  loadingBlockUI();
+  const dataToDynamics = getMyDynamicDetails();
+  const contact = dataToDynamics.personalInfo.contact;
+
+  $.ajax({
+    url: REGISTER_ACCOUNT,
+    type: "POST",
+    data: JSON.stringify(contact),
+    dataType: "json",
+    contentType: "application/json",
+    success: function (data) {
+      if (data.length) {
+        passWizard.to(FORM_STEPS.HOUSING);
+        updateFormSteps(FORM_STEPS.HOUSING);
+        setItemStore('dynamicsAPIResult', data);
+      }
+    },
+    complete: function () {
+      $(".new-student-form").unblock();
+    },
+    error: function () {
+      generiErrorMessage();
+    },
+  });
 }
 
 function checkUserExist(passWizard) {
@@ -52,13 +79,12 @@ function checkUserExist(passWizard) {
         $("#modalUserExist")
           .modal("show")
           .on("hidden.bs.modal", function (e) {
-            passWizard.to(1);
-            updateFormSteps(1)
+            passWizard.to(FORM_STEPS.ACCOUNT);
+            updateFormSteps(FORM_STEPS.ACCOUNT);
           });
       } else {
-        updateFormSteps(2)
+        updateFormSteps(FORM_STEPS.PERSONAL);
         ifUserNotExistUpdateInfo(payload.contact);
-        
       }
     },
     complete: function () {
@@ -67,7 +93,7 @@ function checkUserExist(passWizard) {
     },
     error: function () {
       generiErrorMessage();
-      passWizard.to(1);
+      passWizard.to(FORM_STEPS.ACCOUNT);
     },
   });
 }
@@ -120,27 +146,25 @@ function PopulateForm() {
   });
 }
 
-function updateDynmicContactDetailsForm(){
-    const dataToDynamics = getMyDynamicDetails();
+function updateDynmicContactDetailsForm() {
+  const dataToDynamics = getMyDynamicDetails();
 
-    const objectToArray = Object.keys(dataToDynamics.personalInfo.contact).map(
-      (key) => ({
-        [key]: $(".dd-" + key).val(),
-      })
-    );
+  const objectToArray = Object.keys(dataToDynamics.personalInfo.contact).map(
+    (key) => ({
+      [key]: $(".dd-" + key).val(),
+    })
+  );
 
-    const plainObject = objectToArray.reduce((acc, obj) => {
-      return { ...acc, ...obj };
-    }, {});
+  const plainObject = objectToArray.reduce((acc, obj) => {
+    return { ...acc, ...obj };
+  }, {});
 
-    dataToDynamics.personalInfo.contact = plainObject;
-    updateMyDetails("dynamics", dataToDynamics);
-    console.log("plainObject", plainObject);
+  dataToDynamics.personalInfo.contact = plainObject;
+  updateMyDetails("dynamics", dataToDynamics);
+  console.log("plainObject", plainObject);
 }
 
 $(document).ready(function () {
   PopulateForm();
-  $(".final-button-steps").click(function () {
-    
-  });
+  $(".final-button-steps").click(function () {});
 });

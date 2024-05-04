@@ -1,4 +1,4 @@
-<div id="personal-info" class="content">
+<div id="personalInfoValidation" class="content">
   <div class="content-header mb-3">
     <!-- <h6 class="mb-0">Personal and Contact information.</h6> -->
     <small>Personal and Contact information.</small>
@@ -8,24 +8,24 @@
       <fieldset>
         <legend>Personal Information</legend>
         <div class="col-md-9">
-          <label class="form-label" for="first-name">First Name</label>
-          <input type="text" id="first-name" class="form-control dd-firstname" placeholder="John" />
+          <label class="form-label" for="firstName">First Name</label>
+          <input type="text" id="firstName" name="firstName" class="form-control dd-firstname" placeholder="John" />
         </div>
         <div class="col-md-9 mt-3">
-          <label class="form-label" for="middle-name">Middle Name</label>
-          <input type="text" id="middle-name" class="form-control dd-middlename" placeholder="Middle" />
+          <label class="form-label" for="middleName">Middle Name</label>
+          <input type="text" id="middleName" name="middleName" class="form-control dd-middlename" placeholder="Middle" />
         </div>
         <div class="col-md-9 mt-3">
-          <label class="form-label" for="last-name">Last Name</label>
-          <input type="text" id="last-name" class="form-control dd-lastname" placeholder="Doe" />
+          <label class="form-label" for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="lastName" class="form-control dd-lastname" placeholder="Doe" />
         </div>
         <div class="col-md-9 mt-3">
           <label for="bs-datepicker-basic" class="form-label">DOB</label>
-          <input type="text" id="bs-datepicker-basic" placeholder="MM/DD/YYYY" class="form-control dd-birthdate" />
+          <input type="text" id="bs-datepicker-basic" name="userDob" placeholder="MM/DD/YYYY" class="form-control dd-birthdate" />
         </div>
         <div class="col-md-9 mt-3">
           <label class="form-label" for="gender">Gender</label>
-          <select class="select2 w-auto dd-gendercode" id="gender" data-style="btn-transparent" data-icon-base="bx"
+          <select class="select2 w-auto dd-gendercode" name="gender" id="gender" data-style="btn-transparent" data-icon-base="bx"
             data-tick-icon="bx-check text-white">
             <option label=""></option>
             <option value="1">Male</option>
@@ -41,31 +41,31 @@
         <legend>Contact Information</legend>
         <div class="row">
           <div class="col-md-9">
-            <label class="form-label" for="first-name">Phone Number</label>
+            <label class="form-label" for="phone-number">Phone Number</label>
             <div class="input-group">
               <span class="input-group-text">US (+1)</span>
-              <input class="form-control phone-number-mask dd-mobilephone" type="text"
+              <input class="form-control phone-number-mask dd-mobilephone" type="text" name="phoneNumber"
                 placeholder="Enter Phone Number" />
             </div>
           </div>
           <div class="col-md-9 mt-3">
-            <label class="form-label" for="email-user">email</label>
-            <input type="email" id="email-user" class="form-control dd-emailaddress2" placeholder="sample@email.co" />
+            <label class="form-label" for="emailTwo">email</label>
+            <input type="email" name="emailTwo" id="emailTwo" class="form-control dd-emailaddress2" placeholder="sample@email.co" />
           </div>
         </div>
         <div class="row mt-3">
           <div class="col-md-9 mt-3">
             <label class="form-label" for="mailing-address">Mailing Address</label>
-            <input type="email" id="mailing-address" class="form-control dd-emailaddress3"
+            <input type="email" id="mailing-address" name="mailingAddress" class="form-control dd-emailaddress3"
               placeholder="Mailing Address..." />
           </div>
           <div class="col-md-9 mt-3">
             <label class="form-label" for="city">City</label>
-            <input type="text" id="city" class="form-control dd-address1_city" placeholder="city Address..." />
+            <input type="text" name="cityAddress" id="city" class="form-control dd-address1_city" placeholder="city Address..." />
           </div>
           <div class="col-md-9 mt-3">
             <label class="form-label" for="state-province">State/Province</label>
-            <select class="select2 w-auto dd-address1_stateorprovince" id="state-province" data-style="btn-transparent"
+            <select class="select2 w-auto dd-address1_stateorprovince" id="state-province" data-style="btn-transparent" name="stateProvince"
               data-icon-base="bx" data-tick-icon="bx-check text-white" data-allow-clear="true">
               <option label=""></option>
               <option value="AK">Alaska</option>
@@ -127,7 +127,7 @@
           </div>
           <div class="col-md-9 mt-3">
             <label class="form-label" for="Postcode">Zip/Postcode</label>
-            <input type="text" id="Postcode" class="form-control dd-address1_postalcode"
+            <input type="text" id="Postcode" name="zipcode" class="form-control dd-address1_postalcode"
               placeholder="ZIP Postcode..." />
           </div>
           <div class="col-md-9 mt-3">
