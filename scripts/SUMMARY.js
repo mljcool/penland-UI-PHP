@@ -87,6 +87,11 @@ function housingSummary() {
   }
 }
 
+
+function personalDetailsSummary(){
+  
+}
+
 $(document).ready(function () {
   addHTMLELementCartItemsSummary();
   housingSummary();

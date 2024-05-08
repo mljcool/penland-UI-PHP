@@ -267,12 +267,21 @@ function PopulateForm() {
     if (key === "adx_identity_passwordhash") {
       $(".dd-adx_identity_passwordhash_22").val(contact[key]);
     }
-    if (["address1_stateorprovince", "gendercode"].includes(key)) {
+    if (
+      ["address1_stateorprovince", "gendercode", "address1_country"].includes(
+        key
+      )
+    ) {
       $(".dd-" + key)
         .val(contact[key])
         .change();
+      setTimeout(() => {
+        const valueByText = $(".dd-" + key + " option:selected").text();
+        $(".dd-" + key + "-summary").val(valueByText);
+      }, 200);
     } else {
       $(".dd-" + key).val(contact[key]);
+    
     }
   });
 }

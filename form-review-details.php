@@ -45,7 +45,75 @@
               <h6 class="mb-0">Personal Info</h6>
               <span class="text-muted">Finalize</span>
             </div>
-            <div class="d-flex justify-content-between flex-wrap mb-2"></div>
+            <div class="d-flex justify-content-between flex-wrap mb-2 row">
+              <div class="col-md-6">
+                <div class="card mb-4">
+                  <div class="card-header">
+                    <h6 class="card-title m-0">Personal information</h6>
+                  </div>
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <label for="smallInput" class="form-label">First Name</label>
+                      <input id="smallInput" class="form-control form-control-sm dd-firstname" type="text" readonly />
+                    </div>
+                    <div class="mb-3">
+                      <label for="smallInput" class="form-label">Middle Name</label>
+                      <input id="smallInput" class="form-control form-control-sm dd-middlename" type="text" readonly />
+                    </div>
+                    <div class="mb-3">
+                      <label for="smallInput" class="form-label">Last Name</label>
+                      <input id="smallInput" class="form-control form-control-sm dd-lastname" type="text" readonly />
+                    </div>
+                    <div class="mb-3">
+                      <label for="smallInput" class="form-label">DOB</label>
+                      <input id="smallInput" class="form-control form-control-sm dd-birthdate" type="text" readonly />
+                    </div>
+                    <div class="mb-3">
+                      <label for="smallInput" class="form-label">Gender</label>
+                      <input id="smallInput" class="form-control form-control-sm dd-gendercode-summary" type="text"
+                        readonly />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="card mb-4">
+                  <div class="card-header">
+                    <h6 class="card-title m-0">Contact and Address</h6>
+                  </div>
+                  <div class="card-body">
+                    <div class="mb-3">
+                      <label for="smallInput" class="form-label">PHONE NUMBER</label>
+                      <input id="smallInput" class="form-control form-control-sm dd-mobilephone" type="text" readonly />
+                    </div>
+                    <div class="mb-3">
+                      <label for="smallInput" class="form-label">EMAIL</label>
+                      <input id="smallInput" class="form-control form-control-sm dd-emailaddress2" type="text" readonly />
+                    </div>
+                    <div class="mb-3">
+                      <label for="smallInput" class="form-label">MAILING ADDRESS</label>
+                      <input id="smallInput" class="form-control form-control-sm dd-emailaddress3" type="text" readonly />
+                    </div>
+                    <div class="mb-3">
+                      <label for="smallInput" class="form-label">CITY</label>
+                      <input id="smallInput" class="form-control form-control-sm dd-address1_city" type="text" readonly />
+                    </div>
+                    <div class="mb-3">
+                      <label for="smallInput" class="form-label">State/Province</label>
+                      <input id="smallInput" class="form-control form-control-sm dd-address1_stateorprovince-summary" type="text" readonly />
+                    </div>
+                    <div class="mb-3">
+                      <label for="smallInput" class="form-label">Zip/Postcode</label>
+                      <input id="smallInput" class="form-control form-control-sm dd-address1_postalcode" type="text" readonly />
+                    </div>
+                    <div class="mb-3">
+                      <label for="smallInput" class="form-label">Country</label>
+                      <input id="smallInput" class="form-control form-control-sm dd-address1_country-summary" type="text" readonly />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </li>
         <li class="timeline-item pb-4 timeline-item-danger border-left-dashed">
@@ -66,7 +134,8 @@
                       <i class="bx bxs-circle"></i> HOUSING PREFERENCE:
                     </h6>
                     <div class="d-flex align-items-center gap-1">
-                      <i class='bx bxs-chevron-right'></i> <span class="summary_cr711_preference"></span>
+                      <i class="bx bxs-chevron-right"></i>
+                      <span class="summary_cr711_preference"></span>
                     </div>
                   </li>
                   <li class="list-group-item flex-fill p-4 text-heading">
@@ -74,33 +143,33 @@
                       <i class="bx bxs-circle"></i> HOUSING OPTIONS:
                     </h6>
                     <div class="d-flex align-items-center gap-1">
-                      <i class='bx bxs-chevron-right'></i> <span class="summary_cr711_housingoption"></span>
+                      <i class="bx bxs-chevron-right"></i>
+                      <span class="summary_cr711_housingoption"></span>
                     </div>
                   </li>
                   <li class="list-group-item flex-fill p-4 text-heading">
                     <h6 class="d-flex align-items-center gap-1">
-                      <i class="bx bxs-circle"></i> OFF-CAMPUS STUDENT MEAL PLANS:
+                      <i class="bx bxs-circle"></i> OFF-CAMPUS STUDENT MEAL
+                      PLANS:
                     </h6>
                     <div class="d-flex align-items-center gap-1">
-                      <i class='bx bxs-chevron-right'></i> <span class="summary_cr711_offcampusmealplans"></span>
+                      <i class="bx bxs-chevron-right"></i>
+                      <span class="summary_cr711_offcampusmealplans"></span>
                     </div>
-
                   </li>
                   <li class="list-group-item flex-fill p-4 text-heading">
                     <h6 class="d-flex align-items-center gap-1">
                       <i class="bx bxs-circle"></i> ADA Housing needed
                     </h6>
                     <div class="d-flex align-items-center gap-1">
-                      <i class='bx bxs-chevron-right'></i> <span class="summary_cr711_adahousingneeded"></span>
+                      <i class="bx bxs-chevron-right"></i>
+                      <span class="summary_cr711_adahousingneeded"></span>
                     </div>
                   </li>
                 </ul>
               </div>
               <div class="col-md-6">
-                <ul class="list-group list-group-vertical-md white-background house-list-members">
-                 
-                  
-                </ul>
+                <ul class="list-group list-group-vertical-md white-background house-list-members"></ul>
               </div>
             </div>
           </div>
