@@ -21,7 +21,6 @@
           <img
             class="dashboard-logo"
             src="./assets/Penland-logo.png"
-            style="wid"
           />
         </a>
       </div>

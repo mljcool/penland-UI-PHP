@@ -228,37 +228,6 @@ function updateTermsAgreement() {
   updateMyDetails("dynamics", dataToDynamics);
 }
 
-function testAPI() {
-  const payload = {
-    contact: {
-      firstname: "Thurman",
-      middlename: "Catalina Schuppe",
-      lastname: "Mante",
-      birthdate: "07/13/1992",
-      emailaddress1: "bert.hair@contoso.edu",
-      gendercode: parseInt("2"),
-      mobilephone: "562 222 2222",
-      address1_postalcode: "91226-7549",
-      address1_city: "West Lafayette",
-      address1_stateorprovince: "OH",
-      address1_country: "MU",
-      adx_identity_passwordhash: "t0t9Gt82UOY6rwn",
-      adx_identity_username: "WayneKing",
-      cr711_registrationprocedure: 1,
-    },
-  };
-
-  $.ajax({
-    url: REGISTER_ACCOUNT,
-    type: "POST",
-    data: JSON.stringify(payload),
-    dataType: "json",
-    contentType: "application/json",
-    success: function (data) {
-      console.log(data);
-    },
-  });
-}
 
 
 function PopulateForm() {

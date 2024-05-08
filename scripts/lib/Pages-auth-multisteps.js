@@ -87,7 +87,7 @@ $(function () {
                   saveHousingDetailsLocal();
                   updateFormSteps(FORM_STEPS.CONFIRMATION);
                   setTimeout(() => {
-                    initializeHousingData()
+                    initializeHousingData();
                     PopulateForm();
                   }, 1000);
                   t.next();
@@ -100,8 +100,8 @@ $(function () {
                 if (_res === "Valid") {
                   updateTermsAgreement();
                   updateFormSteps(FORM_STEPS.PAYMENT);
+                  summaryReviewSections();
                   t.next();
-
                 }
               });
               break;

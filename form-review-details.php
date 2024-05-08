@@ -15,9 +15,9 @@
           class="bx bxs-user"></i></span>
       <div class="d-flex flex-column ps-1 focus-banner-container">
         <h6 class="alert-heading d-flex align-items-center fw-bold mb-1">
-          Application
+         Your  Application
         </h6>
-        <span class="mb-0">Please carefully review your application details.</span>
+        <span class="mb-0">Please carefully review your details.</span>
       </div>
     </div>
   </div>
@@ -341,23 +341,24 @@
             <div class="d-flex body-timeline-success flex-direction-column justify-content-between flex-wrap mb-2">
               <div class="card message-success" style="display: none">
                 <div class="card-body">
-                  <p style="text-align: left; font-size: 20px" class="typing">
+
+                  <div class="logo-container d-flex flex-direction-column" style="align-items:center;width: 100%; flex-direction: column;">
+                    <img class="dashboard-logo" src="./assets/Penland-logo.png"  />
+                  </div>
+                  <p style="text-align: left; font-size: 18px" class="typing">
                     Hi
                     <span class="name-of-applicant dd-firstname"></span>,<br /><br />
                     Thank You for Registering at Penland School of Craft 😇! We
                     wanted to extend our heartfelt thanks for registering at
                     Penland School of Craft. Your decision to join our community
-                    of creative individuals is truly appreciated.<br />
-                    Rest assured that your application is now in our hands, and
-                    our dedicated team will review it <br />thoroughly. We
-                    understand the importance of this process and assure you
-                    that we'll give your <br />application the attention it
-                    deserves.<br />
+                    of creative individuals is truly appreciated.<br /><br /><br />
+                    Rest assured that your application is now in our hands, and our dedicated team will review it thoroughly.<br /> We understand the importance of this process and assure you that we'll give your application the attention it deserves.<br /> You will receive an email from us soon with further details regarding the status of your application.<br /><br />
+
                     In the meantime, if you have any questions or need further
                     assistance, please don't hesitate to <br />reach out to us.
-                    We're here to help in any way we can.<br />
+                    We're here to help in any way we can.<br /><br />
                     Thank you once again for choosing Penland School of
-                    Craft..<br />
+                    Craft.<br />
                     We look forward to the possibility of <br />welcoming you
                     into our vibrant community.<br /><br /><br />
 
@@ -373,13 +374,13 @@
       </ul>
     </div>
 
-    <div class="col-12 d-flex justify-content-between">
-      <button class="btn btn-primary btn-prev">
+    <div class="col-12 d-flex justify-content-between ">
+      <button class="btn btn-primary btn-prev footer-btns">
         <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
         <span class="align-middle d-sm-inline-block d-none">Previous</span>
       </button>
 
-      <button class="btn btn-success btn-submit final-button-steps">
+      <button class="btn btn-success btn-submit final-button-steps footer-btns">
         Submit
       </button>
     </div>

@@ -87,12 +87,11 @@ function housingSummary() {
   }
 }
 
-
-function personalDetailsSummary(){
-  
+function summaryReviewSections() {
+  addHTMLELementCartItemsSummary();
+  housingSummary();
 }
 
 $(document).ready(function () {
-  addHTMLELementCartItemsSummary();
-  housingSummary();
+  summaryReviewSections();
 });

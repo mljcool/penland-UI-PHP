@@ -80,6 +80,7 @@ async function sequentialPromiseCalls(timelines) {
         if (response === 'workshops') {
             setTimeout(() => {
                 messageSuccess();
+               
             }, 1200);
           }
       });
@@ -127,5 +128,6 @@ $(document).ready(function () {
         `<i class="bx bx-loader bx-spin fa-2x"></i>`
       );
     });
+    $('.footer-btns').css('display', 'none');
   });
 });
