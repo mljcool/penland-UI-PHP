@@ -260,6 +260,7 @@ function testAPI() {
   });
 }
 
+
 function PopulateForm() {
   const dataToDynamics = getMyDynamicDetails();
   const contact = dataToDynamics.personalInfo.contact;
@@ -281,6 +282,7 @@ function PopulateForm() {
       }, 200);
     } else {
       $(".dd-" + key).val(contact[key]);
+      $(".dd-" + key).html(contact[key]);
     
     }
   });
@@ -306,5 +308,5 @@ function updateDynmicContactDetailsForm() {
 
 $(document).ready(function () {
   PopulateForm();
-  $(".final-button-steps").click(function () {});
+ 
 });

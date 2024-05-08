@@ -88,6 +88,7 @@ $(function () {
                   updateFormSteps(FORM_STEPS.CONFIRMATION);
                   setTimeout(() => {
                     initializeHousingData()
+                    PopulateForm();
                   }, 1000);
                   t.next();
                   return;
@@ -100,6 +101,7 @@ $(function () {
                   updateTermsAgreement();
                   updateFormSteps(FORM_STEPS.PAYMENT);
                   t.next();
+
                 }
               });
               break;

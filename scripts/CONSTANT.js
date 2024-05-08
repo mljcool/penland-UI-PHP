@@ -13,6 +13,21 @@ var HTMLelementProp = {
       <div class="sk-rect sk-wave-rect"></div>
     </div>
   </div>`,
+  blockUISummaryElement: `<div class="d-flex justify-content-center">
+  <p class="me-2 mb-0" style="color: #2e2e2e;"> Please hold on as we are currently saving your data....</p>
+  <div class="sk-wave sk-primary m-0">
+    <div class="sk-rect sk-wave-rect"></div>
+    <div class="sk-rect sk-wave-rect"></div>
+    <div class="sk-rect sk-wave-rect"></div>
+    <div class="sk-rect sk-wave-rect"></div>
+    <div class="sk-rect sk-wave-rect"></div>
+  </div>
+</div>`,
+  blockUIExistELementSmile: `<div class="d-flex justify-content-center">
+<p class="me-2 mb-0" style="color: #2e2e2e;"> <h4 class="mt-2">You data save successffully! 😇</h4></p>
+
+</div>`,
+
   appendItemToCart: function (_item) {
     return `<li class="list-group-item p-4 cart-item-${_item.mshied_courseid}">
       <div class="d-flex gap-3">
