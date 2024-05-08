@@ -1,4 +1,11 @@
 var timelines = ["account", "personal", "housing", "payments", "workshops"];
+let message = {
+  account: `Your account save successfully! 👍`,
+  personal: `Your personal information save successfully! 👍`,
+  housing: `Your housing save successfully! 👍`,
+  payments: `Your payments save successfully! 👍`,
+  workshops: `Your workshops save successfully! 👍`,
+};
 
 function loadingBlockUI(propBody) {
   $(".body-timeline-" + propBody).block({
@@ -16,7 +23,7 @@ function loadingBlockUI(propBody) {
 
 function loadingBlockUISmile(propBody) {
   $(".body-timeline-" + propBody).block({
-    message: HTMLelementProp.blockUIExistELementSmile,
+    message: HTMLelementProp.blockUIExistELementSmile(message[propBody]),
     css: {
       backgroundColor: "transparent",
       border: "0",
@@ -35,7 +42,7 @@ function smoothSroll(value) {
     {
       scrollTop: $(".wrapper-timeline-" + value).offset().top,
     },
-    900
+    300
   );
 }
 
@@ -44,23 +51,6 @@ function asyncTask(index, value) {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(value);
-
-      setCheckIcon(value);
-      $(".body-timeline-" + value).unblock();
-      loadingBlockUISmile(value);
-      console.log(`Task ${value} completed`);
-
-      if (timelines.length === index + 1) {
-        messageSuccess();
-      }
-
-      if (index < timelines.length) {
-        console.log(index);
-        setTimeout(() => {
-            const sectionScroll =timelines[index + 1];
-          smoothSroll(sectionScroll);
-        }, 1000);
-      }
     }, Math.random() * 5000); // Simulating a random delay
   });
 }
@@ -72,7 +62,27 @@ async function sequentialPromiseCalls(timelines) {
 
   try {
     for (let [index, task] of timelines.entries()) {
-      const result = await asyncTask(index, task);
+      const result = await asyncTask(index, task).then((response) => {
+        console.log("response:", response);
+
+        setCheckIcon(response);
+        $(".body-timeline-" + response).unblock();
+        loadingBlockUISmile(response);
+
+        if (index < timelines.length) {
+          setTimeout(() => {
+            const sectionScroll = timelines[index + 1];
+            if (sectionScroll) {
+              smoothSroll(sectionScroll);
+            }
+          }, 1000);
+        }
+        if (response === 'workshops') {
+            setTimeout(() => {
+                messageSuccess();
+            }, 1200);
+          }
+      });
       results.push(result);
     }
   } catch (error) {
@@ -86,36 +96,32 @@ function setCheckIcon(_data) {
   );
 }
 
-function bottomScrollSuccess(value) {
-  
+function extraScrollSmooth(value) {
   $("html, body").animate(
     {
-      scrollTop: $("."+value).offset().top,
+      scrollTop: $("." + value).offset().top,
     },
-    2000
+    900
   );
 }
 
 function messageSuccess() {
   $(".wrapper-timeline-success").css("display", "block");
-  bottomScrollSuccess('wrapper-timeline-success');
+  extraScrollSmooth("wrapper-timeline-success");
 
   setTimeout(() => {
     $(".message-success").show("slow").slideDown();
     setTimeout(() => {
-        bottomScrollSuccess('success-wrapper-body');
+      extraScrollSmooth("success-wrapper-body");
     }, 600);
   }, 600);
 }
 
 $(document).ready(function () {
   $(".final-button-steps").click(function () {
-    const scrollPos = $(".wrapper-timeline-account").offset().top;
-    $(window).scrollTop(scrollPos);
-
+    extraScrollSmooth("focus-banner-container");
     sequentialPromiseCalls(timelines);
     timelines.forEach((_data) => {
-      console.log("An _data:", _data);
       loadingBlockUI(_data);
       $(".icon-timeline-" + _data).html(
         `<i class="bx bx-loader bx-spin fa-2x"></i>`

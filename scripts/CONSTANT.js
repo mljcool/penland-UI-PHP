@@ -23,10 +23,12 @@ var HTMLelementProp = {
     <div class="sk-rect sk-wave-rect"></div>
   </div>
 </div>`,
-  blockUIExistELementSmile: `<div class="d-flex justify-content-center">
-<p class="me-2 mb-0" style="color: #2e2e2e;"> <h4 class="mt-2">You data save successffully! 😇</h4></p>
-
-</div>`,
+  blockUIExistELementSmile: (message = '') => {
+    return  `<div class="d-flex justify-content-center">
+    <p class="me-2 mb-0" style="color: #2e2e2e;"> <h4 class="mt-2">${message}</h4></p>
+    
+    </div>`
+  },
 
   appendItemToCart: function (_item) {
     return `<li class="list-group-item p-4 cart-item-${_item.mshied_courseid}">
