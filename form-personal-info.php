@@ -132,7 +132,7 @@
           </div>
           <div class="col-md-9 mt-3">
             <label class="form-label" for="country-code">Country</label>
-            <select class="select2 w-auto dd-address1_country" id="country-code" data-style="btn-transparent"
+            <select class="select2 w-auto dd-address1_country" id="country-code" data-style="btn-transparent" name="country"
               data-icon-base="bx" data-tick-icon="bx-check text-white" data-allow-clear="true">
               <option label=""></option>
               <option value="AF">Afghanistan</option>

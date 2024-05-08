@@ -16,8 +16,9 @@ $(function () {
       var a = n.querySelector("#multiStepsForm");
       const c = a.querySelector("#accountDetailsValidation");
       var i = a.querySelector("#personalInfoValidation"),
-        s = a.querySelector("#billingLinksValidation"),
-        r = [].slice.call(a.querySelectorAll(".btn-next")),
+        s = a.querySelector("#housing-info"),
+        termsInfo = a.querySelector("#terms-info"),
+        btnNext = [].slice.call(a.querySelectorAll(".btn-next")),
         a = [].slice.call(a.querySelectorAll(".btn-prev")),
         o = document.querySelector(".multi-steps-exp-date"),
         l = document.querySelector(".multi-steps-cvv"),
@@ -46,23 +47,59 @@ $(function () {
       let t = new Stepper(n, { linear: !0 });
       const accountDetailsForm = FormAccounDetailsValidation(c);
       const personalInfoForm = FormPersonalDetailsValidation(i);
+      const housingForm = FormHousingDetailsValidation(s);
+      const termsInfoForm = FormTermsAndConditionValidation(termsInfo);
 
-      r.forEach((e) => {
+      btnNext.forEach((e) => {
         e.addEventListener("click", (e) => {
-          console.log("TTT>>>>", t);
           switch (t._currentIndex) {
-            case 0:
+            case FORM_INDEX.ACCOUNT:
               accountDetailsForm.validate().then((_res) => {
                 if (_res === "Valid") {
                   checkUserExist(t);
                 }
               });
               break;
-            case 1:
+            case FORM_INDEX.PERSONAL:
               personalInfoForm.validate().then((_res) => {
                 if (_res === "Valid") {
                   updateDynmicContactDetailsForm();
-                  savePersonalInformation(t);
+                  updateFormSteps(FORM_STEPS.HOUSING);
+                  // savePersonalInformation(t);
+                  t.next();
+                  setTimeout(() => {
+                    PopulateForm();
+                  }, 1000);
+                }
+              });
+              break;
+
+            case FORM_INDEX.HOUSING:
+              housingForm.validate().then((_res) => {
+                if (_res === "Valid") {
+                  // saveHousingInformation(t);
+                  const isPref = $("#cr711_preference").val();
+                  const meals = $("#cr711_offcampusmealplans").val();
+                  if (isPref === "2" && meals === "") {
+                    ifOffCampusSelectedMessageAler();
+                    return;
+                  }
+                  saveHousingDetailsLocal();
+                  updateFormSteps(FORM_STEPS.CONFIRMATION);
+                  setTimeout(() => {
+                    initializeHousingData()
+                  }, 1000);
+                  t.next();
+                  return;
+                }
+              });
+              break;
+            case FORM_INDEX.TERMS:
+              termsInfoForm.validate().then((_res) => {
+                if (_res === "Valid") {
+                  updateTermsAgreement();
+                  updateFormSteps(FORM_STEPS.PAYMENT);
+                  t.next();
                 }
               });
               break;
@@ -79,6 +116,7 @@ $(function () {
           });
         });
 
-      t.to(getCurrenIndex());
+      t.to(6);
+      // t.to(getCurrenIndex());
     }
   });

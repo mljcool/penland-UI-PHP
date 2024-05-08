@@ -70,6 +70,11 @@ const strongPassword = function () {
 
 function FormAccounDetailsValidation(c) {
   return FormValidation.formValidation(c, {
+    icon: {
+      valid: "glyphicon glyphicon-ok",
+      invalid: "glyphicon glyphicon-remove",
+      validating: "glyphicon glyphicon-refresh",
+    },
     fields: {
       multiStepsUsername: {
         validators: {
@@ -147,85 +152,181 @@ const validRegx = () => {
   };
 };
 
-const notEmptyMessage = (name = '') => {
+const notEmptyMessage = (name = "") => {
   return {
     message: `Please enter ${name}`,
   };
 };
 
+const notEmptyMessageRadios = (name = "") => {
+  return {
+    message: `${name}`,
+  };
+};
 function FormPersonalDetailsValidation(c) {
   return FormValidation.formValidation(c, {
+    icon: {
+      valid: "glyphicon glyphicon-ok",
+      invalid: "glyphicon glyphicon-remove",
+      validating: "glyphicon glyphicon-refresh",
+    },
     fields: {
       firstName: {
         validators: {
-          notEmpty: notEmptyMessage('First name'),
+          notEmpty: notEmptyMessage("First name"),
           regexp: validRegx(),
         },
       },
       middleName: {
         validators: {
-          notEmpty: notEmptyMessage('Middle name'),
+          notEmpty: notEmptyMessage("Middle name"),
           regexp: validRegx(),
         },
       },
       lastName: {
         validators: {
-          notEmpty: notEmptyMessage('Last name'),
+          notEmpty: notEmptyMessage("Last name"),
           regexp: validRegx(),
         },
       },
       userDob: {
         validators: {
-          notEmpty:  notEmptyMessage('Date of Birth'),
+          notEmpty: notEmptyMessage("Date of Birth"),
         },
       },
       gender: {
         validators: {
-          notEmpty:  notEmptyMessage('Your Gender'),
+          notEmpty: notEmptyMessage("Your Gender"),
         },
       },
       phoneNumber: {
         validators: {
-          notEmpty:  notEmptyMessage('Your Phone  number'),
+          notEmpty: notEmptyMessage("Your Phone  number"),
         },
       },
       emailTwo: {
         validators: {
-          notEmpty:  notEmptyMessage('Your secondary  email'),
+          notEmpty: notEmptyMessage("Your secondary  email"),
         },
       },
       mailingAddress: {
         validators: {
-          notEmpty:  notEmptyMessage('Your Mailing  address'),
+          notEmpty: notEmptyMessage("Your Mailing  address"),
         },
       },
       cityAddress: {
         validators: {
-          notEmpty:  notEmptyMessage('Your City'),
+          notEmpty: notEmptyMessage("Your City"),
         },
       },
       stateProvince: {
         validators: {
-          notEmpty:  notEmptyMessage('State'),
+          notEmpty: notEmptyMessage("State"),
         },
       },
       zipcode: {
         validators: {
-          notEmpty:  notEmptyMessage('your zip/postcode'),
+          notEmpty: notEmptyMessage("your zip/postcode"),
         },
       },
       country: {
         validators: {
-          notEmpty:  notEmptyMessage('your zip/postcode'),
+          notEmpty: notEmptyMessage("your zip/postcode"),
         },
       },
-      
     },
     plugins: {
       trigger: new FormValidation.plugins.Trigger(),
       bootstrap5: new FormValidation.plugins.Bootstrap5({
         eleValidClass: "",
         rowSelector: ".col-md-9",
+      }),
+      autoFocus: new FormValidation.plugins.AutoFocus(),
+      submitButton: new FormValidation.plugins.SubmitButton(),
+    },
+    init: (e) => {
+      e.on("plugins.message.placed", function (e) {
+        e.element.parentElement.classList.contains("input-group") &&
+          e.element.parentElement.insertAdjacentElement(
+            "afterend",
+            e.messageElement
+          );
+      });
+    },
+  }).on("core.form.valid", function (e) {
+    console.log("core.form.valid", e);
+  });
+}
+
+function FormHousingDetailsValidation(c) {
+  return FormValidation.formValidation(c, {
+    icon: {
+      valid: "glyphicon glyphicon-ok",
+      invalid: "glyphicon glyphicon-remove",
+      validating: "glyphicon glyphicon-refresh",
+    },
+    fields: {
+      cr711_preference: {
+        validators: {
+          notEmpty: notEmptyMessage("Your Housing Preference"),
+        },
+      },
+      cr711_housingoption: {
+        validators: {
+          notEmpty: notEmptyMessage("Your Housing Option"),
+        },
+      },
+      cr711_offcampusmealplans: {
+     
+        validators: {
+          enabled: false,
+          notEmpty: notEmptyMessage("Your Housing Option"),
+        },
+      
+      },
+      cr711_adahousingneeded: {
+        validators: {
+          notEmpty: notEmptyMessageRadios("Choose ADA Housing needed"),
+        },
+      },
+    },
+    plugins: {
+      trigger: new FormValidation.plugins.Trigger(),
+      bootstrap5: new FormValidation.plugins.Bootstrap5({
+        eleValidClass: "",
+        rowSelector: ".col-md-6",
+      }),
+      autoFocus: new FormValidation.plugins.AutoFocus(),
+      submitButton: new FormValidation.plugins.SubmitButton(),
+    },
+    init: (e) => {
+      e.on("plugins.message.placed", function (e) {
+        e.element.parentElement.classList.contains("input-group") &&
+          e.element.parentElement.insertAdjacentElement(
+            "afterend",
+            e.messageElement
+          );
+      });
+    },
+  }).on("core.form.valid", function (e) {
+    console.log("core.form.valid", e);
+  });
+}
+
+function FormTermsAndConditionValidation(c) {
+  return FormValidation.formValidation(c, {
+    fields: {
+      termsAndCondition: {
+        validators: {
+          notEmpty: notEmptyMessageRadios("Please check Terms and Agreement."),
+        },
+      },
+    },
+    plugins: {
+      trigger: new FormValidation.plugins.Trigger(),
+      bootstrap5: new FormValidation.plugins.Bootstrap5({
+        eleValidClass: "",
+        rowSelector: ".col-md-6",
       }),
       autoFocus: new FormValidation.plugins.AutoFocus(),
       submitButton: new FormValidation.plugins.SubmitButton(),

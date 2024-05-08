@@ -1,22 +1,30 @@
 {
   "workbench.colorCustomizations": {
-    "activityBar.activeBackground": "#a17e0e",
-    "activityBar.background": "#a17e0e",
+    "activityBar.activeBackground": "#1a1a1a",
+    "activityBar.background": "#1a1a1a",
     "activityBar.foreground": "#e7e7e7",
     "activityBar.inactiveForeground": "#e7e7e799",
-    "activityBarBadge.background": "#085845",
+    "activityBarBadge.background": "#606020",
     "activityBarBadge.foreground": "#e7e7e7",
     "commandCenter.border": "#e7e7e799",
-    "sash.hoverBorder": "#a17e0e",
-    "statusBar.background": "#72590a",
+    "sash.hoverBorder": "#1a1a1a",
+    "statusBar.background": "#000000",
     "statusBar.foreground": "#e7e7e7",
-    "statusBarItem.hoverBackground": "#a17e0e",
-    "statusBarItem.remoteBackground": "#72590a",
+    "statusBarItem.hoverBackground": "#1a1a1a",
+    "statusBarItem.remoteBackground": "#000000",
     "statusBarItem.remoteForeground": "#e7e7e7",
-    "titleBar.activeBackground": "#72590a",
+    "titleBar.activeBackground": "#000000",
     "titleBar.activeForeground": "#e7e7e7",
-    "titleBar.inactiveBackground": "#72590a99",
+    "titleBar.inactiveBackground": "#00000099",
     "titleBar.inactiveForeground": "#e7e7e799"
   },
-  "peacock.color": "#72590a"
+  "peacock.color": "#000",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // add this code 
+  "[php]": {
+      "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  }
 }

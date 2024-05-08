@@ -28,23 +28,147 @@ function ifUserNotExistUpdateInfo(data) {
 function savePersonalInformation(passWizard) {
   loadingBlockUI();
   const dataToDynamics = getMyDynamicDetails();
-  const contact = dataToDynamics.personalInfo.contact;
+  const contactData = dataToDynamics.personalInfo.contact;
+  contactData.gendercode = parseInt(contactData.gendercode);
 
+  console.log("dataToDynamics", contactData);
+  $(".new-student-form").unblock();
   $.ajax({
     url: REGISTER_ACCOUNT,
     type: "POST",
-    data: JSON.stringify(contact),
+    data: JSON.stringify({ contact: contactData }),
     dataType: "json",
     contentType: "application/json",
     success: function (data) {
       if (data.length) {
         passWizard.to(FORM_STEPS.HOUSING);
         updateFormSteps(FORM_STEPS.HOUSING);
-        setItemStore('dynamicsAPIResult', data);
+        setItemStore("dynamicsAPIResult", data);
       }
     },
     complete: function () {
       $(".new-student-form").unblock();
+    },
+    error: function () {
+      generiErrorMessage();
+    },
+  });
+}
+
+function getHousingPayload() {
+  const dataToDynamics = getMyDynamicDetails();
+  const contactAPI = getDynamicDetailsFromAPI();
+
+  const contactid = contactAPI[0].contactid;
+  const contactDataID = contactAPI[0]["@odata.id"];
+  const contactPath = contactAPI[0]["@odata.editLink"];
+  const offCampusMealPlang = $("#cr711_offcampusmealplans").val();
+  const housingOption = $("#cr711_housingoption").val();
+  const housingPreference = $("#cr711_preference").val();
+  const adaHousing = $("input[name='cr711_adahousingneeded']:checked").val();
+
+  const housingPrefText = {
+    1: "On-Campus",
+    2: "Off-Campus",
+  };
+  const contact = dataToDynamics.personalInfo.contact;
+  const housingTypes = housingPrefText[housingPreference];
+
+  const formPayload = {
+    housing: {
+      cr711_adahousingneeded: parseInt(adaHousing),
+      cr711_contactPath: contactPath,
+      cr711_contactId: contactid,
+      cr711_housingtype: housingTypes,
+      cr711_housingoption: parseInt(housingOption),
+      cr711_offcampusmealplans: parseInt(offCampusMealPlang),
+      cr711_preference: parseInt(housingPreference),
+      cr711_studenthousingid: "",
+    },
+  };
+  return formPayload;
+}
+
+function getListValues() {
+  const hasItem = $(".form-repeater div[data-repeater-item]").length;
+  let repeaterValues = hasItem
+    ? $(".form-repeater").repeaterVal()
+    : { "group-a": [] };
+  const source = getHousingDetailsFromAPI();
+  const memberFormList = repeaterValues["group-a"];
+  let shapePayload = [];
+
+  if (memberFormList.length) {
+    shapePayload = memberFormList
+      .map((_data) => {
+        _data.cr711_gender = parseInt(_data.cr711_gender);
+        _data.cr711_housingsource = source["@odata.editLink"];
+        return _data;
+      })
+      .filter(
+        (_data) =>
+          _data.cr711_firstname || _data.cr711_lastname || _data.cr711_firstname
+      );
+  }
+  return shapePayload;
+}
+
+function saveHousingDetailsLocal() {
+  console.log("ListValues", getListValues());
+  const dataToDynamics = getMyDynamicDetails();
+  dataToDynamics.housing = getHousingPayload();
+  dataToDynamics.housing.members = getListValues();
+
+  updateMyDetails("dynamics", dataToDynamics);
+}
+
+function SaveHousingMembers() {
+  const remapItems = getListValues();
+  // const saveItems = (index) => {
+  //   if (index < remapItems.length) {
+  //     $.ajax({
+  //       url: ADD_HOUSING_MEMBERS,
+  //       type: "POST",
+  //       data: JSON.stringify(remapItems[index]),
+  //       dataType: "json",
+  //       contentType: "application/json",
+  //       success: function (response) {
+  //         console.log("Item saved: " + response);
+  //         saveItems(index + 1); // Recursive call to save next item
+  //       },
+  //       error: function () {
+  //         generiErrorMessage();
+  //         $(".new-student-form").unblock();
+  //       },
+  //     });
+  //   } else {
+  //     $(".new-student-form").unblock();
+  //     console.log("All items saved successfully!");
+  //     saveHousingDetailsLocal();
+
+  //   }
+  // };
+  // saveItems(0);
+}
+
+function saveHousingInformation(passWizard) {
+  loadingBlockUI();
+  const housingPayload = getHousingPayload();
+  $.ajax({
+    url: ADD_HOUSING,
+    type: "POST",
+    data: JSON.stringify(housingPayload),
+    dataType: "json",
+    contentType: "application/json",
+    success: function (data) {
+      console.log(data);
+      const isObject = typeof data === "object";
+      if (isObject && data.hasOwnProperty("statecode")) {
+        passWizard.to(FORM_STEPS.TERMS);
+        updateFormSteps(FORM_STEPS.TERMS);
+        setItemStore("housingAPIResult", data);
+        SaveHousingMembers();
+      }
     },
     error: function () {
       generiErrorMessage();
@@ -98,6 +222,12 @@ function checkUserExist(passWizard) {
   });
 }
 
+function updateTermsAgreement() {
+  const dataToDynamics = getMyDynamicDetails();
+  dataToDynamics.terms = true;
+  updateMyDetails("dynamics", dataToDynamics);
+}
+
 function testAPI() {
   const payload = {
     contact: {
@@ -114,6 +244,7 @@ function testAPI() {
       address1_country: "MU",
       adx_identity_passwordhash: "t0t9Gt82UOY6rwn",
       adx_identity_username: "WayneKing",
+      cr711_registrationprocedure: 1,
     },
   };
 

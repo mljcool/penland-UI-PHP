@@ -33,6 +33,7 @@
 <script src="./scripts/lib/Pages-auth-multisteps.js"></script>
 <script src="./scripts/lib/Block-ui.js"></script>
 <script src="./scripts/lib/Sweetalert2.js"></script>
+<script src="./scripts/lib/Repeater.js"></script>
 
 
 <script
@@ -55,6 +56,8 @@
 
 
 
+<script src="./scripts/SUMMARY.js"></script>
+<script src="./scripts/HousingForm.js"></script>
 <script src="./scripts/VALIDATION.js"></script>
 <script src="./scripts/MODEL.js"></script>
 <script src="./scripts/CONSTANT.js"></script>

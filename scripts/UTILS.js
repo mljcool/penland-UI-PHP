@@ -167,6 +167,20 @@ function setItemStore(name = "", data = []) {
   localStorage.setItem(name, JSON.stringify(data));
 }
 
+function getDynamicDetailsFromAPI() {
+  const dynamicsAPIResult = parseStore(
+    localStorage.getItem("dynamicsAPIResult")
+  );
+  return dynamicsAPIResult;
+}
+
+function getHousingDetailsFromAPI() {
+  const dynamicsAPIResult = parseStore(
+    localStorage.getItem("housingAPIResult")
+  );
+  return dynamicsAPIResult;
+}
+
 function hasLocalListOfWorkShops() {
   const workShopItems = parseStore(localStorage.getItem("workshopItems"));
   if (Array.isArray(workShopItems) && !!workShopItems.length) {
@@ -193,28 +207,27 @@ function getMyDynamicDetails() {
   return myDetails.dynamicDetails;
 }
 
-function updateFormSteps(current = 0){
+function updateFormSteps(current = 0) {
   const dataToDynamics = getMyDynamicDetails();
-   dataToDynamics.formWizardCurrentSteps = current;
-   updateMyDetails("dynamics", dataToDynamics);
+  dataToDynamics.formWizardCurrentSteps = current;
+  updateMyDetails("dynamics", dataToDynamics);
 }
 
-function getCurrenIndex(){
+function getCurrenIndex() {
   const dataToDynamics = getMyDynamicDetails();
-   return dataToDynamics.formWizardCurrentSteps
+  return dataToDynamics.formWizardCurrentSteps;
 }
-
 
 function getMyCartDetails() {
   const myDetails = parseStore(localStorage.getItem("myDetails"));
-  return myDetails.cartDetails;
+  return myDetails.paymentDetails;
 }
 
 function updateMyDetails(datType = "cart", data) {
   const myDetails = getMyFullDetails();
   myDetails.hasInitialize = true;
   if (datType === "cart") {
-    myDetails.cartDetails = data;
+    myDetails.paymentDetails = data;
   } else {
     myDetails.dynamicDetails = data;
   }
@@ -247,17 +260,44 @@ function computeValueOfCart() {
     sum.tuitionFeeRawValue + sum.applicationFeeRawValue
   );
 
+  myCart.applicaiontFee = application;
+  myCart.tutionFee = tuition;
+  myCart.total = dueNow;
+  updateMyDetails("cart", myCart);
+
   $(".total-application-fee").html("$" + tuition);
   $(".total-tuition-fee").html("$" + application);
   $(".due-now").html("$" + dueNow);
   $(".over-all-total").html("$" + dueNow);
 }
 
-function generiErrorMessage(){
+function generiErrorMessage() {
   Swal.fire({
-    title: 'Error',
-    text: 'Sorry, but something went wrong. Please contact the support team.',
-    icon: 'error',
-    confirmButtonText: 'ok'
-  })
+    title: "Error",
+    text: "Sorry, but something went wrong. Please contact the support team.",
+    icon: "error",
+    confirmButtonText: "ok",
+  });
+}
+
+function ifOffCampusSelectedMessageAler() {
+  Swal.fire({
+    title: "Info!",
+    text: "If off-campus option, required to please select a meal plan.",
+    icon: "info",
+    customClass: {
+      confirmButton: "btn btn-primary",
+    },
+    buttonsStyling: false,
+  });
+}
+
+function groupArr(data, n) {
+  var group = [];
+  for (var i = 0, j = 0; i < data.length; i++) {
+    if (i >= n && i % n === 0) j++;
+    group[j] = group[j] || [];
+    group[j].push(data[i]);
+  }
+  return group;
 }

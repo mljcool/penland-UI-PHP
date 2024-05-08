@@ -105,10 +105,13 @@ function IworkShopModel(workshopData = []) {
 
 let datails = {
   hasInitialize: false,
-  cartDetails: {
+  paymentDetails: {
     items: [],
     subTotal: 0,
     total: 0,
+    applicaiontFee: 0,
+    tax: 0,
+    tutionFee: 0,
     payType: "",
   },
   dynamicDetails: {
@@ -130,9 +133,15 @@ let datails = {
         address1_country: "",
         adx_identity_passwordhash: "",
         adx_identity_username: "",
+        cr711_registrationprocedure: 1,
       },
     },
-    housing: {},
+
+    
+    housing: {
+      housing: {},
+      members: []
+    },
     paymentStripe: {},
     terms: false,
   },
