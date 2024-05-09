@@ -23,11 +23,11 @@ var HTMLelementProp = {
     <div class="sk-rect sk-wave-rect"></div>
   </div>
 </div>`,
-  blockUIExistELementSmile: (message = '') => {
-    return  `<div class="d-flex justify-content-center">
+  blockUIExistELementSmile: (message = "") => {
+    return `<div class="d-flex justify-content-center">
     <p class="me-2 mb-0" style="color: #2e2e2e;"> <h4 class="mt-2">${message}</h4></p>
     
-    </div>`
+    </div>`;
   },
 
   appendItemToCart: function (_item) {
@@ -150,6 +150,33 @@ var HTMLelementProp = {
       </div>
     </li>`;
   },
+
+  arrayOfWorkshops: (item, index, msAnimate) => {
+    return `<div data-uid="${item.mshied_courseid}" style="min-height: 476.66px; 
+    --animation-order: ${index};
+    animation-name: fadeInCard; 
+    animation-duration: 350ms;
+    animation-delay: calc(var(--animation-order) * ${msAnimate});
+    animation-fill-mode: both;
+    animation-timing-function: ease-in-out;
+    " class="card-item "  
+        data-aos-once="true">
+            <div class="card-content">
+              <div class="card-img-container">
+                <div class="card-fav">
+                  <i class="far fa-heart"></i>
+                </div>
+                <img src="https://picsum.photos/200/300?random=${index}" />
+              </div>
+              <div class="card-item-details">
+                <span class="type-item">${item.mshied_name}</span>
+                <span class="type-item-author">${item.instructor}</span>
+                <span class="type-item-dates">${item.startDate}</span>
+              </div>
+            </div>
+          </div>`;
+  },
+  blockUISearchResult: `<div class="d-flex justify-content-center"><p class="me-2 mb-0">Please wait...</p> <div class="sk-wave sk-primary m-0"><div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div></div> </div>`,
 };
 
 var FORM_STEPS = {

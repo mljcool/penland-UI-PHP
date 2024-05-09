@@ -72,3 +72,5 @@
 <script src="./scripts/ACCOUNT.js"></script>
 <script src="./scripts/LocalStorage.js"></script>
 <script src="./scripts/PROCESS-DATA.js"></script>
+<script src="./scripts/APPLICATION-REQUEST.js"></script>
+<script src="./scripts/MAPPING.js"></script>

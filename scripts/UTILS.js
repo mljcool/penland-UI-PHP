@@ -167,6 +167,16 @@ function setItemStore(name = "", data = []) {
   localStorage.setItem(name, JSON.stringify(data));
 }
 
+function getApplicationData() {
+  const dynamicsAPIResult = parseStore(localStorage.getItem("applicationData"));
+  return dynamicsAPIResult;
+}
+
+function applcationLookupID() {
+  const appID = getApplicationData();
+  return appID["@odata.editLink"];
+}
+
 function getDynamicDetailsFromAPI() {
   const dynamicsAPIResult = parseStore(
     localStorage.getItem("dynamicsAPIResult")
@@ -300,4 +310,26 @@ function groupArr(data, n) {
     group[j].push(data[i]);
   }
   return group;
+}
+
+function requestOptions(url, data) {
+  return {
+    url,
+    type: "POST",
+    dataType: "json",
+    contentType: "application/json",
+    data: JSON.stringify(data),
+  };
+}
+
+function fetchPostRequest(data = [], url) {
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  };
+
+  return fetch(url, requestOptions);
 }

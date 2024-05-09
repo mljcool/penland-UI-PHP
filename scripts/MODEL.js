@@ -142,6 +142,7 @@ let datails = {
       housing: {},
       members: []
     },
+    applicationID: FuseUtils.generateGUID(),
     paymentStripe: {},
     terms: false,
   },

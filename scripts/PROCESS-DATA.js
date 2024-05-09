@@ -77,12 +77,11 @@ async function sequentialPromiseCalls(timelines) {
             }
           }, 1000);
         }
-        if (response === 'workshops') {
-            setTimeout(() => {
-                messageSuccess();
-               
-            }, 1200);
-          }
+        if (response === "workshops") {
+          setTimeout(() => {
+            messageSuccess();
+          }, 1200);
+        }
       });
       results.push(result);
     }
@@ -118,16 +117,31 @@ function messageSuccess() {
   }, 600);
 }
 
+function fireDummyAsyncCall() {
+  extraScrollSmooth("focus-banner-container");
+  sequentialPromiseCalls(timelines);
+  timelines.forEach((_data) => {
+    loadingBlockUI(_data);
+    $(".icon-timeline-" + _data).html(
+      `<i class="bx bx-loader bx-spin fa-2x"></i>`
+    );
+  });
+  $(".footer-btns").css("display", "none");
+}
+
+
+
 $(document).ready(function () {
   $(".final-button-steps").click(function () {
-    extraScrollSmooth("focus-banner-container");
-    sequentialPromiseCalls(timelines);
-    timelines.forEach((_data) => {
-      loadingBlockUI(_data);
-      $(".icon-timeline-" + _data).html(
-        `<i class="bx bx-loader bx-spin fa-2x"></i>`
-      );
-    });
-    $('.footer-btns').css('display', 'none');
+    // callAPI();
+    // console.log(workShopItemsPayload());
+    console.log(housingPayload());
+    // https://jsonplaceholder.typicode.com/posts
+    // console.log(membersPayload());
+    // console.log(applicationPayload());
+    // const workshopsPayload = applicationPayload();
+    // testApplication(workshopsPayload);
+    // const workshopsPayload = workShopItemsPayload();
+    // sequentialAPICallsTest(workShopItemsPayload());
   });
 });
