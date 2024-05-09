@@ -1,9 +1,9 @@
 var longMessage = {
-  userExist: `It seems like you already have an account with us <br/> <b>Username</b> or <b>Email</b> exist in datasource. If you've forgotten your login details, you can reset your password or retrieve your username. If you need further assistance, feel free to reach out to our support team.`,
+   userExist: `It seems like you already have an account with us <br/> <b>Username</b> or <b>Email</b> exist in datasource. If you've forgotten your login details, you can reset your password or retrieve your username. If you need further assistance, feel free to reach out to our support team.`,
 };
 
 var HTMLelementProp = {
-  blockUIExistELement: `<div class="d-flex justify-content-center">
+   blockUIExistELement: `<div class="d-flex justify-content-center">
     <p class="me-2 mb-0" style="color: #2e2e2e;"> Please wait while we revalidate the account details...</p>
     <div class="sk-wave sk-primary m-0">
       <div class="sk-rect sk-wave-rect"></div>
@@ -13,7 +13,7 @@ var HTMLelementProp = {
       <div class="sk-rect sk-wave-rect"></div>
     </div>
   </div>`,
-  blockUISummaryElement: `<div class="d-flex justify-content-center">
+   blockUISummaryElement: `<div class="d-flex justify-content-center">
   <p class="me-2 mb-0" style="color: #2e2e2e;"> Please hold on as we are currently saving your data....</p>
   <div class="sk-wave sk-primary m-0">
     <div class="sk-rect sk-wave-rect"></div>
@@ -23,15 +23,15 @@ var HTMLelementProp = {
     <div class="sk-rect sk-wave-rect"></div>
   </div>
 </div>`,
-  blockUIExistELementSmile: (message = "") => {
-    return `<div class="d-flex justify-content-center">
+   blockUIExistELementSmile: (message = '') => {
+      return `<div class="d-flex justify-content-center">
     <p class="me-2 mb-0" style="color: #2e2e2e;"> <h4 class="mt-2">${message}</h4></p>
     
     </div>`;
-  },
+   },
 
-  appendItemToCart: function (_item) {
-    return `<li class="list-group-item p-4 cart-item-${_item.mshied_courseid}">
+   appendItemToCart: function (_item) {
+      return `<li class="list-group-item p-4 cart-item-${_item.mshied_courseid}">
       <div class="d-flex gap-3">
         <div class="flex-shrink-0 d-flex align-items-center">
           <img
@@ -92,9 +92,9 @@ var HTMLelementProp = {
         </div>
       </div>
     </li>`;
-  },
-  cartSummary: function (_item) {
-    return `<li class="list-group-item p-4 cart-item-${_item.mshied_courseid}">
+   },
+   cartSummary: function (_item) {
+      return `<li class="list-group-item p-4 cart-item-${_item.mshied_courseid}">
       <div class="d-flex gap-3">
         <div class="flex-shrink-0 d-flex align-items-center">
           <img
@@ -149,10 +149,10 @@ var HTMLelementProp = {
         </div>
       </div>
     </li>`;
-  },
+   },
 
-  arrayOfWorkshops: (item, index, msAnimate) => {
-    return `<div data-uid="${item.mshied_courseid}" style="min-height: 476.66px; 
+   arrayOfWorkshops: (item, index, msAnimate) => {
+      return `<div data-uid="${item.mshied_courseid}" style="min-height: 476.66px; 
     --animation-order: ${index};
     animation-name: fadeInCard; 
     animation-duration: 350ms;
@@ -175,24 +175,24 @@ var HTMLelementProp = {
               </div>
             </div>
           </div>`;
-  },
-  blockUISearchResult: `<div class="d-flex justify-content-center"><p class="me-2 mb-0">Please wait...</p> <div class="sk-wave sk-primary m-0"><div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div></div> </div>`,
+   },
+   blockUISearchResult: `<div class="d-flex justify-content-center"><p class="me-2 mb-0">Please wait...</p> <div class="sk-wave sk-primary m-0"><div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div></div> </div>`,
 };
 
 var FORM_STEPS = {
-  ACCOUNT: 1,
-  PERSONAL: 2,
-  HOUSING: 3,
-  TERMS: 4,
-  PAYMENT: 5,
-  CONFIRMATION: 6,
+   ACCOUNT: 1,
+   PERSONAL: 2,
+   HOUSING: 3,
+   TERMS: 4,
+   PAYMENT: 5,
+   CONFIRMATION: 6,
 };
 
 var FORM_INDEX = {
-  ACCOUNT: 0,
-  PERSONAL: 1,
-  HOUSING: 2,
-  TERMS: 3,
-  PAYMENT: 4,
-  CONFIRMATION: 5,
+   ACCOUNT: 0,
+   PERSONAL: 1,
+   HOUSING: 2,
+   TERMS: 3,
+   PAYMENT: 4,
+   CONFIRMATION: 5,
 };

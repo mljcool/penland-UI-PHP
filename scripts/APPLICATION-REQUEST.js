@@ -8,7 +8,7 @@ function startRegistrationProcess() {
             afterEachCallStoploadingBySection('workshops');
             finalMessageSuccess();
          }
-         console.log('All API calls finished.');
+         console.log('Request 7 completed: ');
       } catch (error) {
          console.error('Error occurred:', error);
       }
@@ -19,6 +19,7 @@ function startRegistrationProcess() {
          stepFourSaveWorkShopItem();
          afterEachCallStoploadingBySection('payments');
          smoothSrollToNextBlock('workshops');
+         console.log('Request 6 completed: ');
       });
    };
 
@@ -33,7 +34,7 @@ function startRegistrationProcess() {
          afterEachCallStoploadingBySection('housing');
          smoothSrollToNextBlock('payments');
 
-         console.log('All API calls finished.');
+         console.log('Request 5 completed: ');
       } catch (error) {
          console.error('Error occurred:', error);
       }
@@ -44,7 +45,7 @@ function startRegistrationProcess() {
       $.ajax({
          ...requestOptions(ADD_HOUSING, payload),
          success: function (data) {
-            console.log('Request 2 completed: ');
+            console.log('Request 4 completed: ');
             saveMemberList();
          },
          error: function () {},
@@ -56,7 +57,8 @@ function startRegistrationProcess() {
       $.ajax({
          ...requestOptions(REGISTER_APPLICATION, payload),
          success: function (data) {
-            console.log('Request 1 completed: ');
+            console.log('Request 3 completed: ');
+            setItemStore("applicationData", data);
             stepsTwoAddHousing();
          },
          error: function () {},
@@ -68,10 +70,12 @@ function startRegistrationProcess() {
       $.ajax({
          ...requestOptions(REGISTER_ACCOUNT, payload),
          success: function (data) {
-            console.log('Request 1 completed: ');
+            console.log('Request 2 completed: ');
+            setItemStore("dynamicsAPIResult", data);
+            registerApplication();
             afterEachCallStoploadingBySection('personal');
             smoothSrollToNextBlock('housing');
-            stepsTwoAddHousing();
+           
          },
          error: function () {},
       });
@@ -80,6 +84,7 @@ function startRegistrationProcess() {
    const checkAsIs = () => {
       asyncTask(1, 'sample').then(() => {
         afterEachCallStoploadingBySection('account');
+        console.log('Request 1 completed: ');
         smoothSrollToNextBlock('personal');
          stepOneRegisterAccount();
       });
