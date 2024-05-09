@@ -57,29 +57,22 @@ function savePersonalInformation(passWizard) {
 }
 
 function getHousingPayload() {
-   const dataToDynamics = getMyDynamicDetails();
-   const contactAPI = getDynamicDetailsFromAPI();
 
-   const contactid = contactAPI[0].contactid;
-   const contactDataID = contactAPI[0]['@odata.id'];
-   const contactPath = contactAPI[0]['@odata.editLink'];
    const offCampusMealPlang = $('#cr711_offcampusmealplans').val();
    const housingOption = $('#cr711_housingoption').val();
    const housingPreference = $('#cr711_preference').val();
    const adaHousing = $("input[name='cr711_adahousingneeded']:checked").val();
-
    const housingPrefText = {
       1: 'On-Campus',
       2: 'Off-Campus',
    };
-   const contact = dataToDynamics.personalInfo.contact;
    const housingTypes = housingPrefText[housingPreference];
 
    const formPayload = {
       housing: {
          cr711_adahousingneeded: parseInt(adaHousing),
-         cr711_contactPath: contactPath,
-         cr711_contactId: contactid,
+         cr711_contactPath: "",
+         cr711_contactId: "",
          cr711_housingtype: housingTypes,
          cr711_housingoption: parseInt(housingOption),
          cr711_offcampusmealplans: parseInt(offCampusMealPlang),
@@ -95,7 +88,7 @@ function getListValues() {
    let repeaterValues = hasItem
       ? $('.form-repeater').repeaterVal()
       : { 'group-a': [] };
-   const source = getHousingDetailsFromAPI();
+ 
    const memberFormList = repeaterValues['group-a'];
    let shapePayload = [];
 
@@ -103,7 +96,7 @@ function getListValues() {
       shapePayload = memberFormList
          .map((_data) => {
             _data.cr711_gender = parseInt(_data.cr711_gender);
-            _data.cr711_housingsource = source['@odata.editLink'];
+            _data.cr711_housingsource = "";
             return _data;
          })
          .filter(

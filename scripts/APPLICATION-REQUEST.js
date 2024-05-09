@@ -25,6 +25,7 @@ function startRegistrationProcess() {
 
    const saveMemberList = async () => {
       const data = membersPayload();
+      console.log('payload 5:', data);
       try {
          for (let i = 0; i < data.length; i++) {
             console.log(data[i]);
@@ -42,10 +43,12 @@ function startRegistrationProcess() {
 
    const stepsTwoAddHousing = () => {
       const payload = housingPayload();
+      console.log('payload 4:', payload);
       $.ajax({
          ...requestOptions(ADD_HOUSING, payload),
          success: function (data) {
             console.log('Request 4 completed: ');
+            setItemStore('housingAPIResult', data);
             saveMemberList();
          },
          error: function () {},
@@ -54,6 +57,7 @@ function startRegistrationProcess() {
 
    const registerApplication = () => {
       const payload = applicationPayload();
+      console.log('payload 3:', payload);
       $.ajax({
          ...requestOptions(REGISTER_APPLICATION, payload),
          success: function (data) {
@@ -67,6 +71,7 @@ function startRegistrationProcess() {
 
    const stepOneRegisterAccount = () => {
       const payload = personalInfoPayload();
+      console.log('payload 2:', payload);
       $.ajax({
          ...requestOptions(REGISTER_ACCOUNT, payload),
          success: function (data) {
@@ -90,4 +95,5 @@ function startRegistrationProcess() {
       });
    };
    checkAsIs();
+  //  stepsTwoAddHousing()
 }

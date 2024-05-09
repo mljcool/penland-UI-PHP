@@ -120,6 +120,7 @@ $(function () {
                      break;
                   case FORM_INDEX.PAYMENT:
                      loadingBlockUINewStudentForm();
+                     updateFormSteps(FORM_STEPS.CONFIRMATION);
                      setTimeout(() => {
                         $('.new-student-form').unblock();
                         t.next();
@@ -128,7 +129,7 @@ $(function () {
                   default:
                      t.next();
                }
-               updateFormSteps(t._currentIndex + 1);
+              //  updateFormSteps(t._currentIndex + 1);
             });
          }),
             a.forEach((e) => {
