@@ -1,7 +1,6 @@
 // API PROCESSES
 
 function loadingBlockUINewStudentForm() {
-   console.log('loadingBlockUINewStudentForm');
    $('.new-student-form').block({
       message: HTMLelementProp.blockUIExistELement,
       css: {
@@ -32,7 +31,6 @@ function savePersonalInformation(passWizard) {
    const contactData = dataToDynamics.personalInfo.contact;
    contactData.gendercode = parseInt(contactData.gendercode);
 
-   console.log('dataToDynamics', contactData);
    $('.new-student-form').unblock();
    $.ajax({
       url: REGISTER_ACCOUNT,
@@ -110,7 +108,6 @@ function getListValues() {
 }
 
 function saveHousingDetailsLocal() {
-   console.log('ListValues', getListValues());
    const dataToDynamics = getMyDynamicDetails();
    dataToDynamics.housing = getHousingPayload();
    dataToDynamics.housing.members = getListValues();
@@ -157,7 +154,6 @@ function saveHousingInformation(passWizard) {
       dataType: 'json',
       contentType: 'application/json',
       success: function (data) {
-         console.log(data);
          const isObject = typeof data === 'object';
          if (isObject && data.hasOwnProperty('statecode')) {
             passWizard.to(FORM_STEPS.TERMS);

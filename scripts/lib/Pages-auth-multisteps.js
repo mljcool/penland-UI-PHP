@@ -104,6 +104,14 @@ $(function () {
                         }
                      });
                      break;
+                  case FORM_INDEX.PAYMENT:
+                     loadingBlockUINewStudentForm();
+                     updateFormSteps(FORM_STEPS.CONFIRMATION);
+                     setTimeout(() => {
+                        $('.new-student-form').unblock();
+                        t.next();
+                     }, 1000);
+                     break;
                   case FORM_INDEX.TERMS:
                      termsInfoForm.validate().then((_res) => {
                         if (_res === 'Valid') {
@@ -118,18 +126,11 @@ $(function () {
                         }
                      });
                      break;
-                  case FORM_INDEX.PAYMENT:
-                     loadingBlockUINewStudentForm();
-                     updateFormSteps(FORM_STEPS.CONFIRMATION);
-                     setTimeout(() => {
-                        $('.new-student-form').unblock();
-                        t.next();
-                     }, 1000);
-                     break;
+
                   default:
                      t.next();
                }
-              //  updateFormSteps(t._currentIndex + 1);
+               //  updateFormSteps(t._currentIndex + 1);
             });
          }),
             a.forEach((e) => {
@@ -139,7 +140,7 @@ $(function () {
                });
             });
 
-         // t.to(1);
-         t.to(getCurrenIndex());
+         t.to(6);
+         // t.to(getCurrenIndex());
       }
    });

@@ -104,7 +104,7 @@
                     >Registration Information</a
                   >
                 </div>
-                <hr class="mx-n4" />
+                <!-- <hr class="mx-n4" />
                 <div>
                   <button
                     type="button"
@@ -115,7 +115,7 @@
                     About Housing & Fees
                     <i class="bx bx-info-circle bx-flashing"></i>
                   </button>
-                </div>
+                </div> -->
                 <hr class="mx-n4" />
 
                 <!-- Price Details -->
@@ -146,54 +146,7 @@
                   <dt class="col-6">Total</dt>
                   <dd class="col-6 fw-medium text-end mb-0 over-all-total">$1198.00</dd>
                 </dl>
-                <dl>
-                  <div class="row py-4 my-2">
-                    <div class="col-md-6 mb-md-0 mb-2">
-                      <div
-                        class="form-check custom-option custom-option-basic "
-                      >
-                        <label
-                          class="form-check-label custom-option-content form-check-input-payment d-flex gap-3 align-items-center"
-                          for="customRadioVisa"
-                        >
-                          <input
-                            name="customRadioTemp"
-                            class="form-check-input pay-types fee-is-full"
-                            type="radio"
-                            value="full"
-                            id="customRadioVisa"
-                          />
-                          <span class="custom-option-body">
-                            <span style="white-space: nowrap" class="ms-3"
-                              >Full Payment</span
-                            >
-                          </span>
-                        </label>
-                      </div>
-                    </div>
-                    <div class="col-md-6 mb-md-0 mb-2">
-                      <div class="form-check custom-option custom-option-basic">
-                        <label
-                          class="form-check-label custom-option-content form-check-input-payment d-flex gap-3 align-items-center"
-                          for="customRadioPaypal"
-                        >
-                          <input
-                            name="customRadioTemp"
-                            class="form-check-input pay-types fee-is-deposit"
-                            type="radio"
-                            value="deposit"
-                            id="customRadioPaypal"
-                          />
-                          <span class="custom-option-body">
-                            <span style="white-space: nowrap" class="ms-3"
-                              >Deposit Now</span
-                            >
-                          </span>
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </dl>
+              
               </div>
               <div class="d-grid">
                 <button
@@ -238,7 +191,7 @@
               </div>
               <div class="select-as-label">A returning student</div>
             </a>
-            <a href="/penland-web/new-student.php" class="item-select-as">
+            <a href="#" onclick="onNewStudent()" class="item-select-as new-student-link-to-form">
               <div class="icon-v">
                 <img src="./assets/New-student.png" />
               </div>

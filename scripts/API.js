@@ -99,7 +99,6 @@ function addBlockUI() {
 
 function elasticSearchByStudio(badges = []) {
   const newvalue = searhObjectByArrayStudio(workShopData, badges);
-  console.log('searhObjectByArrayStudio', newvalue);
 
   $('.card-results-sections').empty();
   setTimeout(() => {
@@ -109,7 +108,7 @@ function elasticSearchByStudio(badges = []) {
 
 function elasticSearch(searchName) {
   const newvalue = FuseUtils.filterArrayByString(workShopData, searchName);
-  console.log('newvalue', newvalue);
+
 
   $('.card-results-sections').empty();
   setTimeout(() => {

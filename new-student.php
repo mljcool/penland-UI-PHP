@@ -62,6 +62,21 @@
               </button>
             </div>
 
+            <div class="step" data-target="#payment-link">
+              <button type="button" class="step-trigger">
+                <span class="bs-stepper-circle">5</span>
+                <span class="bs-stepper-label mt-1">
+                  <span class="bs-stepper-title">Payment</span>
+                  <span class="bs-stepper-subtitle">Payment Method</span>
+                </span>
+              </button>
+            </div>
+
+            <div class="line">
+              <!-- <i class="bx bx-chevron-right"></i> -->
+            </div>
+            
+
             <div class="line">
               <!-- <i class="bx bx-chevron-right"></i> -->
             </div>
@@ -81,19 +96,7 @@
               <!-- <i class="bx bx-chevron-right"></i> -->
             </div>
 
-            <div class="step" data-target="#payment-link">
-              <button type="button" class="step-trigger">
-                <span class="bs-stepper-circle">5</span>
-                <span class="bs-stepper-label mt-1">
-                  <span class="bs-stepper-title">Payment</span>
-                  <span class="bs-stepper-subtitle">Payment Method</span>
-                </span>
-              </button>
-            </div>
-
-            <div class="line">
-              <!-- <i class="bx bx-chevron-right"></i> -->
-            </div>
+          
 
             <div class="step" data-target="#review-details">
               <button type="button" class="step-trigger">
@@ -116,11 +119,13 @@
               <!-- Housing Details -->
               <?php include_once('./form-housing-details.php'); ?>
 
-              <!-- Terms and condition -->
-              <?php include_once('./form-terms-condition.php'); ?>
 
               <!-- Payment Links -->
               <?php include_once('./form-payment.php'); ?>
+
+              
+              <!-- Terms and condition -->
+              <?php include_once('./form-terms-condition.php'); ?>
 
               <!-- Review Form -->
               <?php include_once('./form-review-details.php'); ?>

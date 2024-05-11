@@ -152,7 +152,7 @@ var HTMLelementProp = {
    },
 
    arrayOfWorkshops: (item, index, msAnimate) => {
-      return `<div data-uid="${item.mshied_courseid}" style="min-height: 476.66px; 
+      return `<did data-uid="${item.mshied_courseid}" style="min-height: 476.66px; mind-width:258px;
     --animation-order: ${index};
     animation-name: fadeInCard; 
     animation-duration: 350ms;
@@ -183,8 +183,8 @@ var FORM_STEPS = {
    ACCOUNT: 1,
    PERSONAL: 2,
    HOUSING: 3,
-   TERMS: 4,
-   PAYMENT: 5,
+   PAYMENT: 4,
+   TERMS: 5,
    CONFIRMATION: 6,
 };
 
@@ -192,7 +192,7 @@ var FORM_INDEX = {
    ACCOUNT: 0,
    PERSONAL: 1,
    HOUSING: 2,
-   TERMS: 3,
-   PAYMENT: 4,
+   PAYMENT: 3,
+   TERMS: 4,
    CONFIRMATION: 5,
 };

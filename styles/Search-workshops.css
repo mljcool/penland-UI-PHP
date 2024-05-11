@@ -374,6 +374,7 @@
   transition: transform 0.2s;
   width: -moz-fit-content;
   width: fit-content;
+  min-width: 248px !important;
 }
 .section_find-a-work-shops .search-results-sections .card-results-sections .card-item:hover {
   transform: scale(1.1) !important;

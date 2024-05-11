@@ -37,8 +37,6 @@ function loadingBlockUISmile(propBody) {
    });
 }
 
-
-
 // Function to simulate an asynchronous task with a delay
 function asyncTask(index, value) {
    return new Promise((resolve) => {
@@ -90,13 +88,13 @@ function setCheckIcon(_data) {
 }
 
 function smoothSrollToNextBlock(value) {
-    $('html, body').animate(
-       {
-          scrollTop: $('.wrapper-timeline-' + value).offset().top,
-       },
-       300
-    );
- }
+   $('html, body').animate(
+      {
+         scrollTop: $('.wrapper-timeline-' + value).offset().top,
+      },
+      300
+   );
+}
 
 function extraScrollSmooth(value) {
    $('html, body').animate(
@@ -150,7 +148,30 @@ function startAddLoadingEachSections() {
 
 $(document).ready(function () {
    $('.final-button-steps').click(function () {
-      startAddLoadingEachSections();
-      startRegistrationProcess();
+      console.log(window.navigator);
+      console.log('data', data);
+      const payload = {
+         username: 'CalebUserNew',
+         password: 't0t9Gt82UOY6rwn',
+         hashToken: generateToken(),
+         navigatorApp: JSON.stringify({
+            languages: window.navigator.languages,
+            appVersion: window.navigator.appVersion,
+            platform: window.navigator.platform,
+            userAgent: window.navigator.userAgent,
+         }),
+      };
+      console.log(payload);
+      $.ajax({
+         url: USER_AUTH,
+         type: 'POST',
+         data: JSON.stringify(payload),
+         dataType: 'json',
+         contentType: 'application/json',
+         success: function (response) {},
+         error: function () {},
+      });
+      // startAddLoadingEachSections();
+      // startRegistrationProcess();
    });
 });
