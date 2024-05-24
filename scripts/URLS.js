@@ -15,3 +15,5 @@ var ADD_HOUSING_MEMBERS = `https://prod-126.westus.logic.azure.com:443/workflows
 var ADD_WORSHOPS = `https://prod-191.westus.logic.azure.com:443/workflows/28ceb353f1884ab4b08f28fed0f3890e/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Fi0p0clGyrU2dwjuw90j0cmTY_FOArmqVrhTTFyh_xU`;
 
 var USER_AUTH = `https://prod-21.westus.logic.azure.com:443/workflows/4deedea3af624450a2d848da6064c1f2/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=PgbJ61xawpd1cK6m5peToiIMmk3s-_X8Ae01YPK_xUw`;
+
+var STUDIOS_URL = `https://prod-142.westus.logic.azure.com:443/workflows/89872968770c4fa7a87a5f776aa2a9cc/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=livmkqQDzpRufCvwO6KPawprIEC_HzK9nEuzlW1vfQ4`;
