@@ -64,7 +64,7 @@ var HTMLelementProp = {
                 <a href="javascript:void(0)" class="me-3"><i class="bx bxs-calendar "></i> ${_item.startDateHumanReadable}</a>
               </div>
               <div class="text-muted mb-2 d-flex flex-wrap">
-              <span class="me-1">Semester:</span>
+              <span class="me-1">Session:</span>
               <a href="javascript:void(0)" class="me-3"><i class='bx bxs-calendar-event'></i> ${_item.semester}</a>
             </div>
             </div>
@@ -127,7 +127,7 @@ var HTMLelementProp = {
                 <a href="javascript:void(0)" class="me-3"><i class="bx bxs-calendar "></i> ${_item.startDateHumanReadable}</a>
               </div>
               <div class="text-muted mb-2 d-flex flex-wrap">
-              <span class="me-1">Semester:</span>
+              <span class="me-1">Session:</span>
               <a href="javascript:void(0)" class="me-3"><i class='bx bxs-calendar-event'></i> ${_item.semester}</a>
             </div>
             </div>
@@ -166,7 +166,7 @@ var HTMLelementProp = {
                 <div class="card-fav">
                   <i class="far fa-heart"></i>
                 </div>
-                <img src="https://picsum.photos/200/300?random=${index}" />
+                <img src="${item.imageURL}" />
               </div>
               <div class="card-item-details">
                 <span class="type-item">${item.mshied_name}</span>

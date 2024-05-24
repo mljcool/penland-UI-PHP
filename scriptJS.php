@@ -56,16 +56,16 @@
 
 
 
+<script src="./scripts/UTILS.js"></script>
+<script src="./scripts/MODEL.js"></script>
 <script src="./scripts/SUMMARY.js"></script>
 <script src="./scripts/HousingForm.js"></script>
 <script src="./scripts/VALIDATION.js"></script>
-<script src="./scripts/MODEL.js"></script>
 <script src="./scripts/CONSTANT.js"></script>
-<script src="./scripts/UTILS.js"></script>
 <script src="./scripts/RandomData.js"></script>
 <script src="./scripts/Process.js"></script>
 <script src="./scripts/Details.js"></script>
-<script src="./scripts/stripes/utils.js"></script>
+<!-- <script src="./scripts/stripes/utils.js"></script> -->
 <script src="./scripts/URLS.js"></script>
 <script src="./scripts/API.js"></script>
 <script src="./scripts/CART.js"></script>
@@ -74,3 +74,4 @@
 <script src="./scripts/PROCESS-DATA.js"></script>
 <script src="./scripts/APPLICATION-REQUEST.js"></script>
 <script src="./scripts/MAPPING.js"></script>
+<script src="./scripts/Auth.js"></script>

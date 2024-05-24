@@ -146,32 +146,13 @@ function startAddLoadingEachSections() {
    //    $('.footer-btns').css('display', 'none');
 }
 
+
+
 $(document).ready(function () {
    $('.final-button-steps').click(function () {
-      console.log(window.navigator);
-      console.log('data', data);
-      const payload = {
-         username: 'CalebUserNew',
-         password: 't0t9Gt82UOY6rwn',
-         hashToken: generateToken(),
-         navigatorApp: JSON.stringify({
-            languages: window.navigator.languages,
-            appVersion: window.navigator.appVersion,
-            platform: window.navigator.platform,
-            userAgent: window.navigator.userAgent,
-         }),
-      };
-      console.log(payload);
-      $.ajax({
-         url: USER_AUTH,
-         type: 'POST',
-         data: JSON.stringify(payload),
-         dataType: 'json',
-         contentType: 'application/json',
-         success: function (response) {},
-         error: function () {},
-      });
-      // startAddLoadingEachSections();
-      // startRegistrationProcess();
+    
+
+      startAddLoadingEachSections();
+      startRegistrationProcess();
    });
 });

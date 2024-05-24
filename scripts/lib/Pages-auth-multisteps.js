@@ -140,7 +140,7 @@ $(function () {
                });
             });
 
-         t.to(6);
-         // t.to(getCurrenIndex());
+         // t.to(6);
+         t.to(getCurrenIndex());
       }
    });

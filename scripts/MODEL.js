@@ -28,13 +28,19 @@ const ifNoFees = (fees) => {
 };
 
 const ifNosemester = (semester) => {
-  const label = "Semester not yet indicated";
+  const label = "Session not yet indicated";
   return semester ? semester : label;
 };
 
 const ifNoFeesRawValues = (fees) => {
   const label = 0;
   return fees ? fees : label;
+};
+
+
+const isNoImage = (img) => {
+  const src = 'https://penland.org/wp-content/uploads/2017/03/peters-762x1024.jpg';
+  return img ? img : src;
 };
 
 function IworkShopModel(workshopData = []) {
@@ -87,10 +93,11 @@ function IworkShopModel(workshopData = []) {
       _data["cr711_applicationfee"]
     );
     _data.tuitionFeeRawValue = ifNoFeesRawValues(_data["cr711_tuitionfee"]);
+    _data.imageURL = isNoImage(_data["hso_imageurl"]);
 
     const hasStudio =
       _data[
-        "new_cr711_newtable_workshop_mshied_course.new_studiotypes@OData.Community.Display.V1.FormattedValue"
+        "StudioTypes.new_studiotypes@OData.Community.Display.V1.FormattedValue"
       ];
 
     if (hasStudio) {
@@ -152,6 +159,7 @@ $(document).ready(function () {
   // SHAPE CLIENT DETAILS INFORMATION
 
   const ifInitialized = getMyFullDetails();
+  console.log('ifInitialized', ifInitialized);
   if (ifInitialized && ifInitialized.hasInitialize) {
     return;
   }

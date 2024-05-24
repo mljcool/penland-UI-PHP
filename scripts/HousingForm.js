@@ -61,5 +61,8 @@ function initializeHousingData() {
 }
 
 $(document).ready(function () {
-  initializeHousingData();
+  const formRepeater = $(".form-repeater");
+  if(!!formRepeater && formRepeater.length){
+    initializeHousingData();
+  }
 });

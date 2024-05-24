@@ -403,6 +403,12 @@
 .section_find-a-work-shops .search-results-sections .card-results-sections .card-item .card-img-container .card-fav:hover {
   transform: scale(1.1) !important;
 }
+
+.card-img-container img{
+  height: 300px;
+  width: 200px;
+  object-fit: cover;
+}
 .section_find-a-work-shops .search-results-sections .card-results-sections .card-item .card-img-container .card-fav span {
   font-size: 11px;
   margin-top: 2px;
