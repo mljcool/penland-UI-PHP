@@ -165,22 +165,24 @@ function addTotalProducts() {
       myProdList.overAllTotal = sum.price+myProdList.total;
       myProdList.overAllTotalFormatted = converMoneyProperFormat(myProdList.overAllTotal);
       $('.overAlltotalFee').html(myProdList.overAllTotalFormatted);
+      $('.over-all-total').html(myProdList.overAllTotalFormatted);
       updateMyDetails('cart', myProdList);
 
 }
 
-let productList = [];
 function getProductsChecked() {
+  const myProdList = getMyCartDetails().productList;
+
    $('.product-checkboxes').change(function () {
       const valueProd = $(this).val();
       if ($(this).is(':checked')) {
          console.log('Checkbox is checked!', valueProd);
-         productList.push(valueProd);
+         myProdList.push(valueProd);
       } else {
-         productList = productList.filter((_data) => _data !== valueProd);
+        myProdList = productList.filter((_data) => _data !== valueProd);
       }
       const myCart = getMyCartDetails();
-      myCart.productList = productList;
+      myCart.productList = myProdList;
       updateMyDetails('cart', myCart);
       getProductsWithFullData();
       addTotalProducts();
@@ -191,6 +193,7 @@ function getProductsWithFullData() {
    const prodList = getProductionListStore();
    const myProdList = getMyCartDetails().productList;
    const productHTMLelemList = $('.append-review-product');
+   productHTMLelemList.html('');
    prodList
       .filter((_data) => myProdList.includes(_data['@odata.editLink']))
       .forEach(function (_data, index) {

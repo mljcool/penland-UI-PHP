@@ -104,7 +104,7 @@ var HTMLelementProp = {
       <div class="d-flex gap-3">
         <div class="flex-shrink-0 d-flex align-items-center">
           <img
-            src="./assets/Over-view-1.png"
+          src="${_item.imageURL}"
             alt="google home"
             class="w-px-100"
             style="border-radius: 8px"

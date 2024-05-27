@@ -140,6 +140,7 @@ let datails = {
    hasInitialize: false,
    paymentDetails: {
       items: [],
+      productList: [],
       subTotal: 0,
       total: 0,
       applicaiontFee: 0,

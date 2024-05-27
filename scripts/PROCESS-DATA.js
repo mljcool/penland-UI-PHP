@@ -151,8 +151,8 @@ function startAddLoadingEachSections() {
 $(document).ready(function () {
    $('.final-button-steps').click(function () {
     
-
+      fireDummyAsyncCall();
       startAddLoadingEachSections();
-      startRegistrationProcess();
+      // startRegistrationProcess();
    });
 });

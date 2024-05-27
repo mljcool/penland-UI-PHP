@@ -3,7 +3,7 @@ function addHTMLELementCartItemsSummary() {
   const cart = myCart.items;
   if (cart.length) {
     $(".total-workshops").html(`(${cart.length})`);
-    $(".cart-item-list-wrapper").html("");
+    $(".cart-item-list-summary").html("");
     cart.forEach(function (_item) {
       $(".cart-item-list-summary").append(HTMLelementProp.cartSummary(_item));
     });
