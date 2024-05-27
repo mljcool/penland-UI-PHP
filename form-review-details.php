@@ -148,61 +148,37 @@
             </div>
           </div>
         </li>
+        <style>
+        .append-review-product{
+          display: grid;
+          grid-template-columns: auto auto auto;
+          gap: 10px; 
+        }
+
+        .product-items-review{
+          /* Subtract the gap from 25% if you use a gap */
+          box-sizing: border-box;
+        }
+      </style>
         <li class="timeline-item pb-4 timeline-item-danger border-left-dashed wrapper-timeline-housing">
           <span class="timeline-indicator-advanced timeline-indicator-danger icon-timeline-housing">
             <i class="bx bx-home fa-2x"></i>
           </span>
           <div class="timeline-event">
             <div class="timeline-header border-bottom mb-3">
-              <h6 class="mb-0">Your Housing</h6>
+              <h6 class="mb-0">Housing & Meals</h6>
               <span class="text-muted">Finalize</span>
             </div>
 
             <div class="d-flex body-timeline-housing justify-content-between flex-wrap mb-2 row">
-              <div class="col-md-6">
-                <ul class="list-group list-group-vertical-md white-background">
-                  <li class="list-group-item flex-fill p-4 text-heading">
-                    <h6 class="d-flex align-items-center gap-1">
-                      <i class="bx bxs-circle"></i> HOUSING PREFERENCE:
-                    </h6>
-                    <div class="d-flex align-items-center gap-1">
-                      <i class="bx bxs-chevron-right"></i>
-                      <span class="summary_cr711_preference"></span>
-                    </div>
-                  </li>
-                  <li class="list-group-item flex-fill p-4 text-heading">
-                    <h6 class="d-flex align-items-center gap-1">
-                      <i class="bx bxs-circle"></i> HOUSING OPTIONS:
-                    </h6>
-                    <div class="d-flex align-items-center gap-1">
-                      <i class="bx bxs-chevron-right"></i>
-                      <span class="summary_cr711_housingoption"></span>
-                    </div>
-                  </li>
-                  <li class="list-group-item flex-fill p-4 text-heading">
-                    <h6 class="d-flex align-items-center gap-1">
-                      <i class="bx bxs-circle"></i> OFF-CAMPUS STUDENT MEAL
-                      PLANS:
-                    </h6>
-                    <div class="d-flex align-items-center gap-1">
-                      <i class="bx bxs-chevron-right"></i>
-                      <span class="summary_cr711_offcampusmealplans"></span>
-                    </div>
-                  </li>
-                  <li class="list-group-item flex-fill p-4 text-heading">
-                    <h6 class="d-flex align-items-center gap-1">
-                      <i class="bx bxs-circle"></i> ADA Housing needed
-                    </h6>
-                    <div class="d-flex align-items-center gap-1">
-                      <i class="bx bxs-chevron-right"></i>
-                      <span class="summary_cr711_adahousingneeded"></span>
-                    </div>
-                  </li>
-                </ul>
+              <div class="col-md-12 append-review-product">
+  <!-- S -->
+
+  <!-- E -->
               </div>
-              <div class="col-md-6">
+              <!-- <div class="col-md-6">
                 <ul class="list-group list-group-vertical-md white-background house-list-members"></ul>
-              </div>
+              </div> -->
             </div>
           </div>
         </li>
@@ -238,8 +214,8 @@
                         $00.00
                       </dd>
 
-                      <dt class="col-6 fw-normal">Total Tuition Fee</dt>
-                      <dd class="col-6 text-end total-tuition-fee">$00.00</dd>
+                      <dt class="col-6 fw-normal" style="display:none;">Total Tuition Fee</dt>
+                      <dd style="display:none;" class="col-6 text-end total-tuition-fee">$00.00</dd>
 
                       <dt class="col-6 fw-normal">Due Now</dt>
                       <dd class="col-6 text-end due-now">$00.00</dd>

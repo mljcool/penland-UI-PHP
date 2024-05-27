@@ -39,6 +39,9 @@ function removeItem(uid) {
    $('.cart-item-' + uid).slideUp('slow', function () {
       $(this).remove();
    });
+   setTimeout(() => {
+      computeValueOfCart();
+   }, 200);
 }
 
 function addHTMLELementCartItems() {

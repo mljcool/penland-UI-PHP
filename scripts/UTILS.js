@@ -167,6 +167,13 @@ function setItemStore(name = '', data = []) {
    localStorage.setItem(name, JSON.stringify(data));
 }
 
+function getProductionListStore() {
+   const productList = parseStore(
+      localStorage.getItem('productsData')
+   );
+   return productList;
+}
+
 function getApplicationData() {
    const dynamicsAPIResult = parseStore(
       localStorage.getItem('applicationData')
@@ -260,32 +267,41 @@ function parserToFixedto(data) {
    return amount;
 }
 
+const converMoneyProperFormat = (money) =>{
+   const formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    });
+
+    return formatter.format(money);;
+}
+
 function computeValueOfCart() {
    const myCart = getMyCartDetails();
+   console.log('myCart', myCart);
    const sum = myCart.items.reduce(
       (total, obj) => {
-         total.tuitionFeeRawValue += obj.tuitionFeeRawValue;
-         total.applicationFeeRawValue += obj.applicationFeeRawValue;
+         total.rawFeePrice +=obj.rawFeePrice;
          return total;
       },
-      { tuitionFeeRawValue: 0, applicationFeeRawValue: 0 }
+      { rawFeePrice: 0, tuitionFeeRawValue: 0, applicationFeeRawValue: 0 }
    );
 
+   const workshopFee = parserToFixedto(sum.rawFeePrice);
    const tuition = parserToFixedto(sum.tuitionFeeRawValue);
    const application = parserToFixedto(sum.applicationFeeRawValue);
-   const dueNow = parserToFixedto(
-      sum.tuitionFeeRawValue + sum.applicationFeeRawValue
-   );
+   const dueNow = parserToFixedto(workshopFee);
 
+   myCart.workshopFee = workshopFee;
    myCart.applicaiontFee = application;
    myCart.tutionFee = tuition;
-   myCart.total = dueNow;
+   myCart.total = workshopFee;
    updateMyDetails('cart', myCart);
 
-   $('.total-application-fee').html('$' + tuition);
+   $('.total-application-fee').html(converMoneyProperFormat(workshopFee));
    $('.total-tuition-fee').html('$' + application);
-   $('.due-now').html('$' + dueNow);
-   $('.over-all-total').html('$' + dueNow);
+   $('.due-now').html(converMoneyProperFormat(dueNow));
+   $('.over-all-total').html(converMoneyProperFormat(dueNow));
 }
 
 function generiErrorMessage() {

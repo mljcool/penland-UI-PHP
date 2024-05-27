@@ -139,6 +139,7 @@ function removeItemBadge(itemName) {
 }
 
 function getStudios() {
+   
    $.get({
       url: STUDIOS_URL,
       contentType: 'application/json',
@@ -171,7 +172,9 @@ function defaultStudios(studios = []) {
    });
 }
 
-window.addEventListener('load', () => {
+
+
+$(document).ready(function () {
    filterByStudios = [
       'Book',
       'Paper',
@@ -186,7 +189,13 @@ window.addEventListener('load', () => {
       'Printmaking',
    ];
    defaultStudios(filterByStudios);
-   getStudios();
+
+   setTimeout(() => {
+      const searchlength = $('#elastic-search').length;
+      if(searchlength){
+         getStudios();
+      }
+    }, 20);
 
    for (let index = 0; index < 6; index++) {
       $('.card-results-sections')

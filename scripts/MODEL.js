@@ -72,6 +72,7 @@ function IworkShopModel(workshopData = []) {
          ]
       );
       //STUDIO
+      
 
       _data.studioTitle =
          _data[
@@ -91,6 +92,12 @@ function IworkShopModel(workshopData = []) {
             'cr711_tuitionfee_base@OData.Community.Display.V1.FormattedValue'
          ]
       );
+
+      // CAMPUS
+
+      _data.campusType = _data['hso_workshoptype@OData.Community.Display.V1.FormattedValue'];
+
+      _data.sessionsPrices = ifNosemester(_data['_hso_workshoppricing_value@OData.Community.Display.V1.FormattedValue']);
 
       // RAW VALUES
       _data.applicationFeeRawValue = ifNoFeesRawValues(

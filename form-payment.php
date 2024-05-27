@@ -17,7 +17,7 @@
                <p>Total Amount</p>
                <div class="d-flex align-items-center">
                   <div class="row">
-                     <h1 class="text-heading display-3">$59.99</h1>
+                     <h1 class="text-heading display-3 overAlltotalFee">$00.00</h1>
                      <sub>/USD</sub>
                   </div>
                   <div class="row">

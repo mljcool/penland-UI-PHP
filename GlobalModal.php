@@ -43,8 +43,7 @@
               Please note.
             </h6>
             <span class="message-body-modal">
-              Additional charges may apply for housing and meals, including off-campus student
-              meal plans.
+              Additional product may apply for housing and meals.
             </span>
           </div>
         </div>

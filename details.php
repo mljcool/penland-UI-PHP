@@ -18,7 +18,7 @@
           </div>
           <div class="workshop-details">
             <div class="workshop-title" data-aos="fade-right">
-              <h1 class="w-details-title">Handmade Paper: Surface and object. With Heathers</h1>
+              <h1 class="w-details-title">Getting Details...</h1>
             </div>
             <div class="with-workshop-title" data-aos="fade-up">
               with<span class="instructor w-details-instructor">Heather Peters</span>

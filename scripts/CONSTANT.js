@@ -35,7 +35,7 @@ var HTMLelementProp = {
       <div class="d-flex gap-3">
         <div class="flex-shrink-0 d-flex align-items-center">
           <img
-            src="./assets/Over-view-1.png"
+            src="${_item.imageURL}"
             alt="google home"
             class="w-px-100"
             style="border-radius: 8px"
@@ -61,11 +61,16 @@ var HTMLelementProp = {
               </div>
               <div class="text-muted mb-2 d-flex flex-wrap">
                 <span class="me-1">Registration starts:</span>
-                <a href="javascript:void(0)" class="me-3"><i class="bx bxs-calendar "></i> ${_item.startDateHumanReadable}</a>
+                <span href="javascript:void(0)" class="me-3"><i class="bx bxs-calendar "></i> ${_item.startDateHumanReadable}</span>
+              </div>
+              <div class="text-muted mb-2 d-flex flex-wrap">
+              <span class="me-1">Level:</span>
+              <span href="javascript:void(0)" class="me-3"><i class='bx bx-bullseye fa-lg' ></i>${_item.workshopLevel}</span>
               </div>
               <div class="text-muted mb-2 d-flex flex-wrap">
               <span class="me-1">Session:</span>
-              <a href="javascript:void(0)" class="me-3"><i class='bx bxs-calendar-event'></i> ${_item.semester}</a>
+              <span href="javascript:void(0)" class="me-3"><i class='bx bxs-calendar-event'></i> ${_item.workShopOverview['_cr711_defaultsessionpricelist_value@OData.Community.Display.V1.FormattedValue']}</span>
+              
             </div>
             </div>
             <div class="col-md-4">
@@ -77,10 +82,11 @@ var HTMLelementProp = {
                   aria-label="Close"
                 ></button>
                 <div class="my-2 my-md-4 mb-md-5 d-flex flex-column ">
-                <span class="badge rounded-pill bg-label-info mb-2">Application Fee   <span class="text-primary">${_item.applicationFee}</span> </span>
-                <span class="badge rounded-pill bg-label-info "> Tuition Fee <span class="text-primary">${_item.tuitionFee}</span> </span>
+                <span class="badge rounded-pill bg-label-info mb-2"><span class="text-primary">${_item.workShopOverview['pl.price@OData.Community.Display.V1.FormattedValue']}</span> </span>
+
                 </div>
                 <button
+                  style="display: none;"
                   type="button"
                   class="btn btn-sm btn-label-primary mt-md-3"
                 >
@@ -128,16 +134,17 @@ var HTMLelementProp = {
               </div>
               <div class="text-muted mb-2 d-flex flex-wrap">
               <span class="me-1">Session:</span>
-              <a href="javascript:void(0)" class="me-3"><i class='bx bxs-calendar-event'></i> ${_item.semester}</a>
+              <a href="javascript:void(0)" class="me-3"><i class='bx bxs-calendar-event'></i> ${_item.workShopOverview['_cr711_defaultsessionpricelist_value@OData.Community.Display.V1.FormattedValue']}</a>
             </div>
             </div>
             <div class="col-md-4">
               <div class="text-md-end">
                 <div class="my-2 my-md-4 mb-md-5 d-flex flex-column ">
-                <span class="badge rounded-pill bg-label-info mb-2">Application Fee   <span class="text-primary">${_item.applicationFee}</span> </span>
-                <span class="badge rounded-pill bg-label-info "> Tuition Fee <span class="text-primary">${_item.tuitionFee}</span> </span>
+                <span class="badge rounded-pill bg-label-info mb-2">   <span class="text-primary">${_item.workShopOverview['pl.price@OData.Community.Display.V1.FormattedValue']}</span> </span>
+               
                 </div>
                 <button
+                  style="display:none;"
                   type="button"
                   class="btn btn-sm btn-label-primary mt-md-3"
                 >

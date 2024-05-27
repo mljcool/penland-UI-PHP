@@ -97,7 +97,7 @@
             <!-- END DATE RANGE -->
 
             <!--START COLLAPSEABLE FILTER -->
-            <div class="filter-type-categories">
+            <!-- <div class="filter-type-categories">
               <div class="filter-type-label">
                 <span>By Session type</span>
               </div>
@@ -188,7 +188,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
             <!--END COLLAPSEABLE FILTER -->
           </div>
         </div>

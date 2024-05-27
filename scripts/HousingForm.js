@@ -28,36 +28,36 @@ function initializeHousingData() {
   formRepeater.on("submit", function (e) {
     e.preventDefault();
   });
-  formRepeater
-    .repeater({
-      initEmpty: false,
-      show: function (e) {
-        var fromControl = $(this).find(".form-control, .form-select");
-        var formLabel = $(this).find(".form-label");
+  // formRepeater
+  //   .repeater({
+  //     initEmpty: false,
+  //     show: function (e) {
+  //       var fromControl = $(this).find(".form-control, .form-select");
+  //       var formLabel = $(this).find(".form-label");
 
-        fromControl.each(function (i) {
-          var id = "form-repeater-" + row + "-" + col;
-          $(fromControl[i]).attr("id", id);
-          $(formLabel[i]).attr("for", id);
-          col++;
-        });
+  //       fromControl.each(function (i) {
+  //         var id = "form-repeater-" + row + "-" + col;
+  //         $(fromControl[i]).attr("id", id);
+  //         $(formLabel[i]).attr("for", id);
+  //         col++;
+  //       });
 
-        row++;
+  //       row++;
 
-        $(this).slideDown();
-        if ($(".form-repeater div[data-repeater-item]").length <= 5) {
-          $(this).slideDown();
-        } else {
-          $(this).remove();
-        }
-      },
-      hide: function (e) {
-        const name = $(this).val();
-        //   confirm("Are you sure you want to remove this member?"+name) &&
-        $(this).slideUp(e);
-      },
-    })
-    .setList(revalidateDataList);
+  //       $(this).slideDown();
+  //       if ($(".form-repeater div[data-repeater-item]").length <= 5) {
+  //         $(this).slideDown();
+  //       } else {
+  //         $(this).remove();
+  //       }
+  //     },
+  //     hide: function (e) {
+  //       const name = $(this).val();
+  //       //   confirm("Are you sure you want to remove this member?"+name) &&
+  //       $(this).slideUp(e);
+  //     },
+  //   })
+  //   .setList(revalidateDataList);
 }
 
 $(document).ready(function () {

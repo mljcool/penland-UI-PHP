@@ -17,3 +17,9 @@ var ADD_WORSHOPS = `https://prod-191.westus.logic.azure.com:443/workflows/28ceb3
 var USER_AUTH = `https://prod-21.westus.logic.azure.com:443/workflows/4deedea3af624450a2d848da6064c1f2/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=PgbJ61xawpd1cK6m5peToiIMmk3s-_X8Ae01YPK_xUw`;
 
 var STUDIOS_URL = `https://prod-142.westus.logic.azure.com:443/workflows/89872968770c4fa7a87a5f776aa2a9cc/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=livmkqQDzpRufCvwO6KPawprIEC_HzK9nEuzlW1vfQ4`;
+
+
+var SESSION_URL = `https://prod-104.westus.logic.azure.com:443/workflows/11b00fe01f9d4a8ab485dd861b610d5e/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ZtTU7Wq0hGItDGpDo5Lfx_PGQoNtfbRMQ30UWbVG3e0`
+
+
+var GET_PRODUCTS = `https://prod-15.westus.logic.azure.com:443/workflows/697051f36741407c8caafb3eff9128ed/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=uN-be0vybIf6Z7T6fWhyp7JWyBJpRhqeNZWHvosbXN4`;

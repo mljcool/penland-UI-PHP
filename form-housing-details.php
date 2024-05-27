@@ -1,7 +1,7 @@
 <div id="housing-info" class="content">
   <div class="content-header mb-3">
-    <h6 class="mb-0">Housing Details</h6>
-    <small>Enter Housing Details.</small>
+    <h6 class="mb-0">Housing and Meals</h6>
+    <small>Select Additional Products.</small>
     <button type="button" data-bs-toggle="modal" data-bs-target="#priceRangeFeedModal"
       class="btn btn-sm btn-label-primary mt-md-3 d-flex gap-2 align-items-center">
       About Housing & Fees
@@ -10,6 +10,7 @@
   </div>
   <div class="row">
     <p>
+      
       <em>Please select your preference below and you will be placed in
         housing and bathrooms with other students with the same housing
         preferenceFor gender-specific housing, please choose either male and
@@ -19,7 +20,7 @@
     </p>
   </div>
   <div class="row g-3">
-    <div class="col-md-6">
+    <!-- <div class="col-md-6">
       <label class="form-label" for="housing-preference">Select Housing Preference</label>
       <select class="select2" name="cr711_preference" id="cr711_preference">
         <option label=""></option>
@@ -71,7 +72,7 @@
         <input class="form-check-input" type="radio" name="cr711_adahousingneeded" id="inlineRadio3" value="3" />
         <label class="form-check-label" for="inlineRadio3">Not Selected</label>
       </div>
-    </div>
+    </div> -->
     <!-- <div class="col-md-6">
       <label class="form-label" for="TagifyBasic">here someone you'd like to be housed with? List name here and press
         enter
@@ -82,124 +83,35 @@
     <hr />
     <div class="card mb-4">
       <div class="card-header d-flex justify-content-between align-items-center">
-        <p class="card-title m-0">If a housing option is not shown below, it is currently sold out. If you would like to be placed on the waitlist for a particular housing option, please complete the housing waitlist form.</p>
+        <!-- <p class="card-title m-0">If a housing option is not shown below, it is currently sold out. If you would like to be placed on the waitlist for a particular housing option, please complete the housing waitlist form.</p> -->
       </div>
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md mb-md-0 mb-2">
-            <div class="form-check custom-option custom-option-icon" style="height: 100%;">
-              <label class="form-check-label custom-option-content" for="customCheckboxIcon1">
-                <span class="custom-option-body">
-                  <i class="bx bx-home"></i>
-                  <span class="custom-option-title"> $4242.00 </span>
-                  <small> Double Room/Bath Shared with Roomate </small>
-                </span>
-                <input class="form-check-input" type="checkbox" value="" id="customCheckboxIcon1" checked />
-              </label>
-            </div>
-          </div>
-          <div class="col-md mb-md-0 mb-2">
-            <div class="form-check custom-option custom-option-icon" style="height: 100%;">
-              <label class="form-check-label custom-option-content" for="customCheckboxIcon2">
-                <span class="custom-option-body">
-                  <i class="bx bx-home"></i>
-                  <span class="custom-option-title"> $4172.00 </span>
-                  <small> Double Room/Common Bath </small>
-                </span>
-                <input class="form-check-input" type="checkbox" value="" id="customCheckboxIcon2"  />
-              </label>
-            </div>
-          </div>
-          <div class="col-md mb-md-0 mb-2">
-            <div class="form-check custom-option custom-option-icon" style="height: 100%;">
-              <label class="form-check-label custom-option-content" for="customCheckboxIcon3">
-                <span class="custom-option-body">
-                  <i class="bx bx-home"></i>
-                  <span class="custom-option-title"> $2297.00 </span>
-                  <small> Off-Campus Housing - All Meals </small>
-                </span>
-                <input class="form-check-input" type="checkbox" value="" id="customCheckboxIcon3"  />
-              </label>
-            </div>
-          </div>
-          <div class="col-md mb-md-0 mb-2">
-            <div class="form-check custom-option custom-option-icon" style="height: 100%;">
-              <label class="form-check-label custom-option-content" for="customCheckboxIcon4">
-                <span class="custom-option-body">
-                  <i class="bx bx-home"></i>
-                  <span class="custom-option-title"> $1117.00 </span>
-                  <small> Off-Campus Housing - Dinner Only </small>
-                </span>
-                <input class="form-check-input" type="checkbox" value="" id="customCheckboxIcon4"  />
-              </label>
-            </div>
-          </div>
-        </div>
-        <div class="row mt-2">
+      <style>
+        .append-all-products{
+          display: grid;
+          grid-template-columns: auto auto auto;
+          gap: 10px; 
+        }
 
-          <div class="col-md mb-md-0  mb-2">
-            <div class="form-check custom-option custom-option-icon" style="height: 100%;">
-              <label class="form-check-label custom-option-content" for="customCheckboxIcon18">
-                <span class="custom-option-body">
-                  <i class="bx bx-home"></i>
-                  <span class="custom-option-title"> $2013.00 </span>
-                  <small>
-                    Off-Campus Housing - Lunch & Dinner</small>
-                </span>
-                <input class="form-check-input" type="checkbox" value="" id="customCheckboxIcon18"  />
-              </label>
-            </div>
-          </div>
-          <div class="col-md mb-md-0 mb-2">
-            <div class="form-check custom-option custom-option-icon" style="height: 100%;">
-              <label class="form-check-label custom-option-content" for="customCheckboxIcon6">
-                <span class="custom-option-body">
-                  <i class="bx bx-home"></i>
-                  <span class="custom-option-title"> $1117.00 </span>
-                  <small> Off-Campus Housing - Dinner Only </small>
-                </span>
-                <input class="form-check-input" type="checkbox" value="" id="customCheckboxIcon6"  />
-              </label>
-            </div>
-          </div>
-          <div class="col-md mb-md-0 mb-2">
-            <div class="form-check custom-option custom-option-icon" style="height: 100%;">
-              <label class="form-check-label custom-option-content" for="customCheckboxIcon7">
-                <span class="custom-option-body">
-                  <i class="bx bx-home"></i>
-                  <span class="custom-option-title"> $3756.00 </span>
-                  <small> Quad Dorm (3-4 people per room) </small>
-                </span>
-                <input class="form-check-input" type="checkbox" value="" id="customCheckboxIcon7"  />
-              </label>
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="form-check custom-option custom-option-icon" style="height: 100%;">
-              <label class="form-check-label custom-option-content" for="customCheckboxIcon8">
-                <span class="custom-option-body">
-                  <i class="bx bx-home"></i>
-                  <span class="custom-option-title"> $4472.00 </span>
-                  <small>
-                    Single Room/Common Bath (bathroom shared by 2
-                    rooms)
-                  </small>
-                </span>
-                <input class="form-check-input" type="checkbox" value="" id="customCheckboxIcon8"  />
-              </label>
-            </div>
-          </div>
+        .product-items{
+          /* Subtract the gap from 25% if you use a gap */
+          box-sizing: border-box;
+        }
+      </style>
+      <div class="card-body">
+        <div class="row append-all-products">
+       
         </div>
+   
       </div>
     </div>
     <hr />
-    <div class="divider">
+    <!-- <div class="divider">
       <div class="divider-text">
         Here someone you'd like to be housed with? Max(5)
       </div>
-    </div>
+    </div> -->
 
-    <div class="row form-repeater">
+    <!-- <div class="row form-repeater">
       <div data-repeater-list="group-a">
         <div data-repeater-item>
           <div class="row form-repeater-list">
@@ -237,7 +149,7 @@
           <span class="align-middle">Add</span>
         </button>
       </div>
-    </div>
+    </div> -->
 
     <!-- <div class="row">
       <button class="btn btn-primary " onclick="getListValues();">

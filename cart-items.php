@@ -74,7 +74,7 @@
             <div class="col-xl-4">
               <div class="border rounded p-4 mb-3 pb-3">
                 <!-- Offer -->
-                <h6>Offer</h6>
+                <!-- <h6>Offer</h6>
                 <div class="row g-3 mb-3">
                   <div class="col-8 col-xxl-8 col-xl-12">
                     <input
@@ -91,11 +91,11 @@
                       </button>
                     </div>
                   </div>
-                </div>
+                </div> -->
 
                 <!-- Gift wrap -->
                 <div class="bg-lighter rounded p-3">
-                  <p class="fw-medium mb-2">Only 2 spaces left, register soon!</p>
+                  <p class="fw-medium mb-2">Registration Process.</p>
                   <p class="mb-2">
                     To check the PAYMENT & CANCELLATION and more information
                     please click below.
@@ -104,15 +104,15 @@
                     >Registration Information</a
                   >
                 </div>
-                <!-- <hr class="mx-n4" />
-                <div>
+                <!-- <hr class="mx-n4" /> -->
+                <!-- <div>
                   <button
                     type="button"
                     data-bs-toggle="modal"
                     data-bs-target="#priceRangeFeedModal"
                     class="btn btn-sm btn-label-primary mt-md-3 d-flex gap-2 align-items-center"
                   >
-                    About Housing & Fees
+                     Additional Product
                     <i class="bx bx-info-circle bx-flashing"></i>
                   </button>
                 </div> -->
@@ -121,11 +121,11 @@
                 <!-- Price Details -->
                 <h6>Payment  Details</h6>
                 <dl class="row mb-0">
-                <dt class="col-6 fw-normal">Total Application Fee</dt>
+                <dt class="col-6 fw-normal">Total Amount Fee</dt>
                   <dd class="col-6 text-end total-application-fee">$00.00</dd>
 
-                  <dt class="col-6 fw-normal">Total Tuition Fee</dt>
-                  <dd class="col-6 text-end total-tuition-fee">$00.00</dd>
+                  <dt class="col-6 fw-normal" style="display:none;">Total Tuition Fee</dt>
+                  <dd class="col-6 text-end total-tuition-fee" style="display:none;">$00.00</dd>
 
                   <dt class="col-6 fw-normal">Due Now</dt>
                   <dd class="col-6 text-end due-now">$00.00</dd>
