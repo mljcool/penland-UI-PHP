@@ -90,7 +90,9 @@ function getOverView(courseID = '') {
                //localStorage.setItem('workshopItems', JSON.stringify(workShopData));
             }
          },
-         complete: function (data) {},
+         complete: function (data) {
+          $('.workshop-header-details').unblock();
+         },
          error: function (xhr, status, error) {},
       });
    }, 100);
@@ -102,7 +104,6 @@ function loadingUIDetails(){
   $(".workshop-header-details").block({
     message:
       '<div class="d-flex justify-content-center"><p class="me-2 mb-0">Please wait...</p> <div class="sk-wave sk-primary m-0"><div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div></div> </div>',
-    timeout: 1000,
     css: {
       backgroundColor: "transparent",
       border: "0"

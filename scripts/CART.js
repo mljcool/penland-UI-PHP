@@ -41,6 +41,7 @@ function removeItem(uid) {
    });
    setTimeout(() => {
       computeValueOfCart();
+   
    }, 200);
 }
 
@@ -76,6 +77,18 @@ function MessateAlertIformation() {
    });
 }
 
+function MessateAlertIformationCart() {
+   Swal.fire({
+      title: 'Oops!',
+      text: 'Your cart is currenty empty!',
+      icon: 'info',
+      customClass: {
+         confirmButton: 'btn btn-primary',
+      },
+      buttonsStyling: false,
+   });
+}
+
 function onNewStudent() {
    $('#modalContinueRegister').modal('hide');
    $('#PaymentAdjusted')
@@ -93,11 +106,15 @@ $(document).ready(function () {
    setRadioTypePayment();
 
    $('.on-continue-registration').click(function () {
-      // const myCartDetails = getMyCartDetails();
+      const myCartDetails = getMyCartDetails();
       // if (!myCartDetails.payType) {
       //    MessateAlertIformation();
       //    return;
       // }
+      if(myCartDetails.items.length === 0){
+         MessateAlertIformationCart();
+         return;
+      }
       $('#modalContinueRegister').modal('show');
    });
 

@@ -214,6 +214,10 @@
                         $00.00
                       </dd>
 
+                      <dt class="col-6 fw-normal">Housing & Meals</dt>
+                      <dd class="col-6 text-end total-h-and-m">$00.00</dd>
+
+
                       <dt class="col-6 fw-normal" style="display:none;">Total Tuition Fee</dt>
                       <dd style="display:none;" class="col-6 text-end total-tuition-fee">$00.00</dd>
 
@@ -228,7 +232,7 @@
                     <dl class="row mb-0">
                       <dt class="col-6">Total</dt>
                       <dd class="col-6 fw-medium text-end mb-0 over-all-total">
-                        $1198.00
+                        $00.00
                       </dd>
                     </dl>
                     <dl>
@@ -312,7 +316,7 @@
           </span>
           <div class="timeline-event success-wrapper-body">
             <div class="timeline-header border-bottom mb-3">
-              <h6 class="mb-0">Thank you!</h6>
+              <h6 class="mb-0">Thank you! 🥳</h6>
             </div>
             <div class="d-flex body-timeline-success flex-direction-column justify-content-between flex-wrap mb-2">
               <div class="card message-success" style="display: none">

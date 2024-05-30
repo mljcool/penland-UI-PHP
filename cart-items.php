@@ -134,11 +134,11 @@
                   <dd class="col-6 text-end">$0.00</dd>
 
                 
-                  <dt class="col-6 fw-normal">Supply Charges</dt>
+                  <!-- <dt class="col-6 fw-normal">Supply Charges</dt>
                   <dd class="col-6 text-end">
                     <s class="text-muted">$5.00</s>
                     <span class="badge bg-label-success ms-1">Free</span>
-                  </dd>
+                  </dd> -->
                 </dl>
 
                 <hr class="mx-n4" />

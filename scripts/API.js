@@ -152,7 +152,9 @@ function addTotalProducts() {
    const prodList = getProductionListStore();
    const myProdList = getMyCartDetails();
    const sum = prodList
-      .filter((_data) => myProdList.productList?.includes(_data['@odata.editLink']))
+      .filter((_data) =>
+         myProdList.productList?.includes(_data['@odata.editLink'])
+      )
       .reduce(
          (total, obj) => {
             total.price += obj.price;
@@ -160,36 +162,46 @@ function addTotalProducts() {
          },
          { price: 0 }
       );
-      console.log(sum);
-      myProdList.totalProductPrices = sum.price;
-      myProdList.overAllTotal = sum.price+myProdList.total;
-      myProdList.overAllTotalFormatted = converMoneyProperFormat(myProdList.overAllTotal);
-      $('.overAlltotalFee').html(myProdList.overAllTotalFormatted);
-      $('.over-all-total').html(myProdList.overAllTotalFormatted);
-      updateMyDetails('cart', myProdList);
-
+   myProdList.totalProductPrices = sum.price;
+   myProdList.overAllTotal = sum.price + myProdList.total;
+   myProdList.overAllTotalFormatted = converMoneyProperFormat(
+      myProdList.overAllTotal
+   );
+   $('.overAlltotalFee').html(myProdList.overAllTotalFormatted);
+   $('.over-all-total').html(myProdList.overAllTotalFormatted);
+   $('.total-h-and-m').html(converMoneyProperFormat(sum.price));
+   $('.total-r-cart').html(
+      'Cart: ' + converMoneyProperFormat(myProdList.total)
+   );
+   $('.total-r-hm').html(
+      'Housing & Meals: ' + converMoneyProperFormat(sum.price)
+   );
+   updateMyDetails('cart', myProdList);
 }
 
 function getProductsChecked() {
-  const myProdList = getMyCartDetails().productList;
+   const myProdList = getMyCartDetails();
 
    $('.product-checkboxes').change(function () {
       const valueProd = $(this).val();
       if ($(this).is(':checked')) {
          console.log('Checkbox is checked!', valueProd);
-         myProdList.push(valueProd);
+         myProdList.productList.push(valueProd);
       } else {
-        myProdList = productList.filter((_data) => _data !== valueProd);
+         const setOnlyNewValue = myProdList.productList.filter(
+            (_data) => _data !== valueProd
+         );
+         myProdList.productList = setOnlyNewValue;
       }
-      const myCart = getMyCartDetails();
-      myCart.productList = myProdList;
-      updateMyDetails('cart', myCart);
-      getProductsWithFullData();
+
+      myProdList.productList = myProdList.productList;
+      updateMyDetails('cart', myProdList);
+      getProductsWithFullDataSummaryReview();
       addTotalProducts();
    });
 }
 
-function getProductsWithFullData() {
+function getProductsWithFullDataSummaryReview() {
    const prodList = getProductionListStore();
    const myProdList = getMyCartDetails().productList;
    const productHTMLelemList = $('.append-review-product');
@@ -197,21 +209,9 @@ function getProductsWithFullData() {
    prodList
       .filter((_data) => myProdList.includes(_data['@odata.editLink']))
       .forEach(function (_data, index) {
-         productHTMLelemList.append(`<div class="col-md mb-md-0 mb-2 product-items-review">
-<div class="form-check custom-option custom-option-icon" style="height: 100%;background: white;">
-  <label class="form-check-label custom-option-content" for="customCheckboxIcon${
-     _data.productid
-  }">
-    <span class="custom-option-body">
-      ${ifHousingOrMeals(_data)}
-      <span class="custom-option-title"> ${
-         _data['price@OData.Community.Display.V1.FormattedValue']
-      } </span>
-      <small>${_data.name} </small>
-    </span>
-  </label>
-</div>
-</div>`);
+         productHTMLelemList.append(
+            HTMLelementProp.listOfProductSummaryReview(_data)
+         );
       });
 }
 
@@ -225,48 +225,76 @@ function setProductToCheck(editLink) {
    return prods ? 'checked' : '';
 }
 
+function filterProductWithPriceAndSession(products) {
+   const myCart = getMyCartDetails();
+   const formattedValuePrice =
+      'price@OData.Community.Display.V1.FormattedValue';
+   const formattedValuePricingTitle =
+      '_hso_workshoppricing_value@OData.Community.Display.V1.FormattedValue';
+
+   const newProductList = products.filter((_data) => !!_data.price);
+
+   const tempDataIDs = [];
+   myCart.items.forEach((_data) => {
+      tempDataIDs.push(_data._hso_workshoppricing_value);
+   });
+
+   // FILTER PRODUCTS BY SESSIONS
+   const groupBySectionList = myCart.items
+      .map((_data) => {
+         _data.theProduct = newProductList.filter(
+            (_prod) =>
+               _prod._pricelevelid_value === _data._hso_workshoppricing_value
+         );
+         return _data;
+      })
+      .map((_data) => ({
+         pricingID: _data._hso_workshoppricing_value,
+         theProduct: _data.theProduct,
+         sessionName: _data[formattedValuePricingTitle],
+      }));
+   console.log('getOnlyePricelistID', groupBySectionList);
+   console.log('newProductList', newProductList);
+
+   return groupBySectionList;
+}
+
 function getProducts() {
-   const productHTMLelemList = $('.append-all-products');
-   if (productHTMLelemList.length) {
-      productHTMLelemList.html('');
+   const prodWrapperElement = $('.products-session-wrapper');
+   if (prodWrapperElement.length) {
+      prodWrapperElement.html('');
+
       $.get({
          url: GET_PRODUCTS,
          contentType: 'application/json',
          success: function (response = []) {
             if (response.value.length) {
-               response.value
-                  .filter(
-                     (_data) =>
-                        !!_data[
-                           'price@OData.Community.Display.V1.FormattedValue'
-                        ]
-                  )
-                  .forEach(function (_data, index) {
-                     productHTMLelemList.append(`<div class="col-md mb-md-0 mb-2 product-items">
-          <div class="form-check custom-option custom-option-icon ${setProductToCheck(
-             _data['@odata.editLink']
-          )}" style="height: 100%;">
-            <label class="form-check-label custom-option-content" for="customCheckboxIcon${
-               _data.productid
-            }">
-              <span class="custom-option-body">
-                ${ifHousingOrMeals(_data)}
-                <span class="custom-option-title"> ${
-                   _data['price@OData.Community.Display.V1.FormattedValue']
-                } </span>
-                <small>${_data.name} </small>
-              </span>
-              <input class="form-check-input product-checkboxes" type="checkbox" value="products(${
-                 _data.productid
-              })" id="customCheckboxIcon${_data.productid}" ${setProductToCheck(_data['@odata.editLink'])} />
-            </label>
-          </div>
-        </div>`);
-                  });
-               const productsData = response.value;
-               setItemStore('productsData', productsData);
+               const productList = response.value;
+               const withPrice = filterProductWithPriceAndSession(productList);
+               console.log('withPrice', withPrice);
+               withPrice.forEach(function (_data, index) {
+                  prodWrapperElement.append(
+                     HTMLelementProp.listOfProductBySession(_data)
+                  );
+
+                  const productHTMLelemList = $('.pID-' + _data.pricingID);
+                  productHTMLelemList.html('');
+                  if (_data.theProduct.length) {
+                     _data.theProduct.forEach(function (_data, index) {
+                        productHTMLelemList.append(
+                           HTMLelementProp.listOfProduct(_data)
+                        );
+                     });
+                  } else {
+                     productHTMLelemList.html(
+                        '<div class="bg-lighter p-2 rounded mt-4 text-center"><p class="text-heading display-6">No housing and meals found for this session.</p></div>'
+                     );
+                  }
+               });
+
+               setItemStore('productsData', productList);
                setTimeout(() => {
-                  getProductsWithFullData();
+                  getProductsWithFullDataSummaryReview();
                   addTotalProducts();
                }, 500);
             }

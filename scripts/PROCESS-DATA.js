@@ -146,13 +146,54 @@ function startAddLoadingEachSections() {
    //    $('.footer-btns').css('display', 'none');
 }
 
-
-
 $(document).ready(function () {
    $('.final-button-steps').click(function () {
-    
       fireDummyAsyncCall();
       startAddLoadingEachSections();
       // startRegistrationProcess();
    });
+
+   // POPULATE LANGAUGES
+   preferredLanguage;
+
+   const langugesEl = $('.dd-mshied_homelanguage');
+   const raceEthicityEl = $('.dd-mshied_race_');
+   const stateEl = $('.dd-address1_stateorprovince');
+   const countryEl = $('.dd-address1_country');
+
+   if (langugesEl.length) {
+      langugesEl.html('');
+      langugesEl.append('<option label=""></option>');
+      preferredLanguage.forEach(function (_data) {
+         langugesEl.append(
+            `<option value="${_data.value}">${_data.name}</option>`
+         );
+      });
+
+      raceEthicityEl.html('');
+      raceEthicityEl.append('<option label=""></option>');
+      raceEthicity.forEach(function (_data) {
+         raceEthicityEl.append(
+            `<option value="${_data.value}">${_data.name}</option>`
+         );
+      });
+
+      stateEl.html();
+      stateEl.append('<option label=""></option>');
+      STATES.forEach(function (_data) {
+         stateEl.append(
+            `<option value="${_data.value}">${_data.name}</option>`
+         );
+      });
+
+      countryEl.html();
+      countryEl.append('<option label=""></option>');
+      COUNTRY.forEach(function (_data) {
+         countryEl.append(
+            `<option value="${_data.value}">${_data.name}</option>`
+         );
+      });
+
+   
+   }
 });

@@ -11,12 +11,7 @@
   <div class="row">
     <p>
       
-      <em>Please select your preference below and you will be placed in
-        housing and bathrooms with other students with the same housing
-        preferenceFor gender-specific housing, please choose either male and
-        female.Gender Inclusive Housing is a housing option that allows
-        students to share a space with fellow students regardless of their
-        sex, gender identity, or gender expression. ..</em>
+      <em>Please select your preference below.</em>
     </p>
   </div>
   <div class="row g-3">
@@ -79,13 +74,7 @@
       </label>
       <input id="TagifyBasic" class="form-control" name="TagifyBasic" value="" />
     </div> -->
-
-    <hr />
-    <div class="card mb-4">
-      <div class="card-header d-flex justify-content-between align-items-center">
-        <!-- <p class="card-title m-0">If a housing option is not shown below, it is currently sold out. If you would like to be placed on the waitlist for a particular housing option, please complete the housing waitlist form.</p> -->
-      </div>
-      <style>
+    <style>
         .append-all-products{
           display: grid;
           grid-template-columns: auto auto auto;
@@ -97,13 +86,10 @@
           box-sizing: border-box;
         }
       </style>
-      <div class="card-body">
-        <div class="row append-all-products">
-       
-        </div>
-   
-      </div>
-    </div>
+    <hr />
+        <div class="row products-session-wrapper">
+        
+         </div>
     <hr />
     <!-- <div class="divider">
       <div class="divider-text">

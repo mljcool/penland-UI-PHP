@@ -14,11 +14,17 @@
       <div class="row stripe-container">
          <div class="row g-3">
             <div class="bg-lighter p-4 rounded mt-4">
-               <p>Total Amount</p>
+              
+               <div class="row">
+                  
+                  <h5 class="text-heading total-r-cart  cart">Cart: $00.00</h5>
+                  <h5 class="text-heading total-r-hm cart">Housing & Meals: $00.00</h5>
+               </div>
+               <!-- <p>Total Amount</p> -->
                <div class="d-flex align-items-center">
                   <div class="row">
                      <h1 class="text-heading display-3 overAlltotalFee">$00.00</h1>
-                     <sub>/USD</sub>
+                     <sub>/Total Amount</sub>
                   </div>
                   <div class="row">
                      <h6 class="text-heading">Select Payment Plans</h6>

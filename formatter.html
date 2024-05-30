@@ -1,218 +1,674 @@
-<style>
-   .item-card-fee {
-      padding: 1rem;
-      border: 1px solid #d8d8d8;
-      border-radius: 7px;
-   }
-</style>
+<!-- horizontal slider modal -->
 
-<div id="payment-link" class="content">
-   <div class="content-header mb-3">
-      <h6 class="mb-0">Payment</h6>
-   </div>
-   <div class="row g-3">
-      <div class="row stripe-container">
-         <div class="row g-3">
-            <div class="bg-lighter p-4 rounded mt-4">
-               <p>Total Amount</p>
-               <div class="d-flex align-items-center">
-                  <div class="row">
-                     <h1 class="text-heading display-3">$59.99</h1>
-                     <sub>/USD</sub>
-                  </div>
-                  <div class="row">
-                     <h6 class="text-heading">Select Payment Plans</h6>
+<div class="modal-onboarding modal fade" id="priceRangeFeedModal" tabindex="-1" aria-hidden="true">
+   <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+      <div class="modal-content text-center">
+         <div class="modal-header border-0">
+            <h5 class="modal-title" id="exampleModalLabel">Housing & Fees</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+         </div>
+         <div class="modal-body">
+            <div id="modal-prices-fees" class="pb-4 mb-2">
+               <div class="row">
+                  <div class="col-md mb-4 mb-md-2">
+                     <div class="accordion m-3" id="accordionWithIcon">
+                        <div class="card accordion-item active">
+                           <h2 class="accordion-header d-flex align-items-center">
+                              <button type="button" class="accordion-button collapsed alert alert-primary"
+                                 data-bs-toggle="collapse" data-bs-target="#accordionWithIcon-1" aria-expanded="false">
+                                 <i class="bx bx-info-circle"></i>
+                                 Fees: Spring 2024 Concentration and Short Session
+                              </button>
+                           </h2>
 
-                     <div class="col-md-6 mb-md-0 mb-2">
-                        <div
-                           class="form-check custom-option custom-option-basic"
-                        >
-                           <label
-                              class="form-check-label custom-option-content form-check-input-payment d-flex gap-3 align-items-center"
-                              for="customRadioVisa"
-                           >
-                              <input
-                                 name="customRadioTemp"
-                                 class="form-check-input pay-types fee-is-full"
-                                 type="radio"
-                                 value="full"
-                                 id="customRadioVisa"
-                              />
-                              <span class="custom-option-body">
-                                 <span style="white-space: nowrap" class="ms-3"
-                                    >Full
-                                 </span>
-                              </span>
-                           </label>
+                           <div id="accordionWithIcon-1" class="accordion-collapse collapse">
+                              <div class="accordion-body">
+                              
+                              
+                           
+                      
+                              </div>
+                           </div>
                         </div>
                      </div>
-                     <div class="col-md-6 mb-md-0 mb-2">
-                        <div
-                           class="form-check custom-option custom-option-basic"
-                        >
-                           <label
-                              class="form-check-label custom-option-content form-check-input-payment d-flex gap-3 align-items-center"
-                              for="customRadioPaypal"
-                           >
-                              <input
-                                 name="customRadioTemp"
-                                 class="form-check-input pay-types fee-is-deposit"
-                                 type="radio"
-                                 value="deposit"
-                                 id="customRadioPaypal"
-                              />
-                              <span class="custom-option-body">
-                                 <span style="white-space: nowrap" class="ms-3"
-                                    >Deposit</span
-                                 >
-                              </span>
-                           </label>
+
+                     <div class="accordion m-3" id="accordionWithIcon">
+                        <div class="card accordion-item active">
+                           <h2 class="accordion-header d-flex align-items-center">
+                              <button type="button" class="accordion-button collapsed alert alert-primary"
+                                 data-bs-toggle="collapse" data-bs-target="#accordionWithIcon-2" aria-expanded="false">
+                                 <i class="bx bx-info-circle"></i>
+                                 Fees: Summer 2024 Sessions
+                              </button>
+                           </h2>
+
+                           <div id="accordionWithIcon-2" class="accordion-collapse collapse">
+                              <div class="accordion-body">
+
+                                 <div class="table-container">
+                                    <table>
+                                       <thead>
+                                          <tr>
+                                             <th>
+                                                SUMMER TUITION
+                                             </th>
+                                             <th>
+                                                Sessions 1 &amp; 7
+                                             </th>
+                                             <th>
+                                                Session 2-6
+                                             </th>
+                                          </tr>
+                                       </thead>
+
+                                       <tbody>
+                                          <tr>
+                                             <td>
+                                                Regular
+                                             </td>
+                                             <td>
+                                                $1,184
+                                             </td>
+                                             <td>
+                                                $2,094
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                Hot Glass
+                                             </td>
+                                             <td>
+                                                $1,612
+                                             </td>
+                                             <td>
+                                                $2,749
+                                             </td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                 </div>
+
+                                 <div class="table-container">
+                                    <table>
+                                       <thead>
+                                          <tr>
+                                             <th>
+                                                SUMMER TUITION--PARTIAL SCHOLARSHIP (INCLUDES ROOM +
+                                                ALL MEALS)
+                                             </th>
+                                             <th>
+                                                Sessions 1 &amp; 7
+                                             </th>
+                                             <th>
+                                                Session 2-6
+                                             </th>
+                                          </tr>
+                                       </thead>
+
+                                       <tbody>
+                                          <tr>
+                                             <td>
+                                                Regular
+                                             </td>
+                                             <td>
+                                                $526
+                                             </td>
+                                             <td>
+                                                $930
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                Hot Glass
+                                             </td>
+                                             <td>
+                                                $792
+                                             </td>
+                                             <td>
+                                                $1,446
+                                             </td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                 </div>
+                                 <p>
+                                    <em>Students who receive a partial scholarship receive shared
+                                       dormitory housing and meals at no additional charge as
+                                       part of their scholarship package.<br /> </em><em><strong>NOTE: Beginning with
+                                          summer 2024,
+                                          tuition includes the
+                                          cost of shared materials, instructor demo materials, and
+                                          hazmat disposal. Students are, however, still
+                                          responsible for the cost of materials used for their own
+                                          production. Payment for these materials will be due at
+                                          the end of the session prior to departing
+                                          campus.</strong></em>
+                                 </p>
+
+                                 <div class="table-container">
+                                    <table>
+                                       <thead>
+                                          <tr>
+                                             <th>
+                                                SUMMER ROOM + ALL MEALS
+                                             </th>
+                                             <th>
+                                                Session 1 &amp; 7
+                                             </th>
+                                             <th>
+                                                Session 2-6
+                                             </th>
+                                          </tr>
+                                       </thead>
+
+                                       <tbody>
+                                          <tr>
+                                             <td>
+                                                Hostel (up to 13 per room)
+                                             </td>
+                                             <td>
+                                                $595
+                                             </td>
+                                             <td>
+                                                $1,159
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                Quad dorm (3-4 per room)
+                                             </td>
+                                             <td>
+                                                $646
+                                             </td>
+                                             <td>
+                                                $1,282
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                Double/common bath
+                                             </td>
+                                             <td>
+                                                $1,025
+                                             </td>
+                                             <td>
+                                                $1,865
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                Double/bath shared with roommate
+                                             </td>
+                                             <td>
+                                                $1,229
+                                             </td>
+                                             <td>
+                                                $2,251
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                Single/communal bath*
+                                             </td>
+                                             <td>
+                                                $1,428
+                                             </td>
+                                             <td>
+                                                $2,672
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                Single/common bath*
+                                             </td>
+                                             <td>
+                                                $1,582
+                                             </td>
+                                             <td>
+                                                $2,877
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                Single/private bath
+                                             </td>
+                                             <td>
+                                                $1,991
+                                             </td>
+                                             <td>
+                                                $3,651
+                                             </td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                 </div>
+
+                                 <p>
+                                    <em>*Common baths are shared by two rooms; communal baths are
+                                       shared by multiple rooms.</em>
+                                 </p>
+
+                                 <div class="table-container">
+                                    <table>
+                                       <thead>
+                                          <tr>
+                                             <th>
+                                                SUMMER MEALS FOR OFF-CAMPUS STUDENTS
+                                             </th>
+                                             <th>
+                                                Session 1 7
+                                             </th>
+                                             <th>
+                                                Sessions 2-6
+                                             </th>
+                                          </tr>
+                                       </thead>
+
+                                       <tbody>
+                                          <tr>
+                                             <td>
+                                                All meals
+                                             </td>
+                                             <td>
+                                                $467
+                                             </td>
+                                             <td>
+                                                $851
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                Lunch and dinner
+                                             </td>
+                                             <td>
+                                                $356
+                                             </td>
+                                             <td>
+                                                $646
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                Breakfast and lunch
+                                             </td>
+                                             <td>
+                                                $266
+                                             </td>
+                                             <td>
+                                                $495
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                Lunch only
+                                             </td>
+                                             <td>
+                                                $158
+                                             </td>
+                                             <td>
+                                                $291
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                Dinner only
+                                             </td>
+                                             <td>
+                                                $201
+                                             </td>
+                                             <td>
+                                                $356
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                Breakfast only
+                                             </td>
+                                             <td>
+                                                $108
+                                             </td>
+                                             <td>
+                                                $205
+                                             </td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                 </div>
+                                 <strong>Cancellation and Refunds</strong>
+                                 <p dir="ltr">
+                                    Please read our cancellation and refund policy
+                                    <a href="https://penland.org/workshops/cancellation-refunds/" target="_blank"
+                                       rel="noopener"><strong>here</strong></a>.
+                                 </p>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                     <div class="accordion m-3" id="accordionWithIcon">
+                        <div class="card accordion-item active">
+                           <h2 class="accordion-header d-flex align-items-center">
+                              <button type="button" class="accordion-button collapsed alert alert-primary"
+                                 data-bs-toggle="collapse" data-bs-target="#accordionWithIcon-3" aria-expanded="false">
+                                 <i class="bx bx-info-circle"></i>
+                                 Fees: Fall 2024 Concentration, Short Session, and Weekend
+                              </button>
+                           </h2>
+
+                           <div id="accordionWithIcon-3" class="accordion-collapse collapse">
+                              <div class="accordion-body">
+                                 <div class="table-container">
+                                    <table>
+                                       <thead>
+                                          <tr>
+                                             <th>
+                                                FALL TUITION
+                                             </th>
+                                             <th>
+                                                Concentration (6-weeks)
+                                             </th>
+                                             <th>
+                                                Short Session (4-days)
+                                             </th>
+                                             <th>
+                                                Weekend Session
+                                             </th>
+                                          </tr>
+                                       </thead>
+
+                                       <tbody>
+                                          <tr>
+                                             <td>
+                                                Regular
+                                             </td>
+                                             <td>
+                                                $4,863
+                                             </td>
+                                             <td>
+                                                $1,184
+                                             </td>
+                                             <td>
+                                                $814
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                Hot Glass
+                                             </td>
+                                             <td>
+                                                $6,337
+                                             </td>
+                                             <td>
+                                                N/A
+                                             </td>
+                                             <td>
+                                                N/A
+                                             </td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                 </div>
+                                 <div class="table-container">
+                                    <table>
+                                       <thead>
+                                          <tr>
+                                             <th>
+                                                FALL TUITION: PARTIAL SCHOLARSHIP (INCLUDES ROOM +
+                                                ALL MEALS)
+                                             </th>
+                                             <th>
+                                                Concentration (6-Weeks)
+                                             </th>
+                                             <th>
+                                                Short Session (4-days)
+                                             </th>
+                                          </tr>
+                                       </thead>
+
+                                       <tbody>
+                                          <tr>
+                                             <td>
+                                                Regular (~20-hr per week work requirement)
+                                             </td>
+                                             <td>
+                                                $4,105
+                                             </td>
+                                             <td>
+                                                $766
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                Hot glass (~10-hr per week work requirement)
+                                             </td>
+                                             <td>
+                                                $7,108
+                                             </td>
+                                             <td>
+                                                N/A
+                                             </td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                 </div>
+                                 <p>
+                                    <em>Students who receive a partial scholarship with work
+                                       requirement receive shared dormitory housing and meals at
+                                       no additional charge as part of their scholarship
+                                       package.<br /> </em><em><strong>Note:</strong>
+                                       <strong>tuition includes the cost of shared materials,
+                                          instructor demo materials, and hazmat disposal. Students
+                                          are, however, still responsible for the cost of
+                                          materials used for their own production. Payment for
+                                          these materials will be due at the end of the session
+                                          prior to departing campus.</strong></em>
+                                 </p>
+                                 <div class="table-container">
+                                    <table>
+                                       <thead>
+                                          <tr>
+                                             <th>
+                                                FALL ROOM + ALL MEALS
+                                             </th>
+                                             <th>
+                                                Concentration (6-Weeks)
+                                             </th>
+                                             <th>
+                                                Short Session (4-days)
+                                             </th>
+                                             <th>
+                                                Weekend Session
+                                             </th>
+                                          </tr>
+                                       </thead>
+
+                                       <tbody>
+                                          <tr>
+                                             <td>
+                                                Quad
+                                             </td>
+                                             <td>
+                                                $3,756
+                                             </td>
+                                             <td>
+                                                $646
+                                             </td>
+                                             <td>
+                                                $313
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                Double/common bath
+                                             </td>
+                                             <td>
+                                                $4,172
+                                             </td>
+                                             <td>
+                                                $1,025
+                                             </td>
+                                             <td>
+                                                $501
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                Double/bath shared with roommate
+                                             </td>
+                                             <td>
+                                                $4,242
+                                             </td>
+                                             <td>
+                                                $1,229
+                                             </td>
+                                             <td>
+                                                $606
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                Single/communal bath*
+                                             </td>
+                                             <td>
+                                                $4,359
+                                             </td>
+                                             <td>
+                                                $1,428
+                                             </td>
+                                             <td>
+                                                N/A
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                Single/common bath*
+                                             </td>
+                                             <td>
+                                                $4,472
+                                             </td>
+                                             <td>
+                                                $1,582
+                                             </td>
+                                             <td>
+                                                N/A
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                Single/private bath
+                                             </td>
+                                             <td>
+                                                $4,699
+                                             </td>
+                                             <td>
+                                                $1,991
+                                             </td>
+                                             <td>
+                                                N/A
+                                             </td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                 </div>
+                                 <p>
+                                    <em>*Common baths are shared by two rooms; communal baths are
+                                       shared by multiple rooms.</em>
+                                 </p>
+                                 <div class="table-container">
+                                    <table>
+                                       <thead>
+                                          <tr>
+                                             <th>
+                                                FALL MEALS FOR OFF-CAMPUS STUDENTS
+                                             </th>
+                                             <th>
+                                                Concentration (6-Weeks)
+                                             </th>
+                                             <th>
+                                                Short Session (4-days)
+                                             </th>
+                                             <th>
+                                                Weekend Session
+                                             </th>
+                                          </tr>
+                                       </thead>
+
+                                       <tbody>
+                                          <tr>
+                                             <td>
+                                                All meals
+                                             </td>
+                                             <td>
+                                                $2,297
+                                             </td>
+                                             <td>
+                                                $467
+                                             </td>
+                                             <td>
+                                                $222
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                Lunch &amp; Dinner
+                                             </td>
+                                             <td>
+                                                $2,013
+                                             </td>
+                                             <td>
+                                                $356
+                                             </td>
+                                             <td>
+                                                $163
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                Lunch only
+                                             </td>
+                                             <td>
+                                                $893
+                                             </td>
+                                             <td>
+                                                $158
+                                             </td>
+                                             <td>
+                                                $58
+                                             </td>
+                                          </tr>
+                                          <tr>
+                                             <td>
+                                                Dinner Only
+                                             </td>
+                                             <td>
+                                                $1,117
+                                             </td>
+                                             <td>
+                                                $201
+                                             </td>
+                                             <td>
+                                                $105
+                                             </td>
+                                          </tr>
+                                       </tbody>
+                                    </table>
+                                 </div>
+                                 <strong>Cancellation and Refunds</strong>
+                                 <p dir="ltr">
+                                    Please read our cancellation and refund policy
+                                    <a href="https://penland.org/workshops/cancellation-refunds/" target="_blank"
+                                       rel="noopener"><strong>here</strong></a>.
+                                 </p>
+                              </div>
+                           </div>
+
                         </div>
                      </div>
                   </div>
                </div>
-            </div>
-
-            <div class="col-12 item-card-fee">
-               <label class="form-label w-100" for="cardnumber"
-                  >Google Pay</label
-               >
-               <div id="payment-request-button">
-                  <!-- A Stripe Element will be inserted here. -->
-               </div>
-            </div>
-            <div class="col-12">
-               <hr />
-               <strong>OR Enter Credit Card Info</strong>
-            </div>
-            <div class="row g-3 item-card-fee">
-               <!-- <label class="form-label w-100" for="cardnumber">Card Details</label> -->
-               <!-- <div id="card-element" class="form-control"></div> -->
-               <div class="col-12">
-                  <label class="form-label" for="billings-card-num"
-                     >Card number</label
-                  >
-                  <div class="input-group input-group-merge">
-                     <input
-                        type="text"
-                        id="billings-card-num"
-                        class="form-control billing-card-mask"
-                        placeholder="7465 8374 5837 5067"
-                        aria-describedby="paymentCard"
-                     />
-                     <span
-                        class="input-group-text cursor-pointer p-1"
-                        id="paymentCard"
-                        ><span class="card-type"></span
-                     ></span>
-                  </div>
-               </div>
-               <div class="col-md-6">
-                  <label class="form-label" for="billings-card-name"
-                     >Name</label
-                  >
-                  <input
-                     type="text"
-                     id="billings-card-name"
-                     class="form-control"
-                     placeholder="John Doe"
-                  />
-               </div>
-               <div class="col-md-3">
-                  <label class="form-label" for="billings-card-date"
-                     >EXP. Date</label
-                  >
-                  <input
-                     type="text"
-                     id="billings-card-date"
-                     class="form-control billing-expiry-date-mask"
-                     placeholder="MM/YY"
-                  />
-               </div>
-               <div class="col-md-3">
-                  <label class="form-label" for="billings-card-cvv">CVV</label>
-                  <input
-                     type="text"
-                     id="billings-card-cvv"
-                     class="form-control billing-cvv-mask"
-                     maxlength="3"
-                     placeholder="965"
-                  />
-               </div>
-            </div>
-
-            <div class="col-12 mt-5">
-               <label class="switch">
-                  <input type="checkbox" class="switch-input" />
-                  <span class="switch-toggle-slider">
-                     <span class="switch-on"></span>
-                     <span class="switch-off"></span>
-                  </span>
-                  <span class="switch-label"
-                     >Save card for future billing?</span
-                  >
-               </label>
             </div>
          </div>
       </div>
-
-      <div class="col-12 d-flex justify-content-between mt-5">
-         <button class="btn btn-primary btn-prev">
-            <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
-            <span class="align-middle d-sm-inline-block d-none">Previous</span>
-         </button>
-         <button class="btn btn-primary btn-next">
-            <span class="align-middle d-sm-inline-block d-none me-sm-1 me-0"
-               >Next</span
-            >
-            <i class="bx bx-chevron-right bx-sm me-sm-n2"></i>
-         </button>
-      </div>
    </div>
 </div>
-
-<script>
-   // Set your publishable key
-   var stripe = Stripe('pk_test_pGlXo9F6Y0utPXbtfPiiqO1h');
-   // Create an instance of Elements
-   var elements = stripe.elements();
-   const paymentRequest = stripe.paymentRequest({
-      country: 'US',
-      currency: 'usd',
-      total: {
-         label: 'Demo total',
-         amount: 1099,
-      },
-      requestPayerName: true,
-      requestPayerEmail: true,
-   });
-
-   const prButton = elements.create('paymentRequestButton', {
-      paymentRequest,
-      style: {
-         paymentRequestButton: {
-            type: 'default',
-            // One of 'default', 'book', 'buy', or 'donate'
-            // Defaults to 'default'
-
-            theme: 'dark',
-            // One of 'dark', 'light', or 'light-outline'
-            // Defaults to 'dark'
-
-            height: '44px',
-            // Defaults to '40px'. The width is always '100%'.
-         },
-      },
-   });
-
-   (async () => {
-      // Check the availability of the Payment Request API first.
-      const result = await paymentRequest.canMakePayment();
-      if (result) {
-         prButton.mount('#payment-request-button');
-      } else {
-         document.getElementById('payment-request-button').style.display =
-            'none';
-      }
-   })();
-</script>
+<!--/ horizontal slider modal -->
