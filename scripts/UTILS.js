@@ -168,17 +168,12 @@ function setItemStore(name = '', data = []) {
 }
 
 function getProductionListStore() {
-   const productList = parseStore(
-      localStorage.getItem('productsData')
-   );
+   const productList = parseStore(localStorage.getItem('productsData'));
    return productList;
 }
 
-
 function getSalesOrderDetails() {
-   const salesOrder = parseStore(
-      localStorage.getItem('salesOrder')
-   );
+   const salesOrder = parseStore(localStorage.getItem('salesOrder'));
    return salesOrder;
 }
 
@@ -275,21 +270,21 @@ function parserToFixedto(data) {
    return amount;
 }
 
-const converMoneyProperFormat = (money) =>{
+const converMoneyProperFormat = (money) => {
    const formatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
-    });
+   });
 
-    return formatter.format(money);;
-}
+   return formatter.format(money);
+};
 
 function computeValueOfCart() {
    const myCart = getMyCartDetails();
    console.log('myCart', myCart);
    const sum = myCart.items.reduce(
       (total, obj) => {
-         total.rawFeePrice +=obj.rawFeePrice;
+         total.rawFeePrice += obj.rawFeePrice;
          return total;
       },
       { rawFeePrice: 0, tuitionFeeRawValue: 0, applicationFeeRawValue: 0 }
@@ -372,4 +367,54 @@ function generateToken(n = 32) {
       token += chars[Math.floor(Math.random() * chars.length)];
    }
    return token;
+}
+
+function PopulateOptionsAndForm() {
+   const homeLanguage = $('.dd-mshied_homelanguage');
+   const raceEthicityEl = $('.dd-mshied_race_');
+   const prefLangEl = $('.dd-mshied_preferredlanguage');
+   const stateEl = $('.dd-address1_stateorprovince');
+   const countryEl = $('.dd-address1_country');
+
+   if (prefLangEl.length) {
+      homeLanguage.html('');
+      homeLanguage.append('<option label=""></option>');
+
+      prefLangEl.html();
+      prefLangEl.append('<option label=""></option>');
+      preferredLanguage.forEach(function (_data) {
+         homeLanguage.append(
+            `<option value="${_data.value}">${_data.name}</option>`
+         );
+         prefLangEl.append(
+            `<option value="${_data.value}">${_data.name}</option>`
+         );
+      });
+
+      raceEthicityEl.html('');
+      raceEthicityEl.append('<option label=""></option>');
+      raceEthicity.forEach(function (_data) {
+         raceEthicityEl.append(
+            `<option value="${_data.value}">${_data.name}</option>`
+         );
+      });
+
+      stateEl.html();
+      stateEl.append('<option label=""></option>');
+      STATES.forEach(function (_data) {
+         stateEl.append(
+            `<option value="${_data.value}">${_data.name}</option>`
+         );
+      });
+
+      countryEl.html();
+      countryEl.append('<option label=""></option>');
+      COUNTRY.forEach(function (_data) {
+         countryEl.append(
+            `<option value="${_data.value}">${_data.name}</option>`
+         );
+      });
+      console.log('POPULATE LANGAUGES1');
+      PopulateForm();
+   }
 }

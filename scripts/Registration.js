@@ -67,15 +67,19 @@ function getEnrollmentPayload() {
    return enrollmentItems;
 }
 
-function salesOrderPyaload() {
+function salesOrderPayload() {
    const PORTAL = 1;
-   const defaultPrice = getEnrollmentPayload();
-   const pricelevels = defaultPrice[0]['hso_enrollmentsessionpricelist'];
+   const myCart = getMyCartDetails();
+   const defaultPrice = myCart.items;
+   const pricelevels =
+      defaultPrice[0]['workShopOverview'][
+         '_cr711_defaultsessionpricelist_value'
+      ];
    const getUserDatails = getDynamicDetailsFromAPI();
    return {
       name: 'REGISTRATION-' + getUserDatails[0].fullname,
       customerid: getUserDatails[0]['@odata.editLink'],
-      pricelevelid: pricelevels,
+      pricelevelid: `pricelevels(${pricelevels})`,
       hso_processtype: PORTAL,
       transactioncurrencyid: US_CURRENCIES,
    };

@@ -146,115 +146,111 @@ function startAddLoadingEachSections() {
    //    $('.footer-btns').css('display', 'none');
 }
 
-function PopulateOptionsAndForm() {
-   const homeLanguage = $('.dd-mshied_homelanguage');
-   const raceEthicityEl = $('.dd-mshied_race_');
-   const prefLangEl = $('.dd-mshied_preferredlanguage');
-   const stateEl = $('.dd-address1_stateorprovince');
-   const countryEl = $('.dd-address1_country');
-
-   if (prefLangEl.length) {
-      homeLanguage.html('');
-      homeLanguage.append('<option label=""></option>');
-
-      prefLangEl.html();
-      prefLangEl.append('<option label=""></option>');
-      preferredLanguage.forEach(function (_data) {
-         homeLanguage.append(
-            `<option value="${_data.value}">${_data.name}</option>`
-         );
-         prefLangEl.append(
-            `<option value="${_data.value}">${_data.name}</option>`
-         );
-      });
-
-      raceEthicityEl.html('');
-      raceEthicityEl.append('<option label=""></option>');
-      raceEthicity.forEach(function (_data) {
-         raceEthicityEl.append(
-            `<option value="${_data.value}">${_data.name}</option>`
-         );
-      });
-
-      stateEl.html();
-      stateEl.append('<option label=""></option>');
-      STATES.forEach(function (_data) {
-         stateEl.append(
-            `<option value="${_data.value}">${_data.name}</option>`
-         );
-      });
-
-      countryEl.html();
-      countryEl.append('<option label=""></option>');
-      COUNTRY.forEach(function (_data) {
-         countryEl.append(
-            `<option value="${_data.value}">${_data.name}</option>`
-         );
-      });
-      console.log('POPULATE LANGAUGES1');
-      PopulateForm();
-   }
-}
-
 $(document).ready(function () {
+   // POPULATE FORM FIELDS
+   PopulateOptionsAndForm();
+
    $('.final-button-steps').click(function () {
       // fireDummyAsyncCall();
-      // startAddLoadingEachSections();
       // startRegistrationProcess();
-      const contactData = personalInfoPayload();
-      const enrollmentData = getEnrollmentPayload();
-      const salesOrderData = salesOrderPyaload();
-      const productData = productsPayload();
-      // $.ajax({
-      //    ...requestOptions(REGISTER_ACCOUNT, contactData),
-      //    success: function (data) {
-      //       console.log('dynamicsAPIResult:', data);
-      //       setItemStore("dynamicsAPIResult", data);
-      //    },
-      //    error: function () {},
-      // });
 
-      // $.ajax({
-      //    ...requestOptions(
-      //       Registration_Create_Sales_Order_Portal,
-      //       salesOrderData
-      //    ),
-      //    success: function (data) {
-      //       console.log('salerOrder:', data);
-      //       setItemStore('salesOrder', data);
-      //    },
-      //    error: function () {},
-      // });
+      startAddLoadingEachSections();
 
-      // $.ajax({
-      //    ...requestOptions(
-      //       Registration_Enrollment_Portal,
-      //       enrollmentData
-      //    ),
-      //    success: function (data) {
-      //       console.log('enrollmentData:', data);
-      //       setItemStore('enrollmentData', data);
-      //    },
-      //    error: function () {},
-      // });
+      const checkAsIsForAccount = () => {
+         asyncTask(1, 'sample').then(() => {
+            console.log('Task 1 completed: ');
+            afterEachCallStoploadingBySection('account');
+            smoothSrollToNextBlock('personal');
+            createContactDetails();
+         });
+      };
 
-      $.ajax({
-         ...requestOptions(
-            Registration_Add_Products_to_Sales_Order,
-            productData
-         ),
-         success: function (data) {
-            console.log('productData:', data);
-            setItemStore('productData', data);
-         },
-         error: function () {},
-      });
+      checkAsIsForAccount();
+
+      function createContactDetails() {
+         const contactData = personalInfoPayload();
+
+         $.ajax({
+            ...requestOptions(REGISTER_ACCOUNT, contactData),
+            success: function (data) {
+               console.log('Task 2 completed: ');
+               console.log('dynamicsAPIResult:', data);
+               setItemStore('dynamicsAPIResult', data);
+               afterEachCallStoploadingBySection('personal');
+               smoothSrollToNextBlock('housing');
+               createSalesOrder();
+
+            },
+            error: function () {},
+         });
+      }
+
+      function createSalesOrder() {
+         const salesOrderData = salesOrderPayload();
+
+         $.ajax({
+            ...requestOptions(
+               Registration_Create_Sales_Order_Portal,
+               salesOrderData
+            ),
+            success: function (data) {
+               console.log('Task 3 completed: ');
+               console.log('salerOrder:', data);
+               setItemStore('salesOrder', data);
+               addProductToSalesOrder();
+            },
+            error: function () {},
+         });
+      }
+
+      function addProductToSalesOrder() {
+         const productData = productsPayload();
+
+         $.ajax({
+            ...requestOptions(
+               Registration_Add_Products_to_Sales_Order,
+               productData
+            ),
+            success: function (data) {
+               console.log('Task 4 completed: ');
+               console.log('productData:', data);
+               setItemStore('productData', data);
+               afterEachCallStoploadingBySection('housing');
+               smoothSrollToNextBlock('payments');
+               dummyThreeSavePaymentDetails();
+            },
+            error: function () {},
+         });
+      }
+
+      function dummyThreeSavePaymentDetails() {
+         asyncTask(1, 'sample').then(() => {
+            console.log('Task 5 completed: ');
+            afterEachCallStoploadingBySection('payments');
+            smoothSrollToNextBlock('workshops');
+            createEnrollment();
+         });
+      }
+
+      function createEnrollment() {
+         const enrollmentData = getEnrollmentPayload();
+
+         $.ajax({
+            ...requestOptions(Registration_Enrollment_Portal, enrollmentData),
+            success: function (data) {
+               console.log('Task 6 completed: ');
+               console.log('enrollmentData:', data);
+               setItemStore('enrollmentData', data);
+               afterEachCallStoploadingBySection('workshops');
+               finalMessageSuccess();
+            },
+            error: function () {},
+         });
+      }
+
       // console.log('salesOrderData', salesOrderData);
       // console.log('contactData', contactData);
       // console.log('enrollmentData', enrollmentData);
-      console.log('productData', productData);
+      // console.log('productData', productData);
    });
-
-   // POPULATE FORM FIELDS
-   PopulateOptionsAndForm();
 });
