@@ -85,11 +85,11 @@ function FormAccounDetailsValidation(c) {
             message:
               "The name must be more than 6 and less than 30 characters long",
           },
-          regexp: {
-            regexp: /^[a-zA-Z0-9 ]+$/,
-            message:
-              "The name can only consist of alphabetical, number and space",
-          },
+          // regexp: {
+          //   regexp: /^[a-zA-Z0-9 ]+$/,
+          //   message:
+          //     "The name can only consist of alphabetical, number and space",
+          // },
         },
       },
       multiStepsEmail: {
@@ -234,6 +234,41 @@ function FormPersonalDetailsValidation(c) {
           notEmpty: notEmptyMessage("your zip/postcode"),
         },
       },
+      mshied_homelanguage: {
+        validators: {
+          notEmpty: notEmptyMessage("Home Language"),
+        },
+      },
+      mshied_preferredlanguage: {
+        validators: {
+          notEmpty: notEmptyMessage("Peferred Language"),
+        },
+      },
+      hso_blackindigenousorpersonofcolor:{
+        validators: {
+          notEmpty: notEmptyMessage("LGBTQIA+ Identification"),
+        },
+      },
+      hso_lgbtqiaidentification: {
+        validators: {
+          notEmpty: notEmptyMessage("Black, Indigenous, or Person of Color"),
+        },
+      },
+      mshied_accommodations: {
+        validators: {
+          notEmpty: notEmptyMessage("Accommodations"),
+        },
+      },
+      mshied_limitedlanguageproficiency: {
+        validators: {
+          notEmpty: notEmptyMessage("Limited Language Proficiency"),
+        },
+      },
+      mshied_disability:{
+        validators: {
+          notEmpty: notEmptyMessage("Disability"),
+        },
+      }
     },
     plugins: {
       trigger: new FormValidation.plugins.Trigger(),

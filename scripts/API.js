@@ -170,12 +170,8 @@ function addTotalProducts() {
    $('.overAlltotalFee').html(myProdList.overAllTotalFormatted);
    $('.over-all-total').html(myProdList.overAllTotalFormatted);
    $('.total-h-and-m').html(converMoneyProperFormat(sum.price));
-   $('.total-r-cart').html(
-      'Cart: ' + converMoneyProperFormat(myProdList.total)
-   );
-   $('.total-r-hm').html(
-      'Housing & Meals: ' + converMoneyProperFormat(sum.price)
-   );
+   $('.total-r-cart').html(converMoneyProperFormat(myProdList.total));
+   $('.total-r-hm').html(converMoneyProperFormat(sum.price));
    updateMyDetails('cart', myProdList);
 }
 
@@ -227,8 +223,6 @@ function setProductToCheck(editLink) {
 
 function filterProductWithPriceAndSession(products) {
    const myCart = getMyCartDetails();
-   const formattedValuePrice =
-      'price@OData.Community.Display.V1.FormattedValue';
    const formattedValuePricingTitle =
       '_hso_workshoppricing_value@OData.Community.Display.V1.FormattedValue';
 

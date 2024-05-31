@@ -146,26 +146,24 @@ function startAddLoadingEachSections() {
    //    $('.footer-btns').css('display', 'none');
 }
 
-$(document).ready(function () {
-   $('.final-button-steps').click(function () {
-      fireDummyAsyncCall();
-      startAddLoadingEachSections();
-      // startRegistrationProcess();
-   });
-
-   // POPULATE LANGAUGES
-   preferredLanguage;
-
-   const langugesEl = $('.dd-mshied_homelanguage');
+function PopulateOptionsAndForm() {
+   const homeLanguage = $('.dd-mshied_homelanguage');
    const raceEthicityEl = $('.dd-mshied_race_');
+   const prefLangEl = $('.dd-mshied_preferredlanguage');
    const stateEl = $('.dd-address1_stateorprovince');
    const countryEl = $('.dd-address1_country');
 
-   if (langugesEl.length) {
-      langugesEl.html('');
-      langugesEl.append('<option label=""></option>');
+   if (prefLangEl.length) {
+      homeLanguage.html('');
+      homeLanguage.append('<option label=""></option>');
+
+      prefLangEl.html();
+      prefLangEl.append('<option label=""></option>');
       preferredLanguage.forEach(function (_data) {
-         langugesEl.append(
+         homeLanguage.append(
+            `<option value="${_data.value}">${_data.name}</option>`
+         );
+         prefLangEl.append(
             `<option value="${_data.value}">${_data.name}</option>`
          );
       });
@@ -193,7 +191,70 @@ $(document).ready(function () {
             `<option value="${_data.value}">${_data.name}</option>`
          );
       });
-
-   
+      console.log('POPULATE LANGAUGES1');
+      PopulateForm();
    }
+}
+
+$(document).ready(function () {
+   $('.final-button-steps').click(function () {
+      // fireDummyAsyncCall();
+      // startAddLoadingEachSections();
+      // startRegistrationProcess();
+      const contactData = personalInfoPayload();
+      const enrollmentData = getEnrollmentPayload();
+      const salesOrderData = salesOrderPyaload();
+      const productData = productsPayload();
+      // $.ajax({
+      //    ...requestOptions(REGISTER_ACCOUNT, contactData),
+      //    success: function (data) {
+      //       console.log('dynamicsAPIResult:', data);
+      //       setItemStore("dynamicsAPIResult", data);
+      //    },
+      //    error: function () {},
+      // });
+
+      // $.ajax({
+      //    ...requestOptions(
+      //       Registration_Create_Sales_Order_Portal,
+      //       salesOrderData
+      //    ),
+      //    success: function (data) {
+      //       console.log('salerOrder:', data);
+      //       setItemStore('salesOrder', data);
+      //    },
+      //    error: function () {},
+      // });
+
+      // $.ajax({
+      //    ...requestOptions(
+      //       Registration_Enrollment_Portal,
+      //       enrollmentData
+      //    ),
+      //    success: function (data) {
+      //       console.log('enrollmentData:', data);
+      //       setItemStore('enrollmentData', data);
+      //    },
+      //    error: function () {},
+      // });
+
+      $.ajax({
+         ...requestOptions(
+            Registration_Add_Products_to_Sales_Order,
+            productData
+         ),
+         success: function (data) {
+            console.log('productData:', data);
+            setItemStore('productData', data);
+         },
+         error: function () {},
+      });
+      // console.log('salesOrderData', salesOrderData);
+      // console.log('contactData', contactData);
+      // console.log('enrollmentData', enrollmentData);
+      console.log('productData', productData);
+   });
+
+   // POPULATE FORM FIELDS
+   PopulateOptionsAndForm();
 });

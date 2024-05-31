@@ -64,7 +64,7 @@
 
             <div class="step" data-target="#payment-link">
               <button type="button" class="step-trigger">
-                <span class="bs-stepper-circle">5</span>
+                <span class="bs-stepper-circle">4</span>
                 <span class="bs-stepper-label mt-1">
                   <span class="bs-stepper-title">Payment</span>
                   <span class="bs-stepper-subtitle">Payment Method</span>
@@ -83,7 +83,7 @@
 
             <div class="step" data-target="#terms-info">
               <button type="button" class="step-trigger">
-                <span class="bs-stepper-circle">4</span>
+                <span class="bs-stepper-circle">5</span>
                 <span class="bs-stepper-label mt-1">
                   <span class="bs-stepper-title">Terms and Conditions</span>
                   <span class="bs-stepper-subtitle"
@@ -108,7 +108,7 @@
               </button>
             </div>
           </div>
-          <div class="bs-stepper-content">
+          <div class="bs-stepper-content" style="background:#fafafa;">
             <form id="multiStepsForm" onSubmit="return false">
               <!-- Account Details -->
               <?php include_once('./form-account-details.php'); ?>

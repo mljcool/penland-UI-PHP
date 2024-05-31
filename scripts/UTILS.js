@@ -174,6 +174,14 @@ function getProductionListStore() {
    return productList;
 }
 
+
+function getSalesOrderDetails() {
+   const salesOrder = parseStore(
+      localStorage.getItem('salesOrder')
+   );
+   return salesOrder;
+}
+
 function getApplicationData() {
    const dynamicsAPIResult = parseStore(
       localStorage.getItem('applicationData')

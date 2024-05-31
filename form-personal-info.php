@@ -35,19 +35,18 @@
               <option value="4">I prefer not to answer</option>
             </select>
           </div>
+  
           <div class="col-md-9 mt-3">
-            <label class="form-label" for="gender">Home Language</label>
-            <select class="select2 w-auto dd-mshied_homelanguage" name="dd-mshied_homelanguage" id="mshied_homelanguage" data-style="btn-transparent" data-icon-base="bx"
+            <label class="form-label" for="mshied_homelanguage">Home Language</label>
+            <select class="select2 w-auto dd-mshied_homelanguage" name="mshied_homelanguage" id="mshied_homelanguage" data-style="btn-transparent" data-icon-base="bx"
               data-tick-icon="bx-check text-white">
-              <option label=""></option>
           
             </select>
           </div>
           <div class="col-md-9 mt-3">
             <label class="form-label" for="mshied_preferredlanguage">Peferred Language</label>
-            <select class="select2 w-auto dd-mshied_preferredlanguage" name="dd-mshied_preferredlanguage" id="mshied_preferredlanguage" data-style="btn-transparent" data-icon-base="bx"
+            <select class="select2 w-auto dd-mshied_preferredlanguage" name="mshied_preferredlanguage" id="mshied_preferredlanguage" data-style="btn-transparent" data-icon-base="bx"
               data-tick-icon="bx-check text-white">
-              <option label=""></option>
           
             </select>
           </div>
@@ -64,8 +63,8 @@
             </select>
           </div>
           <div class="col-md-9 mt-3">
-            <label class="form-label" for="gender">Black, Indigenous, or Person of Color</label>
-            <select class="select2 w-auto dd-hso_blackindigenousorpersonofcolor" name="dd-hso_blackindigenousorpersonofcolor" id="hso_blackindigenousorpersonofcolor" data-style="btn-transparent" data-icon-base="bx"
+            <label class="form-label" for="hso_blackindigenousorpersonofcolor">Black, Indigenous, or Person of Color</label>
+            <select class="select2 w-auto dd-hso_blackindigenousorpersonofcolor" name="hso_blackindigenousorpersonofcolor" id="hso_blackindigenousorpersonofcolor" data-style="btn-transparent" data-icon-base="bx"
               data-tick-icon="bx-check text-white">
               <option label=""></option>
               <option value="1">Yes</option>
@@ -75,7 +74,7 @@
           </div>
           <div class="col-md-9 mt-3">
             <label class="form-label" for="hso_lgbtqiaidentification">LGBTQIA+ Identification</label>
-            <select class="select2 w-auto dd-hso_lgbtqiaidentification" name="dd-mshied_preferredlanguage" id="hso_lgbtqiaidentification" data-style="btn-transparent" data-icon-base="bx"
+            <select class="select2 w-auto dd-hso_lgbtqiaidentification" name="hso_lgbtqiaidentification" id="hso_lgbtqiaidentification" data-style="btn-transparent" data-icon-base="bx"
               data-tick-icon="bx-check text-white">
               <option label=""></option>
               <option value="1">Yes</option>
@@ -86,7 +85,7 @@
           </div>
           <div class="col-md-9 mt-3">
             <label class="form-label" for="mshied_limitedlanguageproficiency">Limited Language Proficiency+ Identification</label>
-            <select class="select2 w-auto dd-mshied_limitedlanguageproficiency" name="dd-mshied_preferredlanguage" id="mshied_limitedlanguageproficiency" data-style="btn-transparent" data-icon-base="bx"
+            <select class="select2 w-auto dd-mshied_limitedlanguageproficiency" name="mshied_limitedlanguageproficiency" id="mshied_limitedlanguageproficiency" data-style="btn-transparent" data-icon-base="bx"
               data-tick-icon="bx-check text-white">
               <option label=""></option>
               <option value="494280000">Limited</option>
@@ -96,12 +95,12 @@
             </select>
           </div>
           <div class="col-md-9 mt-3">
-            <label class="form-label" for="hso_lgbtqiaidentification">Accommodations</label>
-            <input type="text" name="hso_lgbtqiaidentification" id="hso_lgbtqiaidentification" class="form-control dd-hso_lgbtqiaidentification" placeholder="here..." />
+            <label class="form-label" for="mshied_accommodations">Accommodations</label>
+            <input type="text" name="mshied_accommodations" id="mshied_accommodations" class="form-control dd-mshied_accommodations" placeholder="here..." />
           </div>
           <div class="col-md-9 mt-3">
             <label class="form-label" for="hso_lgbtqiaidentification">Disability</label>
-            <select class="select2 w-auto dd-mshied_disability" name="dd-mshied_disability" id="mshied_disability" data-style="btn-transparent" data-icon-base="bx"
+            <select class="select2 w-auto dd-mshied_disability" name="mshied_disability" id="mshied_disability" data-style="btn-transparent" data-icon-base="bx"
               data-tick-icon="bx-check text-white">
               <option label=""></option>
               <option value="1">Yes</option>

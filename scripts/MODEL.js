@@ -72,7 +72,6 @@ function IworkShopModel(workshopData = []) {
          ]
       );
       //STUDIO
-      
 
       _data.studioTitle =
          _data[
@@ -95,9 +94,14 @@ function IworkShopModel(workshopData = []) {
 
       // CAMPUS
 
-      _data.campusType = _data['hso_workshoptype@OData.Community.Display.V1.FormattedValue'];
+      _data.campusType =
+         _data['hso_workshoptype@OData.Community.Display.V1.FormattedValue'];
 
-      _data.sessionsPrices = ifNosemester(_data['_hso_workshoppricing_value@OData.Community.Display.V1.FormattedValue']);
+      _data.sessionsPrices = ifNosemester(
+         _data[
+            '_hso_workshoppricing_value@OData.Community.Display.V1.FormattedValue'
+         ]
+      );
 
       // RAW VALUES
       _data.applicationFeeRawValue = ifNoFeesRawValues(
@@ -131,7 +135,9 @@ function IStudios(studios = []) {
       new_maintype: _data['new_maintype'],
       cr711_studioid: _data['cr711_studioid'],
       FormattedLabel:
-         _data['new_studiotypes@OData.Community.Display.V1.FormattedValue'].split('; '),
+         _data[
+            'new_studiotypes@OData.Community.Display.V1.FormattedValue'
+         ].split('; '),
       FormattedValue: _data['new_studiotypes'],
    }));
 }
@@ -168,6 +174,16 @@ let datails = {
             adx_identity_passwordhash: '',
             adx_identity_username: '',
             cr711_registrationprocedure: 1,
+            mshied_race_: '',
+            hso_blackindigenousorpersonofcolor: '',
+            mshied_accommodations: '',
+            mshied_preferredlanguage: '',
+            hso_lgbtqiaidentification: '',
+            mshied_limitedlanguageproficiency: '',
+            hso_lgbtqiaidentification: '',
+            mshied_disability: '',
+            mshied_accommodations: '',
+            mshied_homelanguage: ''
          },
       },
 

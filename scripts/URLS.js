@@ -18,8 +18,16 @@ var USER_AUTH = `https://prod-21.westus.logic.azure.com:443/workflows/4deedea3af
 
 var STUDIOS_URL = `https://prod-142.westus.logic.azure.com:443/workflows/89872968770c4fa7a87a5f776aa2a9cc/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=livmkqQDzpRufCvwO6KPawprIEC_HzK9nEuzlW1vfQ4`;
 
-
-var SESSION_URL = `https://prod-104.westus.logic.azure.com:443/workflows/11b00fe01f9d4a8ab485dd861b610d5e/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ZtTU7Wq0hGItDGpDo5Lfx_PGQoNtfbRMQ30UWbVG3e0`
-
+var SESSION_URL = `https://prod-104.westus.logic.azure.com:443/workflows/11b00fe01f9d4a8ab485dd861b610d5e/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ZtTU7Wq0hGItDGpDo5Lfx_PGQoNtfbRMQ30UWbVG3e0`;
 
 var GET_PRODUCTS = `https://prod-15.westus.logic.azure.com:443/workflows/697051f36741407c8caafb3eff9128ed/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=uN-be0vybIf6Z7T6fWhyp7JWyBJpRhqeNZWHvosbXN4`;
+
+var REGISTRATION = `https://prod-129.westus.logic.azure.com:443/workflows/85a10d559c424dfeadadde34b9a89c2f/triggers/manual/paths/invoke?api-version=2016-06-01`;
+
+var SALES_ORDER = `https://prod-142.westus.logic.azure.com:443/workflows/430163216bb54dd9bee534a9a4c99cae/triggers/manual/paths/invoke?api-version=2016-06-01`;
+
+var Registration_Enrollment_Portal = `https://prod-129.westus.logic.azure.com:443/workflows/85a10d559c424dfeadadde34b9a89c2f/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=BJo0PzkhSKjmCbuAvrkRQNkQ4ZOKHAHO7cfLpbJ0n3w`;
+
+var Registration_Create_Sales_Order_Portal = `https://prod-142.westus.logic.azure.com:443/workflows/430163216bb54dd9bee534a9a4c99cae/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=D4PSOYhIcf8sHTCTU7aP25DtWfdtcip6oazg6pPwaQY`;
+
+var Registration_Add_Products_to_Sales_Order = `https://prod-98.westus.logic.azure.com:443/workflows/a2ec9fae8ca9491b9f70fc6116c9e829/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=PY_WoXNsCCGe30YTIj0gwd8P4uowGRL4gpIKut2_kQI`;

@@ -29,7 +29,15 @@ function savePersonalInformation(passWizard) {
    loadingBlockUINewStudentForm();
    const dataToDynamics = getMyDynamicDetails();
    const contactData = dataToDynamics.personalInfo.contact;
+   contactData.hso_blackindigenousorpersonofcolor = parseInt(contactData.hso_blackindigenousorpersonofcolor);
    contactData.gendercode = parseInt(contactData.gendercode);
+   contactData.mshied_race_ = parseInt(contactData.mshied_race_);
+   contactData.hso_blackindigenousorpersonofcolor = parseInt(contactData.hso_blackindigenousorpersonofcolor);
+   contactData.mshied_preferredlanguage = parseInt(contactData.mshied_preferredlanguage);
+   contactData.hso_lgbtqiaidentification = parseInt(contactData.hso_lgbtqiaidentification);
+   contactData.mshied_limitedlanguageproficiency = parseInt(contactData.mshied_limitedlanguageproficiency);
+   contactData.mshied_disability = parseInt(contactData.mshied_disability);
+
 
    $('.new-student-form').unblock();
    $.ajax({
@@ -232,20 +240,33 @@ function PopulateForm() {
             'address1_stateorprovince',
             'gendercode',
             'address1_country',
+            'mshied_race_',
+            'hso_blackindigenousorpersonofcolor',
+            'hso_lgbtqiaidentification',
+            'mshied_limitedlanguageproficiency',
+            'mshied_disability',
+            'mshied_preferredlanguage',
+            'mshied_homelanguage',
          ].includes(key)
       ) {
+
+         console.log('KEY', contact[key])
          $('.dd-' + key)
             .val(contact[key])
             .change();
          setTimeout(() => {
             const valueByText = $('.dd-' + key + ' option:selected').text();
             $('.dd-' + key + '-summary').val(valueByText);
-         }, 200);
+         
+         }, 300);
+
+
       } else {
          $('.dd-' + key).val(contact[key]);
          $('.dd-' + key).html(contact[key]);
       }
    });
+   console.log('POPULATE LANGAUGES2')
 }
 
 function updateDynmicContactDetailsForm() {
@@ -266,6 +287,3 @@ function updateDynmicContactDetailsForm() {
    console.log('plainObject', plainObject);
 }
 
-$(document).ready(function () {
-   PopulateForm();
-});

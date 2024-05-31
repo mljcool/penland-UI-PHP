@@ -264,6 +264,10 @@ var FORM_INDEX = {
    CONFIRMATION: 5,
 };
 
+
+const US_CURRENCIES = `transactioncurrencies(76aa6017-b2d8-ee11-904d-000d3a343842)`;
+
+
 const preferredLanguage = [
    {
       name: 'Arabic (Arabic Region)',

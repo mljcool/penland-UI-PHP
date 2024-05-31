@@ -64,6 +64,7 @@
 <script src="./scripts/CONSTANT.js"></script>
 <script src="./scripts/RandomData.js"></script>
 <script src="./scripts/Process.js"></script>
+<script src="./scripts/Registration.js"></script>
 <script src="./scripts/Details.js"></script>
 <!-- <script src="./scripts/stripes/utils.js"></script> -->
 <script src="./scripts/URLS.js"></script>

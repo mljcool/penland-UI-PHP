@@ -93,7 +93,7 @@ $(function () {
                            }
                            loadingBlockUINewStudentForm();
                            saveHousingDetailsLocal();
-                           updateFormSteps(FORM_STEPS.CONFIRMATION);
+                           updateFormSteps(FORM_STEPS.PAYMENT);
                            setTimeout(() => {
                               initializeHousingData();
                               PopulateForm();
@@ -104,20 +104,22 @@ $(function () {
                         }
                      });
                      break;
+
                   case FORM_INDEX.PAYMENT:
                      loadingBlockUINewStudentForm();
-                     updateFormSteps(FORM_STEPS.CONFIRMATION);
+                     updateFormSteps(FORM_STEPS.TERMS);
                      setTimeout(() => {
                         $('.new-student-form').unblock();
                         t.next();
                      }, 1000);
                      break;
+
                   case FORM_INDEX.TERMS:
                      termsInfoForm.validate().then((_res) => {
                         if (_res === 'Valid') {
                            loadingBlockUINewStudentForm();
                            updateTermsAgreement();
-                           updateFormSteps(FORM_STEPS.PAYMENT);
+                           updateFormSteps(FORM_STEPS.CONFIRMATION);
                            setTimeout(() => {
                               summaryReviewSections();
                               $('.new-student-form').unblock();

@@ -8,16 +8,28 @@ function redirecToCartDetails() {
 function onRegisterNow() {
    const workshopID = getURLParameters();
    const myCart = getMyCartDetails();
-   const checkItemFirst = myCart.items.some(
-      (_id) => _id.mshied_courseid === workshopID
-   );
+   const dataWorkshopLocal = getCurrentSelectedWorkShop();
+   const updateItems = () => {
+      if (!!dataWorkshopLocal) {
+         myCart.items.push(dataWorkshopLocal);
+         updateMyDetails('cart', myCart);
+      } else{
+         MessateAlertDetailsIsNull();
+      }
+   };
 
-   if (!checkItemFirst) {
-      const dataWorkshopLocal = getCurrentSelectedWorkShop();
-      myCart.items.push(dataWorkshopLocal);
-      updateMyDetails('cart', myCart);
-      redirecToCartDetails();
+   if (myCart.items.length) {
+      const checkItemFirst = myCart.items.some(
+         (_id) => _id.mshied_courseid === workshopID
+      );
+      if (!checkItemFirst) {
+         updateItems();
+         redirecToCartDetails();
+      } else {
+         redirecToCartDetails();
+      }
    } else {
+      updateItems();
       redirecToCartDetails();
    }
 }
@@ -41,7 +53,6 @@ function removeItem(uid) {
    });
    setTimeout(() => {
       computeValueOfCart();
-   
    }, 200);
 }
 
@@ -69,6 +80,17 @@ function MessateAlertIformation() {
    Swal.fire({
       title: 'Payment option',
       text: 'Please select your payment option full or deposit!',
+      icon: 'info',
+      customClass: {
+         confirmButton: 'btn btn-primary',
+      },
+      buttonsStyling: false,
+   });
+}
+function MessateAlertDetailsIsNull() {
+   Swal.fire({
+      title: 'Oops!',
+      text: 'Seems there is an issue withe workshop overview.',
       icon: 'info',
       customClass: {
          confirmButton: 'btn btn-primary',
@@ -111,7 +133,7 @@ $(document).ready(function () {
       //    MessateAlertIformation();
       //    return;
       // }
-      if(myCartDetails.items.length === 0){
+      if (myCartDetails.items.length === 0) {
          MessateAlertIformationCart();
          return;
       }

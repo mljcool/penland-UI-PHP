@@ -69,10 +69,7 @@ function getOverView(courseID = '') {
                const _hso_setaworkshop_value =
                   response.value[0]['_hso_setaworkshop_value'];
                workshops.forEach(function (_data, index) {
-                  console.log(
-                     'mshied_courseid === _hso_setaworkshop_value',
-                     _data.mshied_courseid === _hso_setaworkshop_value
-                  );
+               
                   if (_data.mshied_courseid === _hso_setaworkshop_value) {
                      _data['workShopOverview'] = response.value[0];
                      _data['rawFeePrice'] = response.value[0]['pl.price'];
@@ -92,6 +89,7 @@ function getOverView(courseID = '') {
          },
          complete: function (data) {
           $('.workshop-header-details').unblock();
+          $('.register-now').css('display', 'block');
          },
          error: function (xhr, status, error) {},
       });
@@ -116,6 +114,7 @@ function loadingUIDetails(){
 }
 
 $(document).ready(function () {
+   
   getProducts();
 
   const workshopDetails = $('.workshop-details');
