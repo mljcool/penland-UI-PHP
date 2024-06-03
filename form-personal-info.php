@@ -69,7 +69,7 @@
               <option label=""></option>
               <option value="1">Yes</option>
               <option value="2">No</option>
-              <option value="2">Prefer not to answer</option>
+              <option value="3">Prefer not to answer</option>
             </select>
           </div>
           <div class="col-md-9 mt-3">
@@ -79,7 +79,7 @@
               <option label=""></option>
               <option value="1">Yes</option>
               <option value="2">No</option>
-              <option value="2">Prefer not to answer</option>
+              <option value="3">Prefer not to answer</option>
           
             </select>
           </div>

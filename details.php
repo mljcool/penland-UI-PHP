@@ -39,7 +39,7 @@
           <div class="over-view-context">
             <div class="par-context">
               <h3>Workshop Overview</h3>
-              <p>
+              <p class="mshied_description">
                 This workshop will begin by processing a variety of fibers to
                 make Western-style paper. Using a Hollander beater to break down
                 fibers, we will explore various ways to form sheets. This will
@@ -67,12 +67,12 @@
                 >
               </div>
               <div class="registration-actions">
-                <a style="display:none;" class="register-now" onclick="onRegisterNow()" href="javascript:void(0)">Register Now</a>
+                <a style="display:none;" class="register-now" onclick="onProceedToReg()" href="javascript:void(0)">Register Now</a>
                 <!-- <a class="register-now" onclick="onRegisterNow()" href="/penland-web/cart-items.php">Register Now</a> -->
               </div>
             </div>
           </div>
-          <div class="slider-image-workshop" data-aos="fade-left">
+          <div class="slider-image-workshop" >
             <div
               id="owl-carousel"
               class="owl-carousel owl-carousel-overview owl-theme"
@@ -180,7 +180,7 @@
         </div>
       </div>
 
-      <div class="row reg-scholarship-section">
+      <!-- <div class="row reg-scholarship-section">
         <div class="reg-context-wrapper">
           <div class="reg-information">
             <h3 class="reg-header">Registration & Scholarship Information</h3>
@@ -245,7 +245,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div class="row explore-more-workshopt-section">
         <div class="explore-wrapper">
@@ -299,16 +299,7 @@
 <?php include_once('./scriptJS.php'); ?>
 <script>
   $(document).ready(function() {
-    $('.owl-carousel-overview').owlCarousel({
-      navigation: true, // Show next and prev buttons
-      slideSpeed: 300,
-      paginationSpeed: 400,
-      items: 1,
-      itemsDesktop: false,
-      itemsDesktopSmall: false,
-      itemsTablet: false,
-      itemsMobile: false,
-    });
+
 
     $('.owl-carousel-explore-more').owlCarousel({
       items: 4, //10 items above 1000px browser width

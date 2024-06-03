@@ -250,7 +250,6 @@ function PopulateForm() {
          ].includes(key)
       ) {
 
-         console.log('KEY', contact[key])
          $('.dd-' + key)
             .val(contact[key])
             .change();
@@ -266,7 +265,6 @@ function PopulateForm() {
          $('.dd-' + key).html(contact[key]);
       }
    });
-   console.log('POPULATE LANGAUGES2')
 }
 
 function updateDynmicContactDetailsForm() {
@@ -284,6 +282,5 @@ function updateDynmicContactDetailsForm() {
 
    dataToDynamics.personalInfo.contact = plainObject;
    updateMyDetails('dynamics', dataToDynamics);
-   console.log('plainObject', plainObject);
 }
 

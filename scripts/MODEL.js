@@ -201,7 +201,6 @@ $(document).ready(function () {
    // SHAPE CLIENT DETAILS INFORMATION
 
    const ifInitialized = getMyFullDetails();
-   console.log('ifInitialized', ifInitialized);
    if (ifInitialized && ifInitialized.hasInitialize) {
       return;
    }

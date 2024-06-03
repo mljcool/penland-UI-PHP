@@ -70,7 +70,6 @@ function housingSummary() {
   housingData.cr711_preference;
   $(".summary_cr711_offcampusmealplans").html(meals);
   $(".summary_cr711_adahousingneeded").html(ada);
-  console.log("summary_cr711_adahousingneeded", ada);
 
   $(".house-list-members")
     .append(` <li class="list-group-item flex-fill p-2 text-heading">
@@ -80,7 +79,6 @@ function housingSummary() {
 </li>`);
 
   if (members.length) {
-    console.log("members", members);
     members.forEach(function (_item) {
       $(".house-list-members").append(appendListMembers(_item));
     });

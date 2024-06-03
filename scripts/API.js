@@ -181,7 +181,6 @@ function getProductsChecked() {
    $('.product-checkboxes').change(function () {
       const valueProd = $(this).val();
       if ($(this).is(':checked')) {
-         console.log('Checkbox is checked!', valueProd);
          myProdList.productList.push(valueProd);
       } else {
          const setOnlyNewValue = myProdList.productList.filter(
@@ -213,11 +212,7 @@ function getProductsWithFullDataSummaryReview() {
 
 function setProductToCheck(editLink) {
    const myProdList = getMyCartDetails().productList;
-
-   console.log('prodList', editLink);
-
    const prods = myProdList.some((_data) => _data === editLink);
-   console.log('prods', prods);
    return prods ? 'checked' : '';
 }
 
@@ -247,8 +242,6 @@ function filterProductWithPriceAndSession(products) {
          theProduct: _data.theProduct,
          sessionName: _data[formattedValuePricingTitle],
       }));
-   console.log('getOnlyePricelistID', groupBySectionList);
-   console.log('newProductList', newProductList);
 
    return groupBySectionList;
 }
@@ -265,7 +258,7 @@ function getProducts() {
             if (response.value.length) {
                const productList = response.value;
                const withPrice = filterProductWithPriceAndSession(productList);
-               console.log('withPrice', withPrice);
+           
                withPrice.forEach(function (_data, index) {
                   prodWrapperElement.append(
                      HTMLelementProp.listOfProductBySession(_data)
@@ -293,7 +286,6 @@ function getProducts() {
                }, 500);
             }
 
-            console.log('GET_PRODUCTS', response);
          },
          complete: function (data) {
             getProductsChecked();

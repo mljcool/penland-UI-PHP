@@ -1,10 +1,10 @@
 var timelines = ['account', 'personal', 'housing', 'payments', 'workshops'];
 let message = {
-   account: `Your account save successfully! 👍`,
-   personal: `Your personal information save successfully! 👍`,
-   housing: `Your housing save successfully! 👍`,
-   payments: `Your payments save successfully! 👍`,
-   workshops: `Your workshops save successfully! 👍`,
+   account: `Your account save successfully! 🥳`,
+   personal: `Your personal information save successfully! 🥳`,
+   housing: `Your housing save successfully! 🥳`,
+   payments: `Your payments save successfully! 🥳`,
+   workshops: `Your workshops save successfully! 🥳`,
 };
 
 function loadingBlockUI(propBody) {
@@ -48,13 +48,11 @@ function asyncTask(index, value) {
 
 // Sequential promise calls using async/await
 async function sequentialPromiseCalls(timelines) {
-   console.log('Starting sequential promise calls...');
    const results = [];
 
    try {
       for (let [index, task] of timelines.entries()) {
          const result = await asyncTask(index, task).then((response) => {
-            console.log('response:', response);
 
             setCheckIcon(response);
             $('.body-timeline-' + response).unblock();
@@ -153,104 +151,6 @@ $(document).ready(function () {
    $('.final-button-steps').click(function () {
       // fireDummyAsyncCall();
       // startRegistrationProcess();
-
-      startAddLoadingEachSections();
-
-      const checkAsIsForAccount = () => {
-         asyncTask(1, 'sample').then(() => {
-            console.log('Task 1 completed: ');
-            afterEachCallStoploadingBySection('account');
-            smoothSrollToNextBlock('personal');
-            createContactDetails();
-         });
-      };
-
-      checkAsIsForAccount();
-
-      function createContactDetails() {
-         const contactData = personalInfoPayload();
-
-         $.ajax({
-            ...requestOptions(REGISTER_ACCOUNT, contactData),
-            success: function (data) {
-               console.log('Task 2 completed: ');
-               console.log('dynamicsAPIResult:', data);
-               setItemStore('dynamicsAPIResult', data);
-               afterEachCallStoploadingBySection('personal');
-               smoothSrollToNextBlock('housing');
-               createSalesOrder();
-
-            },
-            error: function () {},
-         });
-      }
-
-      function createSalesOrder() {
-         const salesOrderData = salesOrderPayload();
-
-         $.ajax({
-            ...requestOptions(
-               Registration_Create_Sales_Order_Portal,
-               salesOrderData
-            ),
-            success: function (data) {
-               console.log('Task 3 completed: ');
-               console.log('salerOrder:', data);
-               setItemStore('salesOrder', data);
-               addProductToSalesOrder();
-            },
-            error: function () {},
-         });
-      }
-
-      function addProductToSalesOrder() {
-         const productData = productsPayload();
-
-         $.ajax({
-            ...requestOptions(
-               Registration_Add_Products_to_Sales_Order,
-               productData
-            ),
-            success: function (data) {
-               console.log('Task 4 completed: ');
-               console.log('productData:', data);
-               setItemStore('productData', data);
-               afterEachCallStoploadingBySection('housing');
-               smoothSrollToNextBlock('payments');
-               dummyThreeSavePaymentDetails();
-            },
-            error: function () {},
-         });
-      }
-
-      function dummyThreeSavePaymentDetails() {
-         asyncTask(1, 'sample').then(() => {
-            console.log('Task 5 completed: ');
-            afterEachCallStoploadingBySection('payments');
-            smoothSrollToNextBlock('workshops');
-            createEnrollment();
-         });
-      }
-
-      function createEnrollment() {
-         const enrollmentData = getEnrollmentPayload();
-
-         $.ajax({
-            ...requestOptions(Registration_Enrollment_Portal, enrollmentData),
-            success: function (data) {
-               console.log('Task 6 completed: ');
-               console.log('enrollmentData:', data);
-               setItemStore('enrollmentData', data);
-               afterEachCallStoploadingBySection('workshops');
-               finalMessageSuccess();
-            },
-            error: function () {},
-         });
-      }
-
-      // console.log('salesOrderData', salesOrderData);
-      // console.log('contactData', contactData);
-      // console.log('enrollmentData', enrollmentData);
-      // console.log('productData', productData);
+      startRegistrationEnrollment();
    });
 });

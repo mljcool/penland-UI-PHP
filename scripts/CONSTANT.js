@@ -99,6 +99,71 @@ var HTMLelementProp = {
       </div>
     </li>`;
    },
+   waitListItemToCart: function (_item) {
+      return `<li class="list-group-item p-4 cart-item-${_item.mshied_courseid}">
+      <div class="d-flex gap-3">
+        <div class="flex-shrink-0 d-flex align-items-center">
+          <img
+            src="${_item.imageURL}"
+            alt="google home"
+            class="w-px-100"
+            style="border-radius: 8px"
+          />
+        </div>
+        <div class="flex-grow-1">
+          <div class="row">
+            <div class="col-md-8">
+              <p class="me-3">
+                <a href="javascript:void(0)" class="text-body fs-5"
+                  >${_item.mshied_name}</a
+                >
+              </p>
+              <div class="text-muted mb-2 d-flex flex-wrap">
+                <span class="me-1">Code:</span>
+                <span class="badge bg-label-info">${_item.mshied_coursenumber}</span>
+              </div>
+              <div class="text-muted mb-2 d-flex flex-wrap">
+                <span class="me-1">Instructor:</span>
+                <a href="javascript:void(0)" class="me-3"
+                  >${_item.instructor}</a
+                >
+              </div>
+             
+              <div class="text-muted mb-2 d-flex flex-wrap">
+              <span class="me-1">Level:</span>
+              <span href="javascript:void(0)" class="me-3"><i class='bx bx-bullseye fa-lg' ></i>${_item.workshopLevel}</span>
+              </div>
+              <div class="text-muted mb-2 d-flex flex-wrap">
+            
+              
+            </div>
+            </div>
+            <div class="col-md-4">
+              <div class="text-md-end">
+                <button
+                  style="display: none;"
+                  onclick="removeItem('${_item.mshied_courseid}');"
+                  type="button"
+                  class="btn-close btn-pinned"
+                  aria-label="Close"
+                ></button>
+            
+                <button
+                   onclick="removeItemWaitList('${_item.mshied_courseid}');"
+                
+                  type="button"
+                  class="btn btn-sm btn-label-secondary mt-md-3"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>`;
+   },
+
    cartSummary: function (_item) {
       return `<li class="list-group-item p-4 cart-item-${_item.mshied_courseid}">
       <div class="d-flex gap-3">
@@ -246,6 +311,33 @@ var HTMLelementProp = {
    blockUISearchResult: `<div class="d-flex justify-content-center"><p class="me-2 mb-0">Please wait...</p> <div class="sk-wave sk-primary m-0"><div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div></div> </div>`,
 };
 
+const HTMLMessageWaitList = (name) => {
+   return `<div class="card">
+   <div class="card-body">
+      <h5 class="card-title">Thank You for Joining the Waitlist! 🥳</h5>
+      <div class="logo-container d-flex flex-direction-column"
+         style="align-items: center; width: 100%; flex-direction: column">
+         <img class="dashboard-logo" src="./assets/Penland-logo.png" />
+      </div>
+      <p style="text-align: left; font-size: 16px" class="typing ">
+         Hi
+         <span class="name-of-applicant dd-firstname">${name}</span>,<br /><br />
+         Thank you for expressing your interest and joining the waitlist for our workshop. We appreciate your enthusiasm
+         and patience. You will be notified as soon as a spot becomes available.
+         <br /><br />
+         We look forward to having you with us!
+         <br /><br />
+         Best regards,<br />
+         Penland School of Craft
+      </p>
+     
+   </div>
+   <div class="card-footer text-muted">
+      <a href="/penland-web" class="btn btn-primary">Browse more workshop.</a>
+    </div>
+</div>`;
+};
+
 var FORM_STEPS = {
    ACCOUNT: 1,
    PERSONAL: 2,
@@ -264,9 +356,21 @@ var FORM_INDEX = {
    CONFIRMATION: 5,
 };
 
+const OwlCarouselOverview = {
+   navigation: false, // Show next and prev buttons
+   slideSpeed: 300,
+   paginationSpeed: 400,
+   items: 1,
+   itemsDesktop: false,
+   itemsDesktopSmall: false,
+   itemsTablet: false,
+   itemsMobile: false,
+   loop: true,
+   center: true,
+   autoWidth: false,
+};
 
 const US_CURRENCIES = `transactioncurrencies(76aa6017-b2d8-ee11-904d-000d3a343842)`;
-
 
 const preferredLanguage = [
    {
@@ -688,7 +792,6 @@ const STATES = [
       value: 'WY',
    },
 ];
-
 
 const COUNTRY = [
    {
@@ -1692,3 +1795,87 @@ const COUNTRY = [
       value: 'ZW',
    },
 ];
+
+
+const static_mshied_disability = [
+   {
+       "name": "Autism Spectrum Disorders",
+       "value": "494280000"
+   },
+   {
+       "name": "Intellectual Disability",
+       "value": "494280001"
+   },
+   {
+       "name": "Deaf-Blindness",
+       "value": "494280002"
+   },
+   {
+       "name": "Hearing Impairment, Including Deafness",
+       "value": "494280003"
+   },
+   {
+       "name": "Infant/Toddler With A Disability",
+       "value": "494280004"
+   },
+   {
+       "name": "Medical Condition",
+       "value": "494280005"
+   },
+   {
+       "name": "Motor Impairment",
+       "value": "494280006"
+   },
+   {
+       "name": "Mental Impairment",
+       "value": "494280007"
+   },
+   {
+       "name": "Orthopedic Impairment",
+       "value": "494280008"
+   },
+   {
+       "name": "Multiple Disabilities",
+       "value": "494280009"
+   },
+   {
+       "name": "Other",
+       "value": "494280010"
+   },
+   {
+       "name": "Other Health Impairment",
+       "value": "494280011"
+   },
+   {
+       "name": "Preschooler With A Disability",
+       "value": "494280012"
+   },
+   {
+       "name": "Sensory Impairment",
+       "value": "494280013"
+   },
+   {
+       "name": "Physical Disability",
+       "value": "494280014"
+   },
+   {
+       "name": "Speech or Language Impairment",
+       "value": "494280015"
+   },
+   {
+       "name": "Serious Emotional Disability",
+       "value": "494280016"
+   },
+   {
+       "name": "Specific Learning Disability",
+       "value": "494280017"
+   },
+   {
+       "name": "Traumatic Brain Injury",
+       "value": "494280018"
+   },
+   {
+       "name": "Visual Impairment, Including Blindness",
+       "value": "494280019"
+   }
+]

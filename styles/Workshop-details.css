@@ -118,7 +118,7 @@
   max-width: 400px;
 }
 .workshop-detail-page .workshops-context-section .workshop-overview .slider-image-workshop .owl-carousel .item {
-  background: blue;
+  background: #768B8D;
   border-radius: 9px;
   display: flex;
   flex-direction: column;
@@ -134,7 +134,7 @@
   margin: 1.5rem 0;
   position: relative;
 }
-.workshop-detail-page .workshops-context-section .registration-actions .register-now {
+.workshop-detail-page .workshops-context-section .registration-actions .register-now, .register-waiting-list {
   display: block;
   width: -moz-fit-content;
   width: fit-content;
@@ -161,7 +161,7 @@
     background-position: 0% 0%;
   }
 }
-.workshop-detail-page .workshops-context-section .registration-actions .register-now:hover {
+.workshop-detail-page .workshops-context-section .registration-actions .register-now:hover, .register-waiting-list:hover {
   transform: scale(1.1);
 }
 .workshop-detail-page .inner-section-instructor {

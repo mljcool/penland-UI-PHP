@@ -5,6 +5,13 @@ function redirecToCartDetails() {
    }, 200);
 }
 
+function redirecToWaitlistCartDetails() {
+   setTimeout(() => {
+      window.location.href = '/penland-web/waiting-list-cart.php';
+      // window.location.href = "/cart-items";  //FOR PORTAL
+   }, 200);
+}
+
 function onRegisterNow() {
    const workshopID = getURLParameters();
    const myCart = getMyCartDetails();
@@ -13,7 +20,7 @@ function onRegisterNow() {
       if (!!dataWorkshopLocal) {
          myCart.items.push(dataWorkshopLocal);
          updateMyDetails('cart', myCart);
-      } else{
+      } else {
          MessateAlertDetailsIsNull();
       }
    };
@@ -31,6 +38,35 @@ function onRegisterNow() {
    } else {
       updateItems();
       redirecToCartDetails();
+   }
+}
+
+function onWaitlist() {
+   const workshopID = getURLParameters();
+   const myCart = getMyCartDetails();
+   const dataWorkshopLocal = getCurrentSelectedWorkShop();
+   const updateItems = () => {
+      if (!!dataWorkshopLocal) {
+         myCart.items.push(dataWorkshopLocal);
+         updateMyDetails('cart', myCart);
+      } else {
+         MessateAlertDetailsIsNull();
+      }
+   };
+
+   if (myCart.items.length) {
+      const checkItemFirst = myCart.items.some(
+         (_id) => _id.mshied_courseid === workshopID
+      );
+      if (!checkItemFirst) {
+         updateItems();
+         redirecToWaitlistCartDetails();
+      } else {
+         redirecToWaitlistCartDetails();
+      }
+   } else {
+      updateItems();
+      redirecToWaitlistCartDetails();
    }
 }
 
@@ -56,6 +92,28 @@ function removeItem(uid) {
    }, 200);
 }
 
+function removeItemWaitList(uid) {
+   const myCartItems = getMyCartDetails();
+   const newItems = myCartItems.items.filter(
+      (_data) => _data.mshied_courseid !== uid
+   );
+   myCartItems.items = newItems;
+   updateMyDetails('cart', myCartItems);
+   countCartItems(myCartItems.items.length);
+   $('.cart-item-' + uid).slideUp('slow', function () {
+      $(this).remove();
+   });
+   setTimeout(() => {
+      window.location.href =
+      '/penland-web/details.php?workshopID=' + uid;
+
+   // FOR PORTAL DYNAMICS
+   // window.location.href = '/workshop-details?workshopID='+workshopID
+   }, 900);
+}
+
+
+
 function addHTMLELementCartItems() {
    const myCart = getMyCartDetails();
    const cart = myCart.items;
@@ -64,9 +122,16 @@ function addHTMLELementCartItems() {
       countCartItems(cart.length);
       $('.cart-item-list-wrapper').html('');
       cart.forEach(function (_item) {
-         $('.cart-item-list-wrapper').append(
-            HTMLelementProp.appendItemToCart(_item)
-         );
+         const isCartWaitlist = $('.cart-waitlist-title');
+         if (isCartWaitlist.length) {
+            $('.cart-item-list-wrapper').append(
+               HTMLelementProp.waitListItemToCart(_item)
+            );
+         } else {
+            $('.cart-item-list-wrapper').append(
+               HTMLelementProp.appendItemToCart(_item)
+            );
+         }
       });
    }
 }
@@ -123,7 +188,17 @@ function onNewStudent() {
       });
 }
 
+function waitlistHTMLLabels() {
+   const isCartWaitlist = $('.cart-waitlist-title');
+   if (isCartWaitlist.length) {
+      const myCartDetails = getMyCartDetails();
+      const singleItem = myCartDetails.items[0];
+      isCartWaitlist.html('Join Waitlist for: ' + singleItem['mshied_name']);
+   }
+}
+
 $(document).ready(function () {
+   waitlistHTMLLabels();
    addHTMLELementCartItems();
    setRadioTypePayment();
 

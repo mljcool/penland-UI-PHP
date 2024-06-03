@@ -146,7 +146,6 @@ function getStudios() {
       success: function (response = []) {
          const studios = IStudios(response);
          if (studios.length) {
-            console.log('studios', studios);
             APIDataStudios = studios;
             filterByStudios = [];
             clearStudioHTML();
@@ -216,6 +215,7 @@ $(document).ready(function () {
          const valueCheckbox = e.currentTarget.value;
          if (e.currentTarget.checked) {
             badges.push(valueCheckbox);
+            console.log('badges', badges);
          } else {
             badges = badges.filter((_data) => _data !== valueCheckbox);
          }

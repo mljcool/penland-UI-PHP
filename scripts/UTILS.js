@@ -172,6 +172,11 @@ function getProductionListStore() {
    return productList;
 }
 
+function getDataContactWaitlist() {
+   const waitList = parseStore(localStorage.getItem('dynamicsAPIResultWaitlist'));
+   return waitList;
+}
+
 function getSalesOrderDetails() {
    const salesOrder = parseStore(localStorage.getItem('salesOrder'));
    return salesOrder;
@@ -213,7 +218,7 @@ function hasLocalListOfWorkShops() {
 
 function getCurrentSelectedWorkShop() {
    const workShopItems = parseStore(
-      localStorage.getItem('currentSelectedWorhShop')
+      localStorage.getItem('currentSelectedWorkShop')
    );
 
    return workShopItems;
@@ -281,7 +286,6 @@ const converMoneyProperFormat = (money) => {
 
 function computeValueOfCart() {
    const myCart = getMyCartDetails();
-   console.log('myCart', myCart);
    const sum = myCart.items.reduce(
       (total, obj) => {
          total.rawFeePrice += obj.rawFeePrice;
@@ -375,6 +379,7 @@ function PopulateOptionsAndForm() {
    const prefLangEl = $('.dd-mshied_preferredlanguage');
    const stateEl = $('.dd-address1_stateorprovince');
    const countryEl = $('.dd-address1_country');
+   const disabilityEl = $('.dd-mshied_disability');
 
    if (prefLangEl.length) {
       homeLanguage.html('');
@@ -399,7 +404,7 @@ function PopulateOptionsAndForm() {
          );
       });
 
-      stateEl.html();
+      stateEl.html('');
       stateEl.append('<option label=""></option>');
       STATES.forEach(function (_data) {
          stateEl.append(
@@ -407,14 +412,21 @@ function PopulateOptionsAndForm() {
          );
       });
 
-      countryEl.html();
+      countryEl.html('');
       countryEl.append('<option label=""></option>');
       COUNTRY.forEach(function (_data) {
          countryEl.append(
             `<option value="${_data.value}">${_data.name}</option>`
          );
       });
-      console.log('POPULATE LANGAUGES1');
+
+      disabilityEl.html('');
+      disabilityEl.append('<option label=""></option>');
+      static_mshied_disability.forEach(function (_data) {
+         disabilityEl.append(
+            `<option value="${_data.value}">${_data.name}</option>`
+         );
+      });
       PopulateForm();
    }
 }

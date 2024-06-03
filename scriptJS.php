@@ -76,3 +76,4 @@
 <script src="./scripts/APPLICATION-REQUEST.js"></script>
 <script src="./scripts/MAPPING.js"></script>
 <script src="./scripts/Auth.js"></script>
+<script src="./scripts/WaitList.js"></script>
