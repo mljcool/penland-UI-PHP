@@ -12,7 +12,7 @@ function redirecToWaitlistCartDetails() {
    }, 200);
 }
 
-function onRegisterNow() {
+function processItemsToCart(toURL) {
    const workshopID = getURLParameters();
    const myCart = getMyCartDetails();
    const dataWorkshopLocal = getCurrentSelectedWorkShop();
@@ -24,6 +24,13 @@ function onRegisterNow() {
          MessateAlertDetailsIsNull();
       }
    };
+   const redirecto = () => {
+      if (toURL === 'waitlist') {
+         redirecToWaitlistCartDetails();
+      } else {
+         redirecToCartDetails();
+      }
+   };
 
    if (myCart.items.length) {
       const checkItemFirst = myCart.items.some(
@@ -31,43 +38,22 @@ function onRegisterNow() {
       );
       if (!checkItemFirst) {
          updateItems();
-         redirecToCartDetails();
+         redirecto();
       } else {
-         redirecToCartDetails();
+         redirecto();
       }
    } else {
       updateItems();
-      redirecToCartDetails();
+      redirecto();
    }
 }
 
-function onWaitlist() {
-   const workshopID = getURLParameters();
-   const myCart = getMyCartDetails();
-   const dataWorkshopLocal = getCurrentSelectedWorkShop();
-   const updateItems = () => {
-      if (!!dataWorkshopLocal) {
-         myCart.items.push(dataWorkshopLocal);
-         updateMyDetails('cart', myCart);
-      } else {
-         MessateAlertDetailsIsNull();
-      }
-   };
+function onRegisterNow() {
+   processItemsToCart('');
+}
 
-   if (myCart.items.length) {
-      const checkItemFirst = myCart.items.some(
-         (_id) => _id.mshied_courseid === workshopID
-      );
-      if (!checkItemFirst) {
-         updateItems();
-         redirecToWaitlistCartDetails();
-      } else {
-         redirecToWaitlistCartDetails();
-      }
-   } else {
-      updateItems();
-      redirecToWaitlistCartDetails();
-   }
+function onWaitlist() {
+   processItemsToCart('waitlist');
 }
 
 function countCartItems(countItems) {
@@ -99,20 +85,30 @@ function removeItemWaitList(uid) {
    );
    myCartItems.items = newItems;
    updateMyDetails('cart', myCartItems);
-   countCartItems(myCartItems.items.length);
    $('.cart-item-' + uid).slideUp('slow', function () {
       $(this).remove();
    });
    setTimeout(() => {
-      window.location.href =
-      '/penland-web/details.php?workshopID=' + uid;
+      window.location.href = '/penland-web/details.php?workshopID=' + uid;
 
-   // FOR PORTAL DYNAMICS
-   // window.location.href = '/workshop-details?workshopID='+workshopID
-   }, 900);
+      // FOR PORTAL DYNAMICS
+      // window.location.href = '/workshop-details?workshopID='+workshopID
+   }, 1000);
 }
 
-
+function filterWaitlistedItemsOnly(cart) {
+   const currentWorkshop = getCurrentSelectedWorkShop();
+   console.log('currentWorkshop', currentWorkshop.mshied_courseid);
+   cart
+      .filter(
+         (_data) => _data.mshied_courseid === currentWorkshop.mshied_courseid
+      )
+      .forEach(function (_item) {
+         $('.cart-item-list-wrapper').append(
+            HTMLelementProp.waitListItemToCart(_item)
+         );
+      });
+}
 
 function addHTMLELementCartItems() {
    const myCart = getMyCartDetails();
@@ -121,18 +117,17 @@ function addHTMLELementCartItems() {
       computeValueOfCart();
       countCartItems(cart.length);
       $('.cart-item-list-wrapper').html('');
-      cart.forEach(function (_item) {
-         const isCartWaitlist = $('.cart-waitlist-title');
-         if (isCartWaitlist.length) {
-            $('.cart-item-list-wrapper').append(
-               HTMLelementProp.waitListItemToCart(_item)
-            );
-         } else {
+      const isCartWaitlist = $('.cart-waitlist-title');
+
+      if (isCartWaitlist.length) {
+         filterWaitlistedItemsOnly(cart);
+      } else {
+         cart.forEach(function (_item) {
             $('.cart-item-list-wrapper').append(
                HTMLelementProp.appendItemToCart(_item)
             );
-         }
-      });
+         });
+      }
    }
 }
 

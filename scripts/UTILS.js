@@ -309,6 +309,9 @@ function computeValueOfCart() {
    $('.total-tuition-fee').html('$' + application);
    $('.due-now').html(converMoneyProperFormat(dueNow));
    $('.over-all-total').html(converMoneyProperFormat(dueNow));
+  
+   
+   
 }
 
 function generiErrorMessage() {

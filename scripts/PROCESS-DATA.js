@@ -144,9 +144,19 @@ function startAddLoadingEachSections() {
    //    $('.footer-btns').css('display', 'none');
 }
 
+
 $(document).ready(function () {
    // POPULATE FORM FIELDS
    PopulateOptionsAndForm();
+   $('iframe').on('load', function(e){
+      const iframeContents = $(this).contents().find('input#customUnitAmount');
+    
+      $('iframe').contents().find('input#customUnitAmount').bind('change',function(e) {
+         // title_name = $(this).val();
+         console.log('insideContents', this);
+         $('input#customUnitAmount').val('15885');
+      });
+   });
 
    $('.final-button-steps').click(function () {
       // fireDummyAsyncCall();

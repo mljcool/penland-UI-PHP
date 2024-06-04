@@ -88,10 +88,21 @@
          <div class="col-md-6">
             <div class="card border pay-card rounded p-4 mb-3 mt-2 pb-3 white-background">
                <div class="col-12 item-card-fee mt-2">
-                  <label class="form-label w-100" for="cardnumber">Google Pay</label>
+                  <!-- <label class="form-label w-100" for="cardnumber">Google Pay</label> -->
                   <div id="payment-request-button">
                      <!-- A Stripe Element will be inserted here. -->
                   </div>
+                  <script async
+                     src="https://js.stripe.com/v3/buy-button.js">
+                     </script>
+                     
+                     <stripe-buy-button
+                     buy-button-id="buy_btn_1PNrVNFRQc06DqEhHEybSsxs"
+                     customer-email="cool@gmail.com"
+                     client-reference-id="89895551188556"
+                     publishable-key="pk_test_51P6GMmFRQc06DqEhbN6KzrTt13krDHaEEHj0DhxnO5QPgbwAnXN3nFJ5mnR7PEeJyosrdbeCJj2lrT1YBswGsOfm00Q56wNeF2"
+                     >
+                     </stripe-buy-button>
                </div>
                <div class="col-md-12 p-2 mb-4">
                   <hr />

@@ -125,7 +125,10 @@ function waitListEnrollmentPayload() {
 
 function emptyCart() {
    const myCart = getMyCartDetails();
-   myCart.items = [];
+   const currentWorkshop = getCurrentSelectedWorkShop();
+   myCart.items = myCart.items.filter(
+      (_id) => _id.mshied_courseid !== currentWorkshop.mshied_courseid
+   );
    updateMyDetails('cart', myCart);
 }
 

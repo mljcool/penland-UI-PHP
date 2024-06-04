@@ -38,6 +38,7 @@
             <div class="line">
               <!-- <i class="bx bx-chevron-right"></i> -->
             </div>
+            
             <div class="step" data-target="#personalInfoValidation">
               <button type="button" class="step-trigger">
                 <span class="bs-stepper-circle">2</span>
@@ -62,6 +63,11 @@
               </button>
             </div>
 
+            
+            <div class="line">
+              <!-- <i class="bx bx-chevron-right"></i> -->
+            </div>
+
             <div class="step" data-target="#payment-link">
               <button type="button" class="step-trigger">
                 <span class="bs-stepper-circle">4</span>
@@ -77,9 +83,6 @@
             </div>
             
 
-            <div class="line">
-              <!-- <i class="bx bx-chevron-right"></i> -->
-            </div>
 
             <div class="step" data-target="#terms-info">
               <button type="button" class="step-trigger">

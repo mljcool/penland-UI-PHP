@@ -104,23 +104,17 @@ function getDetailedSession(sessionID = '') {
       contentType: 'application/json',
       success: function (response = []) {
          const status = response[0][statuses];
-
-         console.log('_status', status);
-         console.log('mshied_name', workshops['mshied_name']);
-         console.log('getDetailedSession', response);
          const notFull = workshops['hso_enrollmentlimit'] >= 1;
-         console.log('notFull', notFull);
-         console.log('hso_enrollmentlimit', status === 'Open' && notFull);
          isNotFull = status === 'Open' && notFull;
-         console.log('isNotFull', isNotFull);
          $('.register-now').css('display', 'block');
-         if(isNotFull){
+         if (isNotFull) {
             $('.register-now').html('Register Now');
          } else {
             $('.register-now').html('Join to waitlist');
          }
       },
       complete: function (data) {
+         console.log('HERE');
          $('.workshop-header-details').unblock();
       },
       error: function (xhr, status, error) {},
@@ -141,37 +135,55 @@ function getOverView(courseID = '') {
          contentType: 'application/json',
          success: function (response = []) {
             const workshops = hasLocalListOfWorkShops();
-
+            console.log('getOverView', response);
             if (workshops.length && response.value.length) {
-               const _hso_setaworkshop_value =
-                  response.value[0]['_hso_setaworkshop_value'];
+               const responseValue = response.value[0];
+               const objStrworkshopID = '_hso_setaworkshop_value';
+               const objStrSessionID = '_hso_setupanactivesession_value';
+               const mshied_courseid = responseValue[objStrworkshopID];
+               const sessionID = responseValue[objStrSessionID];
 
-               const sessionID =
-                  response.value[0]['_hso_setupanactivesession_value'];
-               console.log('sessionID', sessionID);
-           
                workshops.forEach(function (_data, index) {
-                  if (_data.mshied_courseid === _hso_setaworkshop_value) {
-                     _data['workShopOverview'] = response.value[0];
-                     _data['rawFeePrice'] = response.value[0]['pl.price'];
+                  if (_data.mshied_courseid === mshied_courseid) {
+                     _data.workShopOverview = responseValue;
+                     _data.rawFeePrice = responseValue['pl.price'];
                      setHTMLElement(_data);
                   }
                   if (index === workshops.length - 1) {
-                     localStorage.setItem(
-                        'workshopItems',
-                        JSON.stringify(workshops)
-                     );
+                     setItemStore('workshopItems', workshops);
                      setSelectedWorkshops(courseID);
                      getDetailedSession(sessionID);
                   }
                });
-               //localStorage.setItem('workshopItems', JSON.stringify(workShopData));
+            } else {
+               $('.workshop-header-details').unblock();
+               MessageDataBeingComposed();
+               // $('.workshop-header-details').html('<h5 class="warning-title-overview" style="max-width:550px;margin-top:2rem;">We appreciate your interest in the workshop. The data required for this session is currently being composed and prepared by our team. We are working diligently to ensure that everything is accurate and ready for your use.</h5>')
+        
             }
          },
          complete: function (data) {},
          error: function (xhr, status, error) {},
       });
    }, 100);
+}
+
+function MessageDataBeingComposed() {
+   $('.workshop-header-details').block({
+      message: HTMLMessageDataBeingComposed(),
+      centerY: false,
+      css: {
+         backgroundColor: 'transparent',
+         border: '0',
+         top: '50px',
+         cursor: 'default',
+      },
+      overlayCSS: {
+         backgroundColor: '#f9f9f9',
+         opacity: 0.8,
+         cursor: 'default',
+      },
+   });
 }
 
 function loadingUIDetails() {

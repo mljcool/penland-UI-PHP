@@ -338,6 +338,32 @@ const HTMLMessageWaitList = (name) => {
 </div>`;
 };
 
+const HTMLMessageDataBeingComposed = () => {
+   return `<div class="card">
+   <div class="card-body">
+   <h5 class="card-title">Workshop Data in Progress.</h5>
+      <div class="logo-container d-flex flex-direction-column"
+         style="align-items: center; width: 100%; flex-direction: column">
+         <img class="dashboard-logo" src="./assets/Penland-logo.png" />
+      </div>
+      <br />
+      <p style="text-align: left; font-size: 16px" class="typing ">
+      We apologize for the inconvenience, but the data for this workshop is currently being composed and prepared. <br />Our team is working hard to ensure everything is accurate and ready for your use as soon as <br />possible. <br /><br />
+
+      We appreciate your patience and understanding during this time. Please check back soon for updates. <br /><br />
+      
+      If you have any questions or need further assistance, please feel free to contact our support team. <br /><br />
+      
+      Thank you!
+      </p>
+     
+   </div>
+   <div class="card-footer text-muted">
+      <a href="/penland-web" class="btn btn-primary">Browse a different workshop.</a>
+    </div>
+</div>`;
+};
+
 var FORM_STEPS = {
    ACCOUNT: 1,
    PERSONAL: 2,
@@ -1796,86 +1822,85 @@ const COUNTRY = [
    },
 ];
 
-
 const static_mshied_disability = [
    {
-       "name": "Autism Spectrum Disorders",
-       "value": "494280000"
+      name: 'Autism Spectrum Disorders',
+      value: '494280000',
    },
    {
-       "name": "Intellectual Disability",
-       "value": "494280001"
+      name: 'Intellectual Disability',
+      value: '494280001',
    },
    {
-       "name": "Deaf-Blindness",
-       "value": "494280002"
+      name: 'Deaf-Blindness',
+      value: '494280002',
    },
    {
-       "name": "Hearing Impairment, Including Deafness",
-       "value": "494280003"
+      name: 'Hearing Impairment, Including Deafness',
+      value: '494280003',
    },
    {
-       "name": "Infant/Toddler With A Disability",
-       "value": "494280004"
+      name: 'Infant/Toddler With A Disability',
+      value: '494280004',
    },
    {
-       "name": "Medical Condition",
-       "value": "494280005"
+      name: 'Medical Condition',
+      value: '494280005',
    },
    {
-       "name": "Motor Impairment",
-       "value": "494280006"
+      name: 'Motor Impairment',
+      value: '494280006',
    },
    {
-       "name": "Mental Impairment",
-       "value": "494280007"
+      name: 'Mental Impairment',
+      value: '494280007',
    },
    {
-       "name": "Orthopedic Impairment",
-       "value": "494280008"
+      name: 'Orthopedic Impairment',
+      value: '494280008',
    },
    {
-       "name": "Multiple Disabilities",
-       "value": "494280009"
+      name: 'Multiple Disabilities',
+      value: '494280009',
    },
    {
-       "name": "Other",
-       "value": "494280010"
+      name: 'Other',
+      value: '494280010',
    },
    {
-       "name": "Other Health Impairment",
-       "value": "494280011"
+      name: 'Other Health Impairment',
+      value: '494280011',
    },
    {
-       "name": "Preschooler With A Disability",
-       "value": "494280012"
+      name: 'Preschooler With A Disability',
+      value: '494280012',
    },
    {
-       "name": "Sensory Impairment",
-       "value": "494280013"
+      name: 'Sensory Impairment',
+      value: '494280013',
    },
    {
-       "name": "Physical Disability",
-       "value": "494280014"
+      name: 'Physical Disability',
+      value: '494280014',
    },
    {
-       "name": "Speech or Language Impairment",
-       "value": "494280015"
+      name: 'Speech or Language Impairment',
+      value: '494280015',
    },
    {
-       "name": "Serious Emotional Disability",
-       "value": "494280016"
+      name: 'Serious Emotional Disability',
+      value: '494280016',
    },
    {
-       "name": "Specific Learning Disability",
-       "value": "494280017"
+      name: 'Specific Learning Disability',
+      value: '494280017',
    },
    {
-       "name": "Traumatic Brain Injury",
-       "value": "494280018"
+      name: 'Traumatic Brain Injury',
+      value: '494280018',
    },
    {
-       "name": "Visual Impairment, Including Blindness",
-       "value": "494280019"
-   }
-]
+      name: 'Visual Impairment, Including Blindness',
+      value: '494280019',
+   },
+];
