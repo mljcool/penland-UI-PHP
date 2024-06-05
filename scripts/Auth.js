@@ -63,7 +63,7 @@ function ifLoginRedirect(response) {
          checkWordExists(_data)
       );
       setItemStore('loginDetails', response);
-
+      shapeMyProfile();
       if (lookIfIsloginPage) {
          redirectToDashboard();
       }
@@ -119,7 +119,7 @@ $(document).ready(function () {
    wrappEntireHTML();
    ifDashBoardRedirect();
    checkIfUserLogin();
-   shapeMyProfile();
+ 
    $('.login-user').click(function () {
       loadingEffect();
       const emailOrPassowrd = $('#email').val();

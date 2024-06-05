@@ -459,7 +459,12 @@ function loadingEffect() {
 
 function wrappEntireHTML() {
    $('html').block({
-      message: '<div class="spinner-border text-primary" role="status"></div>',
+      message: `<div class="d-flex justify-content-center">
+               <div class="sk-swing sk-primary">
+                  <div class="sk-swing-dot"></div>
+                  <div class="sk-swing-dot"></div>
+               </div>
+            </div>`,
       css: {
          backgroundColor: 'transparent',
          border: '0',
@@ -471,9 +476,9 @@ function wrappEntireHTML() {
    });
 }
 
-function getPATHNameURL(){
+function getPATHNameURL() {
    const newURL = window.location.pathname;
-   return  newURL.split('/');
+   return newURL.split('/');
 }
 
 function checkWordExists(str, word = 'login') {
@@ -488,21 +493,76 @@ function redirectToDashboard() {
    }
 }
 
-function redirectToLogin(lookIsDashboard = false){
+function redirectToLogin(lookIsDashboard = false) {
    const data = getUserTokenDetails();
    if (!data && lookIsDashboard) {
       window.location.href = '/penland-web/login.php';
    }
 }
 
-function shapeMyProfile(){
+function initPopOver(content) {
+   $('.conductBehavior')
+      .popover({
+         trigger: 'manual',
+         content: function () {
+            var data = `<p>${content}</p> <div class='d-flex justify-content-center'><button type='button' class='btn btn-sm btn-primary'>Write an email</button></div>`;
+            return data;
+         },
+         html: true,
+         sanitize: false,
+         animation: true,
+      })
+      .on('click', function () {
+         $(this).popover('show');
+      })
+}
 
+function shapeMyProfile() {
    const userDetails = getLoginDetails();
-   if(userDetails && userDetails.length){
+   if (userDetails && userDetails.length) {
+      console.log('shapeMyProfile', userDetails[1]);
       const myProfile = userDetails[1];
-      const acctType = 'mshied_contacttype@OData.Community.Display.V1.FormattedValue';
-      htmlEL('u_fullname').html(myProfile.fullname);
-      htmlEL('acctType').html(myProfile['acctType']);
+      const acctType =
+         'mshied_contacttype@OData.Community.Display.V1.FormattedValue';
+      const statecode = 'statecode@OData.Community.Display.V1.FormattedValue';
+      const prefLanguage =
+         'mshied_preferredlanguage@OData.Community.Display.V1.FormattedValue';
+      const formatJoinDate = moment(myProfile.createdon).format(
+         'dddd, MMMM D, YYYY h:mm A'
+      );
+      const country = COUNTRY.find(
+         (_data) => _data.value === myProfile.address1_county
+      );
+      const conduct =
+         'hso_conductflag@OData.Community.Display.V1.FormattedValue';
 
+      htmlEL('u_fullname').html(myProfile.fullname);
+      htmlEL('acctType').html(myProfile[acctType]);
+      htmlEL('prefLanguage').html(myProfile[prefLanguage]);
+      htmlEL('statecode').html(myProfile[statecode]);
+      htmlEL('emailaddress1').html(myProfile.emailaddress1);
+      htmlEL('country').html((country || { name: 'N/A' }).name);
+      htmlEL('createdon').html(formatJoinDate);
+
+      //MORE COMPLEX
+      const checkConduct = myProfile[conduct];
+      const emoji = {
+         None: '😇',
+         Yellow: '😩',
+         Red: '😡',
+      };
+      const message = {
+         None: `All clear! You're as good as gold!`,
+         Yellow: `Proceed with caution! You're teetering on the edge of mischief!`,
+         Red: ` Danger zone! You've hit the red alert of naughtiness!`,
+      };
+      const titleCondcut = {
+         None: `Good: 🌟`,
+         Yellow: `Warning: ⚠️`,
+         Red: `Bad: 🚨`,
+      };
+      htmlEL('conductStatus').html(`${emoji[checkConduct]}`);
+      htmlEL('conductBehavior').attr('title', `${titleCondcut[checkConduct]}`);
+      initPopOver(message[checkConduct]);
    }
 }

@@ -40,15 +40,16 @@
                     <ul
                       class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
                       <li class="list-inline-item fw-medium">
-                        <i class="bx bx-pen"></i> Student
+                        <i class="bx bx-pen"></i> <span class="acctType"> Student</span>
                       </li>
                       <li class="list-inline-item fw-medium">
-                        <i class="bx bx-calendar-alt"></i> Joined April 2024
+                        <i class="bx bx-calendar-alt "></i> Joined: <span class="createdon"></span>
                       </li>
                     </ul>
                   </div>
-                  <a href="javascript:void(0)" class="btn btn-success text-nowrap">
-                    <i class="bx bx-user-check me-1"></i>Good Conduct
+                  <button  class="btn btn-primary text-nowrap conductBehavior" data-container="body" data-placement="center" title="Popover Title">
+                 
+                    <span style="font-size:25px;" class="conductStatus bx-tada"></span>
                   </a>
                 </div>
               </div>
@@ -78,7 +79,7 @@
         <div class="col-xl-3 col-lg-6 col-md-6">
           <!-- About User -->
           <div class="card mb-4">
-            <div class="card-body">
+            <div class="card-body " style="font-size:13px">
               <small class="text-muted text-uppercase">About</small>
               <ul class="list-unstyled mb-4 mt-3">
                 <li class="d-flex align-items-center mb-3">
@@ -87,18 +88,18 @@
                 </li>
                 <li class="d-flex align-items-center mb-3">
                   <i class="bx bx-check"></i><span class="fw-medium mx-2">Status:</span>
-                  <span>Active</span>
+                  <span class="statecode">Active</span>
                 </li>
                 <li class="d-flex align-items-center mb-3">
                   <i class="bx bx-star"></i><span class="fw-medium mx-2">Account Type:</span>
                   <span class="acctType"> Student</span>
                 </li>
                 <li class="d-flex align-items-center mb-3">
-                  <i class="bx bx-flag"></i><span class="fw-medium mx-2">Country:</span> <span>USA</span>
+                  <i class="bx bx-flag"></i><span class="fw-medium mx-2">Country:</span> <span class="country">USA</span>
                 </li>
                 <li class="d-flex align-items-center mb-3">
-                  <i class="bx bx-detail"></i><span class="fw-medium mx-2">Languages:</span>
-                  <span>English</span>
+                  <i class="bx bx-detail"></i><span class="fw-medium mx-2">Pref. Languages:</span>
+                  <span class="prefLanguage">English</span>
                 </li>
               </ul>
               <small class="text-muted text-uppercase">Contacts</small>
@@ -107,13 +108,11 @@
                   <i class="bx bx-phone"></i><span class="fw-medium mx-2">Contact:</span>
                   <span>(123) 456-7890</span>
                 </li>
-                <li class="d-flex align-items-center mb-3">
-                  <i class="bx bx-chat"></i><span class="fw-medium mx-2">Skype:</span>
-                  <span>john.doe</span>
-                </li>
-                <li class="d-flex align-items-center mb-3">
+         
+                <li class="d-flex align-items-center mb-3" style="font-size:13px">
                   <i class="bx bx-envelope"></i><span class="fw-medium mx-2">Email:</span>
-                  <span>john.doe@example.com</span>
+                 
+                  <span  class="emailaddress1">john.doe@example.com</span>
                 </li>
               </ul>
             </div>
