@@ -159,7 +159,6 @@ function onRegisterToWaitlist() {
       ...requestOptions(Join_to_waitlist_Create_Contact, contactData),
       success: function (data) {
          setItemStore('dynamicsAPIResultWaitlist', data);
-
          createEnrollmentWaitList();
       },
       error: function () {},

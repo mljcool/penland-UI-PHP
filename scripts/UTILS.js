@@ -173,7 +173,9 @@ function getProductionListStore() {
 }
 
 function getDataContactWaitlist() {
-   const waitList = parseStore(localStorage.getItem('dynamicsAPIResultWaitlist'));
+   const waitList = parseStore(
+      localStorage.getItem('dynamicsAPIResultWaitlist')
+   );
    return waitList;
 }
 
@@ -231,6 +233,11 @@ function getMyFullDetails() {
 
 function getUserTokenDetails() {
    const userToken = parseStore(localStorage.getItem('loginAccess'));
+   return userToken;
+}
+
+function getLoginDetails() {
+   const userToken = parseStore(localStorage.getItem('loginDetails'));
    return userToken;
 }
 
@@ -309,9 +316,6 @@ function computeValueOfCart() {
    $('.total-tuition-fee').html('$' + application);
    $('.due-now').html(converMoneyProperFormat(dueNow));
    $('.over-all-total').html(converMoneyProperFormat(dueNow));
-  
-   
-   
 }
 
 function generiErrorMessage() {
@@ -431,5 +435,74 @@ function PopulateOptionsAndForm() {
          );
       });
       PopulateForm();
+   }
+}
+
+function htmlEL(el) {
+   const htmlEL = el.split('_')[0] === 'id' ? '#' : '.';
+   return $(htmlEL + el);
+}
+
+function loadingEffect() {
+   $('#authenticate-card').block({
+      message: '<div class="spinner-border text-primary" role="status"></div>',
+      css: {
+         backgroundColor: 'transparent',
+         border: '0',
+      },
+      overlayCSS: {
+         backgroundColor: '#fff',
+         opacity: 0.8,
+      },
+   });
+}
+
+function wrappEntireHTML() {
+   $('html').block({
+      message: '<div class="spinner-border text-primary" role="status"></div>',
+      css: {
+         backgroundColor: 'transparent',
+         border: '0',
+      },
+      overlayCSS: {
+         backgroundColor: '#fff',
+         opacity: 0.8,
+      },
+   });
+}
+
+function getPATHNameURL(){
+   const newURL = window.location.pathname;
+   return  newURL.split('/');
+}
+
+function checkWordExists(str, word = 'login') {
+   let regex = new RegExp(`\\b${word}\\b`, 'i'); // 'i' makes it case-insensitive
+   return regex.test(str);
+}
+
+function redirectToDashboard() {
+   const data = getUserTokenDetails();
+   if (data) {
+      window.location.href = '/penland-web/dashboard-panel.php';
+   }
+}
+
+function redirectToLogin(lookIsDashboard = false){
+   const data = getUserTokenDetails();
+   if (!data && lookIsDashboard) {
+      window.location.href = '/penland-web/login.php';
+   }
+}
+
+function shapeMyProfile(){
+
+   const userDetails = getLoginDetails();
+   if(userDetails && userDetails.length){
+      const myProfile = userDetails[1];
+      const acctType = 'mshied_contacttype@OData.Community.Display.V1.FormattedValue';
+      htmlEL('u_fullname').html(myProfile.fullname);
+      htmlEL('acctType').html(myProfile['acctType']);
+
    }
 }

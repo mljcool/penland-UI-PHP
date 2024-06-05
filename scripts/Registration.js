@@ -147,7 +147,7 @@ function startRegistrationEnrollment() {
       const contactData = personalInfoPayload();
 
       $.ajax({
-         ...requestOptions(REGISTER_ACCOUNT, contactData),
+         ...requestOptions(Join_to_waitlist_Create_Contact, contactData),
          success: function (data) {
             console.log('Task 2 completed: ');
             console.log('dynamicsAPIResult:', data);

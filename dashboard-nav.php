@@ -442,8 +442,8 @@
                   </div>
                 </div>
                 <div class="flex-grow-1">
-                  <span class="fw-medium d-block">John Doe</span>
-                  <small class="text-muted">Student</small>
+                  <span class="fw-medium d-block u_fullname">John Doe</span>
+                  <small class="text-muted acctType">Student</small>
                 </div>
               </div>
             </a>
@@ -482,8 +482,8 @@
           <li>
             <a
               class="dropdown-item"
-              href="auth-login-cover.html"
-              target="_blank"
+              href="javascript:void(0)"
+              id="user-logout"
             >
               <i class="bx bx-power-off me-2"></i>
               <span class="align-middle">Log Out</span>

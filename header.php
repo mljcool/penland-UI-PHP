@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="./styles/Workshop-details.css" />
     <link rel="stylesheet" href="./styles/Search-workshops.css" />
     <link rel="stylesheet" href="./styles/Cart.css" />
+    <link rel="stylesheet" href="./styles/Login.css" />
     <link rel="stylesheet" href="./styles/New-student.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
@@ -83,3 +84,4 @@
     />
 
     <script src="https://js.stripe.com/v3/"></script>
+    

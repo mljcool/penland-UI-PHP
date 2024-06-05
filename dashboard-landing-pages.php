@@ -36,7 +36,7 @@
                 <div
                   class="d-flex align-items-md-end align-items-sm-start align-items-center justify-content-md-between justify-content-start mx-4 flex-md-row flex-column gap-4">
                   <div class="user-profile-info">
-                    <h4>John Doe</h4>
+                    <h4 class="u_fullname">John Doe</h4>
                     <ul
                       class="list-inline mb-0 d-flex align-items-center flex-wrap justify-content-sm-start justify-content-center gap-2">
                       <li class="list-inline-item fw-medium">
@@ -83,15 +83,15 @@
               <ul class="list-unstyled mb-4 mt-3">
                 <li class="d-flex align-items-center mb-3">
                   <i class="bx bx-user"></i><span class="fw-medium mx-2">Full Name:</span>
-                  <span>John Doe</span>
+                  <span class="u_fullname">John Doe</span>
                 </li>
                 <li class="d-flex align-items-center mb-3">
                   <i class="bx bx-check"></i><span class="fw-medium mx-2">Status:</span>
                   <span>Active</span>
                 </li>
                 <li class="d-flex align-items-center mb-3">
-                  <i class="bx bx-star"></i><span class="fw-medium mx-2">Role:</span>
-                  <span> Student</span>
+                  <i class="bx bx-star"></i><span class="fw-medium mx-2">Account Type:</span>
+                  <span class="acctType"> Student</span>
                 </li>
                 <li class="d-flex align-items-center mb-3">
                   <i class="bx bx-flag"></i><span class="fw-medium mx-2">Country:</span> <span>USA</span>
