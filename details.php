@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html  lang="en"
+  class="light-style "
+  dir="ltr"
+  data-theme="theme-default">
   <head>
   <?php 
     include_once('./header.php');

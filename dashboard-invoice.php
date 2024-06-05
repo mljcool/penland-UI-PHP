@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html  lang="en"
-  class="light-style layout-menu-fixed "
+  class="light-style  layout-menu-fixed "
   dir="ltr"
   data-theme="theme-default">
   <head>
@@ -11,7 +11,7 @@
   <body>
     <div class="container-fluid DashBoard-user-profile">
           <?php include_once('./dashboard-nav.php') ?>
-          <?php include_once('./dashboard-landing-pages.php') ?>
+          <?php include_once('./dashboard-invoice-list.php') ?>
 
     </div>
 

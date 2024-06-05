@@ -77,3 +77,4 @@
 <script src="./scripts/MAPPING.js"></script>
 <script src="./scripts/Auth.js"></script>
 <script src="./scripts/WaitList.js"></script>
+<script src="./scripts/InvoiceList.js"></script>

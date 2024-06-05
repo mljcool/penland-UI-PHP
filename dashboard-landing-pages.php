@@ -87,6 +87,10 @@
                   <span class="u_fullname">John Doe</span>
                 </li>
                 <li class="d-flex align-items-center mb-3">
+                  <i class="bx bx-user"></i><span class="fw-medium mx-2">Gender:</span>
+                  <span class="gendercode">N/A</span>
+                </li>
+                <li class="d-flex align-items-center mb-3">
                   <i class="bx bx-check"></i><span class="fw-medium mx-2">Status:</span>
                   <span class="statecode">Active</span>
                 </li>
@@ -105,8 +109,8 @@
               <small class="text-muted text-uppercase">Contacts</small>
               <ul class="list-unstyled mb-4 mt-3">
                 <li class="d-flex align-items-center mb-3">
-                  <i class="bx bx-phone"></i><span class="fw-medium mx-2">Contact:</span>
-                  <span>(123) 456-7890</span>
+                  <i class="bx bx-phone"></i><span class="fw-medium mx-2">Mobile:</span>
+                  <span class="mobilephone">(123) 456-7890</span>
                 </li>
          
                 <li class="d-flex align-items-center mb-3" style="font-size:13px">

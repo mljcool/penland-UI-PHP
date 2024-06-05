@@ -70,7 +70,7 @@
                 >
                   <i class="bx bx-pie-chart-alt-2 fs-4"></i>
                 </span>
-                <a href="index.html" class="stretched-link">Dashboard</a>
+                <a data-bs-toggle="modal" data-bs-target="#swinganimationModal" class="stretched-link">Dashboard</a>
                 <small class="text-muted mb-0">User Profile</small>
               </div>
               <div class="dropdown-shortcuts-item col">
@@ -79,7 +79,7 @@
                 >
                   <i class="bx bx-food-menu fs-4"></i>
                 </span>
-                <a  data-bs-toggle="modal" data-bs-target="#swinganimationModal" class="stretched-link"
+                <a  href="/penland-web/dashboard-invoice.php" class="stretched-link"
                   >Finance</a
                 >
                 <small class="text-muted mb-0">Payment & Invoice </small>
@@ -93,7 +93,7 @@
                 >
                   <i class="bx bx-calendar fs-4"></i>
                 </span>
-                <a href="app-calendar.html" class="stretched-link">Calendar</a>
+                <a data-bs-toggle="modal" data-bs-target="#swinganimationModal" class="stretched-link">Calendar</a>
                 <small class="text-muted mb-0">Events Calendar</small>
               </div>
 
@@ -104,7 +104,8 @@
                   <i class="bx bx-cog fs-4"></i>
                 </span>
                 <a
-                  href="pages-account-settings-account.html"
+                  data-bs-toggle="modal" 
+                  data-bs-target="#swinganimationModal"
                   class="stretched-link"
                   >Correspondences</a
                 >
@@ -118,7 +119,7 @@
                 >
                   <i class="bx bx-file-find fs-4"></i>
                 </span>
-                <a href="#" class="stretched-link">Files & Docs</a>
+                <a data-bs-toggle="modal" data-bs-target="#swinganimationModal" class="stretched-link">Files & Docs</a>
                 <small class="text-muted mb-0">View</small>
               </div>
               <div class="dropdown-shortcuts-item col">
@@ -127,7 +128,7 @@
                 >
                   <i class="bx bx-help-circle fs-4"></i>
                 </span>
-                <a href="#" class="stretched-link">Penland</a>
+                <a data-bs-toggle="modal" data-bs-target="#swinganimationModal" class="stretched-link">Penland</a>
                 <small class="text-muted mb-0">Community</small>
               </div>
             </div>
@@ -463,7 +464,7 @@
               <span class="align-middle">Settings</span>
             </a>
           </li>
-          <li>
+          <!-- <li>
             <a class="dropdown-item" href="pages-account-settings-billing.html">
               <span class="d-flex align-items-center align-middle">
                 <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
@@ -474,7 +475,7 @@
                 >
               </span>
             </a>
-          </li>
+          </li> -->
         
           <li>
             <div class="dropdown-divider"></div>

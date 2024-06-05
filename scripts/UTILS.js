@@ -533,12 +533,14 @@ function shapeMyProfile() {
       const country = COUNTRY.find(
          (_data) => _data.value === myProfile.address1_county
       );
+      const gendercode = 'gendercode@OData.Community.Display.V1.FormattedValue';
       const conduct =
          'hso_conductflag@OData.Community.Display.V1.FormattedValue';
-
       htmlEL('u_fullname').html(myProfile.fullname);
       htmlEL('acctType').html(myProfile[acctType]);
+      htmlEL('gendercode').html(myProfile[gendercode]);
       htmlEL('prefLanguage').html(myProfile[prefLanguage]);
+      htmlEL('mobilephone').html(myProfile.mobilephone);
       htmlEL('statecode').html(myProfile[statecode]);
       htmlEL('emailaddress1').html(myProfile.emailaddress1);
       htmlEL('country').html((country || { name: 'N/A' }).name);
