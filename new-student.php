@@ -18,7 +18,7 @@
       
       </div>
 
-      <div class="row new-student-form">
+      <div class="row new-student-form cast-new-student-form">
         <div
           class="bs-stepper vertical wizard-modern wizard-modern-vertical wizard-numbered  mt-2 card mb-4"
           id="multiStepsValidation"

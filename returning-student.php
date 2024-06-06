@@ -18,7 +18,7 @@
       
       </div>
 
-      <div class="row new-student-form">
+      <div class="row new-student-form cast-returning-student-form">
         <div
           class="bs-stepper vertical wizard-modern wizard-modern-vertical wizard-numbered  mt-2 card mb-4"
           id="multiStepsValidation"
@@ -86,7 +86,7 @@
             </div>
           </div>
           <div class="bs-stepper-content" style="background:#fafafa;">
-            <form id="multiStepsForm" onSubmit="return false">
+            <form id="multiStepsFormReturningStudent" onSubmit="return false">
          
               <!-- Housing Details -->
               <?php include_once('./form-housing-details.php'); ?>

@@ -199,10 +199,7 @@ $(document).ready(function () {
 
    $('.on-continue-registration').click(function () {
       const myCartDetails = getMyCartDetails();
-      // if (!myCartDetails.payType) {
-      //    MessateAlertIformation();
-      //    return;
-      // }
+      
       if (myCartDetails.items.length === 0) {
          MessateAlertIformationCart();
          return;

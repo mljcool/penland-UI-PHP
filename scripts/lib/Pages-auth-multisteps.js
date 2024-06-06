@@ -11,6 +11,11 @@ $(function () {
       });
 }),
    document.addEventListener('DOMContentLoaded', function (e) {
+      const isNewStudentform = $('.cast-new-student-form');
+      console.log(isNewStudentform.length);
+      if (!isNewStudentform.length) {
+         return;
+      }
       var n = document.querySelector('#multiStepsValidation');
       if (null !== n) {
          var a = n.querySelector('#multiStepsForm');
