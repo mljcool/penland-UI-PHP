@@ -527,7 +527,7 @@ function shapeMyProfile() {
       const prefLanguage =
          'mshied_preferredlanguage@OData.Community.Display.V1.FormattedValue';
       const formatJoinDate = moment(myProfile.createdon).format(
-         'dddd, MMMM D, YYYY h:mm A'
+         'dddd, MMMM D, YYYY'
       );
       const country = COUNTRY.find(
          (_data) => _data.value === myProfile.address1_county
@@ -558,9 +558,9 @@ function shapeMyProfile() {
          Red: ` Danger zone! You've hit the red alert of naughtiness!`,
       };
       const titleCondcut = {
-         None: `Good: 🌟`,
-         Yellow: `Warning: ⚠️`,
-         Red: `Bad: 🚨`,
+         None: `Good: 🌟 (None)`,
+         Yellow: `Warning: ⚠️ (Yellow)`,
+         Red: `Bad: 🚨 (Red)`,
       };
       htmlEL('conductStatus').html(`${emoji[checkConduct]}`);
       htmlEL('conductBehavior').attr('title', `${titleCondcut[checkConduct]}`);

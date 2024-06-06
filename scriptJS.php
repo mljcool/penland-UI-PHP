@@ -20,7 +20,6 @@
 <script src="./scripts/lib/Config.js"></script>
 
 <script src="./scripts/lib/Datatables-bootstrap5.js"></script>
-<script src="./scripts/lib/Tables-datatables-basic.js"></script>
 
 
 <script src="./scripts/lib/Main.js"></script>
@@ -79,3 +78,4 @@
 <script src="./scripts/WaitList.js"></script>
 <script src="./scripts/InvoiceList.js"></script>
 <script src="./scripts/InvoiceProducts.js"></script>
+<script src="./scripts/DashBoardWorkshop.js"></script>

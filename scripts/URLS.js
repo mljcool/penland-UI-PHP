@@ -26,7 +26,6 @@ var REGISTRATION = `https://prod-129.westus.logic.azure.com:443/workflows/85a10d
 
 var SALES_ORDER = `https://prod-142.westus.logic.azure.com:443/workflows/430163216bb54dd9bee534a9a4c99cae/triggers/manual/paths/invoke?api-version=2016-06-01`;
 
-
 var GET_Detailed_Workshop_Session = `https://prod-107.westus.logic.azure.com:443/workflows/0bf0e4632ab441cfbee1799c25538e6a/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=sa-gxcVurjjNMl1mxnAnp6UnCufrJT9gnQHrJFVoeTU`;
 
 var Registration_Enrollment_Portal = `https://prod-129.westus.logic.azure.com:443/workflows/85a10d559c424dfeadadde34b9a89c2f/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=BJo0PzkhSKjmCbuAvrkRQNkQ4ZOKHAHO7cfLpbJ0n3w`;
@@ -37,13 +36,12 @@ var Registration_Add_Products_to_Sales_Order = `https://prod-98.westus.logic.azu
 
 var GET_Workshop_Images = `https://prod-159.westus.logic.azure.com:443/workflows/dbac0728b4c040088b390edf9139187d/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=DXt8e5JkYzd_SERAsT3Tq-xSDSzUkszc6dKMk4PBatE`;
 
+var Join_to_waitlist_Create_Contact = `https://prod-106.westus.logic.azure.com:443/workflows/c5aba1e262fb4aafba98e4363fb17d09/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=woM7Az3_W57fCYZK57sUk86i27KUMTF5vNk4bcttCMU`;
 
-var Join_to_waitlist_Create_Contact = `https://prod-106.westus.logic.azure.com:443/workflows/c5aba1e262fb4aafba98e4363fb17d09/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=woM7Az3_W57fCYZK57sUk86i27KUMTF5vNk4bcttCMU`
+var Join_to_waitlist_Create_Enrollment = `https://prod-47.westus.logic.azure.com:443/workflows/a84c7189adc2437ebb36a04417929d69/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ug9k5rQx-SVynAbis4IndfKzFBN_20i_Wjbb3axO2Lk`;
 
-
-var Join_to_waitlist_Create_Enrollment  = `https://prod-47.westus.logic.azure.com:443/workflows/a84c7189adc2437ebb36a04417929d69/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ug9k5rQx-SVynAbis4IndfKzFBN_20i_Wjbb3axO2Lk`;
-
-var Destroy_User_Credentials_Token  = `https://prod-75.westus.logic.azure.com:443/workflows/41753931e4124b14ba13bdf0939b124d/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=obFfD-FTfb5dkXdK4u7oievOm-GUJ1KeXARizoKqtKI`;
-
+var Destroy_User_Credentials_Token = `https://prod-75.westus.logic.azure.com:443/workflows/41753931e4124b14ba13bdf0939b124d/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=obFfD-FTfb5dkXdK4u7oievOm-GUJ1KeXARizoKqtKI`;
 
 var Get_User_Invoices = `https://prod-25.westus.logic.azure.com:443/workflows/9ab8b338b1bc45eb883024845a7ce1c3/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=rXginQwXSfUGuM1BnieNRnKzE8KU1ZMKDp2J1XiSm2I`;
+
+var Get_User_Workshops_Enrollment = `https://prod-53.westus.logic.azure.com:443/workflows/141b992e797e4dcf93cd16dd5836dc61/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=tm-_dB225NpKrqaszFVz-wXMsg6qUXsHSfGl9ssWx_4`;
