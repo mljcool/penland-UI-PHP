@@ -256,6 +256,14 @@ function getCurrenIndex() {
    return (dataToDynamics || {}).formWizardCurrentSteps;
 }
 
+// CURRENT FOR WAITLIST ONLY
+function getUserDetailsStore() {
+   if (checkHasSession()) {
+      return getLoginDetails()[1];
+   }
+   return getDataContactWaitlist();
+}
+
 function getMyCartDetails() {
    const myDetails = parseStore(localStorage.getItem('myDetails'));
    return (myDetails || {}).paymentDetails;
@@ -379,6 +387,24 @@ function generateToken(n = 32) {
    return token;
 }
 
+function initializePopOverAndToolTips() {
+   const popoverTriggerList = [].slice.call(
+      document.querySelectorAll('[data-bs-toggle="popover"]')
+   );
+   popoverTriggerList.map(function (popoverTriggerEl) {
+      return new bootstrap.Popover(popoverTriggerEl, {
+         html: true,
+         sanitize: false,
+      });
+   });
+   var tooltipTriggerList = [].slice.call(
+      document.querySelectorAll('[data-bs-toggle="tooltip"]')
+   );
+   tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl);
+   });
+}
+
 function PopulateOptionsAndForm() {
    const homeLanguage = $('.dd-mshied_homelanguage');
    const raceEthicityEl = $('.dd-mshied_race_');
@@ -492,7 +518,7 @@ function redirectToDashboard() {
    }
 }
 
-function loginPage(){
+function loginPage() {
    window.location.href = '/penland-web/login.php';
 }
 
@@ -505,6 +531,11 @@ function redirectToLogin(lookIsDashboard = false, ifSomeBreach) {
    if (!data && lookIsDashboard) {
       loginPage();
    }
+}
+
+function checkHasSession() {
+   const data = getUserTokenDetails();
+   return 'cr711_tokenid' in data && !!data.cr711_tokenid;
 }
 
 function initPopOver(content) {

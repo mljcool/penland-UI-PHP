@@ -1,6 +1,13 @@
+function getUserDetailsFirstname() {
+   if (checkHasSession()) {
+      return getLoginDetails()[1].firstname;
+   }
+   const userDetails = getUserDetailsStoreForPrefix();
+   return userDetails.personalInfo.contact.firstname;
+}
+
 function setCodePrefixWaitList(data) {
-   const userDetails = getMyDynamicDetails();
-   const userFirstName = userDetails.personalInfo.contact.firstname;
+   const userFirstName = getUserDetailsFirstname();
    const attr = `_hso_setaworkshop_value@OData.Community.Display.V1.FormattedValue`;
    const codex = userFirstName + '-' + data.workShopOverview[attr];
    return codex;
@@ -71,7 +78,7 @@ function loadingBlockUIWaitList() {
 
 function displayMessage() {
    $('.waiting-list-container').unblock();
-   const data = getDataContactWaitlist();
+   const data = getUserDetailsStore();
    console.log('fullname', data.fullname);
    $('.waiting-list-container').block({
       message: HTMLMessageWaitList(data.fullname),
@@ -90,14 +97,22 @@ function displayMessage() {
    });
 }
 
+function contactDetailsBySession() {
+   if (checkHasSession()) {
+      const data = getUserTokenDetails();
+      return `contacts(${data.contactID})`;
+   }
+   const waitlistData = getDataContactWaitlist();
+   return waitlistData['@odata.editLink'];
+}
+
 function waitListEnrollmentPayload() {
    const _data = getCurrentSelectedWorkShop();
-   const waitlistData = getDataContactWaitlist();
    const overView = _data.workShopOverview;
    const PORTAL = 1;
    const payload = {
       hso_processtype: PORTAL,
-      mshied_studentid: waitlistData['@odata.editLink'],
+      mshied_studentid: contactDetailsBySession(),
       mshied_begindate: _data.mshied_startdate,
       mshied_enddate: _data.mshied_enddate,
       mshied_name: setCodePrefixWaitList(_data),
@@ -141,7 +156,6 @@ function createEnrollmentWaitList() {
          console.log('Task 6 completed: ');
          console.log('enrollmentData:', data);
          setItemStore('enrollmentDataWaitlist', data);
-
          displayMessage();
       },
       complete: function () {
@@ -166,8 +180,15 @@ function onRegisterToWaitlist() {
 }
 
 $(document).ready(function () {
+   if (checkHasSession()) {
+      $('#for-guest-only').css('display', 'none');
+   }
    $('.on-continue-waitlist-program').click(function () {
       loadingBlockUIWaitList();
+      if (checkHasSession()) {
+         createEnrollmentWaitList();
+         return;
+      }
       onRegisterToWaitlist();
    });
 });

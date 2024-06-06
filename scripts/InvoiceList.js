@@ -1,4 +1,4 @@
-function DataTable(apiData) {
+function DataTableInvoiceList(apiData) {
    var a,
       e = $('.invoice-list-table');
    e.length &&
@@ -194,6 +194,48 @@ function DataTable(apiData) {
       }, 300);
 }
 
+function formatInvoiceListData(response = []) {
+   const formatted = 'statecode@OData.Community.Display.V1.FormattedValue';
+   const pricelevelidValue =
+      '_pricelevelid_value@OData.Community.Display.V1.FormattedValue';
+   const responseMap = response.map((_data) => ({
+      name: _data.name,
+      invoice_id: _data.invoicenumber,
+      invoiceID: _data.invoiceid,
+      issued_date: moment(_data.createdon).format('MMM DD, YYYY'),
+      price_list: _data[pricelevelidValue],
+      total: _data.totalamount,
+      invoice_status: _data[formatted],
+      invoice_stateCode: _data[formatted],
+      balance: _data.totalamount,
+      due_date: moment(_data.createdon).format('MMM DD, YYYY'),
+      action: 1,
+   }));
+   console.log('responseMap', responseMap);
+   const totalInvoices = responseMap.length;
+   const computes = (total, obj) => {
+      total.balance += obj.balance;
+      return total;
+   };
+   const overAllAmount = responseMap.reduce(computes, {
+      balance: 0,
+   }).balance;
+
+   const overAllAmountPaid = responseMap
+      .filter((_data) => _data.invoice_status === 'Paid')
+      .reduce(computes, { balance: 0 }).balance;
+   const fomatAmmount = converMoneyProperFormat(overAllAmount);
+   const fomatAmmountPaid = converMoneyProperFormat(overAllAmountPaid);
+   htmlEL('overAllAmount').html(fomatAmmount);
+   htmlEL('overAllAmountPaid').html(fomatAmmountPaid);
+   htmlEL('totalInvoices').html(totalInvoices);
+   console.log('overAllAmount', overAllAmount);
+
+   setTimeout(() => {
+      DataTableInvoiceList((responseMap = []));
+   }, 500);
+}
+
 function getInvoiceList(customerID = '') {
    const jsonData = {
       requestParams: {
@@ -202,6 +244,8 @@ function getInvoiceList(customerID = '') {
       },
    };
 
+   let isEmpty = false;
+
    $.get({
       url: Get_User_Invoices,
       data: jsonData,
@@ -209,49 +253,16 @@ function getInvoiceList(customerID = '') {
       success: function (response = []) {
          console.log('getInvoiceList', response);
          if (response.length) {
-            const formatted =
-               'statecode@OData.Community.Display.V1.FormattedValue';
-            const pricelevelidValue =
-               '_pricelevelid_value@OData.Community.Display.V1.FormattedValue';
-            const responseMap = response.map((_data) => ({
-               name: _data.name,
-               invoice_id: _data.invoicenumber,
-               invoiceID: _data.invoiceid,
-               issued_date: moment(_data.createdon).format('MMM DD, YYYY'),
-               price_list: _data[pricelevelidValue],
-               total: _data.totalamount,
-               invoice_status: _data[formatted],
-               invoice_stateCode: _data[formatted],
-               balance: _data.totalamount,
-               due_date: moment(_data.createdon).format('MMM DD, YYYY'),
-               action: 1,
-            }));
-            console.log('responseMap', responseMap);
-            const totalInvoices = responseMap.length;
-            const computes = (total, obj) => {
-               total.balance += obj.balance;
-               return total;
-            };
-            const overAllAmount = responseMap.reduce(computes, {
-               balance: 0,
-            }).balance;
-
-            const overAllAmountPaid = responseMap
-               .filter((_data) => _data.invoice_status === 'Paid')
-               .reduce(computes, { balance: 0 }).balance;
-            const fomatAmmount = converMoneyProperFormat(overAllAmount);
-            const fomatAmmountPaid = converMoneyProperFormat(overAllAmountPaid);
-            htmlEL('overAllAmount').html(fomatAmmount);
-            htmlEL('overAllAmountPaid').html(fomatAmmountPaid);
-            htmlEL('totalInvoices').html(totalInvoices);
-            console.log('overAllAmount', overAllAmount);
-
-            DataTable(responseMap);
+            formatInvoiceListData(response);
          }
+         isEmpty = !response.length;
       },
       complete: function (data) {
          setTimeout(() => {
             $('.invoicelist_card').unblock();
+            if (isEmpty) {
+               DataTableInvoiceList([]);
+            }
          }, 1000);
       },
       error: function (xhr, status, error) {},
@@ -310,8 +321,32 @@ function shapeInvoiceDetails(invoiceData = []) {
    }
 }
 
+function formatInvoiceDetailsData(response = []) {
+   shapeInvoiceDetails(response);
+
+   const ifNomanualdiscountamount = (discount) => {
+      return !!discount ? discount : '$0';
+   };
+   const productOnly = response.slice(1).map((_data) => ({
+      name: _data.invoicedetailname,
+      unit: _data['_uomid_value@OData.Community.Display.V1.FormattedValue'],
+      price: _data['priceperunit@OData.Community.Display.V1.FormattedValue'],
+      qty: _data['quantity'],
+      discount: ifNomanualdiscountamount(
+         _data['manualdiscountamount@OData.Community.Display.V1.FormattedValue']
+      ),
+      amount: _data['extendedamount@OData.Community.Display.V1.FormattedValue'],
+   }));
+   console.log('productOnly', productOnly);
+   setTimeout(() => {
+      DataTableProductList((productOnly = []));
+   }, 500);
+}
+
 function invoiceDetails() {
    const invoiceID = getURLParameters('invoiceID');
+   let isEmpty = false;
+
    if (invoiceID) {
       const jsonData = {
          requestParams: {
@@ -326,33 +361,9 @@ function invoiceDetails() {
          contentType: 'application/json',
          success: function (response = []) {
             if (response.length) {
-               shapeInvoiceDetails(response);
-
-               const ifNomanualdiscountamount = (discount) => {
-                  return !!discount ? discount : '$0';
-               };
-               const productOnly = response.slice(1).map((_data) => ({
-                  name: _data.invoicedetailname,
-                  unit: _data[
-                     '_uomid_value@OData.Community.Display.V1.FormattedValue'
-                  ],
-                  price: _data[
-                     'priceperunit@OData.Community.Display.V1.FormattedValue'
-                  ],
-                  qty: _data['quantity'],
-                  discount: ifNomanualdiscountamount(
-                     _data[
-                        'manualdiscountamount@OData.Community.Display.V1.FormattedValue'
-                     ]
-                  ),
-                  amount:
-                     _data[
-                        'extendedamount@OData.Community.Display.V1.FormattedValue'
-                     ],
-               }));
-               console.log('productOnly', productOnly);
-               DataTableProductList(productOnly);
+               formatInvoiceDetailsData(response);
             }
+            isEmpty = !response.length;
             console.log('invoiceDetails', response);
          },
          complete: function (data) {},
@@ -361,21 +372,11 @@ function invoiceDetails() {
    }
 }
 
-function initializePopOver() {
-   const popoverTriggerList = [].slice.call(
-      document.querySelectorAll('[data-bs-toggle="popover"]')
-   );
-   popoverTriggerList.map(function (popoverTriggerEl) {
-      return new bootstrap.Popover(popoverTriggerEl, {
-         html: true,
-         sanitize: false,
-      });
-   });
-}
+
 
 $(document).ready(function () {
    invoiceDetails();
-   initializePopOver();
+   initializePopOverAndToolTips();
    const isInvoicePage = $('.invoice-list-table');
    if (isInvoicePage.length) {
       AddloadingToInvoice();
@@ -383,10 +384,4 @@ $(document).ready(function () {
       console.log('userDetails', data);
       getInvoiceList(data.contactID);
    }
-   var tooltipTriggerList = [].slice.call(
-      document.querySelectorAll('[data-bs-toggle="tooltip"]')
-   );
-   tooltipTriggerList.map(function (tooltipTriggerEl) {
-      return new bootstrap.Tooltip(tooltipTriggerEl);
-   });
 });

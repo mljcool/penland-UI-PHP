@@ -105,30 +105,26 @@ function DataTableWorkshopList(workShopData = []) {
                      render: function (e, t, a, s) {
                         var a = a.status,
                            n = {
-                              'Current': {
+                              Current: {
                                  title: 'Current',
                                  class: 'bg-label-primary',
                               },
-                              'Complete': {
+                              Complete: {
                                  title: 'Complete',
                                  class: ' bg-label-success',
                               },
-                              'Drop': {
+                              Drop: {
                                  title: 'Drop',
                                  class: ' bg-label-danger',
                               },
-                              'Waitlisted': {
+                              Waitlisted: {
                                  title: 'Waitlisted',
                                  class: ' bg-label-warning',
                               },
-                              'None': {
-                                title: 'Not set',
-                                class: ' bg-label-secondary',
-                             },
-                            //   5: {
-                            //      title: 'Pending',
-                            //      class: ' bg-label-warning',
-                            //   },
+                              None: {
+                                 title: 'Not set',
+                                 class: ' bg-label-secondary',
+                              },
                            };
                         return void 0 === n[a]
                            ? e
@@ -354,9 +350,110 @@ function DataTableWorkshopList(workShopData = []) {
          101);
 }
 
+function formatDataToAllocateTableWorkshops(response = []) {
+   const workshopName = `_mshied_courseid_value@OData.Community.Display.V1.FormattedValue`;
+
+   const enrollMent = '#Microsoft.Dynamics.CRM.mshied_coursehistory';
+   const mshied_course = '#Microsoft.Dynamics.CRM.mshied_course';
+
+   const instructorName = `_hso_instructor_value@OData.Community.Display.V1.FormattedValue`;
+
+   const regStatus = `_mshied_registrationstatusid_value@OData.Community.Display.V1.FormattedValue`;
+
+   const courses = response.filter(
+      (_data) => _data['@odata.type'] === mshied_course
+   );
+   const workshopEnrollment = response.filter(
+      (_data) => _data['@odata.type'] === enrollMent
+   );
+
+   console.log('courses', courses);
+   console.log('workshopEnrollment', workshopEnrollment);
+
+   const getCourseDetails = (courseid = '') => {
+      return courses.find((_data) => _data.mshied_courseid);
+   };
+   const formatDates = (data, key) => {
+      const dateFormatted = moment(data[key]).format('MMMM D, YYYY');
+      return dateFormatted;
+   };
+
+   const remapData = workshopEnrollment.map((_data) => ({
+      id: _data.mshied_coursehistoryid,
+      avatar: '',
+      instructorDisplayName: getCourseDetails(_data._mshied_courseid_value)[
+         instructorName
+      ],
+      workShopName: _data[workshopName],
+      post: _data.mshied_name,
+      city: 'Krasnosilka',
+      start_date: formatDates(
+         getCourseDetails(_data._mshied_courseid_value),
+         'mshied_startdate'
+      ),
+      end_date: formatDates(
+         getCourseDetails(_data._mshied_courseid_value),
+         'mshied_enddate'
+      ),
+      age: '61',
+      experience: '1 Year',
+      status: !!_data[regStatus] ? _data[regStatus] : 'None',
+   }));
+
+   setTimeout(() => {
+      DataTableWorkshopList(remapData);
+   }, 800);
+}
+
+function workShopDashboardBLockUI(html, isAJAx = true) {
+   $('.workshoplist_card').block({
+      message: html,
+      css: {
+         backgroundColor: 'transparent',
+         border: '0',
+         cursor: isAJAx ? 'wait' : 'default',
+      },
+      overlayCSS: {
+         backgroundColor: '#fff',
+         opacity: 0.8,
+         cursor: isAJAx ? 'wait' : 'default',
+      },
+   });
+}
+
+function AddEmptyBlockUIMessage() {
+   workShopDashboardBLockUI(
+      `<div class="card">
+      <div class="card-body">
+         <h5 class="card-title">
+         <i class='bx bx-note'></i>
+         Your workshop items list is empty. </h5>
+         <a href="/penland-web" class="btn btn-primary">Browse more workshop.</a>
+      </div>
+   
+   </div>`,
+      false
+   );
+}
+
+function AddloadingToMyWorkshopList() {
+   workShopDashboardBLockUI(
+      `<div class="d-flex justify-content-center">
+        <div class="sk-chase sk-primary">
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            </div>
+        </div>`);
+}
+
 function GetMyWorkShops() {
    const data = getUserTokenDetails();
    console.log('datadata', data);
+   let isEmpty = false;
    if (data && data.contactID) {
       const jsonData = {
          requestParams: {
@@ -370,92 +467,24 @@ function GetMyWorkShops() {
          contentType: 'application/json',
          success: function (response = []) {
             if (response.length) {
-               const workshopName = `_mshied_courseid_value@OData.Community.Display.V1.FormattedValue`;
-
-               const enrollMent =
-                  '#Microsoft.Dynamics.CRM.mshied_coursehistory';
-               const mshied_course = '#Microsoft.Dynamics.CRM.mshied_course';
-
-               const instructorName = `_hso_instructor_value@OData.Community.Display.V1.FormattedValue`;
-            
-               const regStatus = `_mshied_registrationstatusid_value@OData.Community.Display.V1.FormattedValue`;
-
-               const courses = response.filter(
-                  (_data) => _data['@odata.type'] === mshied_course
-               );
-               const workshopEnrollment = response.filter(
-                  (_data) => _data['@odata.type'] === enrollMent
-               );
-
-               console.log('courses', courses);
-               console.log('workshopEnrollment', workshopEnrollment);
-
-               const getCourseDetails = (courseid = '') => {
-                  return courses.find((_data) => _data.mshied_courseid);
-               };
-               const formatDates = (data, key) => {
-                  const dateFormatted = moment(data[key]).format(
-                     'MMMM D, YYYY'
-                  );
-                  return dateFormatted;
-               };
-
-               const remapData = workshopEnrollment.map((_data) => ({
-                  id: _data.mshied_coursehistoryid,
-                  avatar: '',
-                  instructorDisplayName: getCourseDetails(
-                     _data._mshied_courseid_value
-                  )[instructorName],
-                  workShopName: _data[workshopName],
-                  post: _data.mshied_name,
-                  city: 'Krasnosilka',
-                  start_date: formatDates(
-                     getCourseDetails(_data._mshied_courseid_value),
-                     'mshied_startdate'
-                  ),
-                  end_date: formatDates(
-                     getCourseDetails(_data._mshied_courseid_value),
-                     'mshied_enddate'
-                  ),
-                  age: '61',
-                  experience: '1 Year',
-                  status: !!_data[regStatus] ? _data[regStatus]: 'None',
-               }));
-
-               setTimeout(() => {
-                  DataTableWorkshopList(remapData);
-               }, 800);
+               formatDataToAllocateTableWorkshops(response);
+            } else {
+               isEmpty = true;
             }
          },
          complete: function (data) {
-            $('.workshoplist_card').unblock();
+            setTimeout(() => {
+               $('.workshoplist_card').unblock();
+               if(isEmpty){
+                   AddEmptyBlockUIMessage();
+               }
+            }, 1000);
          },
          error: function (xhr, status, error) {},
       });
    }
 }
 
-function AddloadingToMyWorkshopList() {
-   $('.workshoplist_card').block({
-      message: `<div class="d-flex justify-content-center">
-                     <div class="sk-wave sk-primary">
-                         <div class="sk-wave-rect"></div>
-                         <div class="sk-wave-rect"></div>
-                         <div class="sk-wave-rect"></div>
-                         <div class="sk-wave-rect"></div>
-                         <div class="sk-wave-rect"></div>
-                     </div>
-               </div>`,
-      css: {
-         backgroundColor: 'transparent',
-         border: '0',
-      },
-      overlayCSS: {
-         backgroundColor: '#fff',
-         opacity: 0.8,
-      },
-   });
-}
 $(document).ready(function () {
    AddloadingToMyWorkshopList();
    GetMyWorkShops();

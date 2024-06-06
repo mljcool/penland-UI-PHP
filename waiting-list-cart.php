@@ -56,7 +56,7 @@
                     </ul>
 
                     <!-- Wishlist -->
-                    <div class="list-group">
+                    <div id="for-guest-only" class="list-group">
                         <li class="list-group-item p4">
                             <div id="personalInfoValidation" class="content ">
                                 <div class="content-header mb-3">
