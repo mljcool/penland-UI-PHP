@@ -153,10 +153,9 @@ function filterByDateRange(array, startDate, endDate) {
    });
 }
 
-function getURLParameters() {
+function getURLParameters(queryID = 'workshopID') {
    const urlParams = new URLSearchParams(window.location.search);
-   const workshopID = urlParams.get('workshopID');
-   return workshopID;
+   return  urlParams.get(queryID);
 }
 
 function parseStore(data) {
@@ -514,7 +513,7 @@ function initPopOver(content) {
       })
       .on('click', function () {
          $(this).popover('show');
-      })
+      });
 }
 
 function shapeMyProfile() {

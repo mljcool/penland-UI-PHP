@@ -78,3 +78,4 @@
 <script src="./scripts/Auth.js"></script>
 <script src="./scripts/WaitList.js"></script>
 <script src="./scripts/InvoiceList.js"></script>
+<script src="./scripts/InvoiceProducts.js"></script>

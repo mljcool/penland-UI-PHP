@@ -70,7 +70,7 @@
                 >
                   <i class="bx bx-pie-chart-alt-2 fs-4"></i>
                 </span>
-                <a data-bs-toggle="modal" data-bs-target="#swinganimationModal" class="stretched-link">Dashboard</a>
+                <a href="/penland-web/dashboard-panel.php"  class="stretched-link">Dashboard</a>
                 <small class="text-muted mb-0">User Profile</small>
               </div>
               <div class="dropdown-shortcuts-item col">

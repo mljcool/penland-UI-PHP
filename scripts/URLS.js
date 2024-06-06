@@ -44,3 +44,6 @@ var Join_to_waitlist_Create_Contact = `https://prod-106.westus.logic.azure.com:4
 var Join_to_waitlist_Create_Enrollment  = `https://prod-47.westus.logic.azure.com:443/workflows/a84c7189adc2437ebb36a04417929d69/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ug9k5rQx-SVynAbis4IndfKzFBN_20i_Wjbb3axO2Lk`;
 
 var Destroy_User_Credentials_Token  = `https://prod-75.westus.logic.azure.com:443/workflows/41753931e4124b14ba13bdf0939b124d/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=obFfD-FTfb5dkXdK4u7oievOm-GUJ1KeXARizoKqtKI`;
+
+
+var Get_User_Invoices = `https://prod-25.westus.logic.azure.com:443/workflows/9ab8b338b1bc45eb883024845a7ce1c3/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=rXginQwXSfUGuM1BnieNRnKzE8KU1ZMKDp2J1XiSm2I`;

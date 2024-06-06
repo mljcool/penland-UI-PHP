@@ -75,7 +75,7 @@
                                         <div class="d-flex justify-content-between align-items-start">
                                             <div>
                                                 <h3 class="mb-1">$876</h3>
-                                                <p class="mb-0">Unpaid</p>
+                                                <p class="mb-0">Total Amount</p>
                                             </div>
                                             <div class="avatar">
                                                 <span class="avatar-initial rounded bg-label-secondary">
@@ -98,15 +98,15 @@
                 <div class="col-lg-12 col-md-12">
                     <!-- Projects table -->
                     <!-- DataTable with Buttons -->
-                    <div class="card">
+                    <div class="card invoicelist_card" style="min-height:400px;">
                         <div class="card-datatable table-responsive">
                             <table class="invoice-list-table table border-top">
                                 <thead>
                                     <tr>
                                         <th></th>
                                         <th>Invoice ID</th>
-                                        <th><i class='bx bx-trending-up'></i></th>
-                                        <th>Price List</th>
+                                        <th>Invoice Name</th>
+                                        <th>Session Price List</th>
                                         <th>Total</th>
                                         <th class="text-truncate">Issued Date</th>
                                         <th>Balance</th>

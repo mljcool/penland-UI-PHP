@@ -1,24 +1,96 @@
-<div class="d-flex align-items-center">
-    <a
-      href="app-invoice-preview.html"
-      data-bs-toggle="tooltip"
-      class="text-body"
-      data-bs-placement="top"
-      title="Preview Invoice"
-      ><i class="bx bx-show mx-1"></i
-   ></a>
-   <div class="dropdown">
-      <a
-         href="javascript:;"
-         class="btn dropdown-toggle hide-arrow text-body p-0"
-         data-bs-toggle="dropdown"
-         ><i class="bx bx-dots-vertical-rounded"></i
-      ></a>
-      <div class="dropdown-menu dropdown-menu-end">
-         <a href="javascript:;" class="dropdown-item">Download</a>
-         <a href="app-invoice-edit.html" class="dropdown-item">Edit</a>
-         <div class="dropdown-divider"></div>
-         <a href="javascript:;" class="dropdown-item delete-record text-danger">Delete</a>
-      </div>
-   </div>
+<div class="row">
+    <div class="col-xl-3 col-lg-6 col-md-6">
+        <!-- About User -->
+        <div class="card mb-4">
+            <div class="card-body " style="font-size:13px">
+                <small class="text-muted text-uppercase">About</small>
+                <ul class="list-unstyled mb-4 mt-3">
+                    <li class="d-flex align-items-center mb-3">
+                        <i class="bx bx-user"></i><span class="fw-medium mx-2">Full Name:</span>
+                        <span class="u_fullname">John Doe</span>
+                    </li>
+                    <li class="d-flex align-items-center mb-3">
+                        <i class="bx bx-user"></i><span class="fw-medium mx-2">Gender:</span>
+                        <span class="gendercode">N/A</span>
+                    </li>
+                    <li class="d-flex align-items-center mb-3">
+                        <i class="bx bx-check"></i><span class="fw-medium mx-2">Status:</span>
+                        <span class="statecode">Active</span>
+                    </li>
+                    <li class="d-flex align-items-center mb-3">
+                        <i class="bx bx-star"></i><span class="fw-medium mx-2">Account Type:</span>
+                        <span class="acctType"> Student</span>
+                    </li>
+                    <li class="d-flex align-items-center mb-3">
+                        <i class="bx bx-flag"></i><span class="fw-medium mx-2">Country:</span> <span
+                            class="country">USA</span>
+                    </li>
+                    <li class="d-flex align-items-center mb-3">
+                        <i class="bx bx-detail"></i><span class="fw-medium mx-2">Pref. Languages:</span>
+                        <span class="prefLanguage">English</span>
+                    </li>
+                </ul>
+                <small class="text-muted text-uppercase">Contacts</small>
+                <ul class="list-unstyled mb-4 mt-3">
+                    <li class="d-flex align-items-center mb-3">
+                        <i class="bx bx-phone"></i><span class="fw-medium mx-2">Mobile:</span>
+                        <span class="mobilephone">(123) 456-7890</span>
+                    </li>
+
+                    <li class="d-flex align-items-center mb-3" style="font-size:13px">
+                        <i class="bx bx-envelope"></i><span class="fw-medium mx-2">Email:</span>
+
+                        <span class="emailaddress1">john.doe@example.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--/ About User -->
+        <!-- Profile Overview -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <small class="text-muted text-uppercase">Overview</small>
+                <ul class="list-unstyled mt-3 mb-0">
+                    <li class="d-flex align-items-center mb-3">
+                        <i class="bx bx-check"></i><span class="fw-medium mx-2">Completed Workshops:</span>
+                        <span>99</span>
+                    </li>
+                    <li class="d-flex align-items-center mb-3">
+                        <i class="bx bx-check"></i><span class="fw-medium mx-2">Cancelled Workshops:</span>
+                        <span>5</span>
+                    </li>
+
+                    <li class="d-flex align-items-center">
+                        <i class="bx bxs-graduation"></i><span class="fw-medium mx-2">Scholarship:</span>
+                        <span>2</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--/ Profile Overview -->
+    </div>
+    <div class="col-xl-9 col-lg-12 col-md-12">
+        <!-- Projects table -->
+        <!-- DataTable with Buttons -->
+        <div class="card">
+            <div class="card-datatable table-responsive">
+                <table class="datatables-basic table border-top">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th>Instructor</th>
+                            <th>Workshop</th>
+                            <th>Workshop</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <!--/ Projects table -->
+    </div>
 </div>

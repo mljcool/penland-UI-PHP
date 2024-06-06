@@ -1,120 +1,13 @@
-const sampleData = {
-   data: [
-      {
-         invoice_id: 'INV-01000-Y6P7N0',
-         issued_date: '12/13/2020',
-         price_list: '1 Week - Summer 2024',
-         total: 3428,
-         avatar_image: false,
-         invoice_status: 'Paid',
-         balance: '$724',
-         due_date: '04/23/2020',
-         action: 1,
-      },
-      {
-         invoice_id: 'INV-01000-Y6P7N0',
-         issued_date: '07/17/2020',
-         price_list: '2 Week - Summer 2024',
-         total: 5219,
-         avatar_image: true,
-         invoice_status: 'Downloaded',
-         balance: 0,
-         due_date: '12/15/2020',
-         action: 1,
-      },
-      {
-         invoice_id: 'INV-01000-Y6P7N0',
-         issued_date: '07/17/2020',
-         price_list: 'Fall 6 Week 2024',
-         total: 5219,
-         avatar_image: true,
-         invoice_status: 'Paid',
-         balance: 0,
-         due_date: '12/15/2020',
-         action: 1,
-      },
-      {
-         invoice_id: 'INV-01000-Y6P7N0',
-         issued_date: '02/29/2021',
-         price_list: 'Fall 6 Week 2024',
-         total: 2483,
-         avatar_image: true,
-         invoice_status: 'Draft',
-         balance: 0,
-         due_date: '07/10/2020',
-         action: 1,
-      },
-      {
-         invoice_id: 'INV-01000-Y6P7N0',
-         issued_date: '08/07/2020',
-         price_list: 'Fall 6 Week 2024',
-         total: 2825,
-         avatar_image: true,
-         invoice_status: 'Partial Payment',
-         balance: '-$459',
-         due_date: '10/14/2020',
-         action: 1,
-      },
-      {
-         invoice_id: 'INV-01000-Y6P7N0',
-         issued_date: '05/10/2020',
-         price_list: 'Fall Short Session 2024',
-         total: 2029,
-         avatar_image: true,
-         invoice_status: 'Past Due',
-         balance: 0,
-         due_date: '03/28/2020',
-         action: 1,
-      },
-      {
-         invoice_id: 4528,
-         issued_date: '04/02/2020',
-         price_list: 'Fall Short Session 2024',
-         total: 3208,
-         avatar_image: false,
-         invoice_status: 'Paid',
-         balance: 0,
-         due_date: '09/06/2020',
-         action: 1,
-      },
-      {
-         invoice_id: 5089,
-         issued_date: '05/02/2020',
-         price_list: '1 Week - Summer 2024',
-         total: 3077,
-         avatar_image: false,
-         invoice_status: 'Paid',
-         balance: 0,
-         due_date: '05/09/2020',
-         action: 1,
-      },
-      {
-         invoice_id: 4567,
-         issued_date: '04/19/2020',
-         price_list: 'Spring 8 Week 2024',
-         total: 3171,
-         avatar_image: true,
-         invoice_status: 'Draft',
-         balance: '-$205',
-         due_date: '09/25/2020',
-         action: 1,
-      },
-   ],
-};
 
-('use strict');
-$(function () {
-   const newFormat = sampleData.data.map((_data, idx) => {
-      _data.invoice_id = `INV-0${idx}000-Y6P7N0`;
-      return _data;
-   });
+
+function DataTable(apiData) {
 
    var a,
       e = $('.invoice-list-table');
    e.length &&
       (a = e.DataTable({
          //  ajax: assetsPath + 'json/invoice-list.json',
-         data: newFormat,
+         data: apiData,
          columns: [
             { data: '' },
             { data: 'invoice_id' },
@@ -149,29 +42,8 @@ $(function () {
             {
                targets: 2,
                render: function (a, e, t, s) {
-                  var n = t.invoice_status,
-                     l = t.due_date;
-                  return (
-                     "<span data-bs-toggle='tooltip' data-bs-html='true' title='<span>" +
-                     n +
-                     '<br> <span class="fw-medium">Balance:</span> ' +
-                     t.balance +
-                     '<br> <span class="fw-medium">Due Date:</span> ' +
-                     l +
-                     "</span>'>" +
-                     {
-                        Paid: '<span class="badge badge-center rounded-pill bg-label-secondary w-px-30 h-px-30"><i class="bx bx-paper-plane bx-xs"></i></span>',
-                        Draft: '<span class="badge badge-center rounded-pill bg-label-primary w-px-30 h-px-30"><i class="bx bxs-save bx-xs"></i></span>',
-                        'Past Due':
-                           '<span class="badge badge-center rounded-pill bg-label-danger w-px-30 h-px-30"><i class="bx bx-info-circle bx-xs"></i></span>',
-                        'Partial Payment':
-                           '<span class="badge badge-center rounded-pill bg-label-success w-px-30 h-px-30"><i class="bx bx-adjust bx-xs"></i></span>',
-                        Paid: '<span class="badge badge-center rounded-pill bg-label-warning w-px-30 h-px-30"><i class="bx bx-pie-chart-alt bx-xs"></i></span>',
-                        Downloaded:
-                           '<span class="badge badge-center rounded-pill bg-label-info w-px-30 h-px-30"><i class="bx bx-down-arrow-circle bx-xs"></i></span>',
-                     }[n] +
-                     '</span>'
-                  );
+                  var n = t.name;
+                  return `<span class="fw-medium">${n}</span>`;
                },
             },
             {
@@ -191,29 +63,34 @@ $(function () {
                targets: 4,
                render: function (a, e, t, s) {
                   t = t.total;
-                  return '<span class="d-none">' + t + '</span>$' + t;
+                  return (
+                     '<span class="d-none">' +
+                     t +
+                     '</span>' +
+                     converMoneyProperFormat(t)
+                  );
                },
             },
             {
                targets: 5,
                render: function (a, e, t, s) {
-                  t = new Date(t.due_date);
-                  return (
-                     '<span class="d-none">' +
-                     moment(t).format('YYYYMMDD') +
-                     '</span>' +
-                     moment(t).format('DD MMM YYYY')
-                  );
+                  t = t.due_date;
+                  return '<span class="d-none">' + t + '</span>' + t;
                },
             },
             {
                targets: 6,
                orderable: !1,
                render: function (a, e, t, s) {
-                  t = t.balance;
-                  return 0 === t
+                console.log('Paid', t);
+                  satus= t.invoice_status;
+                  total = t.total;
+                  return 'Paid' === satus
                      ? '<span class="badge bg-label-success"> Paid </span>'
-                     : '<span class="d-none">' + t + '</span>' + t;
+                     : '<span class="d-none">' +
+                          t +
+                          '</span>' +
+                          converMoneyProperFormat(total);
                },
             },
             { targets: 7, visible: !1 },
@@ -223,6 +100,7 @@ $(function () {
                searchable: !1,
                orderable: !1,
                render: function (a, e, t, s) {
+                  let invoiceID = t.invoiceID;
                   return `<div class="d-flex align-items-center">
                       
                     <div class="dropdown">
@@ -233,9 +111,9 @@ $(function () {
                             ><i class="bx bx-dots-vertical-rounded"></i
                         ></a>
                         <div class="dropdown-menu dropdown-menu-end">
-                            <a href="javascript:;" class="dropdown-item">Download</a>
+                            <a href="/penland-web/dashboard-invoice-details.php?invoiceID=${invoiceID}" class="dropdown-item">View</a>
                             <div class="dropdown-divider"></div>
-                            <a href="app-invoice-edit.html" class="dropdown-item">View</a>
+                            <a href="app-invoice-edit.html" class="dropdown-item">Download</a>
                         </div>
                     </div>
                     </div>
@@ -321,13 +199,141 @@ $(function () {
          $('.dataTables_filter .form-control').removeClass('form-control-sm'),
             $('.dataTables_length .form-select').removeClass('form-select-sm');
       }, 300);
-});
+}
+
+function getInvoiceList(customerID = '') {
+   const jsonData = {
+      requestParams: {
+         customerID,
+         invoiceID: '',
+      },
+   };
+
+   $.get({
+      url: Get_User_Invoices,
+      data: jsonData,
+      contentType: 'application/json',
+      success: function (response = []) {
+         console.log('getInvoiceList', response);
+         if (response.length) {
+            const formatted =
+               'statecode@OData.Community.Display.V1.FormattedValue';
+            const pricelevelidValue =
+               '_pricelevelid_value@OData.Community.Display.V1.FormattedValue';
+            const responseMap = response.map((_data) => ({
+               name: _data.name,
+               invoice_id: _data.invoicenumber,
+               invoiceID: _data.invoiceid,
+               issued_date: moment(_data.createdon).format('MMM DD, YYYY'),
+               price_list: _data[pricelevelidValue],
+               total: _data.totalamount,
+               invoice_status: _data[formatted],
+               invoice_stateCode: _data[formatted],
+               balance: _data.totalamount,
+               due_date: moment(_data.createdon).format('MMM DD, YYYY'),
+               action: 1,
+            }));
+
+            DataTable(responseMap);
+         }
+      },
+      complete: function (data) {
+         setTimeout(() => {
+            $('.invoicelist_card').unblock();
+         }, 1000);
+      },
+      error: function (xhr, status, error) {},
+   });
+}
+
+function AddloadingToInvoice() {
+   $('.invoicelist_card').block({
+      message: `<div class="d-flex justify-content-center">
+                    <div class="sk-wave sk-primary">
+                        <div class="sk-wave-rect"></div>
+                        <div class="sk-wave-rect"></div>
+                        <div class="sk-wave-rect"></div>
+                        <div class="sk-wave-rect"></div>
+                        <div class="sk-wave-rect"></div>
+                    </div>
+              </div>`,
+      css: {
+         backgroundColor: 'transparent',
+         border: '0',
+      },
+      overlayCSS: {
+         backgroundColor: '#fff',
+         opacity: 0.8,
+      },
+   });
+}
+
+function shapeInvoiceDetails(invoiceData = []) {
+   const details = invoiceData[0];
+   const formatted = 'statecode@OData.Community.Display.V1.FormattedValue';
+   const formattedCurrency =
+      'totalamount@OData.Community.Display.V1.FormattedValue';
+   htmlEL('invoiceName').html(details.name);
+   htmlEL('invoiceID').html(details.invoicenumber);
+   htmlEL('invoiceStatus').html(details[formatted]);
+   htmlEL('invoiceTotalAmount').html(details[formattedCurrency]);
+   if (details[formatted] === 'Paid') {
+      htmlEL('id_paynow').css('display', 'none');
+   }
+}
+
+function invoiceDetails() {
+   const invoiceID = getURLParameters('invoiceID');
+   if (invoiceID) {
+      const jsonData = {
+         requestParams: {
+            customerID: '',
+            invoiceID: invoiceID,
+         },
+      };
+
+      $.get({
+         url: Get_User_Invoices,
+         data: jsonData,
+         contentType: 'application/json',
+         success: function (response = []) {
+            if (response.length) {
+               shapeInvoiceDetails(response);
+            }
+            console.log('invoiceDetails', response);
+         },
+         complete: function (data) {},
+         error: function (xhr, status, error) {},
+      });
+   }
+}
+
+function initializePopOver() {
+   const popoverTriggerList = [].slice.call(
+      document.querySelectorAll('[data-bs-toggle="popover"]')
+   );
+   popoverTriggerList.map(function (popoverTriggerEl) {
+      return new bootstrap.Popover(popoverTriggerEl, {
+         html: true,
+         sanitize: false,
+      });
+   });
+}
 
 $(document).ready(function () {
+   invoiceDetails();
+   initializePopOver();
+   const isInvoicePage = $('.invoice-list-table');
+   if (isInvoicePage.length) {
+      AddloadingToInvoice();
+      const data = getUserTokenDetails();
+      console.log('userDetails', data);
+      getInvoiceList(data.contactID);
+   }
    var tooltipTriggerList = [].slice.call(
       document.querySelectorAll('[data-bs-toggle="tooltip"]')
    );
-   var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+   tooltipTriggerList.map(function (tooltipTriggerEl) {
       return new bootstrap.Tooltip(tooltipTriggerEl);
    });
 });
