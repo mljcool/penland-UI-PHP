@@ -207,6 +207,12 @@ $(document).ready(function () {
          MessateAlertIformationCart();
          return;
       }
+
+      if (checkHasSession()) {
+         window.location.href = '/penland-web/returning-student.php';;
+         return;
+      }
+
       $('#modalContinueRegister').modal('show');
    });
 

@@ -1904,3 +1904,6 @@ const static_mshied_disability = [
       value: '494280019',
    },
 ];
+
+
+const redirectList = ['returning-student'];

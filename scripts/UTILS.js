@@ -518,6 +518,10 @@ function redirectToDashboard() {
    }
 }
 
+function redirectTo(url){
+   window.location.href = '/penland-web/'+url+'.php';
+}
+
 function loginPage() {
    window.location.href = '/penland-web/login.php';
 }
@@ -535,7 +539,8 @@ function redirectToLogin(lookIsDashboard = false, ifSomeBreach) {
 
 function checkHasSession() {
    const data = getUserTokenDetails();
-   return 'cr711_tokenid' in data && !!data.cr711_tokenid;
+   const isNull = data ? data.hasOwnProperty('cr711_tokenid') : false;
+   return isNull && !!data.cr711_tokenid;
 }
 
 function initPopOver(content) {

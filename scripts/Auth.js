@@ -12,7 +12,12 @@ function requestAuth(payload = {}) {
                contactID: response._cr711_contact_value,
             };
             setItemStore('loginAccess', data);
-            redirectToDashboard();
+            const urlRedirect = getURLParameters('redirectURL');
+            if (redirectList.includes(urlRedirect)) {
+               redirectTo(urlRedirect);
+            } else {
+               redirectToDashboard();
+            }
          } else {
             ifLoginRedirect(response);
          }
@@ -70,18 +75,20 @@ function ifLoginRedirect(response) {
    }
 }
 
-function AuthGuard(url = []){
+function AuthGuard(url = []) {
    const wrapToGuard = (urlStr) => {
-     return getPATHNameURL().some((_data) =>
-         checkWordExists(_data, urlStr)
-      );
-   }
-   const isGuarded = url.some(_data => wrapToGuard(_data))
+      return getPATHNameURL().some((_data) => checkWordExists(_data, urlStr));
+   };
+   const isGuarded = url.some((_data) => wrapToGuard(_data));
    return isGuarded;
 }
 
 function ifNoLoginRedirect() {
-   const listToGuard = ['dashboard-panel', 'dashboard-invoice-details', 'dashboard-invoice']
+   const listToGuard = [
+      'dashboard-panel',
+      'dashboard-invoice-details',
+      'dashboard-invoice',
+   ];
    const isGuarded = AuthGuard(listToGuard);
    redirectToLogin(isGuarded, listToGuard);
 }
@@ -128,7 +135,7 @@ $(document).ready(function () {
    wrappEntireHTML();
    ifNoLoginRedirect();
    checkIfUserLogin();
- 
+
    $('.login-user').click(function () {
       loadingEffect();
       const emailOrPassowrd = $('#email').val();
