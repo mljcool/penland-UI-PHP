@@ -70,11 +70,20 @@ function ifLoginRedirect(response) {
    }
 }
 
-function ifDashBoardRedirect() {
-   const lookIsDashboard = getPATHNameURL().some((_data) =>
-      checkWordExists(_data, 'dashboard-panel')
-   );
-   redirectToLogin(lookIsDashboard);
+function AuthGuard(url = []){
+   const wrapToGuard = (urlStr) => {
+     return getPATHNameURL().some((_data) =>
+         checkWordExists(_data, urlStr)
+      );
+   }
+   const isGuarded = url.some(_data => wrapToGuard(_data))
+   return isGuarded;
+}
+
+function ifNoLoginRedirect() {
+   const listToGuard = ['dashboard-panel', 'dashboard-invoice-details', 'dashboard-invoice']
+   const isGuarded = AuthGuard(listToGuard);
+   redirectToLogin(isGuarded, listToGuard);
 }
 
 function appDetails() {
@@ -117,7 +126,7 @@ function loginUser(username = '', password = '') {
 
 $(document).ready(function () {
    wrappEntireHTML();
-   ifDashBoardRedirect();
+   ifNoLoginRedirect();
    checkIfUserLogin();
  
    $('.login-user').click(function () {

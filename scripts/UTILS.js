@@ -155,7 +155,7 @@ function filterByDateRange(array, startDate, endDate) {
 
 function getURLParameters(queryID = 'workshopID') {
    const urlParams = new URLSearchParams(window.location.search);
-   return  urlParams.get(queryID);
+   return urlParams.get(queryID);
 }
 
 function parseStore(data) {
@@ -492,10 +492,18 @@ function redirectToDashboard() {
    }
 }
 
-function redirectToLogin(lookIsDashboard = false) {
+function loginPage(){
+   window.location.href = '/penland-web/login.php';
+}
+
+function redirectToLogin(lookIsDashboard = false, ifSomeBreach) {
    const data = getUserTokenDetails();
+   if (!ifSomeBreach.length) {
+      loginPage();
+      return;
+   }
    if (!data && lookIsDashboard) {
-      window.location.href = '/penland-web/login.php';
+      loginPage();
    }
 }
 
