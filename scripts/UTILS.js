@@ -519,7 +519,6 @@ function initPopOver(content) {
 function shapeMyProfile() {
    const userDetails = getLoginDetails();
    if (userDetails && userDetails.length) {
-      console.log('shapeMyProfile', userDetails[1]);
       const myProfile = userDetails[1];
       const acctType =
          'mshied_contacttype@OData.Community.Display.V1.FormattedValue';

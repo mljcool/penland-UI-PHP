@@ -164,7 +164,7 @@
                 <div class="col-xl-9 col-lg-12 col-md-12">
                     <!-- Projects table -->
                     <!-- DataTable with Buttons -->
-                    <div class="card">
+                    <div class="card workshoplist_card" style="min-height:400px;">
                         <div class="card-datatable table-responsive">
                             <table class="workshop-list table border-top">
                                 <thead>
