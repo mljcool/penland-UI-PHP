@@ -29,11 +29,8 @@ function DataTable(apiData) {
             {
                targets: 1,
                render: function (a, e, t, s) {
-                let invoiceID = t.invoiceID;
-                  return (
-                     `<a href="/penland-web/dashboard-invoice-details.php?invoiceID=${invoiceID}"><span class="fw-medium">${
-                     t.invoice_id}</span></a>`
-                  );
+                  let invoiceID = t.invoiceID;
+                  return `<a href="/penland-web/dashboard-invoice-details.php?invoiceID=${invoiceID}"><span class="fw-medium">${t.invoice_id}</span></a>`;
                },
             },
             {
@@ -79,7 +76,6 @@ function DataTable(apiData) {
                targets: 6,
                orderable: !1,
                render: function (a, e, t, s) {
-                  console.log('Paid', t);
                   satus = t.invoice_status;
                   total = t.total;
                   return 'Paid' === satus
@@ -230,6 +226,25 @@ function getInvoiceList(customerID = '') {
                due_date: moment(_data.createdon).format('MMM DD, YYYY'),
                action: 1,
             }));
+            console.log('responseMap', responseMap);
+            const totalInvoices = responseMap.length;
+            const computes = (total, obj) => {
+               total.balance += obj.balance;
+               return total;
+            };
+            const overAllAmount = responseMap.reduce(computes, {
+               balance: 0,
+            }).balance;
+
+            const overAllAmountPaid = responseMap
+               .filter((_data) => _data.invoice_status === 'Paid')
+               .reduce(computes, { balance: 0 }).balance;
+            const fomatAmmount = converMoneyProperFormat(overAllAmount);
+            const fomatAmmountPaid = converMoneyProperFormat(overAllAmountPaid);
+            htmlEL('overAllAmount').html(fomatAmmount);
+            htmlEL('overAllAmountPaid').html(fomatAmmountPaid);
+            htmlEL('totalInvoices').html(totalInvoices);
+            console.log('overAllAmount', overAllAmount);
 
             DataTable(responseMap);
          }

@@ -31,7 +31,7 @@
                                         <div
                                             class="d-flex justify-content-between align-items-start card-widget-1 border-end pb-3 pb-sm-0">
                                             <div>
-                                                <h3 class="mb-1">24</h3>
+                                                <h4 class="mb-1 totalInstallments">0</h4>
                                                 <p class="mb-0">Installments</p>
                                             </div>
                                             <div class="avatar me-sm-4">
@@ -46,8 +46,8 @@
                                         <div
                                             class="d-flex justify-content-between align-items-start card-widget-2 border-end pb-3 pb-sm-0">
                                             <div>
-                                                <h3 class="mb-1">165</h3>
-                                                <p class="mb-0">Invoices</p>
+                                                <h4 class="mb-1 totalInvoices">0</h4>
+                                                <p class="mb-0">Total Invoices</p>
                                             </div>
                                             <div class="avatar me-lg-4">
                                                 <span class="avatar-initial rounded bg-label-warning">
@@ -61,8 +61,8 @@
                                         <div
                                             class="d-flex justify-content-between align-items-start border-end pb-3 pb-sm-0 card-widget-3">
                                             <div>
-                                                <h3 class="mb-1">$2.46k</h3>
-                                                <p class="mb-0">Paid</p>
+                                                <h4 class="mb-1 overAllAmountPaid">$0.00</h4>
+                                                <p class="mb-0">Total Paid</p>
                                             </div>
                                             <div class="avatar me-sm-4">
                                                 <span class="avatar-initial rounded bg-label-success">
@@ -74,8 +74,8 @@
                                     <div class="col-sm-6 col-lg-3">
                                         <div class="d-flex justify-content-between align-items-start">
                                             <div>
-                                                <h3 class="mb-1">$876</h3>
-                                                <p class="mb-0">Total Amount</p>
+                                                <h4 class="mb-1 overAllAmount">$0.00</h4>
+                                                <p class="mb-0 ">Grand Total</p>
                                             </div>
                                             <div class="avatar">
                                                 <span class="avatar-initial rounded bg-label-primary">
