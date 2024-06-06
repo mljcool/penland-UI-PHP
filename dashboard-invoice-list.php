@@ -35,7 +35,7 @@
                                                 <p class="mb-0">Installments</p>
                                             </div>
                                             <div class="avatar me-sm-4">
-                                                <span class="avatar-initial rounded bg-label-secondary">
+                                                <span class="avatar-initial rounded bg-label-info">
                                                     <i class='bx bx-calendar-check'></i>
                                                 </span>
                                             </div>
@@ -50,7 +50,7 @@
                                                 <p class="mb-0">Invoices</p>
                                             </div>
                                             <div class="avatar me-lg-4">
-                                                <span class="avatar-initial rounded bg-label-secondary">
+                                                <span class="avatar-initial rounded bg-label-warning">
                                                     <i class="bx bx-file bx-sm"></i>
                                                 </span>
                                             </div>
@@ -65,7 +65,7 @@
                                                 <p class="mb-0">Paid</p>
                                             </div>
                                             <div class="avatar me-sm-4">
-                                                <span class="avatar-initial rounded bg-label-secondary">
+                                                <span class="avatar-initial rounded bg-label-success">
                                                     <i class="bx bx-check-double bx-sm"></i>
                                                 </span>
                                             </div>
@@ -78,8 +78,8 @@
                                                 <p class="mb-0">Total Amount</p>
                                             </div>
                                             <div class="avatar">
-                                                <span class="avatar-initial rounded bg-label-secondary">
-                                                    <i class="bx bx-error-circle bx-sm"></i>
+                                                <span class="avatar-initial rounded bg-label-primary">
+                                                <i class='bx bx-calculator bx-sm'></i>
                                                 </span>
                                             </div>
                                         </div>

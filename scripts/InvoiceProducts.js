@@ -45,23 +45,21 @@ const dataSample = [
    },
 ];
 
-$(function () {
+function DataTableProductList(products) {
    var a,
       e = $('.products-table');
    e.length &&
       (a = e.DataTable({
          //  ajax: assetsPath + 'json/invoice-list.json',
-         data: dataSample,
+         data: products,
          columns: [
             { data: '' },
-            { data: 'invoice_id' },
-            { data: 'invoice_status' },
-            { data: 'issued_date' },
-            { data: 'price_list' },
-            { data: 'total' },
-            { data: 'balance' },
-            { data: 'invoice_status' },
-            { data: 'action' },
+            { data: 'name' },
+            { data: 'unit' },
+            { data: 'price' },
+            { data: 'qty' },
+            { data: 'discount' },
+            { data: 'amount' },
          ],
          columnDefs: [
             {
@@ -76,91 +74,39 @@ $(function () {
             {
                targets: 1,
                render: function (a, e, t, s) {
-                  return (
-                     `<a href="dashboard-invoice-preview.php"><span class="fw-medium">
-                     <i class='bx bx-package'></i> ${t.invoice_id}</span></a>`
-                  );
+                  return `<span class="fw-medium"><i class='bx bx-package'></i> ${t.name}</span>`;
                },
             },
             {
                targets: 2,
                render: function (a, e, t, s) {
-                  var n = t.name;
-                  return `<span class="fw-medium">${n}</span>`;
+                  return `<span class="fw-medium">${t.unit}</span>`;
                },
             },
             {
                targets: 3,
                responsivePriority: 4,
                render: function (a, e, t, s) {
-                  return `<div class="d-flex justify-content-start align-items-center">
-                              <div class="d-flex flex-column">
-                                  <a href="pages-profile-user.html" class="text-body text-truncate">
-                                      <span class="fw-medium">${t.price_list}</span>
-                                  </a>
-                              </div>
-                           </div>`;
+                  return `<span class="fw-medium">${t.price}</span>`;
                },
             },
             {
                targets: 4,
                render: function (a, e, t, s) {
-                  t = t.total;
-                  return (
-                     '<span class="d-none">' +
-                     t +
-                     '</span>' +
-                     converMoneyProperFormat(t)
-                  );
+                  return `<span class="fw-medium">${t.qty}</span>`;
                },
             },
             {
                targets: 5,
                render: function (a, e, t, s) {
-                  t = t.due_date;
-                  return '<span class="d-none">' + t + '</span>' + t;
+                  return `<span class="fw-medium">${t.discount}</span>`;
                },
             },
             {
                targets: 6,
                orderable: !1,
                render: function (a, e, t, s) {
-                  console.log('Paid', t);
-                  satus = t.invoice_status;
-                  total = t.total;
-                  return 'Paid' === satus
-                     ? '<span class="badge bg-label-success"> Paid </span>'
-                     : '<span class="d-none">' +
-                          t +
-                          '</span>' +
-                          converMoneyProperFormat(total);
-               },
-            },
-            { targets: 7, visible: !1 },
-            {
-               targets: -1,
-               title: 'Actions',
-               searchable: !1,
-               orderable: !1,
-               render: function (a, e, t, s) {
-                  let invoiceID = t.invoiceID;
-                  return `<div class="d-flex align-items-center">
-                            
-                          <div class="dropdown">
-                              <a
-                                  href="javascript:;"
-                                  class="btn dropdown-toggle hide-arrow text-body p-0"
-                                  data-bs-toggle="dropdown"
-                                  ><i class="bx bx-dots-vertical-rounded"></i
-                              ></a>
-                              <div class="dropdown-menu dropdown-menu-end">
-                                  <a href="/penland-web/dashboard-invoice-details.php?invoiceID=${invoiceID}" class="dropdown-item">View</a>
-                                  <div class="dropdown-divider"></div>
-                                  <a href="app-invoice-edit.html" class="dropdown-item">Download</a>
-                              </div>
-                          </div>
-                          </div>
-                          `;
+                  return `<span class="fw-medium">${t.amount}</span>`;
                },
             },
          ],
@@ -169,7 +115,7 @@ $(function () {
          language: {
             sLengthMenu: '_MENU_',
             search: '',
-            searchPlaceholder: 'Search Invoice',
+            searchPlaceholder: 'Search Product',
          },
          buttons: [],
          responsive: {
@@ -204,12 +150,11 @@ $(function () {
                .every(function () {});
          },
       })),
-      $('.invoice-list-table tbody').on('click', '.delete-record', function () {
+      $('.products-table tbody').on('click', '.delete-record', function () {
          a.row($(this).parents('tr')).remove().draw();
       }),
       setTimeout(() => {
          $('.dataTables_filter .form-control').removeClass('form-control-sm'),
             $('.dataTables_length .form-select').removeClass('form-select-sm');
       }, 300);
-});
-$(document).ready(function () {});
+}

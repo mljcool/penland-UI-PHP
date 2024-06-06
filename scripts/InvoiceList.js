@@ -1,7 +1,4 @@
-
-
 function DataTable(apiData) {
-
    var a,
       e = $('.invoice-list-table');
    e.length &&
@@ -32,10 +29,10 @@ function DataTable(apiData) {
             {
                targets: 1,
                render: function (a, e, t, s) {
+                let invoiceID = t.invoiceID;
                   return (
-                     '<a href="dashboard-invoice-preview.php"><span class="fw-medium">' +
-                     t.invoice_id +
-                     '</span></a>'
+                     `<a href="/penland-web/dashboard-invoice-details.php?invoiceID=${invoiceID}"><span class="fw-medium">${
+                     t.invoice_id}</span></a>`
                   );
                },
             },
@@ -52,7 +49,7 @@ function DataTable(apiData) {
                render: function (a, e, t, s) {
                   return `<div class="d-flex justify-content-start align-items-center">
                         <div class="d-flex flex-column">
-                            <a href="pages-profile-user.html" class="text-body text-truncate">
+                            <a class="text-body text-truncate">
                                 <span class="fw-medium">${t.price_list}</span>
                             </a>
                         </div>
@@ -82,8 +79,8 @@ function DataTable(apiData) {
                targets: 6,
                orderable: !1,
                render: function (a, e, t, s) {
-                console.log('Paid', t);
-                  satus= t.invoice_status;
+                  console.log('Paid', t);
+                  satus = t.invoice_status;
                   total = t.total;
                   return 'Paid' === satus
                      ? '<span class="badge bg-label-success"> Paid </span>'
@@ -113,7 +110,7 @@ function DataTable(apiData) {
                         <div class="dropdown-menu dropdown-menu-end">
                             <a href="/penland-web/dashboard-invoice-details.php?invoiceID=${invoiceID}" class="dropdown-item">View</a>
                             <div class="dropdown-divider"></div>
-                            <a href="app-invoice-edit.html" class="dropdown-item">Download</a>
+                            <a    href="javascript:void(0);" class="dropdown-item">Download</a>
                         </div>
                     </div>
                     </div>
@@ -273,12 +270,28 @@ function shapeInvoiceDetails(invoiceData = []) {
    const formatted = 'statecode@OData.Community.Display.V1.FormattedValue';
    const formattedCurrency =
       'totalamount@OData.Community.Display.V1.FormattedValue';
+   const formattedTax = `totaltax@OData.Community.Display.V1.FormattedValue`;
+   const totallineitemamount = `totallineitemamount@OData.Community.Display.V1.FormattedValue`;
+
+   const discountamount = `discountamount@OData.Community.Display.V1.FormattedValue`;
+   const discountpercentage = `discountpercentage@OData.Community.Display.V1.FormattedValue`;
+   const _pricelevelid_value = `_pricelevelid_value@OData.Community.Display.V1.FormattedValue`;
+
    htmlEL('invoiceName').html(details.name);
    htmlEL('invoiceID').html(details.invoicenumber);
    htmlEL('invoiceStatus').html(details[formatted]);
    htmlEL('invoiceTotalAmount').html(details[formattedCurrency]);
+   htmlEL('invoiceDescription').html(details.description);
+   htmlEL('invoiceFormattedTax').html(details[formattedTax]);
+   htmlEL('totallineitemamount').html(details[totallineitemamount]);
+   htmlEL('discountamount').html(details[discountamount]);
+   htmlEL('_pricelevelid_value').html(details[_pricelevelid_value]);
+   htmlEL('discountpercentage').html(details[discountpercentage]);
    if (details[formatted] === 'Paid') {
       htmlEL('id_paynow').css('display', 'none');
+      htmlEL('invoiceStatus-color').toggleClass(
+         'bg-label-secondary bg-label-success'
+      );
    }
 }
 
@@ -299,6 +312,31 @@ function invoiceDetails() {
          success: function (response = []) {
             if (response.length) {
                shapeInvoiceDetails(response);
+
+               const ifNomanualdiscountamount = (discount) => {
+                  return !!discount ? discount : '$0';
+               };
+               const productOnly = response.slice(1).map((_data) => ({
+                  name: _data.invoicedetailname,
+                  unit: _data[
+                     '_uomid_value@OData.Community.Display.V1.FormattedValue'
+                  ],
+                  price: _data[
+                     'priceperunit@OData.Community.Display.V1.FormattedValue'
+                  ],
+                  qty: _data['quantity'],
+                  discount: ifNomanualdiscountamount(
+                     _data[
+                        'manualdiscountamount@OData.Community.Display.V1.FormattedValue'
+                     ]
+                  ),
+                  amount:
+                     _data[
+                        'extendedamount@OData.Community.Display.V1.FormattedValue'
+                     ],
+               }));
+               console.log('productOnly', productOnly);
+               DataTableProductList(productOnly);
             }
             console.log('invoiceDetails', response);
          },

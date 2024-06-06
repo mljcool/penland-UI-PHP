@@ -1,27 +1,32 @@
+<style>
+   .card {
+      border: 1px solid #d9dee3;
+   }
+</style>
 <div class="content-wrapper">
    <div class="container-xxl flex-grow-1">
-      <div class=" mb-4">
+      <div class="card mb-4 p-4 mt-3">
          <!-- <span class="text-muted fw-light">User Profile /</span> Profile -->
-         <div class="container-weather">
-            <div class="background-weather">
-               <div class="Circle1"></div>
-               <div class="Circle2"></div>
-               <div class="Circle3"></div>
-               <div class="content-weather">
-                  <h1 class="Condition">
-                     <i class="bx bx-sun"></i>Sunny
-                  </h1>
-                  <h1 class="Temp">72<span id="F">&#8457;</span></h1>
-                  <h1 class="Time">09:35</h1>
-                  <h1 class="Location">
-                     <i class='bx bx-map'></i>Texas, City
-                  </h1>
-               </div>
-            </div>
-         </div>
+         <!-- <div class="container-weather">
+           <div class="background-weather">
+              <div class="Circle1"></div>
+              <div class="Circle2"></div>
+              <div class="Circle3"></div>
+              <div class="content-weather">
+                 <h1 class="Condition">
+                    <i class="bx bx-sun"></i>Sunny
+                 </h1>
+                 <h1 class="Temp">72<span id="F">&#8457;</span></h1>
+                 <h1 class="Time">09:35</h1>
+                 <h1 class="Location">
+                    <i class='bx bx-map'></i>Texas, City
+                 </h1>
+              </div>
+           </div>
+        </div> -->
 
          <!-- Header -->
-         <div class="row">
+         <div class="row mt-4">
             <div class="col-lg-12 col-md-12">
                <div class="card mb-4">
                   <div class="card-widget-separator-wrapper">
@@ -31,8 +36,8 @@
                               <div
                                  class="d-flex justify-content-between align-items-start card-widget-1 border-end pb-3 pb-sm-0">
                                  <div>
-                                    <h5 class="mb-1 invoiceName">......</h5>
-                                    <p class="mb-0">Invoice Name</p>
+                                    <h5 class="mb-1 invoiceID">....</h5>
+                                    <p class="mb-0">Invoice ID</p>
                                  </div>
 
                               </div>
@@ -42,8 +47,10 @@
                               <div
                                  class="d-flex justify-content-between align-items-start card-widget-2 border-end pb-3 pb-sm-0">
                                  <div>
-                                    <h5 class="mb-1 invoiceID">....</h5>
-                                    <p class="mb-0">Invoice ID</p>
+                                    <h5 class="mb-1 invoiceName">......</h5>
+                                    <p class="mb-0">Invoice Name</p>
+
+
                                  </div>
                                  <div class="avatar me-lg-4" style="cursor:default;">
                                     <span class="avatar-initial rounded bg-label-secondary">
@@ -61,7 +68,7 @@
                                     <p class="mb-0">Status</p>
                                  </div>
                                  <div class="avatar me-sm-4" style="cursor:default;">
-                                    <span class="avatar-initial rounded bg-label-secondary">
+                                    <span class="invoiceStatus-color avatar-initial rounded bg-label-secondary">
                                        <i class="bx bx-check-double bx-sm"></i>
                                     </span>
                                  </div>
@@ -92,65 +99,45 @@
             <div class="col-xl-3 col-lg-6 col-md-6">
                <!-- About User -->
                <div class="card mb-4">
-                  <div class="card-body " style="font-size:13px">
+                  <div class="card-body " style="font-size:14px">
 
                      <ul class="list-unstyled mb-4 mt-3">
                         <li class="d-flex align-items-center mb-3">
-                           <i class="bx bx-user"></i><span class="fw-medium mx-2">Full Name:</span>
-                           <span class="u_fullname">John Doe</span>
+                           <i class="bx bx-user"></i><span class="fw-medium mx-2">Customer:</span>
+                           <span class="u_fullname">N/A</span>
                         </li>
                         <li class="d-flex align-items-center mb-3">
-                           <i class="bx bx-user"></i><span class="fw-medium mx-2">Gender:</span>
-                           <span class="gendercode">N/A</span>
-                        </li>
-                        <li class="d-flex align-items-center mb-3">
-                           <i class="bx bx-check"></i><span class="fw-medium mx-2">Status:</span>
+                           <i class="bx bx-check"></i><span class="fw-medium mx-2">Price List:</span>
                            <span class="statecode">Active</span>
                         </li>
-                        <li class="d-flex align-items-center mb-3">
-                           <i class="bx bx-star"></i><span class="fw-medium mx-2">Account Type:</span>
-                           <span class="acctType"> Student</span>
-                        </li>
-                        <li class="d-flex align-items-center mb-3">
-                           <i class="bx bx-flag"></i><span class="fw-medium mx-2">Country:</span> <span
-                              class="country">USA</span>
-                        </li>
-                        <li class="d-flex align-items-center mb-3">
-                           <i class="bx bx-detail"></i><span class="fw-medium mx-2">Pref. Languages:</span>
-                           <span class="prefLanguage">English</span>
-                        </li>
                      </ul>
-                     <small class="text-muted text-uppercase">Contacts</small>
-                     <ul class="list-unstyled mb-4 mt-3">
-                        <li class="d-flex align-items-center mb-3">
-                           <i class="bx bx-phone"></i><span class="fw-medium mx-2">Mobile:</span>
-                           <span class="mobilephone">(123) 456-7890</span>
-                        </li>
 
-                        <li class="d-flex align-items-center mb-3" style="font-size:13px">
-                           <i class="bx bx-envelope"></i><span class="fw-medium mx-2">Email:</span>
-
-                           <span class="emailaddress1">john.doe@example.com</span>
-                        </li>
-                     </ul>
                   </div>
                </div>
                <!--/ About User -->
                <!-- Profile Overview -->
                <div class="card mb-4">
-                  <div class="card-body">
-                     <ul class="list-unstyled mt-3 mb-0">
+                  <div class="card-body" style="font-size:14px">
+                     <ul class="list-unstyled mt-2 mb-0">
                         <li class="d-flex align-items-center mb-3">
-                           <i class="bx bx-check"></i><span class="fw-medium mx-2">Completed Workshops:</span>
+                           <i class="bx bx-check"></i><span class="fw-medium mx-2">Detail Amount:</span>
                            <span>99</span>
                         </li>
                         <li class="d-flex align-items-center mb-3">
-                           <i class="bx bx-check"></i><span class="fw-medium mx-2">Cancelled Workshops:</span>
+                           <i class="bx bx-check"></i><span class="fw-medium mx-2">(-) Discount (%):</span>
                            <span>5</span>
                         </li>
 
-                        <li class="d-flex align-items-center">
-                           <i class="bx bxs-graduation"></i><span class="fw-medium mx-2">Scholarship:</span>
+                        <li class="d-flex align-items-center mb-3">
+                           <i class="bx bxs-graduation"></i><span class="fw-medium mx-2">(-) Discount:</span>
+                           <span>2</span>
+                        </li>
+                        <li class="d-flex align-items-center mb-3">
+                           <i class="bx bxs-graduation"></i><span class="fw-medium mx-2">(+) Total Tax</span>
+                           <span>2</span>
+                        </li>
+                        <li class="d-flex align-items-center mb-3">
+                           <i class="bx bxs-graduation"></i><span class="fw-medium mx-2">Total Amount</span>
                            <span>2</span>
                         </li>
                      </ul>
