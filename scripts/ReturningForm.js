@@ -98,7 +98,7 @@ $(function () {
                });
             console.log('getCurrenIndex', getCurrenIndex());
             // tForm.to(6);
-            tForm.to(getCurrenIndex() + 1);
+            tForm.to(getCurrenIndex());
          }
       }
    });
@@ -283,6 +283,15 @@ function ReturningStartRegistrationEnrollment() {
       });
    }
 
+   function finalFormBottomSection() {
+      const elementSection = $('.final-section-returning-students');
+      elementSection.html('');
+      const element = `<div class="card-footer text-muted" style="width: 100%; text-align: center;">
+                        <a href="/penland-web" class="btn btn-primary">Browse more workshop.</a>
+                    </div>`;
+      elementSection.html(element);
+   }
+
    function dummyThreeSavePaymentDetails() {
       asyncTask(1, 'sample').then(() => {
          console.log('Task 5 completed: ');
@@ -303,13 +312,22 @@ function ReturningStartRegistrationEnrollment() {
             setItemStore('enrollmentData', data);
             afterEachCallStoploadingBySection('workshops');
             finalMessageSuccess();
+            finalFormBottomSection();
+            resetData();
          },
+
          error: function () {},
       });
    }
 }
 
 $(document).ready(function () {
+   const myCart = getMyCartDetails();
+   const invoiceURL = ['new-student', 'returning-student'];
+   const isInRegistrationForms = AuthGuard(invoiceURL);
+   if (!myCart.items.length && isInRegistrationForms) {
+      redirectTo('index');
+   }
    $('.final-button-steps-retuning-student').click(function () {
       ReturningStartRegistrationEnrollment();
    });

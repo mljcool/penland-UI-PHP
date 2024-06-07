@@ -610,3 +610,16 @@ function shapeMyProfile() {
       initPopOver(message[checkConduct]);
    }
 }
+
+
+function resetData() {
+   const myCart = getMyCartDetails();
+   myCart.items = [];
+   myCart.productList = []
+   myCart.total = 0;
+   myCart.totalProductPrices = 0;
+   myCart.overAllTotalFormatted = '$0';
+   myCart.workshopFee = 0;
+   updateMyDetails('cart', myCart);
+   updateFormSteps(0);
+}

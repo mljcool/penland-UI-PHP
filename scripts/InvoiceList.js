@@ -211,7 +211,7 @@ function formatInvoiceListData(response = []) {
       due_date: moment(_data.createdon).format('MMM DD, YYYY'),
       action: 1,
    }));
-   console.log('responseMap', responseMap);
+   
    const totalInvoices = responseMap.length;
    const computes = (total, obj) => {
       total.balance += obj.balance;

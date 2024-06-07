@@ -418,7 +418,7 @@
          </ul>
       </div>
 
-      <div class="col-12 d-flex justify-content-between ">
+      <div class="col-12 d-flex justify-content-between final-section-new-students">
          <button class="btn btn-primary btn-prev footer-btns">
             <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
             <span class="align-middle d-sm-inline-block d-none">Previous</span>

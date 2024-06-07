@@ -218,6 +218,7 @@ function startRegistrationEnrollment() {
             setItemStore('enrollmentData', data);
             afterEachCallStoploadingBySection('workshops');
             finalMessageSuccess();
+            resetData();
          },
          error: function () {},
       });

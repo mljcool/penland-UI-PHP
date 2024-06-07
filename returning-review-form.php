@@ -31,7 +31,7 @@
                <span class="timeline-indicator-advanced timeline-indicator-danger icon-timeline-housing">
                   <i class="bx bx-home fa-2x"></i>
                </span>
-               <div class="timeline-event">
+               <div class="timeline-event" style="min-height: 300px;">
                   <div class="timeline-header border-bottom mb-3">
                      <h6 class="mb-0">Housing & Meals</h6>
                      <span class="text-muted">Finalize</span>
@@ -229,7 +229,7 @@
          </ul>
       </div>
 
-      <div class="col-12 d-flex justify-content-between ">
+      <div class="col-12 d-flex justify-content-between final-section-returning-students">
          <button class="btn btn-primary btn-prev footer-btns">
             <i class="bx bx-chevron-left bx-sm ms-sm-n2"></i>
             <span class="align-middle d-sm-inline-block d-none">Previous</span>

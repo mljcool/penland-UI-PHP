@@ -57,12 +57,12 @@
           
           
               </ul>
-
+              <!-- <a href="/penland-web" class="btn btn-primary">Browse more workshop.</a> -->
               <!-- Wishlist -->
               <div class="list-group">
                 <a
                   href="/penland-web/"
-                  class="list-group-item d-flex justify-content-between"
+                  class="btn btn-primary list-group-item d-flex justify-content-between"
                 >
                   <span>Add more workshops</span>
                   <i class="bx bx-sm bx-chevron-right scaleX-n1-rtl"></i>

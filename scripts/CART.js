@@ -122,7 +122,12 @@ function addHTMLELementCartItems() {
       if (isCartWaitlist.length) {
          filterWaitlistedItemsOnly(cart);
       } else {
-         cart.forEach(function (_item) {
+         const newCart = cart.filter(
+            (_data) => _data.hso_enrollmentlimit !== 0
+         );
+         myCart.items = newCart;
+         updateMyDetails('cart', myCart);
+         newCart.forEach(function (_item) {
             $('.cart-item-list-wrapper').append(
                HTMLelementProp.appendItemToCart(_item)
             );
@@ -199,14 +204,14 @@ $(document).ready(function () {
 
    $('.on-continue-registration').click(function () {
       const myCartDetails = getMyCartDetails();
-      
+
       if (myCartDetails.items.length === 0) {
          MessateAlertIformationCart();
          return;
       }
 
       if (checkHasSession()) {
-         window.location.href = '/penland-web/returning-student.php';;
+         window.location.href = '/penland-web/returning-student.php';
          return;
       }
 
