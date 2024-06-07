@@ -12,6 +12,27 @@ function getDetailsUserFromAPI() {
 function personalInfoPayload() {
    const data = getCurrentData();
    data.contact.gendercode = parseInt(data.contact.gendercode);
+   data.contact.hso_blackindigenousorpersonofcolor = parseInt(
+      data.contact.hso_blackindigenousorpersonofcolor
+   );
+   data.contact.hso_lgbtqiaidentification = parseInt(
+      data.contact.hso_lgbtqiaidentification
+   );
+   data.contact.mshied_homelanguage = parseInt(
+      data.contact.mshied_homelanguage
+   );
+   data.contact.mshied_limitedlanguageproficiency = parseInt(
+      data.contact.mshied_limitedlanguageproficiency
+   );
+   data.contact.mshied_preferredlanguage = parseInt(
+      data.contact.mshied_preferredlanguage
+   );
+   data.contact.mshied_disability = parseInt(
+      data.contact.mshied_disability
+   );
+   data.contact.mshied_race_ = parseInt(
+      contactData.contact.mshied_race_
+   );
    return data;
 }
 

@@ -2,7 +2,7 @@ function getUserDetailsFirstname() {
    if (checkHasSession()) {
       return getLoginDetails()[1].firstname;
    }
-   const userDetails = getUserDetailsStoreForPrefix();
+   const userDetails = getMyDynamicDetails();
    return userDetails.personalInfo.contact.firstname;
 }
 

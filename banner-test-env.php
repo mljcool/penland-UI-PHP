@@ -6,7 +6,7 @@
       <div class="app-academy-md-50 card-body d-flex align-items-md-center flex-column text-md-center">
         <h1 class="card-title mb-4 lh-sm px-md-5 text-center text-success">
           Penland Test Environment.
-        </h3>
+        </h1>
         <p class="mb-4">
         Penland School of Craft is a national craft education center dedicated to the creative life. Located in North Carolina’s Blue Ridge Mountains, Penland offers total-immersion workshops in sixteen beautifully-equipped studios along with artist residencies, a gallery and visitors center, and community programs.
 

@@ -447,7 +447,8 @@ function AddloadingToMyWorkshopList() {
             <div class="sk-chase-dot"></div>
             <div class="sk-chase-dot"></div>
             </div>
-        </div>`);
+        </div>`
+   );
 }
 
 function GetMyWorkShops() {
@@ -475,8 +476,8 @@ function GetMyWorkShops() {
          complete: function (data) {
             setTimeout(() => {
                $('.workshoplist_card').unblock();
-               if(isEmpty){
-                   AddEmptyBlockUIMessage();
+               if (isEmpty) {
+                  AddEmptyBlockUIMessage();
                }
             }, 1000);
          },
@@ -486,6 +487,10 @@ function GetMyWorkShops() {
 }
 
 $(document).ready(function () {
-   AddloadingToMyWorkshopList();
-   GetMyWorkShops();
+   const listToGuard = ['dashboard-panel'];
+   const isDashboardPanel = AuthGuard(listToGuard);
+   if (isDashboardPanel) {
+      AddloadingToMyWorkshopList();
+      GetMyWorkShops();
+   }
 });

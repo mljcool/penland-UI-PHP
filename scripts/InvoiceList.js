@@ -232,7 +232,7 @@ function formatInvoiceListData(response = []) {
    console.log('overAllAmount', overAllAmount);
 
    setTimeout(() => {
-      DataTableInvoiceList((responseMap = []));
+      DataTableInvoiceList(responseMap);
    }, 500);
 }
 
@@ -372,11 +372,14 @@ function invoiceDetails() {
    }
 }
 
-
-
 $(document).ready(function () {
-   invoiceDetails();
    initializePopOverAndToolTips();
+   const invoiceURL = ['dashboard-invoice-details'];
+   const isInvoiceDetails = AuthGuard(invoiceURL);
+   if (isInvoiceDetails) {
+      invoiceDetails();
+   }
+
    const isInvoicePage = $('.invoice-list-table');
    if (isInvoicePage.length) {
       AddloadingToInvoice();
