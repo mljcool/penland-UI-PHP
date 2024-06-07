@@ -2,11 +2,11 @@
   <div class="content-header mb-3">
     <h6 class="mb-0">Housing and Meals</h6>
     <small>Select Additional Products.</small>
-    <button type="button" data-bs-toggle="modal" data-bs-target="#priceRangeFeedModal"
+    <!-- <button type="button" data-bs-toggle="modal" data-bs-target="#priceRangeFeedModal"
       class="btn btn-sm btn-label-primary mt-md-3 d-flex gap-2 align-items-center">
       About Housing & Fees
       <i class="bx bx-info-circle bx-flashing"></i>
-    </button>
+    </button> -->
   </div>
   <div class="row">
     <p>

@@ -38,7 +38,6 @@ function requestAuth(payload = {}) {
 function destroySession() {
    wrappEntireHTML();
    const data = getLoginDetails();
-   console.log('destroySession', data[0]['cr711_securitylogintokenid']);
    const payload = {
       cr711_tokenid: data[0]['cr711_securitylogintokenid'],
    };
@@ -53,6 +52,7 @@ function destroySession() {
          localStorage.clear();
          if (response === 1) {
             location.reload();
+            localStorage.setItem('logout-event', 'logout' + Math.random());
          }
       },
       complete: function () {
@@ -144,6 +144,7 @@ $(document).ready(function () {
    });
 
    $('#user-logout').click(function () {
+   
       destroySession();
    });
 });

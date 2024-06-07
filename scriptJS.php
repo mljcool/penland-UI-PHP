@@ -80,3 +80,4 @@
 <script src="./scripts/InvoiceProducts.js"></script>
 <script src="./scripts/DashBoardWorkshop.js"></script>
 <script src="./scripts/ReturningForm.js"></script>
+<script src="./scripts/Service.js"></script>

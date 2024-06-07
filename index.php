@@ -14,7 +14,7 @@
     <?php include_once('./home-navigition.php'); ?>
 
     <div class="container-fluid search-container">
-      <div class="container-xxl flex-grow-1 container-p-y">
+      <div class="container-xxl flex-grow-1">
         <div class="row ">
             <!-- <h1>WORKSHOPS & New Student Form</h1>
             <label>(TEST ENVIRONMENT 👩‍💻)</label> -->

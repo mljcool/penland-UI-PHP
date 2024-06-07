@@ -8,7 +8,7 @@
 
     <div class="container-fluid">
 
-    <div class="container-xxl flex-grow-1 container-p-y">
+    <div class="container-xxl flex-grow-1 ">
         <div class="row ">
             <!-- <h1>WORKSHOPS & New Student Form</h1>
             <label>(TEST ENVIRONMENT 👩‍💻)</label> -->
@@ -18,8 +18,8 @@
       </div>
 
   <!-- START BODY PAGE -->
-  <div class="container-xxl flex-grow-1 container-p-y">
-    <div class="row section-cart-items">
+  <div class="container-xxl flex-grow-1 ">
+    <div class="row section-cart-items mb-4">
       <div class="workshop-item-wrapper">
         <div id="checkout-cart" class="content">
           <div class="row">
