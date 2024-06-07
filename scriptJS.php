@@ -65,7 +65,6 @@
 <script src="./scripts/Process.js"></script>
 <script src="./scripts/Registration.js"></script>
 <script src="./scripts/Details.js"></script>
-<!-- <script src="./scripts/stripes/utils.js"></script> -->
 <script src="./scripts/URLS.js"></script>
 <script src="./scripts/API.js"></script>
 <script src="./scripts/CART.js"></script>
@@ -81,3 +80,4 @@
 <script src="./scripts/DashBoardWorkshop.js"></script>
 <script src="./scripts/ReturningForm.js"></script>
 <script src="./scripts/Service.js"></script>
+<!-- <script src="./scripts/bundles/dist/bundle.js"></script> -->

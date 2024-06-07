@@ -31,7 +31,7 @@ function personalInfoPayload() {
       data.contact.mshied_disability
    );
    data.contact.mshied_race_ = parseInt(
-      contactData.contact.mshied_race_
+      data.contact.mshied_race_
    );
    return data;
 }

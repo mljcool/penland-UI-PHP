@@ -30,7 +30,7 @@
       <div class="input-group input-group-merge">
         <input
           type="password"
-          id="password"
+          id="password_1"
           name="multiStepsPass"
           class="form-control dd-adx_identity_passwordhash_22"
           placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"

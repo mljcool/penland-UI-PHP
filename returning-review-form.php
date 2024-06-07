@@ -108,10 +108,10 @@
                                        <div class="form-check custom-option custom-option-basic">
                                           <label
                                              class="form-check-label custom-option-content form-check-input-payment d-flex gap-3 align-items-center"
-                                             for="customRadioVisa">
+                                             for="customRadioVisa_3">
                                              <input name="customRadioTemp"
                                                 class="form-check-input pay-types fee-is-full" type="radio" value="full"
-                                                id="customRadioVisa" />
+                                                id="customRadioVisa_3" />
                                              <span class="custom-option-body">
                                                 <span style="white-space: nowrap" class="ms-3">Full Payment</span>
                                              </span>
@@ -122,10 +122,10 @@
                                        <div class="form-check custom-option custom-option-basic">
                                           <label
                                              class="form-check-label custom-option-content form-check-input-payment d-flex gap-3 align-items-center"
-                                             for="customRadioPaypal">
+                                             for="customRadioPaypal_3">
                                              <input name="customRadioTemp"
                                                 class="form-check-input pay-types fee-is-deposit" type="radio"
-                                                value="deposit" id="customRadioPaypal" />
+                                                value="deposit" id="customRadioPaypal_3" />
                                              <span class="custom-option-body">
                                                 <span style="white-space: nowrap" class="ms-3">Deposit Now</span>
                                              </span>

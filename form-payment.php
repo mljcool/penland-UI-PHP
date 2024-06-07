@@ -59,9 +59,9 @@
                         <div class="form-check custom-option custom-option-basic checked">
                            <label
                               class="form-check-label custom-option-content form-check-input-payment d-flex gap-3 align-items-center"
-                              for="customRadioVisa">
+                              for="customRadioVisa_1">
                               <input name="customRadioTemp" class="form-check-input pay-types fee-is-full" type="radio"
-                                 value="full" id="customRadioVisa">
+                                 value="full" id="customRadioVisa_1">
                               <span class="custom-option-body">
                                  <span style="white-space: nowrap" class="ms-3">Full Payment</span>
                               </span>
@@ -72,9 +72,9 @@
                         <div class="form-check custom-option custom-option-basic">
                            <label
                               class="form-check-label custom-option-content form-check-input-payment d-flex gap-3 align-items-center"
-                              for="customRadioPaypal">
+                              for="customRadioPaypal_1">
                               <input name="customRadioTemp" class="form-check-input pay-types fee-is-deposit"
-                                 type="radio" value="deposit" id="customRadioPaypal">
+                                 type="radio" value="deposit" id="customRadioPaypal_1">
                               <span class="custom-option-body">
                                  <span style="white-space: nowrap" class="ms-3">Deposit Now</span>
                               </span>

@@ -207,6 +207,15 @@ function startRegistrationEnrollment() {
       });
    }
 
+   function finalFormBottomSection() {
+      const elementSection = $('.final-section-new-students');
+      elementSection.html('');
+      const element = `<div class="card-footer text-muted" style="width: 100%; text-align: center;">
+                        <a href="/penland-web" class="btn btn-primary">Browse more workshop.</a>
+                    </div>`;
+      elementSection.html(element);
+   }
+
    function createEnrollment() {
       const enrollmentData = getEnrollmentPayload();
 
@@ -218,7 +227,9 @@ function startRegistrationEnrollment() {
             setItemStore('enrollmentData', data);
             afterEachCallStoploadingBySection('workshops');
             finalMessageSuccess();
+            finalFormBottomSection();
             resetData();
+
          },
          error: function () {},
       });
