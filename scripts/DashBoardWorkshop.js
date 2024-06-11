@@ -141,7 +141,9 @@ function DataTableWorkshopList(workShopData = []) {
                      orderable: !1,
                      searchable: !1,
                      render: function (e, t, a, s) {
-                        return `<a href="javascript:;" title="View" class="btn btn-sm btn-icon item-edit"><i class='bx bx-search-alt-2' ></i></a>`;
+                        let id = a.id;
+                        return `<button type="button" onclick="onViewDetails('${id}')" class="btn rounded-pill me-2 btn-primary btn-xs">View</button>`;
+                        // return `<a href="/penland-web/dashboard-workshop.php" title="View" class="btn btn-sm btn-icon item-edit"><i class='bx bx-search-alt-2' ></i></a>`;
                      },
                   },
                ],
@@ -359,6 +361,9 @@ function formatDataToAllocateTableWorkshops(response = []) {
    const instructorName = `_hso_instructor_value@OData.Community.Display.V1.FormattedValue`;
 
    const regStatus = `_mshied_registrationstatusid_value@OData.Community.Display.V1.FormattedValue`;
+   const theStudio = `_cr711_bystudio_value@OData.Community.Display.V1.FormattedValue`;
+   const hso_workshoptype = `hso_workshoptype@OData.Community.Display.V1.FormattedValue`;
+   const hso_workshoplevel = `hso_workshoplevel@OData.Community.Display.V1.FormattedValue`;
 
    const courses = response.filter(
       (_data) => _data['@odata.type'] === mshied_course
@@ -371,42 +376,75 @@ function formatDataToAllocateTableWorkshops(response = []) {
    console.log('workshopEnrollment', workshopEnrollment);
 
    const getCourseDetails = (courseid = '') => {
-      return courses.find((_data) => _data.mshied_courseid);
+      return courses.find((_data) => _data.mshied_courseid === courseid);
    };
    const formatDates = (data, key) => {
       const dateFormatted = moment(data[key]).format('MMMM D, YYYY');
       return dateFormatted;
    };
 
+   const timeOnly = (data, key) => {
+      const dateFormatted = moment(data[key]).format('dddd @ h:mm A');
+      return dateFormatted;
+   };
+
    const remapData = workshopEnrollment.map((_data) => ({
       id: _data.mshied_coursehistoryid,
       avatar: '',
+      imageurl: getCourseDetails(_data._mshied_courseid_value).hso_imageurl,
+      instructorID: _data._hso_instructor_value,
       instructorDisplayName: getCourseDetails(_data._mshied_courseid_value)[
          instructorName
       ],
+      workshoplevel: getCourseDetails(_data._mshied_courseid_value)[
+         hso_workshoplevel
+      ],
+      salesOrderID: _data._hso_enrollmentsalesorder_value,
       workShopName: _data[workshopName],
-      post: _data.mshied_name,
-      city: 'Krasnosilka',
+      sessionName: _data.mshied_name,
+      courseNumber: getCourseDetails(_data._mshied_courseid_value)
+         .mshied_coursenumber,
+      studioType: getCourseDetails(_data._mshied_courseid_value)[theStudio],
+      hsoWorkshoptype: getCourseDetails(_data._mshied_courseid_value)[
+         hso_workshoptype
+      ],
       start_date: formatDates(
          getCourseDetails(_data._mshied_courseid_value),
          'mshied_startdate'
+      ),
+      startTime: timeOnly(
+         getCourseDetails(_data._mshied_courseid_value),
+         'mshied_startdate'
+      ),
+      endTime: timeOnly(
+         getCourseDetails(_data._mshied_courseid_value),
+         'mshied_enddate'
       ),
       end_date: formatDates(
          getCourseDetails(_data._mshied_courseid_value),
          'mshied_enddate'
       ),
-      age: '61',
-      experience: '1 Year',
       status: !!_data[regStatus] ? _data[regStatus] : 'None',
    }));
 
    setTimeout(() => {
+      setItemStore('myWorkshopAndEnrollment', remapData);
       DataTableWorkshopList(remapData);
    }, 800);
 }
 
-function workShopDashboardBLockUI(html, isAJAx = true) {
-   $('.workshoplist_card').block({
+function onViewDetails(id) {
+   setTimeout(() => {
+      window.location.href = '/penland-web/dashboard-workshop.php?id=' + id;
+   }, 500);
+}
+
+function workShopDashboardBLockUI(
+   html,
+   className = 'workshoplist_card',
+   isAJAx = true
+) {
+   $('.' + className).block({
       message: html,
       css: {
          backgroundColor: 'transparent',
@@ -432,6 +470,7 @@ function AddEmptyBlockUIMessage() {
       </div>
    
    </div>`,
+   'workshoplist_card',
       false
    );
 }
@@ -447,7 +486,9 @@ function AddloadingToMyWorkshopList() {
             <div class="sk-chase-dot"></div>
             <div class="sk-chase-dot"></div>
             </div>
-        </div>`
+        </div>`,
+        'workshoplist_card',
+        true
    );
 }
 

@@ -110,7 +110,7 @@ function getDetailedSession(sessionID = '') {
          if (isNotFull) {
             $('.register-now').html('Register Now');
          } else {
-            $('.register-now').html('Join to waitlist');
+            $('.register-now').html('Join Waitlist');
          }
       },
       complete: function (data) {

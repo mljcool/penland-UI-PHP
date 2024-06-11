@@ -170,7 +170,7 @@ var HTMLelementProp = {
         <div class="flex-shrink-0 d-flex align-items-center">
           <img
           src="${_item.imageURL}"
-            alt="google home"
+            alt="Penland Workshop"
             class="w-px-100"
             style="border-radius: 8px"
           />

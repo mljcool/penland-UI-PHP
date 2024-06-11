@@ -179,16 +179,59 @@ function onRegisterToWaitlist() {
    });
 }
 
+function additionalMaskInputs() {
+   if ($('.dd-birthdate').length) {
+      new Cleave('.dd-birthdate', {
+         date: true,
+         delimiter: '/',
+         datePattern: ['m', 'd', 'Y'],
+      });
+
+      $('#bs-datepicker-basic').datepicker();
+      new Cleave('.phone-number-mask', {
+         phone: true,
+         phoneRegionCode: 'US',
+      });
+   }
+}
+
+function redirectoHomeIfEmpty() {
+   const listToGuard = ['waiting-list-cart'];
+   const isGuarded = AuthGuard(listToGuard);
+   if (isGuarded) {
+      const myCart = getMyCartDetails();
+      const isEmpty = myCart.items.filter(
+         (_id) => _id.hso_enrollmentlimit === 0
+      ).length;
+      console.log('isEmpty', isEmpty);
+      !isEmpty && redirectTo('/');
+   }
+}
+
 $(document).ready(function () {
-   if (checkHasSession()) {
+   let hasSessionValue = checkHasSession();
+   let personalInfoForm = null;
+   redirectoHomeIfEmpty();
+   if (hasSessionValue) {
       $('#for-guest-only').css('display', 'none');
+   } else {
+      additionalMaskInputs();
+      const waitListform = document.querySelector('#personalInfoValidation');
+      personalInfoForm = FormPersonalDetailsValidation(waitListform);
    }
    $('.on-continue-waitlist-program').click(function () {
-      loadingBlockUIWaitList();
       if (checkHasSession()) {
+         loadingBlockUIWaitList();
          createEnrollmentWaitList();
          return;
       }
-      onRegisterToWaitlist();
+
+      personalInfoForm.validate().then((_res) => {
+         console.log('_res', _res);
+         if (_res === 'Valid') {
+            // loadingBlockUIWaitList();
+            // onRegisterToWaitlist();
+         }
+      });
    });
 });

@@ -210,11 +210,17 @@ function FormPersonalDetailsValidation(c) {
          emailTwo: {
             validators: {
                notEmpty: notEmptyMessage('Your secondary  email'),
+               emailAddress: {
+                  message: 'The value is not a valid email address'
+              }
             },
          },
          mailingAddress: {
             validators: {
                notEmpty: notEmptyMessage('Your Mailing  address'),
+               emailAddress: {
+                  message: 'The value is not a valid email address'
+              }
             },
          },
          cityAddress: {

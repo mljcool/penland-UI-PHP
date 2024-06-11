@@ -178,6 +178,11 @@ function getDataContactWaitlist() {
    return waitList;
 }
 
+function getMyWorkshopAndEnrollment() {
+   const workshop = parseStore(localStorage.getItem('myWorkshopAndEnrollment'));
+   return workshop;
+}
+
 function getSalesOrderDetails() {
    const salesOrder = parseStore(localStorage.getItem('salesOrder'));
    return salesOrder;
@@ -518,8 +523,15 @@ function redirectToDashboard() {
    }
 }
 
-function redirectTo(url){
-   window.location.href = '/penland-web/'+url+'.php';
+function redirectTo(url) {
+ 
+   if (url === '/') {
+      console.log('UR:', url);
+      window.location.href = '/penland-web/';
+      return;
+   }
+
+   window.location.href = '/penland-web/' + url + '.php';
 }
 
 function loginPage() {
@@ -611,11 +623,10 @@ function shapeMyProfile() {
    }
 }
 
-
 function resetData() {
    const myCart = getMyCartDetails();
    myCart.items = [];
-   myCart.productList = []
+   myCart.productList = [];
    myCart.total = 0;
    myCart.totalProductPrices = 0;
    myCart.overAllTotalFormatted = '$0';

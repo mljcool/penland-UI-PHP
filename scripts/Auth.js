@@ -88,6 +88,7 @@ function ifNoLoginRedirect() {
       'dashboard-panel',
       'dashboard-invoice-details',
       'dashboard-invoice',
+      'dashboard-workshop',
    ];
    const isGuarded = AuthGuard(listToGuard);
    redirectToLogin(isGuarded, listToGuard);

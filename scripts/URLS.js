@@ -45,3 +45,5 @@ var Destroy_User_Credentials_Token = `https://prod-75.westus.logic.azure.com:443
 var Get_User_Invoices = `https://prod-25.westus.logic.azure.com:443/workflows/9ab8b338b1bc45eb883024845a7ce1c3/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=rXginQwXSfUGuM1BnieNRnKzE8KU1ZMKDp2J1XiSm2I`;
 
 var Get_User_Workshops_Enrollment = `https://prod-53.westus.logic.azure.com:443/workflows/141b992e797e4dcf93cd16dd5836dc61/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=tm-_dB225NpKrqaszFVz-wXMsg6qUXsHSfGl9ssWx_4`;
+
+var Get_Sales_Order_And_Products_Workshop_Details = `https://prod-107.westus.logic.azure.com:443/workflows/a904ccf0a55547128478c3c63202e0c7/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=tm96Jy6DO-vlc7y1Gr4it-KVhgE-dSwieB3Rp82H5T8`;
