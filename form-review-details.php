@@ -220,7 +220,7 @@
                <span class="timeline-indicator-advanced timeline-indicator-danger icon-timeline-housing">
                   <i class="bx bx-home fa-2x"></i>
                </span>
-               <div class="timeline-event">
+               <div class="timeline-event" style="min-height: 300px;">
                   <div class="timeline-header border-bottom mb-3">
                      <h6 class="mb-0">Housing & Meals</h6>
                      <span class="text-muted">Finalize</span>

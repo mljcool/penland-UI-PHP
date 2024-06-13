@@ -210,9 +210,14 @@ function startRegistrationEnrollment() {
    function finalFormBottomSection() {
       const elementSection = $('.final-section-new-students');
       elementSection.html('');
-      const element = `<div class="card-footer text-muted" style="width: 100%; text-align: center; display: flex; gap: 2rem;">
+      const element = `<div class="card-footer text-muted" style="width: 100%; text-align: center; display: flex; gap: 2rem; justify-content: center;">
                         <a href="/penland-web" class="btn btn-primary">Browse more workshop.</a>
-                        <a href="/penland-web/login.php" class="btn btn-primary">Log in to your account??</a>
+                        <a href="/penland-web/login.php" class="btn btn-secondary">
+                           <span class="align-middle d-sm-inline-block d-none me-sm-1 me-0">
+                              Login account?
+                           </span>
+                           <i class="bx bx-log-in bx-sm me-sm-n2"></i>
+                        </a>
                     </div>`;
       elementSection.html(element);
    }

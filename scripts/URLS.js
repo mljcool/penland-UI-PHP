@@ -1,7 +1,5 @@
 const WORKSHOP_LIST = `https://prod-84.westus.logic.azure.com:443/workflows/ec7689b3bda84c1a85d31970900a8b74/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=JAK1lRIHTUKZRE42MxeWjFcgoXgm-OR3HeWTX0SCQUc`;
 
-const INSTRUCTOR = `https://prod-153.westus.logic.azure.com:443/workflows/ab276fab9532446fb515a2c36d2a5f31/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=PMT6jfSducF26l7h-j61ypWev3-0BHNFO2MoC3Cg5BY`;
-
 var REGISTER_ACCOUNT = `https://prod-44.westus.logic.azure.com:443/workflows/7a121b6f6eab490ab8a51584106bd7ad/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=NeZyr9S2SId0HbBDd6FNDtDoTzLpvr8K-29TT3Ex16E`;
 
 var REGISTER_APPLICATION = `https://prod-39.westus.logic.azure.com:443/workflows/25d21f112f5a402e82086e997977363b/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=zPV3stzt5kg57QTrjvuNtf9yQ6lYRI5me_oCMq-IZzc`;
@@ -47,3 +45,5 @@ var Get_User_Invoices = `https://prod-25.westus.logic.azure.com:443/workflows/9a
 var Get_User_Workshops_Enrollment = `https://prod-53.westus.logic.azure.com:443/workflows/141b992e797e4dcf93cd16dd5836dc61/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=tm-_dB225NpKrqaszFVz-wXMsg6qUXsHSfGl9ssWx_4`;
 
 var Get_Sales_Order_And_Products_Workshop_Details = `https://prod-107.westus.logic.azure.com:443/workflows/a904ccf0a55547128478c3c63202e0c7/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=tm96Jy6DO-vlc7y1Gr4it-KVhgE-dSwieB3Rp82H5T8`;
+
+var Get_Instructor_and_Studio_Details = `https://prod-191.westus.logic.azure.com:443/workflows/68602021ae8e4c718457ceed60b47eab/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=YNDuuC0P2wLs-_eZ9DbUdhy0eyxGz9QdpQ8YAKa7-qs`;

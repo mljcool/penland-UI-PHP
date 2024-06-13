@@ -215,9 +215,12 @@ $(document).ready(function () {
    if (hasSessionValue) {
       $('#for-guest-only').css('display', 'none');
    } else {
-      additionalMaskInputs();
-      const waitListform = document.querySelector('#personalInfoValidation');
-      personalInfoForm = FormPersonalDetailsValidation(waitListform);
+      const isWaitingList = $('.waiting-list-container');
+      if(isWaitingList.length){
+         additionalMaskInputs();
+         const waitListform = document.querySelector('#personalInfoValidation');
+         personalInfoForm = FormPersonalDetailsValidation(waitListform);
+      }
    }
    $('.on-continue-waitlist-program').click(function () {
       if (checkHasSession()) {

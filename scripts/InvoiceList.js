@@ -106,7 +106,7 @@ function DataTableInvoiceList(apiData) {
                         <div class="dropdown-menu dropdown-menu-end">
                             <a href="/penland-web/dashboard-invoice-details.php?invoiceID=${invoiceID}" class="dropdown-item">View</a>
                             <div class="dropdown-divider"></div>
-                            <a    href="javascript:void(0);" class="dropdown-item">Download</a>
+                            <a href="/penland-web/dashboard-invoice-detail-print.php?invoiceID=${invoiceID}&print=1" class="dropdown-item">Download</a>
                         </div>
                     </div>
                     </div>
@@ -211,7 +211,7 @@ function formatInvoiceListData(response = []) {
       due_date: moment(_data.createdon).format('MMM DD, YYYY'),
       action: 1,
    }));
-   
+
    const totalInvoices = responseMap.length;
    const computes = (total, obj) => {
       total.balance += obj.balance;
@@ -302,6 +302,7 @@ function shapeInvoiceDetails(invoiceData = []) {
    const discountamount = `discountamount@OData.Community.Display.V1.FormattedValue`;
    const discountpercentage = `discountpercentage@OData.Community.Display.V1.FormattedValue`;
    const _pricelevelid_value = `_pricelevelid_value@OData.Community.Display.V1.FormattedValue`;
+   const createdon = moment(details.createdon).format('MMMM D, YYYY');
 
    htmlEL('invoiceName').html(details.name);
    htmlEL('invoiceID').html(details.invoicenumber);
@@ -313,6 +314,12 @@ function shapeInvoiceDetails(invoiceData = []) {
    htmlEL('discountamount').html(details[discountamount]);
    htmlEL('_pricelevelid_value').html(details[_pricelevelid_value]);
    htmlEL('discountpercentage').html(details[discountpercentage]);
+
+   // PRINT
+   htmlEL('createdonPrint').html(createdon);
+   htmlEL('dueDatePrint').html(createdon);
+   htmlEL('invoiceIDPrint').html(details.invoicenumber);
+
    if (details[formatted] === 'Paid') {
       htmlEL('id_paynow').css('display', 'none');
       htmlEL('invoiceStatus-color').toggleClass(
@@ -339,7 +346,27 @@ function formatInvoiceDetailsData(response = []) {
    }));
    console.log('productOnly', productOnly);
    setTimeout(() => {
-      DataTableProductList((productOnly = []));
+      const print = getURLParameters('print');
+      if (print) {
+         console.log('isPrint', print);
+         const tableList = $('.print-product-items');
+         // tableList.html('')
+         productOnly.forEach((_print, index) => {
+            tableList.prepend(`<tr>
+                                 <td>${_print.name}</td>
+                                 <td>${_print.unit}</td>
+                                 <td>${_print.price}</td>
+                                 <td>${_print.qty}</td>
+                                 <td>${_print.discount}</td>
+                                 <td>${_print.amount}</td>
+                              </tr>`);
+            if (index === productOnly.length - 1) {
+               window.print();
+            }
+         });
+      } else {
+         DataTableProductList(productOnly);
+      }
    }, 500);
 }
 
@@ -374,8 +401,12 @@ function invoiceDetails() {
 
 $(document).ready(function () {
    initializePopOverAndToolTips();
-   const invoiceURL = ['dashboard-invoice-details'];
+   const invoiceURL = [
+      'dashboard-invoice-details',
+      'dashboard-invoice-detail-print',
+   ];
    const isInvoiceDetails = AuthGuard(invoiceURL);
+   console.log('invoice-detail-print', isInvoiceDetails);
    if (isInvoiceDetails) {
       invoiceDetails();
    }

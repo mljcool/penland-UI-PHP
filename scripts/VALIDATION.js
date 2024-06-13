@@ -195,6 +195,10 @@ function FormPersonalDetailsValidation(c) {
          userDob: {
             validators: {
                notEmpty: notEmptyMessage('Date of Birth'),
+               date: {
+                  format: 'MM/DD/YYYY',
+                  message: 'The value is not a valid date'
+              }
             },
          },
          gender: {

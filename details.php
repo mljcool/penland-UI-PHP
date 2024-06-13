@@ -102,7 +102,8 @@
                 data-aos-easing="ease-in-out"
                 data-aos-mirror="true"
                 data-aos-once="true"
-                src="./assets/heather.png"
+                class="cr711_photourl"
+                src=""
               />
             </div>
             <div class="instructor-details-art">
@@ -160,17 +161,10 @@
                 data-aos-mirror="true"
                 data-aos-once="true"
               >
-                The Book & Paper Studio
+                The <span class="new_maintype"></span> Studio
               </h3>
-              <p class="details-studio-description">
-                The book studio is very flexible, but is particularly well
-                equipped for book construction techniques (including Eastern and
-                Western traditions and adhesive and non-adhesive binding), pop
-                up and kinetic books, boxmaking, leatherwork, dying and
-                decoration techniques, and book design. Materials and techniques
-                are combined in a myriad of ways, and instructors often ground
-                technical exploration with conversations about historic and/org
-                current context, design, or idea generation.
+              <p class="details-studio-description new_description">
+               .......................
               </p>
               <a href="#" class="explore-studio"
                 >Explore the Studio <i>&#8594;</i></a
@@ -178,7 +172,7 @@
             </div>
           </div>
           <div class="studio-image-showcase" data-aos="fade-up">
-            <img src="./assets/over-view-studio.png" />
+            <img class="cr711_imagepreview" src="./assets/over-view-studio.png" />
           </div>
         </div>
       </div>

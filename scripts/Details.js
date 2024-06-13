@@ -5,15 +5,15 @@ let instructorData = {};
 function setHTMLElement(dataWorkshop) {
    $('.w-details-title').html(dataWorkshop.mshied_name);
    $('.with-workshop-level').html(dataWorkshop.workshopLevel);
-   $('.w-details-instructor').html(dataWorkshop.instructor);
+   // $('.w-details-instructor').html(dataWorkshop.instructor);
    $('.with-workshop-date').html(
       dataWorkshop.workShopOverview[
          '_cr711_defaultsessionpricelist_value@OData.Community.Display.V1.FormattedValue'
       ]
    );
 
-   $('.details-studio-name').html(dataWorkshop.studioTitle);
-   $('.details-studio-description').html(dataWorkshop.studioDescription);
+   // $('.details-studio-name').html(dataWorkshop.studioTitle);
+   // $('.details-studio-description').html(dataWorkshop.studioDescription);
 }
 
 function setSelectedWorkshops(workshopID) {
@@ -22,30 +22,61 @@ function setSelectedWorkshops(workshopID) {
       (_data) => _data.mshied_courseid === workshopID
    );
    $('.mshied_description').html(dataWorkshop.mshied_description);
-   localStorage.setItem(
-      'currentSelectedWorkShop',
-      JSON.stringify(dataWorkshop)
-   );
-   getInstructorDetails(dataWorkshop);
+   setItemStore('currentSelectedWorkShop', dataWorkshop);
+   getInstructorAndStudioDetails(dataWorkshop);
+}
+//.inner-section-instructor
+function loadingUIDetailsInstructor() {
+   $('.inner-section-instructor').block({
+      message:
+         '<div class="d-flex justify-content-center"><p class="me-2 mb-0 text-black">Please wait a moment while I retrieve the instructor details..</p> <div class="sk-wave sk-primary m-0"><div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div> <div class="sk-rect sk-wave-rect"></div></div> </div>',
+      css: {
+         backgroundColor: 'transparent',
+         border: '0',
+      },
+      overlayCSS: {
+         backgroundColor: '#fff',
+         opacity: 1,
+      },
+   });
 }
 
-function getInstructorDetails(dataWorkshop) {
+function getInstructorAndStudioDetails(dataWorkshop) {
+   const _data = dataWorkshop;
    const jsonData = {
       requestParams: {
-         instructorID: dataWorkshop._hso_instructor_value,
+         instructorID: _data._hso_instructor_value,
+         studioID: _data._cr711_bystudio_value,
       },
    };
+   loadingUIDetailsInstructor();
+
    $.get({
-      url: INSTRUCTOR,
+      url: Get_Instructor_and_Studio_Details,
       data: jsonData,
       contentType: 'application/json',
       success: function (response = []) {
-         instructorData = response[0];
-         $('.details-instructor-name').html(instructorData.fullname);
-         $('.details-instructor-title').html(instructorData.jobtitle);
-         $('.details-instructor-description').html(instructorData.description);
+         console.log('Get_Instructor_and_Studio_Details', response);
+         if (response.length) {
+            const instructor = response[0];
+            const studioData = response[1];
+            $('.details-instructor-name').html(instructor.fullname);
+            $('.w-details-instructor').html(instructor.fullname);
+            $('.details-instructor-title').html(instructor.jobtitle);
+            $('.details-instructor-description').html(
+               instructor.cr711_workprofile
+            );
+            $('.cr711_photourl').attr('src', instructor.cr711_photourl);
+
+            $('.cr711_imagepreview').attr('src', studioData.cr711_imagepreview);
+            $('.new_maintype').html(studioData.new_maintype);
+            $('.new_description').html(studioData.new_description);
+            // console.log();
+         }
       },
-      complete: function (data) {},
+      complete: function (data) {
+         $('.inner-section-instructor').unblock();
+      },
       error: function (xhr, status, error) {},
    });
 }
@@ -159,7 +190,6 @@ function getOverView(courseID = '') {
                $('.workshop-header-details').unblock();
                MessageDataBeingComposed();
                // $('.workshop-header-details').html('<h5 class="warning-title-overview" style="max-width:550px;margin-top:2rem;">We appreciate your interest in the workshop. The data required for this session is currently being composed and prepared by our team. We are working diligently to ensure that everything is accurate and ready for your use.</h5>')
-        
             }
          },
          complete: function (data) {},

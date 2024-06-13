@@ -62,7 +62,7 @@
                               <div
                                  class="d-flex justify-content-between align-items-start card-widget-2 border-end pb-3 pb-sm-0">
                                  <div>
-                                    <h5 class="mb-1 invoiceName">......</h5>
+                                    <h6 class="mb-1 invoiceName">......</h6>
                                     <p class="mb-0">Invoice Name</p>
 
                                  </div>
