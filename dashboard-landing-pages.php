@@ -37,8 +37,7 @@
                                 <li></li>
                                 <li></li>
                             </ul>
-                            <img
-" src="./assets/Profile-banner.png" alt="Penland Banner image" class="rounded-top" />
+                            <img src="./assets/Profile-banner.png" alt="Penland Banner image" class="rounded-top" />
                         </div>
                         <div class="user-profile-header d-flex flex-column flex-sm-row text-sm-start text-center mb-4">
                             <div class="flex-shrink-0 mt-n2 mx-sm-0 mx-auto">

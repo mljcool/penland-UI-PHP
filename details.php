@@ -24,11 +24,11 @@
               <h1 class="w-details-title">Getting Details...</h1>
             </div>
             <div class="with-workshop-title" data-aos="fade-up">
-              with<span class="instructor w-details-instructor">Heather Peters</span>
+              with<span class="instructor w-details-instructor">............</span>
             </div>
             <ul class="workshop-date-details">
               <li class="with-workshop-date">
-                Summer Session : May 26-31, 2024
+              ............
               </li>
               <li class="with-workshop-session">Studio : Book & Paper</li>
               <li class="with-workshop-level">Level : Beginner</li>
@@ -114,7 +114,7 @@
                 data-aos-duration="800"
                 class="details-instructor-title"
               >
-                Teaching Artist
+                ---------
               </h3>
               <span
                 class="instructor-name details-instructor-name"
@@ -122,7 +122,7 @@
                 data-aos-offset="200"
                 data-aos-delay="10"
                 data-aos-duration="900"
-                >Heather Peters</span
+                >---------</span
               >
               <p
                 data-aos="fade-left"
@@ -177,72 +177,6 @@
         </div>
       </div>
 
-      <!-- <div class="row reg-scholarship-section">
-        <div class="reg-context-wrapper">
-          <div class="reg-information">
-            <h3 class="reg-header">Registration & Scholarship Information</h3>
-            <p>
-              Penland welcomes serious students of all levels of
-              experience-absolute beginners to professionals. We seek a diverse
-              student population representing varied experiences, backgrounds,
-              races, professions, and age groups (minimum age 18).
-              <br />
-              <br />
-              Penland is an intentionally inclusive community that values the
-              creative <br />energy that arises from diverse artistic visions
-              and approaches. Our scholarship program exists to make our
-              workshops accessible to those who are not able to participate
-              without financial assistance and to create educational
-              opportunities for people who have been underrepresented at Penland
-              and in the craft world.
-            </p>
-            <a class="penland-link">Tuition and Fees <i>&#8594;</i></a>
-            <a class="penland-link">Scholarship Information <i>&#8594;</i></a>
-          </div>
-          <div class="reg-scholarship-date-info">
-            <div class="date-details">
-              <div class="date-schedule-list">
-                <div class="s-dates">
-                  <h3 class="title-date-header">Scholarship Dates</h3>
-                  <ul class="date-list">
-                    <li>
-                      <span class="reg-date">October 15, 2024</span>
-                      <span>Scholarships Applications Open</span>
-                    </li>
-                    <li>
-                      <span class="reg-date">November 15, 2024</span>
-                      <span>Scholarships Application Dates</span>
-                    </li>
-                  </ul>
-                </div>
-                <div class="r-dates">
-                  <h3 class="title-date-header">Registration Dates</h3>
-                  <ul class="date-list">
-                    <li>
-                      <span class="reg-date">January 5-10, 2024</span>
-                      <span
-                        >Scholarships Enrollment Perios for Scholarship
-                        Students</span
-                      >
-                    </li>
-                    <li>
-                      <span class="reg-date">January 15-20, 2024</span>
-                      <span>Regular Enroll Perios. Open to all students</span>
-                    </li>
-                    <li>
-                      <span class="reg-date">April 30, 2024</span>
-                      <span>Last day enroll in workshops</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="acion-footer ">
-                <a href="#">More Registration Information</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
 
       <div class="row explore-more-workshopt-section">
         <div class="explore-wrapper">

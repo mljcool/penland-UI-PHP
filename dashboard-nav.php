@@ -109,7 +109,7 @@
          <!-- / Style Switcher-->
 
          <!-- Notification -->
-         <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-1">
+         <!-- <li class="nav-item dropdown-notifications navbar-dropdown dropdown me-3 me-xl-1">
             <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown"
                data-bs-auto-close="outside" aria-expanded="false">
                <i class="bx bx-bell bx-sm"></i>
@@ -271,7 +271,7 @@
                   </button>
                </li>
             </ul>
-         </li>
+         </li> -->
          <!--/ Notification -->
          <!-- User -->
          <li class="nav-item navbar-dropdown dropdown-user dropdown">
@@ -282,7 +282,7 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
                <li>
-                  <a class="dropdown-item" href="pages-account-settings-account.html">
+                  <a class="dropdown-item" style="pointer-events: none;" >
                      <div class="d-flex">
                         <div class="flex-shrink-0 me-3">
                            <div class="avatar avatar-online">
@@ -290,8 +290,8 @@
                            </div>
                         </div>
                         <div class="flex-grow-1">
-                           <span class="fw-medium d-block u_fullname">John Doe</span>
-                           <small class="text-muted acctType">Student</small>
+                           <span class="fw-medium d-block u_fullname">-----</span>
+                           <small class="text-muted acctType">---</small>
                         </div>
                      </div>
                   </a>
@@ -305,12 +305,12 @@
                      <span class="align-middle">My Profile</span>
                   </a>
                </li>
-               <li>
+               <!-- <li>
                   <a class="dropdown-item" href="pages-account-settings-account.html">
                      <i class="bx bx-cog me-2"></i>
                      <span class="align-middle">Settings</span>
                   </a>
-               </li>
+               </li> -->
                <!-- <li>
             <a class="dropdown-item" href="pages-account-settings-billing.html">
               <span class="d-flex align-items-center align-middle">

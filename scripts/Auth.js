@@ -12,7 +12,7 @@ function requestAuth(payload = {}) {
                contactID: response._cr711_contact_value,
             };
             setItemStore('loginAccess', data);
-            const urlRedirect = getURLParameters('redirectURL');
+            const urlRedirect = getURLParameters('redirectURLPSIG');
             if (redirectList.includes(urlRedirect)) {
                redirectTo(urlRedirect);
             } else {

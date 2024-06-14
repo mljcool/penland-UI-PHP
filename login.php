@@ -87,7 +87,6 @@
                   
                 </div>
                 <input type="hidden" />
-              </form>
             </div>
           </div>
         </div>

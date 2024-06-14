@@ -25,7 +25,6 @@
                     id="multiStepsValidationReturningForm" style="flex-direction: row; background:white;">
                     <div class="bs-stepper-header">
 
-
                         <div class="step" data-target="#housing-info">
                             <button type="button" class="step-trigger">
                                 <span class="bs-stepper-circle">1</span>

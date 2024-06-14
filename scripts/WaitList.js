@@ -204,19 +204,20 @@ function redirectoHomeIfEmpty() {
          (_id) => _id.hso_enrollmentlimit === 0
       ).length;
       console.log('isEmpty', isEmpty);
-      !isEmpty && redirectTo('/');
+      // !isEmpty && redirectTo('/');
    }
 }
 
 $(document).ready(function () {
    let hasSessionValue = checkHasSession();
    let personalInfoForm = null;
-   redirectoHomeIfEmpty();
+
    if (hasSessionValue) {
       $('#for-guest-only').css('display', 'none');
    } else {
       const isWaitingList = $('.waiting-list-container');
       if(isWaitingList.length){
+         redirectoHomeIfEmpty();
          additionalMaskInputs();
          const waitListform = document.querySelector('#personalInfoValidation');
          personalInfoForm = FormPersonalDetailsValidation(waitListform);

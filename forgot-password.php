@@ -1,4 +1,26 @@
-<div class="row penland-login-form">
+<!DOCTYPE html>
+<html
+  lang="en"
+  class="light-style layout-navbar-fixed layout-menu-fixed "
+  dir="ltr"
+  data-theme="theme-default"
+>
+    <head>
+        <?php 
+            include_once('./header.php');
+        ?>
+    </head>
+  <body>
+    <?php include_once('./home-navigition.php'); ?>
+
+    <div class="container-fluid">
+      <div class="row ">
+            <?php include_once('./banner-test-env.php') ?>
+          </div>
+      </div>
+
+      <!-- START BODY PAGE -->
+      <div class="row penland-login-form">
   <div class="penland-authentication-form login-penland">
     <div class="card" id="authenticate-card">
       <div class="card-body">
@@ -26,3 +48,13 @@
     </div>
   </div>
 </div>
+
+      <!-- END BODY PAGE -->
+    </div>
+
+  </body>
+
+  <?php include_once('./footer.php'); ?>
+
+</html>
+<?php include_once('./scriptJS.php'); ?>

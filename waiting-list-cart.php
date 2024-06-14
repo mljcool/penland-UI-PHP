@@ -306,7 +306,7 @@
                         <hr class="mx-n4" />
                         <dl class="row mb-0">
                             <dt class="col-6">Total</dt>
-                            <dd class="col-6 fw-medium text-end mb-0 over-all-total">$1198.00</dd>
+                            <dd class="col-6 fw-medium text-end mb-0 over-all-total">$00.00</dd>
                         </dl>
 
                     </div>
@@ -322,55 +322,6 @@
 </div>
     <!-- END INSIDE BODY -->
 
-
-
-</div>
-
-  <!-- MODAL START HERE -->
-
-  <div
-    class="modal fade"
-    id="modalContinueRegister"
-    tabindex="-1"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog modal-dialog modal-sm" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">I am</h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="modal-body">
-          <div class="selected-item">
-            <a href="/penland-web/login.php" class="item-select-as">
-              <div class="icon-v">
-                <img src="./assets/Returning-student.png" />
-              </div>
-              <div class="select-as-label">A returning student</div>
-            </a>
-            <a href="#" onclick="onNewStudent()" class="item-select-as new-student-link-to-form">
-              <div class="icon-v">
-                <img src="./assets/New-student.png" />
-              </div>
-              <div class="select-as-label">A new student</div>
-            </a>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
-            Close
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- MODAL END HERE -->
 
   <!-- END BODY PAGE -->
 </div>

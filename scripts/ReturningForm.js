@@ -1,4 +1,5 @@
-$(function () {
+
+$(document).ready(function () {
    var e = $('.select2');
    e.length &&
       e.each(function () {
@@ -9,99 +10,99 @@ $(function () {
                dropdownParent: e.parent(),
             });
       });
-}),
-   document.addEventListener('DOMContentLoaded', function (e) {
-      const returningStudentform = $('.cast-returning-student-form');
-      if (returningStudentform.length) {
-         var mStepValidation = document.querySelector(
-            '#multiStepsValidationReturningForm'
+   const returningStudentform = $('.cast-returning-student-form');
+   if (returningStudentform.length) {
+      var mStepValidation = document.querySelector(
+         '#multiStepsValidationReturningForm'
+      );
+      if (null !== mStepValidation) {
+         var multiStepsForm = mStepValidation.querySelector(
+            '#multiStepsFormReturningStudent'
          );
-         if (null !== mStepValidation) {
-            var multiStepsForm = mStepValidation.querySelector(
-               '#multiStepsFormReturningStudent'
+         var s = multiStepsForm.querySelector('#housing-info'),
+            termsInfo = multiStepsForm.querySelector('#terms-info'),
+            btnNext = [].slice.call(
+               multiStepsForm.querySelectorAll('.btn-next')
+            ),
+            multiStepsForm = [].slice.call(
+               multiStepsForm.querySelectorAll('.btn-prev')
             );
-            var s = multiStepsForm.querySelector('#housing-info'),
-               termsInfo = multiStepsForm.querySelector('#terms-info'),
-               btnNext = [].slice.call(
-                  multiStepsForm.querySelectorAll('.btn-next')
-               ),
-               multiStepsForm = [].slice.call(
-                  multiStepsForm.querySelectorAll('.btn-prev')
-               );
 
-            let tForm = new Stepper(mStepValidation, { linear: !0 });
+         let tForm = new Stepper(mStepValidation, { linear: !0 });
 
-            const housingForm = FormHousingDetailsValidation(s);
-            const termsInfoForm = FormTermsAndConditionValidation(termsInfo);
+         const housingForm = FormHousingDetailsValidation(s);
+         const termsInfoForm = FormTermsAndConditionValidation(termsInfo);
 
-            btnNext.forEach((e) => {
+         btnNext.forEach((e) => {
+            e.addEventListener('click', (e) => {
+               switch (tForm._currentIndex) {
+                  case 0:
+                     updateFormSteps(1);
+                     tForm.next();
+                     // housingForm.validate().then((_res) => {
+                     //    if (_res === 'Valid') {
+                     //       // saveHousingInformation(tForm);
+                     //       loadingBlockUINewStudentForm();
+                     //       saveHousingDetailsLocal();
+                     //       updateFormSteps(FORM_STEPS.PAYMENT);
+                     //       setTimeout(() => {
+                     //          initializeHousingData();
+                     //          PopulateForm();
+                     //          $('.new-student-form').unblock();
+                     //          tForm.next();
+                     //       }, 1000);
+                     //       return;
+                     //    }
+                     // });
+                     break;
+
+                  case 1:
+                     updateFormSteps(2);
+                     tForm.next();
+                     // loadingBlockUINewStudentForm();
+                     // updateFormSteps(FORM_STEPS.TERMS);
+                     // setTimeout(() => {
+                     //    $('.new-student-form').unblock();
+                     //    tForm.next();
+                     // }, 1000);
+                     break;
+
+                  case 2:
+                     updateFormSteps(3);
+                     tForm.next();
+                     // termsInfoForm.validate().then((_res) => {
+                     //    if (_res === 'Valid') {
+                     //       loadingBlockUINewStudentForm();
+                     //       updateTermsAgreement();
+                     //       updateFormSteps(FORM_STEPS.CONFIRMATION);
+                     //       setTimeout(() => {
+                     //          summaryReviewSections();
+                     //          $('.new-student-form').unblock();
+                     //          tForm.next();
+                     //       }, 1000);
+                     //    }
+                     // });
+                     break;
+
+                  default:
+                     tForm.next();
+               }
+            });
+         }),
+            multiStepsForm.forEach((e) => {
                e.addEventListener('click', (e) => {
-                  switch (tForm._currentIndex) {
-                     case 0:
-                        updateFormSteps(1);
-                        tForm.next();
-                        // housingForm.validate().then((_res) => {
-                        //    if (_res === 'Valid') {
-                        //       // saveHousingInformation(tForm);
-                        //       loadingBlockUINewStudentForm();
-                        //       saveHousingDetailsLocal();
-                        //       updateFormSteps(FORM_STEPS.PAYMENT);
-                        //       setTimeout(() => {
-                        //          initializeHousingData();
-                        //          PopulateForm();
-                        //          $('.new-student-form').unblock();
-                        //          tForm.next();
-                        //       }, 1000);
-                        //       return;
-                        //    }
-                        // });
-                        break;
-
-                     case 1:
-                        updateFormSteps(2);
-                        tForm.next();
-                        // loadingBlockUINewStudentForm();
-                        // updateFormSteps(FORM_STEPS.TERMS);
-                        // setTimeout(() => {
-                        //    $('.new-student-form').unblock();
-                        //    tForm.next();
-                        // }, 1000);
-                        break;
-
-                     case 2:
-                        updateFormSteps(3);
-                        tForm.next();
-                        // termsInfoForm.validate().then((_res) => {
-                        //    if (_res === 'Valid') {
-                        //       loadingBlockUINewStudentForm();
-                        //       updateTermsAgreement();
-                        //       updateFormSteps(FORM_STEPS.CONFIRMATION);
-                        //       setTimeout(() => {
-                        //          summaryReviewSections();
-                        //          $('.new-student-form').unblock();
-                        //          tForm.next();
-                        //       }, 1000);
-                        //    }
-                        // });
-                        break;
-
-                     default:
-                        tForm.next();
-                  }
+                  tForm.previous();
+                  updateFormSteps(tForm._currentIndex);
                });
-            }),
-               multiStepsForm.forEach((e) => {
-                  e.addEventListener('click', (e) => {
-                     tForm.previous();
-                     updateFormSteps(tForm._currentIndex);
-                  });
-               });
-            console.log('getCurrenIndex', getCurrenIndex());
-            // tForm.to(6);
-            tForm.to(getCurrenIndex());
-         }
+            });
+         console.log('getCurrenIndex', getCurrenIndex());
+         // tForm.to(6);
+         tForm.to(getCurrenIndex());
       }
-   });
+   }
+
+
+});
 
 function returninSetCodePrefix(data) {
    const user = getLoginDetails()[1];
@@ -185,7 +186,7 @@ function returningSalesOrderPayload() {
    const defaultPrice = myCart.items;
    const pricelevels =
       defaultPrice[0]['workShopOverview'][
-         '_cr711_defaultsessionpricelist_value'
+      '_cr711_defaultsessionpricelist_value'
       ];
    const getUserDatails = getLoginDetails()[1];
    return {
@@ -259,7 +260,7 @@ function ReturningStartRegistrationEnrollment() {
             setItemStore('salesOrder', data);
             returningAddProductToSalesOrder();
          },
-         error: function () {},
+         error: function () { },
       });
    }
 
@@ -279,7 +280,7 @@ function ReturningStartRegistrationEnrollment() {
             smoothSrollToNextBlock('payments');
             dummyThreeSavePaymentDetails();
          },
-         error: function () {},
+         error: function () { },
       });
    }
 
@@ -316,7 +317,7 @@ function ReturningStartRegistrationEnrollment() {
             resetData();
          },
 
-         error: function () {},
+         error: function () { },
       });
    }
 }
