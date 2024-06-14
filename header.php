@@ -59,7 +59,7 @@
 
     <!-- END THEME UI -->
 
-    <!-- <script src="./scripts/lib/JqueryStable.js"></script> -->
+    <script src="./scripts/lib/JqueryStable.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
     <link
