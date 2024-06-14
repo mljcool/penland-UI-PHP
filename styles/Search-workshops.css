@@ -374,6 +374,7 @@
   transition: transform 0.2s;
   width: -moz-fit-content;
   width: fit-content;
+  min-width: 248px !important;
 }
 .section_find-a-work-shops .search-results-sections .card-results-sections .card-item:hover {
   transform: scale(1.1) !important;
@@ -401,6 +402,12 @@
 }
 .section_find-a-work-shops .search-results-sections .card-results-sections .card-item .card-img-container .card-fav:hover {
   transform: scale(1.1) !important;
+}
+
+.card-img-container img{
+  height: 300px;
+  width: 200px;
+  object-fit: cover;
 }
 .section_find-a-work-shops .search-results-sections .card-results-sections .card-item .card-img-container .card-fav span {
   font-size: 11px;

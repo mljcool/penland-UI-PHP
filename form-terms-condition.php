@@ -27,13 +27,14 @@
           tickets or other travel expenses. <br />This policy also applies to
           partial scholarship recipients.
         </p>
-        <div>
+        <div class="col-md-6">
           <div class="form-check mt-3">
             <input
               class="form-check-input"
               type="checkbox"
               value=""
               id="defaultCheck1"
+              name="termsAndCondition"
             />
             <label class="form-check-label" for="defaultCheck1">
               I agree to the Privacy Policy and Terms of Service

@@ -55,4 +55,3 @@ function generateRandomWorkshops(numWorkshops) {
 // Generate an array of 5 random workshops
 const randomWorkshops = generateRandomWorkshops(10);
 const randomWorkshopsCarousel = generateRandomWorkshops(15);
-console.log(randomWorkshops);

@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html  lang="en"
+  class="light-style "
+  dir="ltr"
+  data-theme="theme-default">
   <head>
   <?php 
     include_once('./header.php');
@@ -18,14 +21,14 @@
           </div>
           <div class="workshop-details">
             <div class="workshop-title" data-aos="fade-right">
-              <h1 class="w-details-title">Handmade Paper: Surface and object. With Heathers</h1>
+              <h1 class="w-details-title">Getting Details...</h1>
             </div>
             <div class="with-workshop-title" data-aos="fade-up">
-              with<span class="instructor w-details-instructor">Heather Peters</span>
+              with<span class="instructor w-details-instructor">............</span>
             </div>
             <ul class="workshop-date-details">
               <li class="with-workshop-date">
-                Summer Session : May 26-31, 2024
+              ............
               </li>
               <li class="with-workshop-session">Studio : Book & Paper</li>
               <li class="with-workshop-level">Level : Beginner</li>
@@ -39,7 +42,7 @@
           <div class="over-view-context">
             <div class="par-context">
               <h3>Workshop Overview</h3>
-              <p>
+              <p class="mshied_description">
                 This workshop will begin by processing a variety of fibers to
                 make Western-style paper. Using a Hollander beater to break down
                 fibers, we will explore various ways to form sheets. This will
@@ -67,11 +70,12 @@
                 >
               </div>
               <div class="registration-actions">
-                <a class="register-now" href="/penland-web/cart-items.php">Register Now</a>
+                <a style="display:none;" class="register-now" onclick="onProceedToReg()" href="javascript:void(0)">Register Now</a>
+                <!-- <a class="register-now" onclick="onRegisterNow()" href="/penland-web/cart-items.php">Register Now</a> -->
               </div>
             </div>
           </div>
-          <div class="slider-image-workshop" data-aos="fade-left">
+          <div class="slider-image-workshop" >
             <div
               id="owl-carousel"
               class="owl-carousel owl-carousel-overview owl-theme"
@@ -98,7 +102,8 @@
                 data-aos-easing="ease-in-out"
                 data-aos-mirror="true"
                 data-aos-once="true"
-                src="./assets/heather.png"
+                class="cr711_photourl"
+                src=""
               />
             </div>
             <div class="instructor-details-art">
@@ -109,7 +114,7 @@
                 data-aos-duration="800"
                 class="details-instructor-title"
               >
-                Teaching Artist
+                ---------
               </h3>
               <span
                 class="instructor-name details-instructor-name"
@@ -117,7 +122,7 @@
                 data-aos-offset="200"
                 data-aos-delay="10"
                 data-aos-duration="900"
-                >Heather Peters</span
+                >---------</span
               >
               <p
                 data-aos="fade-left"
@@ -156,17 +161,10 @@
                 data-aos-mirror="true"
                 data-aos-once="true"
               >
-                The Book & Paper Studio
+                The <span class="new_maintype"></span> Studio
               </h3>
-              <p class="details-studio-description">
-                The book studio is very flexible, but is particularly well
-                equipped for book construction techniques (including Eastern and
-                Western traditions and adhesive and non-adhesive binding), pop
-                up and kinetic books, boxmaking, leatherwork, dying and
-                decoration techniques, and book design. Materials and techniques
-                are combined in a myriad of ways, and instructors often ground
-                technical exploration with conversations about historic and/org
-                current context, design, or idea generation.
+              <p class="details-studio-description new_description">
+               .......................
               </p>
               <a href="#" class="explore-studio"
                 >Explore the Studio <i>&#8594;</i></a
@@ -174,77 +172,11 @@
             </div>
           </div>
           <div class="studio-image-showcase" data-aos="fade-up">
-            <img src="./assets/over-view-studio.png" />
+            <img class="cr711_imagepreview" src="./assets/over-view-studio.png" />
           </div>
         </div>
       </div>
 
-      <div class="row reg-scholarship-section">
-        <div class="reg-context-wrapper">
-          <div class="reg-information">
-            <h3 class="reg-header">Registration & Scholarship Information</h3>
-            <p>
-              Penland welcomes serious students of all levels of
-              experience-absolute beginners to professionals. We seek a diverse
-              student population representing varied experiences, backgrounds,
-              races, professions, and age groups (minimum age 18).
-              <br />
-              <br />
-              Penland is an intentionally inclusive community that values the
-              creative <br />energy that arises from diverse artistic visions
-              and approaches. Our scholarship program exists to make our
-              workshops accessible to those who are not able to participate
-              without financial assistance and to create educational
-              opportunities for people who have been underrepresented at Penland
-              and in the craft world.
-            </p>
-            <a class="penland-link">Tuition and Fees <i>&#8594;</i></a>
-            <a class="penland-link">Scholarship Information <i>&#8594;</i></a>
-          </div>
-          <div class="reg-scholarship-date-info">
-            <div class="date-details">
-              <div class="date-schedule-list">
-                <div class="s-dates">
-                  <h3 class="title-date-header">Scholarship Dates</h3>
-                  <ul class="date-list">
-                    <li>
-                      <span class="reg-date">October 15, 2024</span>
-                      <span>Scholarships Applications Open</span>
-                    </li>
-                    <li>
-                      <span class="reg-date">November 15, 2024</span>
-                      <span>Scholarships Application Dates</span>
-                    </li>
-                  </ul>
-                </div>
-                <div class="r-dates">
-                  <h3 class="title-date-header">Registration Dates</h3>
-                  <ul class="date-list">
-                    <li>
-                      <span class="reg-date">January 5-10, 2024</span>
-                      <span
-                        >Scholarships Enrollment Perios for Scholarship
-                        Students</span
-                      >
-                    </li>
-                    <li>
-                      <span class="reg-date">January 15-20, 2024</span>
-                      <span>Regular Enroll Perios. Open to all students</span>
-                    </li>
-                    <li>
-                      <span class="reg-date">April 30, 2024</span>
-                      <span>Last day enroll in workshops</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="acion-footer ">
-                <a href="#">More Registration Information</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
       <div class="row explore-more-workshopt-section">
         <div class="explore-wrapper">
@@ -298,16 +230,7 @@
 <?php include_once('./scriptJS.php'); ?>
 <script>
   $(document).ready(function() {
-    $('.owl-carousel-overview').owlCarousel({
-      navigation: true, // Show next and prev buttons
-      slideSpeed: 300,
-      paginationSpeed: 400,
-      items: 1,
-      itemsDesktop: false,
-      itemsDesktopSmall: false,
-      itemsTablet: false,
-      itemsMobile: false,
-    });
+
 
     $('.owl-carousel-explore-more').owlCarousel({
       items: 4, //10 items above 1000px browser width

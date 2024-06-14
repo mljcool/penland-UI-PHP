@@ -1,8 +1,8 @@
 <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-
+    <title>PENLAND LOCAL-TEST</title>
+    <link rel="icon" href="./assets/penland-icon.png">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="./styles/Workshop-details.css" />
     <link rel="stylesheet" href="./styles/Search-workshops.css" />
     <link rel="stylesheet" href="./styles/Cart.css" />
+    <link rel="stylesheet" href="./styles/Login.css" />
     <link rel="stylesheet" href="./styles/New-student.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
@@ -51,8 +52,9 @@
 
 
     <link rel="stylesheet" href="./styles/lib/Form-validation.css">
-    <link rel="stylesheet" href="./styles/lib/spinkit.css">
+    <link rel="stylesheet" href="./styles/lib/Spinkit.css">
 
+    <link rel="stylesheet" href="./styles/lib/Sweetalert2.css" />
 
 
     <!-- END THEME UI -->
@@ -82,3 +84,4 @@
     />
 
     <script src="https://js.stripe.com/v3/"></script>
+    

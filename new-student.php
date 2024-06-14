@@ -9,27 +9,22 @@
     <?php include_once('./home-navigition.php'); ?>
 
     <div class="container-fluid">
-      <div class="row top-section-program">
-        <h1>WORKSHOPS & New Student Form</h1>
-        <label>(TEST ENVIRONMENT 👩‍💻)</label>
+
+    <div class="container-xxl flex-grow-1 ">
+    <div class="row ">
+        <!-- <h1>WORKSHOPS & New Student Form</h1>
+        <label>(TEST ENVIRONMENT 👩‍💻)</label> -->
+        <?php include_once('./banner-test-env.php') ?>
+      
       </div>
 
-      <button class="btn btn-primary " onclick="testAPI();">
-        <span class="align-middle d-sm-inline-block d-none me-sm-1 me-0"
-          >TEST API</span
-        >
-        <i class="bx bx-chevron-right bx-sm me-sm-n2"></i>
-      </button>
-      <!-- START BODY PAGE   -->
-      <!-- BYPASS bs-stepper vertical wizard-modern wizard-modern-vertical wizard-numbered  mt-2 card mb-4 -->
-      <!-- ORIGINAL CLASS bs-stepper vertical   mt-2 card mb-4 -->
-      <div class="row new-student-form">
+      <div class="row new-student-form cast-new-student-form">
         <div
           class="bs-stepper vertical wizard-modern wizard-modern-vertical wizard-numbered  mt-2 card mb-4"
           id="multiStepsValidation"
-          style="flex-direction: row"
+          style="flex-direction: row; background:white;"
         >
-          <div class="bs-stepper-header">
+          <div class="bs-stepper-header" >
             <div class="step" data-target="#accountDetailsValidation">
               <button type="button" class="step-trigger">
                 <span class="bs-stepper-circle">1</span>
@@ -43,7 +38,8 @@
             <div class="line">
               <!-- <i class="bx bx-chevron-right"></i> -->
             </div>
-            <div class="step" data-target="#personal-info">
+            
+            <div class="step" data-target="#personalInfoValidation">
               <button type="button" class="step-trigger">
                 <span class="bs-stepper-circle">2</span>
                 <span class="bs-stepper-label mt-1">
@@ -61,8 +57,23 @@
               <button type="button" class="step-trigger">
                 <span class="bs-stepper-circle">3</span>
                 <span class="bs-stepper-label mt-1">
-                  <span class="bs-stepper-title">Housing</span>
-                  <span class="bs-stepper-subtitle">Housing Details</span>
+                  <span class="bs-stepper-title">Housing & Meals</span>
+                  <span class="bs-stepper-subtitle">Additional Product</span>
+                </span>
+              </button>
+            </div>
+
+            
+            <div class="line">
+              <!-- <i class="bx bx-chevron-right"></i> -->
+            </div>
+
+            <div class="step" data-target="#payment-link">
+              <button type="button" class="step-trigger">
+                <span class="bs-stepper-circle">4</span>
+                <span class="bs-stepper-label mt-1">
+                  <span class="bs-stepper-title">Payment</span>
+                  <span class="bs-stepper-subtitle">Payment Method</span>
                 </span>
               </button>
             </div>
@@ -70,10 +81,12 @@
             <div class="line">
               <!-- <i class="bx bx-chevron-right"></i> -->
             </div>
+            
+
 
             <div class="step" data-target="#terms-info">
               <button type="button" class="step-trigger">
-                <span class="bs-stepper-circle">4</span>
+                <span class="bs-stepper-circle">5</span>
                 <span class="bs-stepper-label mt-1">
                   <span class="bs-stepper-title">Terms and Conditions</span>
                   <span class="bs-stepper-subtitle"
@@ -86,23 +99,11 @@
               <!-- <i class="bx bx-chevron-right"></i> -->
             </div>
 
-            <div class="step" data-target="#payment-link">
-              <button type="button" class="step-trigger">
-                <span class="bs-stepper-circle">5</span>
-                <span class="bs-stepper-label mt-1">
-                  <span class="bs-stepper-title">Payment</span>
-                  <span class="bs-stepper-subtitle">Payment Method</span>
-                </span>
-              </button>
-            </div>
-
-            <div class="line">
-              <!-- <i class="bx bx-chevron-right"></i> -->
-            </div>
+          
 
             <div class="step" data-target="#review-details">
               <button type="button" class="step-trigger">
-                <span class="bs-stepper-circle">5</span>
+                <span class="bs-stepper-circle">6</span>
                 <span class="bs-stepper-label mt-1">
                   <span class="bs-stepper-title">Confirmation</span>
                   <span class="bs-stepper-subtitle">Submit & Review</span>
@@ -110,7 +111,7 @@
               </button>
             </div>
           </div>
-          <div class="bs-stepper-content">
+          <div class="bs-stepper-content" style="background:#fafafa;">
             <form id="multiStepsForm" onSubmit="return false">
               <!-- Account Details -->
               <?php include_once('./form-account-details.php'); ?>
@@ -121,11 +122,13 @@
               <!-- Housing Details -->
               <?php include_once('./form-housing-details.php'); ?>
 
-              <!-- Terms and condition -->
-              <?php include_once('./form-terms-condition.php'); ?>
 
               <!-- Payment Links -->
               <?php include_once('./form-payment.php'); ?>
+
+              
+              <!-- Terms and condition -->
+              <?php include_once('./form-terms-condition.php'); ?>
 
               <!-- Review Form -->
               <?php include_once('./form-review-details.php'); ?>
@@ -134,6 +137,7 @@
         </div>
       </div>
 
+    </div>
       <!-- END BODY PAGE -->
     </div>
 
@@ -149,93 +153,6 @@
 </html>
 <?php include_once('./scriptJS.php'); ?>
 
-<script>
-  $(document).ready(function () {
-    $('#bs-datepicker-basic').datepicker();
-    new Cleave('.phone-number-mask', {
-      phone: true,
-      phoneRegionCode: 'US',
-    });
 
-    const tagifyBasicEl = document.querySelector('#TagifyBasic');
-    const TagifyBasic = new Tagify(tagifyBasicEl);
-
-    const wizardNumbered = document.querySelector('.wizard-numbered');
-
-    if (typeof wizardNumbered !== undefined && wizardNumbered !== null) {
-      const wizardNumberedBtnNextList = [].slice.call(
-          wizardNumbered.querySelectorAll('.btn-next')
-        ),
-        wizardNumberedBtnPrevList = [].slice.call(
-          wizardNumbered.querySelectorAll('.btn-prev')
-        ),
-        wizardNumberedBtnSubmit = wizardNumbered.querySelector('.btn-submit');
-
-      const numberedStepper = new Stepper(wizardNumbered, {
-        linear: false,
-      });
-      if (wizardNumberedBtnNextList) {
-        wizardNumberedBtnNextList.forEach((wizardNumberedBtnNext) => {
-          wizardNumberedBtnNext.addEventListener('click', (event) => {
-            numberedStepper.next();
-          });
-        });
-      }
-      if (wizardNumberedBtnPrevList) {
-        wizardNumberedBtnPrevList.forEach((wizardNumberedBtnPrev) => {
-          wizardNumberedBtnPrev.addEventListener('click', (event) => {
-            numberedStepper.previous();
-          });
-        });
-      }
-      if (wizardNumberedBtnSubmit) {
-        wizardNumberedBtnSubmit.addEventListener('click', (event) => {
-          alert('Submitted..!!');
-        });
-      }
-    }
-  });
-
-  const wizardModernVertical = document.querySelector(
-    '.wizard-modern-vertical'
-  );
-
-  if (
-    typeof wizardModernVertical !== undefined &&
-    wizardModernVertical !== null
-  ) {
-    const wizardModernVerticalBtnNextList = [].slice.call(
-        wizardModernVertical.querySelectorAll('.btn-next')
-      ),
-      wizardModernVerticalBtnPrevList = [].slice.call(
-        wizardModernVertical.querySelectorAll('.btn-prev')
-      ),
-      wizardModernVerticalBtnSubmit =
-        wizardModernVertical.querySelector('.btn-submit');
-
-    const modernVerticalStepper = new Stepper(wizardModernVertical, {
-      linear: false,
-    });
-    if (wizardModernVerticalBtnNextList) {
-      wizardModernVerticalBtnNextList.forEach((wizardModernVerticalBtnNext) => {
-        wizardModernVerticalBtnNext.addEventListener('click', (event) => {
-          modernVerticalStepper.next();
-        });
-      });
-    }
-    if (wizardModernVerticalBtnPrevList) {
-      wizardModernVerticalBtnPrevList.forEach((wizardModernVerticalBtnPrev) => {
-        wizardModernVerticalBtnPrev.addEventListener('click', (event) => {
-          modernVerticalStepper.previous();
-        });
-      });
-    }
-    if (wizardModernVerticalBtnSubmit) {
-      wizardModernVerticalBtnSubmit.addEventListener('click', (event) => {
-        alert('Submitted..!!');
-      });
-    }
-  }
-</script>
 
 <!-- END UI THEM SCRIPT -->

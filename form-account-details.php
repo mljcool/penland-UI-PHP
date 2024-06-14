@@ -9,7 +9,7 @@
       <input
         type="text"
         id="multiStepsUsername"
-        class="form-control"
+        class="form-control dd-adx_identity_username"
         placeholder="johndoe"
         name="multiStepsUsername"
       />
@@ -20,7 +20,7 @@
         type="email"
         id="multiStepsEmail"
         name="multiStepsEmail"
-        class="form-control"
+        class="form-control dd-emailaddress1"
         placeholder="john.doe@email.com"
         aria-label="john.doe"
       />
@@ -30,9 +30,9 @@
       <div class="input-group input-group-merge">
         <input
           type="password"
-          id="password"
+          id="password_1"
           name="multiStepsPass"
-          class="form-control"
+          class="form-control dd-adx_identity_passwordhash_22"
           placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
           aria-describedby="multiStepsPass2"
         />
@@ -47,7 +47,7 @@
         <input
           type="password"
           id="multiStepsConfirmPass"
-          class="form-control"
+          class="form-control dd-adx_identity_passwordhash"
           placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
           aria-describedby="confirm-password2"
           name="multiStepsConfirmPass"
