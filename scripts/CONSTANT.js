@@ -333,7 +333,7 @@ const HTMLMessageWaitList = (name) => {
      
    </div>
    <div class="card-footer text-muted">
-      <a href="/penland-web" class="btn btn-primary">Browse more workshop.</a>
+      <a href="/" class="btn btn-primary">Browse more workshop.</a>
     </div>
 </div>`;
 };
@@ -359,7 +359,7 @@ const HTMLMessageDataBeingComposed = () => {
      
    </div>
    <div class="card-footer text-muted">
-      <a href="/penland-web" class="btn btn-primary">Browse a different workshop.</a>
+      <a href="/" class="btn btn-primary">Browse a different workshop.</a>
     </div>
 </div>`;
 };

@@ -1,13 +1,13 @@
 function redirecToCartDetails() {
    setTimeout(() => {
-      window.location.href = '/penland-web/cart-items.php';
+      window.location.href = '/cart-items.php';
       // window.location.href = "/cart-items";  //FOR PORTAL
    }, 200);
 }
 
 function redirecToWaitlistCartDetails() {
    setTimeout(() => {
-      window.location.href = '/penland-web/waiting-list-cart.php';
+      window.location.href = '/waiting-list-cart.php';
       // window.location.href = "/cart-items";  //FOR PORTAL
    }, 200);
 }
@@ -89,7 +89,7 @@ function removeItemWaitList(uid) {
       $(this).remove();
    });
    setTimeout(() => {
-      window.location.href = '/penland-web/details.php?workshopID=' + uid;
+      window.location.href = '/details.php?workshopID=' + uid;
 
       // FOR PORTAL DYNAMICS
       // window.location.href = '/workshop-details?workshopID='+workshopID
@@ -182,7 +182,7 @@ function onNewStudent() {
       .modal('show')
       .on('hidden.bs.modal', function (e) {
          setTimeout(() => {
-            window.location.href = '/penland-web/new-student.php';
+            window.location.href = '/new-student.php';
             // window.location.href = "/cart-items";  //FOR PORTAL
          }, 200);
       });
@@ -211,7 +211,7 @@ $(document).ready(function () {
       }
 
       if (checkHasSession()) {
-         window.location.href = '/penland-web/returning-student.php';
+         window.location.href = '/returning-student.php';
          return;
       }
 

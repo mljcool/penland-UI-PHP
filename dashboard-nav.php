@@ -44,14 +44,14 @@
                         <span class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
                            <i class="bx bx-pie-chart-alt-2 fs-4"></i>
                         </span>
-                        <a href="/penland-web/dashboard-panel.php" class="stretched-link">Dashboard</a>
+                        <a href="/dashboard-panel.php" class="stretched-link">Dashboard</a>
                         <small class="text-muted mb-0">User Profile</small>
                      </div>
                      <div class="dropdown-shortcuts-item col">
                         <span class="dropdown-shortcuts-icon bg-label-secondary rounded-circle mb-2">
                            <i class="bx bx-food-menu fs-4"></i>
                         </span>
-                        <a href="/penland-web/dashboard-invoice.php" class="stretched-link">Finance</a>
+                        <a href="/dashboard-invoice.php" class="stretched-link">Finance</a>
                         <small class="text-muted mb-0">Payment & Invoice </small>
                      </div>
                   </div>

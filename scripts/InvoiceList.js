@@ -30,7 +30,7 @@ function DataTableInvoiceList(apiData) {
                targets: 1,
                render: function (a, e, t, s) {
                   let invoiceID = t.invoiceID;
-                  return `<a href="/penland-web/dashboard-invoice-details.php?invoiceID=${invoiceID}"><span class="fw-medium">${t.invoice_id}</span></a>`;
+                  return `<a href="/dashboard-invoice-details.php?invoiceID=${invoiceID}"><span class="fw-medium">${t.invoice_id}</span></a>`;
                },
             },
             {
@@ -104,9 +104,9 @@ function DataTableInvoiceList(apiData) {
                             ><i class="bx bx-dots-vertical-rounded"></i
                         ></a>
                         <div class="dropdown-menu dropdown-menu-end">
-                            <a href="/penland-web/dashboard-invoice-details.php?invoiceID=${invoiceID}" class="dropdown-item">View</a>
+                            <a href="/dashboard-invoice-details.php?invoiceID=${invoiceID}" class="dropdown-item">View</a>
                             <div class="dropdown-divider"></div>
-                            <a href="/penland-web/dashboard-invoice-detail-print.php?invoiceID=${invoiceID}&print=1" class="dropdown-item">Download</a>
+                            <a href="/dashboard-invoice-detail-print.php?invoiceID=${invoiceID}&print=1" class="dropdown-item">Download</a>
                         </div>
                     </div>
                     </div>

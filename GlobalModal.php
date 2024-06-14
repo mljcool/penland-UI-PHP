@@ -113,7 +113,7 @@
         </div>
         <div class="modal-body">
           <div class="selected-item">
-            <a href="/penland-web/login.php?redirectURLPSIG=returning-student" class="item-select-as">
+            <a href="/login.php?redirectURLPSIG=returning-student" class="item-select-as">
               <div class="icon-v">
                 <img src="./assets/Returning-student.png" />
               </div>

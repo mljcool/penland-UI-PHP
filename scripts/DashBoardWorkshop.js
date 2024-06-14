@@ -435,7 +435,7 @@ function formatDataToAllocateTableWorkshops(response = []) {
 
 function onViewDetails(id) {
    setTimeout(() => {
-      window.location.href = '/penland-web/dashboard-workshop.php?id=' + id;
+      window.location.href = '/dashboard-workshop.php?id=' + id;
    }, 500);
 }
 
@@ -466,7 +466,7 @@ function AddEmptyBlockUIMessage() {
          <h5 class="card-title">
          <i class='bx bx-note'></i>
          Your workshop items list is empty. </h5>
-         <a href="/penland-web" class="btn btn-primary">Browse more workshop.</a>
+         <a href="/" class="btn btn-primary">Browse more workshop.</a>
       </div>
    
    </div>`,

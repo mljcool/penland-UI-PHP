@@ -519,7 +519,7 @@ function checkWordExists(str, word = 'login') {
 function redirectToDashboard() {
    const data = getUserTokenDetails();
    if (data) {
-      window.location.href = '/penland-web/dashboard-panel.php';
+      window.location.href = '/dashboard-panel.php';
    }
 }
 
@@ -527,15 +527,15 @@ function redirectTo(url) {
  
    if (url === '/') {
       console.log('UR:', url);
-      window.location.href = '/penland-web/';
+      window.location.href = '/';
       return;
    }
 
-   window.location.href = '/penland-web/' + url + '.php';
+   window.location.href = '/' + url + '.php';
 }
 
 function loginPage() {
-   window.location.href = '/penland-web/login.php';
+   window.location.href = '/login.php';
 }
 
 function redirectToLogin(lookIsDashboard = false, ifSomeBreach) {

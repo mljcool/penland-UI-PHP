@@ -2,8 +2,8 @@
 <?php include_once('./modal-prices-fees.php'); ?>
 <?php include_once('./GlobalModal.php'); ?>
 
-<script src="./scripts/lib/Bootstrap.js"></script>
 <script src="./scripts/lib/Jquery.js"></script>
+<script src="./scripts/lib/Bootstrap.js"></script>
 <script src="./scripts/lib/Popper.js"></script>
 <script src="./scripts/lib/Perfect-scrollbar.js"></script>
 <script src="./scripts/lib/Hammer.js"></script>

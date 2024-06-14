@@ -288,7 +288,7 @@ function ReturningStartRegistrationEnrollment() {
       const elementSection = $('.final-section-returning-students');
       elementSection.html('');
       const element = `<div class="card-footer text-muted" style="width: 100%; text-align: center;">
-                        <a href="/penland-web" class="btn btn-primary">Browse more workshop.</a>
+                        <a href="/" class="btn btn-primary">Browse more workshop.</a>
                     </div>`;
       elementSection.html(element);
    }

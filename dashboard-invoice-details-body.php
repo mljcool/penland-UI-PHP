@@ -11,7 +11,7 @@
    <div class="container-xxl flex-grow-1">
         <div class="row mt-3">
             <div class="col-lg-12 col-md-12">
-                <a href="/penland-web/dashboard-invoice.php" type="button" class="btn btn-label-secondary ">
+                <a href="/dashboard-invoice.php" type="button" class="btn btn-label-secondary ">
                     <i class='bx bx-left-arrow-alt' ></i> Back
                 </a>
             </div>

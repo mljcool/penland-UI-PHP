@@ -61,7 +61,7 @@
               <!-- Wishlist -->
               <div class="list-group">
                 <a
-                  href="/penland-web/"
+                  href="/"
                   class="btn btn-primary list-group-item d-flex justify-content-between"
                 >
                   <span>Add more workshops</span>

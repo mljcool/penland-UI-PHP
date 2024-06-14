@@ -211,8 +211,8 @@ function startRegistrationEnrollment() {
       const elementSection = $('.final-section-new-students');
       elementSection.html('');
       const element = `<div class="card-footer text-muted" style="width: 100%; text-align: center; display: flex; gap: 2rem; justify-content: center;">
-                        <a href="/penland-web" class="btn btn-primary">Browse more workshop.</a>
-                        <a href="/penland-web/login.php" class="btn btn-secondary">
+                        <a href="/" class="btn btn-primary">Browse more workshop.</a>
+                        <a href="/login.php" class="btn btn-secondary">
                            <span class="align-middle d-sm-inline-block d-none me-sm-1 me-0">
                               Login account?
                            </span>
