@@ -32,9 +32,9 @@
                <div class="dropdown-menu-header border-bottom">
                   <div class="dropdown-header d-flex align-items-center py-3">
                      <h5 class="text-body mb-0 me-auto">Menu</h5>
-                     <a href="javascript:void(0)" class="dropdown-shortcuts-add text-body" data-bs-toggle="tooltip"
+                     <a href="/" class="dropdown-shortcuts-add text-body" data-bs-toggle="tooltip"
                         data-bs-placement="top" aria-label="Menus"
-                        data-bs-original-title="Current Menu items may change based on account."><i
+                        data-bs-original-title="Explore Workshops."><i
                            class="menu-icon tf-icons bx bx-spreadsheet"></i></a>
                   </div>
                </div>

@@ -40,7 +40,7 @@
                 novalidate="novalidate"
               >
                 <div class="mb-3 fv-plugins-icon-container">
-                  <label for="email" class="form-label">Email</label>
+                  <label for="email" class="form-label">Username or Email</label>
                   <input
                     type="text"
                     class="form-control"

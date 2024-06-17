@@ -106,12 +106,12 @@
                               </div>
                               <div class="mb-3">
                                  <label for="smallInput_17" class="form-label">Home Language</label>
-                                 <input id="smallInput_17" class="form-control form-control-sm dd-gendercode-summary"
+                                 <input id="smallInput_17" class="form-control form-control-sm dd-mshied_homelanguage-summary"
                                     type="text" disabled />
                               </div>
                               <div class="mb-3">
                                  <label for="smallInput_18" class="form-label">Peferred Language</label>
-                                 <input id="smallInput_18" class="form-control form-control-sm dd-gendercode-summary"
+                                 <input id="smallInput_18" class="form-control form-control-sm dd-mshied_preferredlanguage-summary"
                                     type="text" disabled />
                               </div>
                            </div>

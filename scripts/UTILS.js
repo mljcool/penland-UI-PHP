@@ -682,10 +682,11 @@ function GetUserAvatar(customerID = '') {
       data: jsonData,
       contentType: 'application/json',
       success: function (response = []) {
-         console.log('Get_User_Avatar', response);
-         setItemStore('MyAvatar', response[0].hso_photo)
-         getItemStoreAvatar();
-
+         if(response.length){
+            console.log('Get_User_Avatar', response);
+            setItemStore('MyAvatar', response[0].hso_photo)
+            getItemStoreAvatar();
+         }
       },
       complete: function (data) {
 
