@@ -300,7 +300,7 @@
                   <div class="dropdown-divider"></div>
                </li>
                <li>
-                  <a class="dropdown-item" href="pages-profile-user.html">
+                  <a class="dropdown-item" href="dashboard-user-profile.php">
                      <i class="bx bx-user me-2"></i>
                      <span class="align-middle">My Profile</span>
                   </a>

@@ -81,4 +81,5 @@
 <script src="./scripts/DashBoardWorkshopDetails.js"></script>
 <script src="./scripts/ReturningForm.js"></script>
 <script src="./scripts/Service.js"></script>
+<script src="./scripts/UserSettings.js"></script>
 <!-- <script src="./scripts/bundles/dist/bundle.js"></script> -->

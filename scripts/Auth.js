@@ -83,6 +83,17 @@ function AuthGuard(url = []) {
    return isGuarded;
 }
 
+
+function forceRemove() {
+   const urlParams = new URLSearchParams(window.location.search);
+   if (urlParams.has('returnUrl')) {
+      urlParams.delete('returnUrl');
+      window.history.replaceState({}, document.title, window.location.pathname);
+   }
+}
+
+
+
 function ifNoLoginRedirect() {
    const listToGuard = [
       'dashboard-panel',

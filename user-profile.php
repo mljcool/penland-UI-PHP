@@ -437,19 +437,8 @@
             <div class="card">
                <h5 class="card-header">Change Password</h5>
                <div class="card-body">
-                  <div class="mb-3 col-12 mb-0">
-                     <div class="alert alert-warning">
-                        <h6 class="alert-heading fw-medium mb-1">
-                           Are you sure you want to delete your account?
-                        </h6>
-                        <p class="mb-0">
-                           Once you delete your account, there is no going back.
-                           Please be certain.
-                        </p>
-                     </div>
-                  </div>
                   <form
-                     id="formAccountSettings"
+                     id="formPasswordSettings"
                      method="GET"
                      onsubmit="return false"
                   >
@@ -536,7 +525,7 @@
                   </form>
                </div>
             </div>
-            <div class="card">
+            <div class="card mt-5">
                <h5 class="card-header">Delete Account</h5>
                <div class="card-body">
                   <div class="mb-3 col-12 mb-0">

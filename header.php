@@ -59,9 +59,9 @@
 
     <!-- END THEME UI -->
 
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <!-- <script src="./scripts/lib/JqueryStable.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.1/jquery.min.js" integrity="sha512-eH6+OZuv+ndnPTxzVfin+li0PXKxbwi1gWWH2xqmljlTfO3JdBlccZkwWd0ZcWAtDTvsqntx1bbVSkWzHUtfQQ=="  crossorigin="anonymous"
-    referrerpolicy="no-referrer" defer></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.1/jquery.min.js" defer></script> -->
     
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
