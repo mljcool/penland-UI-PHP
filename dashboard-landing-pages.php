@@ -21,7 +21,7 @@
                         </h1>
                         <h1 class="Location">
                             <i class='bx bx-map'></i>
-                            <span class="address1_city">---, ----</span>
+                            <span class="address1_stateorprovince">---, ----</span>
                         </h1>
                     </div>
                 </div>

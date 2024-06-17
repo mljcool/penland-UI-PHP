@@ -587,6 +587,11 @@ function shapeMyProfile() {
       const country = COUNTRY.find(
          (_data) => _data.value === myProfile.address1_county
       );
+      const stateProvince = STATES.find(
+         (_data) => _data.value === myProfile.address1_stateorprovince
+      );
+      
+      const stateName = (stateProvince || { name: 'N/A' }).name
       const countryName = (country || { name: 'N/A' }).name
       const gendercode = 'gendercode@OData.Community.Display.V1.FormattedValue';
       const conduct =
@@ -601,6 +606,7 @@ function shapeMyProfile() {
       htmlEL('country').html(countryName);
       htmlEL('createdon').html(formatJoinDate);
       htmlEL('address1_city').html(myProfile.address1_city);
+      htmlEL('address1_stateorprovince').html(stateName);
 
       //MORE COMPLEX
       const checkConduct = myProfile[conduct];
@@ -624,7 +630,7 @@ function shapeMyProfile() {
       initPopOver(message[checkConduct]);
 
 
-      const search_query = countryName + ',' + myProfile.address1_city;
+      const search_query = stateName;
 
       saveToStorage(myProfile);
       GetUserAvatar(myProfile.contactid);

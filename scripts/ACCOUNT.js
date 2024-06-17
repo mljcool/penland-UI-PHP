@@ -29,7 +29,6 @@ function savePersonalInformation(passWizard) {
    loadingBlockUINewStudentForm();
    const dataToDynamics = getMyDynamicDetails();
    const contactData = dataToDynamics.personalInfo.contact;
-   contactData.hso_blackindigenousorpersonofcolor = parseInt(contactData.hso_blackindigenousorpersonofcolor);
    contactData.gendercode = parseInt(contactData.gendercode);
    contactData.mshied_race_ = parseInt(contactData.mshied_race_);
    contactData.hso_blackindigenousorpersonofcolor = parseInt(contactData.hso_blackindigenousorpersonofcolor);
@@ -231,6 +230,7 @@ function updateTermsAgreement() {
 function PopulateForm() {
    const dataToDynamics = getMyDynamicDetails();
    const contact = dataToDynamics.personalInfo.contact;
+   console.log('contact', contact);
    Object.keys(contact).forEach(function (key) {
       if (key === 'adx_identity_passwordhash') {
          $('.dd-adx_identity_passwordhash_22').val(contact[key]);
@@ -253,6 +253,7 @@ function PopulateForm() {
          $('.dd-' + key)
             .val(contact[key])
             .change();
+            
          setTimeout(() => {
             const valueByText = $('.dd-' + key + ' option:selected').text();
             $('.dd-' + key + '-summary').val(valueByText);
