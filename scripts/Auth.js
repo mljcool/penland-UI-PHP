@@ -58,9 +58,10 @@ function destroySession() {
       complete: function () {
          $('html').unblock();
       },
-      error: function () {},
+      error: function () { },
    });
 }
+
 
 function ifLoginRedirect(response) {
    if (response.length) {
@@ -100,6 +101,7 @@ function ifNoLoginRedirect() {
       'dashboard-invoice-details',
       'dashboard-invoice',
       'dashboard-workshop',
+      'dashboard-user-profile'
    ];
    const isGuarded = AuthGuard(listToGuard);
    redirectToLogin(isGuarded, listToGuard);
@@ -156,7 +158,7 @@ $(document).ready(function () {
    });
 
    $('#user-logout').click(function () {
-   
+
       destroySession();
    });
 });

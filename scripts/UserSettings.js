@@ -164,3 +164,46 @@ document.addEventListener('DOMContentLoaded', function (e) {
             })
     }
 });
+
+
+$(document).ready(function(){
+    getItemStoreAvatar();
+    $('#submitProfileDetails').click(function(event) {
+
+        var imageInput = document.getElementById('upload');
+        var file = imageInput.files[0];
+        
+        if (file) {
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            var base64Image = e.target.result.split(',')[1]; // Extract base64 part
+            uploadImageToDataverse(base64Image, file.name);
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+})
+  
+  function uploadImageToDataverse(base64Image, fileName) {
+
+    const userDetails = getLoginDetails();
+    const contactid = userDetails[1].contactid;
+    const contactLink = userDetails[1]['@odata.editLink'];
+    const avatarData = {
+      'file': base64Image,
+      'filename': fileName,
+      'contactID': contactid,
+      contactLink,
+    };
+
+    $.ajax({
+        ...requestOptions(Upload_User_Photo, avatarData),
+        success: function (data) {
+           console.log('Upload_User_Photo:', data);
+           setItemStore('MyAvatar', data.hso_photo)
+           getItemStoreAvatar();
+        },
+        complete: function () {
+        },
+     });
+  }

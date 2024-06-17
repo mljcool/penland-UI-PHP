@@ -4,4 +4,5 @@ window.addEventListener('storage', function (event) {
          window.location.reload();
       }, 1200);
    }
+
 });

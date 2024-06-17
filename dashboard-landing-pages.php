@@ -8,13 +8,20 @@
                     <div class="Circle2"></div>
                     <div class="Circle3"></div>
                     <div class="content-weather">
-                        <h1 class="Condition">
-                            <i class="bx bx-sun"></i>Sunny
+                        <div class="Condition mb-2">
+                            <div class="avatar avatar-xs me-2">
+                                    <img src="..." alt="Weather" class="rounded-circle icon_weather">
+                            </div>
+                        </div>
+                        <h1 class="Temp">
+                        <span class="tempNo">---</span>    
+                        <span id="F" class="temperature">&#8457;</span></h1>
+                        <h1 class="Time">
+                            <span class="running-time"></span>
                         </h1>
-                        <h1 class="Temp">72<span id="F">&#8457;</span></h1>
-                        <h1 class="Time">09:35</h1>
                         <h1 class="Location">
-                            <i class='bx bx-map'></i>Texas, City
+                            <i class='bx bx-map'></i>
+                            <span class="address1_city">---, ----</span>
                         </h1>
                     </div>
                 </div>
@@ -42,7 +49,7 @@
                         <div class="user-profile-header d-flex flex-column flex-sm-row text-sm-start text-center mb-4">
                             <div class="flex-shrink-0 mt-n2 mx-sm-0 mx-auto">
                                 <img src="./assets/Avatar.png" alt="user image"
-                                    class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img" />
+                                    class="d-block h-auto ms-0 ms-sm-4 rounded user-profile-img hso_photo" />
                             </div>
                             <div class="flex-grow-1 mt-3 mt-sm-5"  style="z-index: 999;">
                                 <div

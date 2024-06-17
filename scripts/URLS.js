@@ -47,3 +47,10 @@ var Get_User_Workshops_Enrollment = `https://prod-53.westus.logic.azure.com:443/
 var Get_Sales_Order_And_Products_Workshop_Details = `https://prod-107.westus.logic.azure.com:443/workflows/a904ccf0a55547128478c3c63202e0c7/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=tm96Jy6DO-vlc7y1Gr4it-KVhgE-dSwieB3Rp82H5T8`;
 
 var Get_Instructor_and_Studio_Details = `https://prod-191.westus.logic.azure.com:443/workflows/68602021ae8e4c718457ceed60b47eab/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=YNDuuC0P2wLs-_eZ9DbUdhy0eyxGz9QdpQ8YAKa7-qs`;
+
+var Upload_User_Photo = `https://prod-13.westus.logic.azure.com:443/workflows/d5012066d800464995388c6d78047ecc/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=X5IhGvIiawf0bA9-4dnwaq1eIQVHb1DOJBHMtN3wnaY`;
+
+
+var Get_User_Avatar = `https://prod-171.westus.logic.azure.com:443/workflows/143c5f9971bd451b92c7f443091806f8/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=BXx38Mheb1DicOJzKXPUXNiaP58DcaV1I4KOet-n_Vo`;
+
+var Weather_Report = `https://prod-61.westus.logic.azure.com:443/workflows/28a8830f973846808b5d8a5429bae402/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=k1UlXF3Nszc2hGyJjtqz25pZX3bQI249SHOnVChWKZE`;

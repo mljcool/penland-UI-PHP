@@ -524,7 +524,7 @@ function redirectToDashboard() {
 }
 
 function redirectTo(url) {
- 
+
    if (url === '/') {
       console.log('UR:', url);
       window.location.href = '/';
@@ -587,6 +587,7 @@ function shapeMyProfile() {
       const country = COUNTRY.find(
          (_data) => _data.value === myProfile.address1_county
       );
+      const countryName = (country || { name: 'N/A' }).name
       const gendercode = 'gendercode@OData.Community.Display.V1.FormattedValue';
       const conduct =
          'hso_conductflag@OData.Community.Display.V1.FormattedValue';
@@ -597,8 +598,9 @@ function shapeMyProfile() {
       htmlEL('mobilephone').html(myProfile.mobilephone);
       htmlEL('statecode').html(myProfile[statecode]);
       htmlEL('emailaddress1').html(myProfile.emailaddress1);
-      htmlEL('country').html((country || { name: 'N/A' }).name);
+      htmlEL('country').html(countryName);
       htmlEL('createdon').html(formatJoinDate);
+      htmlEL('address1_city').html(myProfile.address1_city);
 
       //MORE COMPLEX
       const checkConduct = myProfile[conduct];
@@ -620,7 +622,116 @@ function shapeMyProfile() {
       htmlEL('conductStatus').html(`${emoji[checkConduct]}`);
       htmlEL('conductBehavior').attr('title', `${titleCondcut[checkConduct]}`);
       initPopOver(message[checkConduct]);
+
+
+      const search_query = countryName + ',' + myProfile.address1_city;
+
+      saveToStorage(myProfile);
+      GetUserAvatar(myProfile.contactid);
+      GetWeatherReport(search_query);
    }
+
+}
+
+function getItemStoreAvatar() {
+   const MyAvatar = parseStore(localStorage.getItem('MyAvatar'));
+   if (MyAvatar) {
+      $('.hso_photo').attr('src', "data:image/jpg;base64," + MyAvatar);
+   }
+}
+
+function GetWeatherReport(search_query = '') {
+
+   const jsonData = {
+      requestParams: {
+         customerID: '',
+         search_query,
+      },
+   };
+
+   $.get({
+      url: Weather_Report,
+      data: jsonData,
+      contentType: 'application/json',
+      success: function (response = []) {
+         console.log('Weather_Report', response);
+         setItemStore('Weather_Report', response)
+         const weatherPart = response.responses.weather.current;
+         $('.tempNo').html(weatherPart.temp);
+         $('.temperature').html(response.units.temperature);
+         $('.icon_weather').attr('src', weatherPart.urlIcon);
+
+      },
+      complete: function (data) {
+
+      },
+      error: function (xhr, status, error) { },
+   });
+}
+
+
+function GetUserAvatar(customerID = '') {
+   const jsonData = {
+      requestParams: {
+         customerID,
+      },
+   };
+
+   $.get({
+      url: Get_User_Avatar,
+      data: jsonData,
+      contentType: 'application/json',
+      success: function (response = []) {
+         console.log('Get_User_Avatar', response);
+         setItemStore('MyAvatar', response[0].hso_photo)
+         getItemStoreAvatar();
+
+      },
+      complete: function (data) {
+
+      },
+      error: function (xhr, status, error) { },
+   });
+}
+
+function saveToStorage(newData = {}) {
+   console.log('newData', newData);
+   const preservData = Object.assign({}, newData)
+   const formattedStr = `@OData.Community.Display.V1.FormattedValue`;
+   const odata = `@odata.type`;
+   delete preservData['@odata.editLink'];
+   delete preservData['@odata.etag'];
+   delete preservData['@odata.id'];
+   delete preservData['@odata.type'];
+   delete preservData['mshied_contacttype' + formattedStr];
+   delete preservData['hso_conductflag' + formattedStr];
+   delete preservData['birthdate' + formattedStr];
+   delete preservData['mshied_contacttype' + formattedStr];
+   delete preservData['mshied_homelanguage' + formattedStr];
+   delete preservData['mshied_disability' + formattedStr];
+   delete preservData['mshied_limitedlanguageproficiency' + formattedStr];
+   delete preservData['mshied_preferredlanguage' + formattedStr];
+   delete preservData['mshied_race_' + formattedStr];
+   delete preservData['hso_lgbtqiaidentification' + formattedStr];
+   delete preservData['createdon' + formattedStr];
+   delete preservData['hso_blackindigenousorpersonofcolor' + formattedStr];
+   delete preservData['gendercode' + formattedStr];
+   delete preservData['contactid' + odata];
+   delete preservData['birthdate' + odata];
+   delete preservData['createdon@odata.type'];
+   delete preservData['createdon'];
+
+   console.log('preservData', preservData);
+   const myDetails = getMyFullDetails();
+
+   myDetails.dynamicDetails.personalInfo.contact = preservData;
+   myDetails.dynamicDetails.personalInfo.contact.adx_identity_username = '';
+   myDetails.dynamicDetails.personalInfo.contact.adx_identity_passwordhash = '';
+   setItemStore('myDetails', myDetails);
+   setTimeout(() => {
+      PopulateForm()
+   }, 500);
+
 }
 
 function resetData() {
@@ -634,3 +745,25 @@ function resetData() {
    updateMyDetails('cart', myCart);
    updateFormSteps(0);
 }
+
+function padZero(num) {
+   return num < 10 ? '0' + num : num;
+}
+
+function updateTime() {
+   setInterval(function () {
+      const now = new Date();
+      let hours = now.getHours();
+      const minutes = now.getMinutes();
+      const seconds = now.getSeconds();
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+
+      hours = hours % 12;
+      hours = hours ? hours : 12; // the hour '0' should be '12'
+
+      const strTime = `${padZero(hours)}:${padZero(minutes)} ${ampm}`;
+
+      $('.running-time').html(strTime);
+   }, 1000);
+}
+updateTime();
