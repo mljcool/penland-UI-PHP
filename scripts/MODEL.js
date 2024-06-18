@@ -54,7 +54,7 @@ function IworkShopModel(workshopData = []) {
 
       _data.instructor = ifNoInstructor(
          _data[
-            '_hso_instructor_value@OData.Community.Display.V1.FormattedValue'
+         '_hso_instructor_value@OData.Community.Display.V1.FormattedValue'
          ]
       );
 
@@ -68,14 +68,14 @@ function IworkShopModel(workshopData = []) {
 
       _data.semester = ifNosemester(
          _data[
-            '_cr711_semesterandsession_value@OData.Community.Display.V1.FormattedValue'
+         '_cr711_semesterandsession_value@OData.Community.Display.V1.FormattedValue'
          ]
       );
       //STUDIO
 
       _data.studioTitle =
          _data[
-            'new_cr711_newtable_workshop_mshied_course.cr711_displaytitleofthestudio'
+         'new_cr711_newtable_workshop_mshied_course.cr711_displaytitleofthestudio'
          ];
 
       _data.studioDescription =
@@ -83,12 +83,12 @@ function IworkShopModel(workshopData = []) {
 
       _data.applicationFee = ifNoFees(
          _data[
-            'cr711_applicationfee_base@OData.Community.Display.V1.FormattedValue'
+         'cr711_applicationfee_base@OData.Community.Display.V1.FormattedValue'
          ]
       );
       _data.tuitionFee = ifNoFees(
          _data[
-            'cr711_tuitionfee_base@OData.Community.Display.V1.FormattedValue'
+         'cr711_tuitionfee_base@OData.Community.Display.V1.FormattedValue'
          ]
       );
 
@@ -99,7 +99,7 @@ function IworkShopModel(workshopData = []) {
 
       _data.sessionsPrices = ifNosemester(
          _data[
-            '_hso_workshoppricing_value@OData.Community.Display.V1.FormattedValue'
+         '_hso_workshoppricing_value@OData.Community.Display.V1.FormattedValue'
          ]
       );
 
@@ -112,12 +112,12 @@ function IworkShopModel(workshopData = []) {
 
       const hasStudio =
          _data[
-            'StudioTypes.new_studiotypes@OData.Community.Display.V1.FormattedValue'
+         'StudioTypes.new_studiotypes@OData.Community.Display.V1.FormattedValue'
          ];
 
       _data.cleanStudioSearch =
          _data[
-            'StudioTypes.new_studiotypes@OData.Community.Display.V1.FormattedValue'
+         'StudioTypes.new_studiotypes@OData.Community.Display.V1.FormattedValue'
          ];
 
       if (hasStudio) {
@@ -142,6 +142,37 @@ function IStudios(studios = []) {
    }));
 }
 
+function PayLoadForContact() {
+   return {
+      firstname: '',
+      middlename: '',
+      lastname: '',
+      birthdate: '',
+      emailaddress1: '',
+      emailaddress2: '',
+      emailaddress3: '',
+      gendercode: '',
+      mobilephone: '',
+      address1_postalcode: '',
+      address1_city: '',
+      address1_stateorprovince: '',
+      address1_country: '',
+      adx_identity_passwordhash: '',
+      adx_identity_username: '',
+      cr711_registrationprocedure: 1,
+      mshied_race_: '',
+      hso_blackindigenousorpersonofcolor: '',
+      mshied_accommodations: '',
+      mshied_preferredlanguage: '',
+      hso_lgbtqiaidentification: '',
+      mshied_limitedlanguageproficiency: '',
+      hso_lgbtqiaidentification: '',
+      mshied_disability: '',
+      mshied_accommodations: '',
+      mshied_homelanguage: ''
+   }
+}
+
 let datails = {
    hasInitialize: false,
    paymentDetails: {
@@ -157,34 +188,7 @@ let datails = {
    dynamicDetails: {
       formWizardCurrentSteps: 1,
       personalInfo: {
-         contact: {
-            firstname: '',
-            middlename: '',
-            lastname: '',
-            birthdate: '',
-            emailaddress1: '',
-            emailaddress2: '',
-            emailaddress3: '',
-            gendercode: '',
-            mobilephone: '',
-            address1_postalcode: '',
-            address1_city: '',
-            address1_stateorprovince: '',
-            address1_country: '',
-            adx_identity_passwordhash: '',
-            adx_identity_username: '',
-            cr711_registrationprocedure: 1,
-            mshied_race_: '',
-            hso_blackindigenousorpersonofcolor: '',
-            mshied_accommodations: '',
-            mshied_preferredlanguage: '',
-            hso_lgbtqiaidentification: '',
-            mshied_limitedlanguageproficiency: '',
-            hso_lgbtqiaidentification: '',
-            mshied_disability: '',
-            mshied_accommodations: '',
-            mshied_homelanguage: ''
-         },
+         contact: PayLoadForContact(),
       },
       housing: {
          housing: {},

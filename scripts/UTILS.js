@@ -590,7 +590,7 @@ function shapeMyProfile() {
       const stateProvince = STATES.find(
          (_data) => _data.value === myProfile.address1_stateorprovince
       );
-      
+
       const stateName = (stateProvince || { name: 'N/A' }).name
       const countryName = (country || { name: 'N/A' }).name
       const gendercode = 'gendercode@OData.Community.Display.V1.FormattedValue';
@@ -688,7 +688,7 @@ function GetUserAvatar(customerID = '') {
       data: jsonData,
       contentType: 'application/json',
       success: function (response = []) {
-         if(response.length){
+         if (response.length) {
             console.log('Get_User_Avatar', response);
             setItemStore('MyAvatar', response[0].hso_photo)
             getItemStoreAvatar();
@@ -697,8 +697,26 @@ function GetUserAvatar(customerID = '') {
       complete: function (data) {
 
       },
-      error: function (xhr, status, error) { },
+      error: function (xhr, status, error) { 
+         genericError();
+      },
    });
+}
+
+
+function genericError() {
+   Swal.fire({
+       title: "Yikes!",
+       text: "something went wrong.",
+       icon: 'error',
+       showCancelButton: false,
+       confirmButtonText: 'close',
+       customClass: {
+           confirmButton: 'btn btn-primary me-2',
+           cancelButton: 'btn btn-label-secondary',
+       },
+       buttonsStyling: !1,
+   })
 }
 
 function saveToStorage(newData = {}) {
@@ -706,6 +724,8 @@ function saveToStorage(newData = {}) {
    const preservData = Object.assign({}, newData)
    const formattedStr = `@OData.Community.Display.V1.FormattedValue`;
    const odata = `@odata.type`;
+   preservData.birthdate = preservData['birthdate' + formattedStr];
+ 
    delete preservData['@odata.editLink'];
    delete preservData['@odata.etag'];
    delete preservData['@odata.id'];

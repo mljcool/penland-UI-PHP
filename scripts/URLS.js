@@ -54,3 +54,9 @@ var Upload_User_Photo = `https://prod-13.westus.logic.azure.com:443/workflows/d5
 var Get_User_Avatar = `https://prod-171.westus.logic.azure.com:443/workflows/143c5f9971bd451b92c7f443091806f8/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=BXx38Mheb1DicOJzKXPUXNiaP58DcaV1I4KOet-n_Vo`;
 
 var Weather_Report = `https://prod-61.westus.logic.azure.com:443/workflows/28a8830f973846808b5d8a5429bae402/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=k1UlXF3Nszc2hGyJjtqz25pZX3bQI249SHOnVChWKZE`;
+
+
+var Update_User_Profile = `https://prod-154.westus.logic.azure.com:443/workflows/a6f5fa767aa443f997f198cfb704f004/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=0qk5nUI9130fI1u-XZmFkgG5IKXm4cjh05zCofe5x0s`;
+
+
+var Update_User_Password = `https://prod-46.westus.logic.azure.com:443/workflows/1b72a4cd77ff40c1a489822f74b4eaa2/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=8fXcNUlc5k_lQwM7hHiiJVqFIRhSFzc93QeFPvQHQfQ`;

@@ -271,7 +271,7 @@ function PopulateForm() {
 function updateDynmicContactDetailsForm() {
    const dataToDynamics = getMyDynamicDetails();
 
-   const objectToArray = Object.keys(dataToDynamics.personalInfo.contact).map(
+   const objectToArray = Object.keys(PayLoadForContact()).map(
       (key) => ({
          [key]: $('.dd-' + key).val(),
       })

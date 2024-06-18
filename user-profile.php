@@ -3,7 +3,7 @@
       <div class="row mb-4 mt-4">
          <div class="col-md-12">
 
-            <div class="card mb-4">
+            <div class="card mb-4 user-profile-settings">
                <h5 class="card-header">Profile Details</h5>
                <!-- Account -->
                <div class="card-body">
@@ -232,7 +232,7 @@
                </div>
                <!-- /Account -->
             </div>
-            <div class="card">
+            <div class="card change-password">
                <h5 class="card-header">Change Password</h5>
                <div class="card-body">
                   <form id="formPasswordSettings" method="GET" onsubmit="return false">
@@ -251,7 +251,10 @@
                            <label class="form-label" for="newPassword">New Password</label>
                            <div class="input-group input-group-merge">
                               <input class="form-control" type="password" id="newPassword" name="newPassword"
-                                 placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" />
+                                 placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                                 
+                                 onkeyup="validatePassword(this.value)"
+                                 />
                               <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                            </div>
                         </div>
@@ -267,7 +270,19 @@
                         <div class="col-12 mb-4">
                            <p class="fw-medium mt-2">Password Requirements:</p>
                            <ul class="ps-3 mb-0">
-                              <li class="mb-1">
+                           <li id="minLength"><i class="fas fa-times
+                                     text-danger"></i> Minimum 8 characters</li>
+                                <li id="uppercase"><i class="fas fa-times
+                                     text-danger"></i> At least one uppercase
+                                    letter</li>
+                                <li id="lowercase"><i class="fas fa-times
+                                     text-danger"></i> At least one lowercase
+                                    letter</li>
+                                <li id="symbol"><i class="fas fa-times
+                                     text-danger"></i> 
+                                      At least one symbol (@$!%*?&)
+                                </li>
+                              <!-- <li class="mb-1">
                                  Minimum 8 characters long - the more, the
                                  better
                               </li>
@@ -277,12 +292,14 @@
                               <li>
                                  At least one number, symbol, or whitespace
                                  character
-                              </li>
+                              </li> -->
                            </ul>
+                           <span id="errorMessage" class="font-weight-bold
+                         text-danger"></span>
                         </div>
                         <div class="col-12 mt-1">
                            <hr class="my-4" />
-                           <button type="submit" class="btn btn-primary me-2">
+                           <button type="submit" class="btn btn-primary me-2 changePassword">
                               Save changes
                            </button>
 
