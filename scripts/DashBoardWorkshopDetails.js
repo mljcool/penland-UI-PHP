@@ -101,7 +101,16 @@ function remapDataOnSaleOrder(response = []) {
         total: _data['quantity'],
         unit: _data[_uomid_value],
     }))
+    const sum = newProduct.reduce(
+      (total, obj) => {
+         total.priceperunitRaw += obj.priceperunitRaw;
+         return total;
+      },
+      { priceperunitRaw: 0 }
+   );
+   console.log('OrderTable', sum);
  setTimeout(() => {
+      $('.grandtotal-salesorder').html('$'+sum.priceperunitRaw);
      OrderTable(newProduct)
  }, 500);
  

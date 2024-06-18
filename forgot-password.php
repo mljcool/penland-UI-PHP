@@ -22,21 +22,17 @@
       <!-- START BODY PAGE -->
       <div class="row penland-login-form">
   <div class="penland-authentication-form login-penland">
-    <div class="card" id="authenticate-card">
+    <div class="card forgot-password-conainter" id="authenticate-card">
       <div class="card-body">
-
-        <p class="mb-4 mt-2">
-          Please sign-in to your account
-        </p>
 
         <h4 class="mb-2">Forgot Password? 🔒</h4>
         <p class="mb-4">Enter your email and we'll send you instructions to reset your password</p>
-        <form id="formAuthentication" class="mb-3" action="auth-reset-password-basic.html" method="GET">
+        <form id="formAuthentication" class="mb-3"  onsubmit="return false" method="GET">
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" autofocus>
+            <input type="email" class="form-control" id="email-reset" name="email" placeholder="Enter your email" autofocus>
           </div>
-          <button class="btn btn-primary d-grid w-100">Send Reset Link</button>
+          <button class="btn btn-primary d-grid w-100 on-send-link">Send Reset Link</button>
         </form>
         <div class="text-center">
           <a href="/login" class="d-flex align-items-center justify-content-center">

@@ -23,6 +23,10 @@ var HTMLelementProp = {
     <div class="sk-rect sk-wave-rect"></div>
   </div>
 </div>`,
+   blockUIElementExtended: `<div class="d-flex flex-column align-items-center justify-content-center">
+<p class="me-2 mb-0" style="color: #2e2e2e;"> Sending Link....</p>
+ <div class="sk-plane sk-primary"></div>
+</div>`,
    blockUIExistELementSmile: (message = '') => {
       return `<div class="d-flex justify-content-center">
     <p class="me-2 mb-0" style="color: #2e2e2e;"> <h4 class="mt-2">${message}</h4></p>
@@ -251,23 +255,20 @@ var HTMLelementProp = {
    listOfProduct: (_data) => {
       return `<div class="col-md mb-md-0 mb-2 product-items">
     <div class="form-check custom-option custom-option-icon ${setProductToCheck(
-       _data['@odata.editLink']
-    )}" style="height: 100%;">
-      <label class="form-check-label custom-option-content" for="customCheckboxIcon${
-         _data.productid
-      }">
+         _data['@odata.editLink']
+      )}" style="height: 100%;">
+      <label class="form-check-label custom-option-content" for="customCheckboxIcon${_data.productid
+         }">
         <span class="custom-option-body">
           ${ifHousingOrMeals(_data)}
-          <span class="custom-option-title"> ${
-             _data['price@OData.Community.Display.V1.FormattedValue']
-          } </span>
+          <span class="custom-option-title"> ${_data['price@OData.Community.Display.V1.FormattedValue']
+         } </span>
           <small>${_data.name} </small>
         </span>
-        <input class="form-check-input product-checkboxes" type="checkbox" value="products(${
-           _data.productid
-        })" id="customCheckboxIcon${_data.productid}" ${setProductToCheck(
-         _data['@odata.editLink']
-      )} />
+        <input class="form-check-input product-checkboxes" type="checkbox" value="products(${_data.productid
+         })" id="customCheckboxIcon${_data.productid}" ${setProductToCheck(
+            _data['@odata.editLink']
+         )} />
       </label>
     </div>
   </div>`;
@@ -275,14 +276,12 @@ var HTMLelementProp = {
    listOfProductSummaryReview: (_data) => {
       return `<div class="col-md mb-md-0 mb-2 product-items-review">
 <div class="form-check custom-option custom-option-icon" style="height: 100%;background: white;">
-  <label class="form-check-label custom-option-content" for="customCheckboxIcon${
-     _data.productid
-  }">
+  <label class="form-check-label custom-option-content" for="customCheckboxIcon${_data.productid
+         }">
     <span class="custom-option-body">
       ${ifHousingOrMeals(_data)}
-      <span class="custom-option-title"> ${
-         _data['price@OData.Community.Display.V1.FormattedValue']
-      } </span>
+      <span class="custom-option-title"> ${_data['price@OData.Community.Display.V1.FormattedValue']
+         } </span>
       <small>${_data.name} </small>
     </span>
   </label>

@@ -82,4 +82,5 @@
 <script src="./scripts/ReturningForm.js"></script>
 <script src="./scripts/Service.js"></script>
 <script src="./scripts/UserSettings.js"></script>
+<script src="./scripts/Reset-password.js"></script>
 <!-- <script src="./scripts/bundles/dist/bundle.js"></script> -->

@@ -202,7 +202,7 @@ function DataTableWorkshopList(workShopData = []) {
                            text: '<i class="bx bx-file me-1" ></i>Csv',
                            className: 'dropdown-item',
                            exportOptions: {
-                              columns: [3, 4, 5, 6, 7],
+                              columns: [1, 2, 3, 4, 5],
                               format: {
                                  body: function (e, t, a) {
                                     var s;
@@ -230,7 +230,7 @@ function DataTableWorkshopList(workShopData = []) {
                            text: '<i class="bx bxs-file-export me-1"></i>Excel',
                            className: 'dropdown-item',
                            exportOptions: {
-                              columns: [3, 4, 5, 6, 7],
+                              columns: [1, 2, 3, 4, 5],
                               format: {
                                  body: function (e, t, a) {
                                     var s;
@@ -258,7 +258,7 @@ function DataTableWorkshopList(workShopData = []) {
                            text: '<i class="bx bxs-file-pdf me-1"></i>Pdf',
                            className: 'dropdown-item',
                            exportOptions: {
-                              columns: [3, 4, 5, 6, 7],
+                              columns: [1, 2, 3, 4, 5],
                               format: {
                                  body: function (e, t, a) {
                                     var s;
@@ -286,7 +286,7 @@ function DataTableWorkshopList(workShopData = []) {
                            text: '<i class="bx bx-copy me-1" ></i>Copy',
                            className: 'dropdown-item',
                            exportOptions: {
-                              columns: [3, 4, 5, 6, 7],
+                              columns: [1, 2, 3, 4, 5],
                               format: {
                                  body: function (e, t, a) {
                                     var s;

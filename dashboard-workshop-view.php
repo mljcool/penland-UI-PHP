@@ -74,10 +74,6 @@
                   <div class="d-flex justify-content-end align-items-center m-3 mb-2 p-1">
                      <div class="order-calculations">
                         <div class="d-flex justify-content-between mb-2">
-                           <span class="w-px-100">Subtotal:</span>
-                           <span class="text-heading">$0.00</span>
-                        </div>
-                        <div class="d-flex justify-content-between mb-2">
                            <span class="w-px-100">Discount:</span>
                            <span class="text-heading mb-0">$0</span>
                         </div>
@@ -87,11 +83,13 @@
                         </div>
                         <div class="d-flex justify-content-between">
                            <h6 class="w-px-100 mb-0">Total:</h6>
-                           <h6 class="mb-0">$0</h6>
+                           <h6 class="mb-0 grandtotal-salesorder">$0</h6>
                         </div>
                      </div>
+                     
                   </div>
                </div>
+               <div class="card-footer">💳 Tentative amount may change upon invoicing.</div>
             </div>
 
          </div>

@@ -106,7 +106,7 @@ function DataTableInvoiceList(apiData) {
                         <div class="dropdown-menu dropdown-menu-end">
                             <a href="/dashboard-invoice-details.php?invoiceID=${invoiceID}" class="dropdown-item">View</a>
                             <div class="dropdown-divider"></div>
-                            <a href="/penland-web/dashboard-invoice-detail-print.php?invoiceID=${invoiceID}&print=1" class="dropdown-item">Download</a>
+                            <a href="/dashboard-invoice-detail-print.php?invoiceID=${invoiceID}&print=1" class="dropdown-item">Download</a>
                         </div>
                     </div>
                     </div>
