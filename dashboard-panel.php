@@ -9,7 +9,7 @@
   ?>
   </head>
   <body>
-    <div class="container-fluid DashBoard-user-profile">
+    <div class="container-fluid DashBoard-user-profile dashboard-user-panel">
           <?php include_once('./dashboard-nav.php') ?>
           <?php include_once('./dashboard-landing-pages.php') ?>
 

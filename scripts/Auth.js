@@ -161,4 +161,9 @@ $(document).ready(function () {
 
       destroySession();
    });
+
 });
+
+function exitAccount() {
+   destroySession();
+}

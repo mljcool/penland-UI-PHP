@@ -635,6 +635,7 @@ function shapeMyProfile() {
       saveToStorage(myProfile);
       GetUserAvatar(myProfile.contactid);
       GetWeatherReport(search_query);
+      checkAount(myProfile);
    }
 
 }
@@ -697,7 +698,7 @@ function GetUserAvatar(customerID = '') {
       complete: function (data) {
 
       },
-      error: function (xhr, status, error) { 
+      error: function (xhr, status, error) {
          genericError();
       },
    });
@@ -706,16 +707,16 @@ function GetUserAvatar(customerID = '') {
 
 function genericError() {
    Swal.fire({
-       title: "Yikes!",
-       text: "something went wrong.",
-       icon: 'error',
-       showCancelButton: false,
-       confirmButtonText: 'close',
-       customClass: {
-           confirmButton: 'btn btn-primary me-2',
-           cancelButton: 'btn btn-label-secondary',
-       },
-       buttonsStyling: !1,
+      title: "Yikes!",
+      text: "something went wrong.",
+      icon: 'error',
+      showCancelButton: false,
+      confirmButtonText: 'close',
+      customClass: {
+         confirmButton: 'btn btn-primary me-2',
+         cancelButton: 'btn btn-label-secondary',
+      },
+      buttonsStyling: !1,
    })
 }
 
@@ -725,7 +726,7 @@ function saveToStorage(newData = {}) {
    const formattedStr = `@OData.Community.Display.V1.FormattedValue`;
    const odata = `@odata.type`;
    preservData.birthdate = preservData['birthdate' + formattedStr];
- 
+
    delete preservData['@odata.editLink'];
    delete preservData['@odata.etag'];
    delete preservData['@odata.id'];
@@ -743,6 +744,8 @@ function saveToStorage(newData = {}) {
    delete preservData['createdon' + formattedStr];
    delete preservData['hso_blackindigenousorpersonofcolor' + formattedStr];
    delete preservData['gendercode' + formattedStr];
+   delete preservData['cr711_registrationprocedure' + formattedStr];
+   delete preservData['cr711_registrationprocedure'];
    delete preservData['contactid' + odata];
    delete preservData['birthdate' + odata];
    delete preservData['createdon@odata.type'];
@@ -794,3 +797,62 @@ function updateTime() {
    }, 1000);
 }
 updateTime();
+
+// FOR ACCOUNT REVIEW 
+
+function checkAountBlockUI(details) {
+   const data = getUserDetailsStore();
+
+
+   $('.dashboard-user-panel').block({
+      message: HTMLMessageAccountStatus(data.fullname, details),
+      centerY: false,
+      css: {
+         backgroundColor: 'transparent',
+         border: '0',
+         top: '50px',
+         cursor: 'default',
+      },
+      overlayCSS: {
+         backgroundColor: '#f9f9f9',
+         opacity: 0.9,
+         cursor: 'default',
+      },
+   })
+}
+
+function accountRejectedBlocUI(details){
+   const data = getUserDetailsStore();
+   $('.dashboard-user-panel').block({
+      message: HTMLMessageAccountRejected(data.fullname, details),
+      centerY: false,
+      css: {
+         backgroundColor: 'transparent',
+         border: '0',
+         top: '50px',
+         cursor: 'default',
+      },
+      overlayCSS: {
+         backgroundColor: '#f9f9f9',
+         opacity: 1,
+         cursor: 'default',
+      },
+   })
+}
+
+function checkAount(myProfile) {
+   const accStatus = (myProfile || { }).cr711_registrationprocedure
+   const createdon = (myProfile || { }).createdon
+   const newDetails = {
+      createdon: moment(createdon).format('MMM D'),
+      accStatus 
+   }
+   if(accStatus === 3){
+      accountRejectedBlocUI(newDetails)
+      return;
+   }
+   console.log('accStatus', accStatus);
+   if(accStatus == 1 || !accStatus){
+      checkAountBlockUI(newDetails)
+   }
+}

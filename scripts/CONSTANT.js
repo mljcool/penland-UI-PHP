@@ -338,6 +338,105 @@ const HTMLMessageWaitList = (name) => {
 </div>`;
 };
 
+
+
+function HTMLMessageAccountStatus(name, details) {
+   return `<div class="card">
+   <div class="card-body">
+    <h3 class="card-title">Your Profile.</h3>
+      <div class="logo-container d-flex flex-direction-column"
+         style="align-items: center; width: 100%; flex-direction: column">
+          <img style="width:250px;" src="./assets/Review-img.png" />
+      </div>
+
+      <p style="text-align: left; font-size: 16px" class="typing ">
+         Hi
+         <span class="name-of-applicant dd-firstname">${name}</span>,<br /><br />
+         Your account has been submitted & will be reviewed by our team. 
+      </p>
+     <div class="list-group">
+  <a  class="list-group-item list-group-item-action d-flex align-items-left">
+   <span class="p-2">
+    <i class='bx bxs-check-circle bx-md bg-label-success'></i>
+   </span>
+    <div class="w-100">
+      <div class="d-flex justify-content-between">
+        <div class="user-info" style="text-align: left; font-size: 18px">
+          <h6 class="mb-1">Submission received</h6>
+          <small>Your submission was received on ${details.createdon}</small>
+       
+        </div>
+      </div>
+    </div>
+  </a>
+  <a  class="list-group-item list-group-item-action d-flex align-items-left">
+   <span class="p-2">
+    <i class='bx bxs-check-circle bx-md ${details.accStatus === 1 ? 'bg-label-success' : 'bg-label-secondary'}'></i>
+   </span>
+    <div class="w-100">
+      <div class="d-flex justify-content-between">
+        <div class="user-info" style="text-align: left; font-size: 18px">
+          <h6 class="mb-1">In review</h6>
+          <small class="text-muted">We're reviewing your submission. Review usually takes 48 hours.</small>
+         
+        </div>
+      
+      </div>
+    </div>
+  </a>
+  <a  class="list-group-item list-group-item-action d-flex align-items-left">
+   <span class="p-2">
+    <i class='bx bxs-check-circle bx-md bg-label-secondary'></i>
+   </span>
+    <div class="w-100">
+      <div class="d-flex justify-content-between align-items-left">
+        <div class="user-info" style="text-align: left; font-size: 18px">
+          <h6 class="mb-1">Decision made</h6>
+          <small class="text-muted">You'll receive an email once we've made a decision.</small>
+         
+        </div>
+        
+      </div>
+    </div>
+  </a>
+</div>
+   </div>
+   <div class="card-footer text-muted">
+      <a href="/" class="btn btn-primary">Browse more workshop.</a>
+    </div>
+</div>`;
+};
+
+
+
+
+function HTMLMessageAccountRejected(name, details) {
+   return `<div class="card border border-danger">
+   <div class="card-body">
+    <h3 class="card-title">Your application has been rejected</h3>
+      <div class="logo-container d-flex flex-direction-column"
+         style="align-items: center; width: 100%; flex-direction: column">
+          <img style="width:250px;" src="./assets/Review-img.png" />
+      </div>
+
+      <p style="text-align: left; font-size: 16px" class="typing ">
+         Hi
+         <span class="name-of-applicant dd-firstname">${name}</span>,<br /><br />
+       We regret to inform you that your application did not pass the requirements check and has been rejected. While you correctly filled out the required data, we were unable to grant Verified User status.<br /><br />
+
+        Please refrain from creating a new account to submit a repeated application, as all checks are performed by our team. We do not provide specific reasons for the rejection. Thank you for your understanding.
+         <br /><br />
+         Best regards,<br />
+         Penland School of Craft
+               </p>
+            </div>
+   <div class="card-footer text-muted">
+       <button id="rejectedAccount" onclick="exitAccount();" class="btn btn-primary">Exit</button>
+    </div>
+</div>`;
+};
+
+
 const HTMLMessageDataBeingComposed = () => {
    return `<div class="card">
    <div class="card-body">
