@@ -180,12 +180,6 @@ function FormPersonalDetailsValidation(c) {
                regexp: validRegx(),
             },
          },
-         middleName: {
-            validators: {
-               notEmpty: notEmptyMessage('Middle name'),
-               regexp: validRegx(),
-            },
-         },
          lastName: {
             validators: {
                notEmpty: notEmptyMessage('Last name'),

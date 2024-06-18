@@ -753,10 +753,12 @@ function saveToStorage(newData = {}) {
 
    console.log('preservData', preservData);
    const myDetails = getMyFullDetails();
+   
 
    myDetails.dynamicDetails.personalInfo.contact = preservData;
    myDetails.dynamicDetails.personalInfo.contact.adx_identity_username = '';
    myDetails.dynamicDetails.personalInfo.contact.adx_identity_passwordhash = '';
+   myDetails.dynamicDetails.personalInfo.contact.emailaddress1 = preservData.emailaddress1;
    setItemStore('myDetails', myDetails);
    setTimeout(() => {
       PopulateForm()

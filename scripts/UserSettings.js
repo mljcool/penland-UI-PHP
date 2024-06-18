@@ -222,7 +222,7 @@ $(document).ready(function () {
             success: function (data) {
                 if (!data) {
                     alertifPasswordWrong();
-                } else{
+                } else {
                     alertifPasswordSuccess();
                     // frm.reset();
                 }
@@ -231,9 +231,9 @@ $(document).ready(function () {
             complete: function () {
                 $('.change-password').unblock();
             },
-            error: function (xhr, status, error) { 
+            error: function (xhr, status, error) {
                 genericError();
-             },
+            },
         });
 
     })
@@ -278,6 +278,10 @@ function validatePassword(password) {
     }
 }
 
+function isINaNData(data){
+    return isNaN(data) ? '' : data;
+}
+
 function getUserDatails() {
     return new Promise((resolve, reject) => {
         const dataToDynamics = getMyDynamicDetails();
@@ -286,28 +290,29 @@ function getUserDatails() {
 
 
         const contactData = dataToDynamics.personalInfo.contact;
-        contactData.gendercode = parseInt(contactData.gendercode);
-        contactData.mshied_race_ = parseInt(contactData.mshied_race_);
-        contactData.hso_blackindigenousorpersonofcolor = parseInt(
+        contactData.gendercode = isINaNData(parseInt(contactData.gendercode));
+        contactData.mshied_race_ = isINaNData(parseInt(contactData.mshied_race_));
+        contactData.hso_blackindigenousorpersonofcolor = isINaNData(parseInt(
             contactData.hso_blackindigenousorpersonofcolor
-        );
-        contactData.mshied_preferredlanguage = parseInt(
+        ));
+        contactData.mshied_preferredlanguage = isINaNData(parseInt(
             contactData.mshied_preferredlanguage
-        );
-        contactData.hso_lgbtqiaidentification = parseInt(
+        ));
+        contactData.hso_lgbtqiaidentification = isINaNData(parseInt(
             contactData.hso_lgbtqiaidentification
-        );
-        contactData.mshied_limitedlanguageproficiency = parseInt(
+        ));
+        contactData.mshied_limitedlanguageproficiency = isINaNData(parseInt(
             contactData.mshied_limitedlanguageproficiency
-        );
-        contactData.mshied_homelanguage = parseInt(
+        ));
+        contactData.mshied_homelanguage = isINaNData(parseInt(
             contactData.mshied_homelanguage
-        );
-        contactData.mshied_disability = parseInt(contactData.mshied_disability);
+        ));
 
+        contactData.mshied_disability = isINaNData(parseInt(contactData.mshied_disability));
+       
         const preservData = Object.assign({}, contactData);
         preservData.contactID = contactid;
-
+        
         $.ajax({
             ...requestOptions(Update_User_Profile, preservData),
             success: function (data) {

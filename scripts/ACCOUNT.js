@@ -231,7 +231,7 @@ function PopulateForm() {
    const dataToDynamics = getMyDynamicDetails();
    const contact = dataToDynamics.personalInfo.contact;
    console.log('contact', contact);
-   Object.keys(contact).forEach(function (key) {
+   Object.keys(PayLoadForContact()).forEach(function (key) {
       if (key === 'adx_identity_passwordhash') {
          $('.dd-adx_identity_passwordhash_22').val(contact[key]);
       }
@@ -276,6 +276,8 @@ function updateDynmicContactDetailsForm() {
          [key]: $('.dd-' + key).val(),
       })
    );
+
+   console.log('objectToArray', objectToArray);
 
    const plainObject = objectToArray.reduce((acc, obj) => {
       return { ...acc, ...obj };

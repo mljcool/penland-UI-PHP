@@ -37,6 +37,7 @@
                               <div class="col">
                                  <fieldset>
                                     <legend>Personal Information</legend>
+                                    <input type="hidden" class="dd-emailaddress1" />
                                     <div class="col-md-9">
                                        <label class="form-label" for="firstName">First Name</label>
                                        <input type="text" id="firstName" name="firstName"
