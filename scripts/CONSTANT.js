@@ -23,10 +23,12 @@ var HTMLelementProp = {
     <div class="sk-rect sk-wave-rect"></div>
   </div>
 </div>`,
-   blockUIElementExtended: `<div class="d-flex flex-column align-items-center justify-content-center">
-<p class="me-2 mb-0" style="color: #2e2e2e;"> Sending Link....</p>
+   blockUIElementExtended: function (message = ' Sending Link....') {
+      return `<div class="d-flex flex-column align-items-center justify-content-center">
+<p class="me-2 mb-0" style="color: #2e2e2e;">${message}</p>
  <div class="sk-plane sk-primary"></div>
-</div>`,
+</div>`
+   },
    blockUIExistELementSmile: (message = '') => {
       return `<div class="d-flex justify-content-center">
     <p class="me-2 mb-0" style="color: #2e2e2e;"> <h4 class="mt-2">${message}</h4></p>

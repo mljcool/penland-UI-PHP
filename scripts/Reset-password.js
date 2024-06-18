@@ -16,7 +16,7 @@ function isSuccesLink() {
 
 function loadingBlockUI() {
     $('.forgot-password-conainter').block({
-        message: HTMLelementProp.blockUIElementExtended,
+        message: HTMLelementProp.blockUIElementExtended(),
         css: {
             backgroundColor: 'transparent',
             border: '0',
@@ -34,7 +34,6 @@ $(document).ready(function () {
 
         const payload = {
             email: userEmail,
-            tokenID: generateToken()
         }
         loadingBlockUI();
         $.ajax({

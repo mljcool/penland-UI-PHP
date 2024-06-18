@@ -61,4 +61,10 @@ var Update_User_Profile = `https://prod-154.westus.logic.azure.com:443/workflows
 
 var Update_User_Password = `https://prod-46.westus.logic.azure.com:443/workflows/1b72a4cd77ff40c1a489822f74b4eaa2/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=8fXcNUlc5k_lQwM7hHiiJVqFIRhSFzc93QeFPvQHQfQ`;
 
-var User_Send_Password_Reset_Link  =`https://prod-30.westus.logic.azure.com:443/workflows/9584d720f59b4cb0b755ead1032ddb9f/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=1fC9swZdLm8boLa4lGXk6Hjz6xCS609IPfzsqUwNiNY`
+var User_Send_Password_Reset_Link = `https://prod-30.westus.logic.azure.com:443/workflows/9584d720f59b4cb0b755ead1032ddb9f/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=1fC9swZdLm8boLa4lGXk6Hjz6xCS609IPfzsqUwNiNY`
+
+
+var User_Set_New_Password = `https://prod-159.westus.logic.azure.com:443/workflows/f6b5b18b00a34aaab7e6177a2e6fbf95/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=fLryIcY_CFduKn-i1dVwsgrhS0BLINmw83kx3gu7g_0`;
+
+
+var Delete_Expired_Password_Link = `https://prod-02.westus.logic.azure.com:443/workflows/efca4665036e4b698e722b0a902bf7a2/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=hjZK2jd_EkuV8TdELE4JCrTWE2uaMiv9LcdRg1R8puE`;
